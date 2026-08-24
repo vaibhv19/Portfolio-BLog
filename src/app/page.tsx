@@ -36,16 +36,12 @@ export default function HomePage() {
             Vaibhav Gupta
           </h1>
           <p className="text-xs font-mono text-slate-400">
-            Software Engineer &amp; CS Student at Greater Noida Institute of Technology (B.Tech 2023–2027)
+            &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
           </p>
         </div>
 
         <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
           I build software systems with a focus on distributed architectures, multi-agent AI orchestration, and cloud infrastructure. My work spans high-concurrency Java 21 backends, Python/LangGraph agent frameworks, hybrid RAG retrieval engines (pgvector), WebAssembly browser compute, and production deployments on AWS.
-        </p>
-
-        <p className="text-xs text-slate-400 font-serif-editorial italic border-l-2 border-amber-400/80 pl-3 py-0.5">
-          &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
         </p>
 
         {/* Compact Profile Links */}
