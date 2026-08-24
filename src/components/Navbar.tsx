@@ -7,6 +7,8 @@ import { Menu, X, ChevronDown, Award, Briefcase, GraduationCap, ShieldCheck, Cpu
 
 export function Navbar() {
   const pathname = usePathname();
+  if (pathname === "/") return null;
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 

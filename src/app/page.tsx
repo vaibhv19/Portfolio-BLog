@@ -28,7 +28,7 @@ export default function HomePage() {
   const featuredCerts = CERTIFICATIONS.filter((c) => c.featured).slice(0, 3);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 text-slate-300">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-12 space-y-10 text-slate-300">
       {/* 1. PERSONAL INTRODUCTION */}
       <section className="space-y-4 border-b border-slate-800/80 pb-6">
         <div className="space-y-1">
