@@ -54,12 +54,12 @@ export function Header() {
 
   return (
     <>
-      <header className="w-full pt-6 pb-4 border-b border-slate-800/80 dark:border-slate-800/80">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <header className="w-full pt-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 border-b border-slate-800/80 flex items-center justify-between">
           {/* Left Side: Brand Identity */}
           <Link
             href="/"
-            className="font-mono text-xs font-semibold tracking-tight text-slate-300 hover:text-amber-300 transition-colors focus:outline-none"
+            className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100 hover:text-amber-300 transition-colors focus:outline-none"
           >
             Vaibhav Gupta
           </Link>
