@@ -1,24 +1,36 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink, ChevronRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/BrandIcons";
 import { PROJECTS } from "@/data/projects";
 import { SKILL_CATEGORIES } from "@/data/skills";
 import { WRITING_ARTICLES } from "@/data/writing";
+import { EXPERIENCE_WITH_ARTICLES } from "@/data/experienceWith";
 import { CERTIFICATIONS } from "@/data/certifications";
 import { EXPERIENCE_ENTRIES } from "@/data/experience";
 import { EDUCATION_ENTRIES } from "@/data/education";
+import { PATENT_RECORDS } from "@/data/patents";
 
 export default function HomePage() {
+  // 1. Curated Featured Projects (Live Deployed Experiences)
   const featuredProjects = PROJECTS.filter((p) => p.featured);
+  
+  // 2. Complete Projects Collection Overview / Preview
   const previewProjects = PROJECTS.filter((p) => p.homepagePreview);
+  
+  // 3. Featured Certificates (NPTEL, E&ICT Academy)
   const featuredCertificates = CERTIFICATIONS.filter((c) => c.featured).sort(
     (a, b) => (a.homeOrder || 99) - (b.homeOrder || 99)
   );
+
+  // 4. Regular Writing Previews ONLY (Excludes My Experience With...)
   const writingPreviews = WRITING_ARTICLES.slice(0, 3);
+
+  // 5. My Experience With... Previews
+  const experienceWithPreviews = EXPERIENCE_WITH_ARTICLES.slice(0, 4);
 
   return (
     <div className="space-y-16 py-10">
-      {/* 1. Hero Section — Typographic & Confident */}
+      {/* SECTION 1: HERO / INTRODUCTION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-4">
         <div className="text-xs font-mono tracking-widest text-slate-500 uppercase">
           VAIBHAV GUPTA — SOFTWARE ENGINEER
@@ -48,18 +60,18 @@ export default function HomePage() {
             href="/writing"
             className="text-slate-300 hover:text-white transition-colors"
           >
-            Technical Writing →
+            Technical Writing &rarr;
           </Link>
           <Link
             href="/about"
             className="text-slate-400 hover:text-slate-200 transition-colors"
           >
-            About Narrative →
+            About Narrative &rarr;
           </Link>
         </div>
       </section>
 
-      {/* 2. Editorial About Excerpt */}
+      {/* SECTION 2: ABOUT */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-800/80">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
           <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
@@ -77,24 +89,51 @@ export default function HomePage() {
                 href="/about"
                 className="inline-flex items-center gap-1 text-xs font-mono text-amber-300 hover:underline"
               >
-                <span>Read Editorial Narrative &amp; GitHub Activity →</span>
+                <span>Read Editorial Narrative &amp; GitHub Activity &rarr;</span>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Featured Projects (Deployed Experiences) */}
+      {/* SECTION 3: EXPERIENCE */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-6 border-t border-slate-800/80">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div>
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              PRACTICAL CREDIBILITY
+            </div>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Professional Experience</h2>
+          </div>
+          <Link href="/experience" className="text-xs font-mono text-amber-300 hover:underline">
+            View All Experience &rarr;
+          </Link>
+        </div>
+        <div className="space-y-4">
+          {EXPERIENCE_ENTRIES.map((exp) => (
+            <div key={exp.id} className="space-y-1 text-xs border-b border-slate-800/40 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-slate-200">{exp.role}</span>
+                <span className="text-[10px] font-mono text-slate-500">{exp.period}</span>
+              </div>
+              <div className="text-slate-400 font-medium">{exp.organization}</div>
+              <p className="text-slate-400 leading-relaxed pt-1">{exp.summary}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 4: FEATURED (Curated Strongest Work) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-6 border-t border-slate-800/80">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
           <div>
             <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
-              01 / FEATURED WORK
+              CURATED SELECTION
             </div>
-            <h2 className="text-2xl font-bold text-slate-100 mt-1">Live Deployed Experiences</h2>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Featured Work</h2>
           </div>
           <p className="text-xs text-slate-400 max-w-md">
-            Projects featuring live interactive demonstrations or production cloud deployments.
+            A curated selection of the strongest work featuring live interactive demonstrations or production cloud deployments.
           </p>
         </div>
 
@@ -157,20 +196,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Projects Preview */}
+      {/* SECTION 5: PROJECTS (Complete Project Portfolio Preview) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-6 border-t border-slate-800/80">
         <div className="flex items-center justify-between">
           <div>
             <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
-              02 / CATALOG PREVIEW
+              COMPLETE COLLECTION PREVIEW
             </div>
-            <h2 className="text-2xl font-bold text-slate-100 mt-1">Core Engineering Systems</h2>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Projects Portfolio</h2>
           </div>
           <Link
             href="/projects"
             className="text-xs font-mono text-amber-300 hover:underline"
           >
-            View Full Catalog →
+            View Full Projects Catalog &rarr;
           </Link>
         </div>
 
@@ -191,69 +230,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Experience & Education Preview */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-slate-800/80">
-        {/* Experience Preview */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-            <h2 className="text-base font-bold text-slate-100 font-mono uppercase">Experience</h2>
-            <Link href="/experience" className="text-xs font-mono text-amber-300 hover:underline">
-              View All →
-            </Link>
-          </div>
-          <div className="space-y-4">
-            {EXPERIENCE_ENTRIES.map((exp) => (
-              <div key={exp.id} className="space-y-1 text-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-200">{exp.role}</span>
-                  <span className="text-[10px] font-mono text-slate-500">{exp.period}</span>
-                </div>
-                <div className="text-slate-400 font-medium">{exp.organization}</div>
-                <p className="text-slate-400 leading-relaxed pt-1">{exp.summary}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Education Preview */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-            <h2 className="text-base font-bold text-slate-100 font-mono uppercase">Education</h2>
-            <Link href="/education" className="text-xs font-mono text-amber-300 hover:underline">
-              View All →
-            </Link>
-          </div>
-          <div className="space-y-4">
-            {EDUCATION_ENTRIES.map((edu) => (
-              <div key={edu.id} className="space-y-1 text-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-200">{edu.degree}</span>
-                  <span className="text-[10px] font-mono text-slate-500">{edu.period}</span>
-                </div>
-                <div className="text-slate-400 font-medium">{edu.institution}</div>
-                <div className="text-slate-400 font-mono text-[11px] pt-1">
-                  Specialization: {edu.specialization}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Skills Preview */}
+      {/* SECTION 6: SKILLS */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-6 border-t border-slate-800/80">
         <div className="flex items-center justify-between">
           <div>
             <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
-              03 / TECHNICAL TERRITORY
+              TECHNICAL AREAS
             </div>
-            <h2 className="text-2xl font-bold text-slate-100 mt-1">Primary Capabilities</h2>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Skills &amp; Capabilities</h2>
           </div>
           <Link
             href="/skills"
             className="text-xs font-mono text-amber-300 hover:underline"
           >
-            View Skills Taxonomy →
+            View Skills Taxonomy &rarr;
           </Link>
         </div>
 
@@ -273,20 +263,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Certifications Preview */}
+      {/* SECTION 7: EDUCATION */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-6 border-t border-slate-800/80">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div>
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              ACADEMIC BACKGROUND
+            </div>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Education</h2>
+          </div>
+          <Link href="/education" className="text-xs font-mono text-amber-300 hover:underline">
+            View Education Details &rarr;
+          </Link>
+        </div>
+        <div className="space-y-4">
+          {EDUCATION_ENTRIES.map((edu) => (
+            <div key={edu.id} className="space-y-1 text-xs">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-slate-200">{edu.degree}</span>
+                <span className="text-[10px] font-mono text-slate-500">{edu.period}</span>
+              </div>
+              <div className="text-slate-400 font-medium">{edu.institution}</div>
+              <div className="text-slate-400 font-mono text-[11px] pt-1">
+                Specialization: {edu.specialization}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 8: CERTIFICATIONS */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-6 border-t border-slate-800/80">
         <div className="flex items-center justify-between">
           <div>
             <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
-              04 / CREDENTIALS
+              VERIFIED CREDENTIALS
             </div>
-            <h2 className="text-2xl font-bold text-slate-100 mt-1">Featured Certifications</h2>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Certifications</h2>
           </div>
           <Link
             href="/certifications"
             className="text-xs font-mono text-amber-300 hover:underline"
           >
-            View All Certifications →
+            View All Certifications &rarr;
           </Link>
         </div>
 
@@ -311,20 +330,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. Regular Writing Preview */}
+      {/* SECTION 9: INTELLECTUAL PROPERTY / PATENTS */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-800/80">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 px-6 border border-slate-800">
+          <div className="space-y-1">
+            <div className="text-[10px] font-mono uppercase text-amber-400">
+              INTELLECTUAL PROPERTY / PATENTS
+            </div>
+            <h3 className="text-sm font-bold text-slate-100">
+              Patent Application 452200-001 6853
+            </h3>
+            <p className="text-xs text-slate-400">
+              Registered design patent document covering technical software systems and architectural specifications.
+            </p>
+          </div>
+          <Link
+            href="/intellectual-property"
+            className="text-xs font-mono text-amber-300 hover:underline shrink-0"
+          >
+            View Patent Record &rarr;
+          </Link>
+        </div>
+      </section>
+
+      {/* SECTION 10: WRITING (Regular Articles ONLY) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-6 border-t border-slate-800/80">
         <div className="flex items-center justify-between">
           <div>
             <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
-              05 / TECHNICAL WRITING
+              REGULAR ARTICLES &amp; RETROSPECTIVES
             </div>
-            <h2 className="text-2xl font-bold text-slate-100 mt-1">Articles &amp; Retrospectives</h2>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Writing</h2>
           </div>
           <Link
             href="/writing"
             className="text-xs font-mono text-amber-300 hover:underline"
           >
-            View All Writing →
+            View Writing Archive &rarr;
           </Link>
         </div>
 
@@ -349,7 +391,7 @@ export default function HomePage() {
                   href={`/writing/${article.slug}`}
                   className="text-xs font-mono text-amber-300 hover:underline"
                 >
-                  Continue Reading →
+                  Continue Reading &rarr;
                 </Link>
               </div>
             </div>
@@ -357,26 +399,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. Intellectual Property / Patent Presence */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-800/80">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 px-6 border border-slate-800">
-          <div className="space-y-1">
-            <div className="text-[10px] font-mono uppercase text-amber-400">
-              INTELLECTUAL PROPERTY
+      {/* SECTION 11: MY EXPERIENCE WITH... */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-6 border-t border-slate-800/80">
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              SEPARATE EXPERIENCE CONTENT SYSTEM
             </div>
-            <h3 className="text-sm font-bold text-slate-100">
-              Patent Application 452200-001 6853
-            </h3>
-            <p className="text-xs text-slate-400">
-              Registered design patent document covering technical software systems and architectural specifications.
-            </p>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">My Experience With…</h2>
           </div>
           <Link
-            href="/intellectual-property"
-            className="text-xs font-mono text-amber-300 hover:underline shrink-0"
+            href="/my-experience-with"
+            className="text-xs font-mono text-amber-300 hover:underline"
           >
-            View Patent Record →
+            View Experience Index &rarr;
           </Link>
+        </div>
+
+        <p className="text-xs text-slate-400 max-w-2xl leading-relaxed">
+          Practical experience, lessons learned, and engineering trade-offs gained while working with specific tools, frameworks, and concepts.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {experienceWithPreviews.map((article) => (
+            <div key={article.slug} className="py-3 border-b border-slate-800/60 space-y-1 text-xs">
+              <div className="flex items-center justify-between">
+                <Link
+                  href={`/my-experience-with/${article.slug}`}
+                  className="font-bold text-slate-100 hover:text-amber-300 transition-colors"
+                >
+                  {article.title}
+                </Link>
+                <span className="text-[10px] font-mono text-slate-500 uppercase">{article.category}</span>
+              </div>
+              <p className="text-slate-400 text-xs leading-relaxed">{article.summary}</p>
+              <div className="pt-1">
+                <Link
+                  href={`/my-experience-with/${article.slug}`}
+                  className="text-xs font-mono text-amber-300 hover:underline text-[11px]"
+                >
+                  Read Experience Breakdown &rarr;
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
