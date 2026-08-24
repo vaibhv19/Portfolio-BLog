@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ExternalLink, ArrowRight } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import { ExternalLink, ArrowRight, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
 import { PROJECTS } from "@/data/projects";
 import { WRITING_ARTICLES } from "@/data/writing";
 import { EXPERIENCE_WITH_ARTICLES } from "@/data/experienceWith";
@@ -43,7 +43,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Column: Name, Philosophy Subtitle, & Links */}
+          {/* Right Column: Name, Philosophy Subtitle, & Contact Endpoints */}
           <div className="space-y-3.5 text-center md:text-left flex-1">
             <div className="space-y-1.5">
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
@@ -54,30 +54,56 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Compact Profile Links */}
-            <div className="pt-1 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-mono">
+            {/* Standalone Icon-Only Contact Endpoints */}
+            <div className="pt-2 flex items-center justify-center md:justify-start gap-4">
               <a
                 href="https://github.com/vaibhv19"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors"
+                aria-label="GitHub"
+                title="GitHub"
+                className="text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
               >
-                <GithubIcon className="w-3.5 h-3.5" />
-                <span>github/vaibhv19</span>
+                <GithubIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/vaibhv19"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
               >
-                <LinkedinIcon className="w-3.5 h-3.5" />
-                <span>linkedin</span>
+                <LinkedinIcon className="w-4 h-4" />
               </a>
-              <span className="text-slate-600">•</span>
-              <Link href="/about" className="text-amber-300 hover:underline">
-                About Narrative &rarr;
-              </Link>
+              <a
+                href="https://x.com/vaibhv_19"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter)"
+                title="X (Twitter)"
+                className="text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
+              >
+                <XIcon className="w-4 h-4" />
+              </a>
+              <a
+                href="https://leetcode.com/u/vaibhv_19/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LeetCode"
+                title="LeetCode"
+                className="text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
+              >
+                <LeetCodeIcon className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:gvaibhav.business@gmail.com"
+                aria-label="Email"
+                title="Email"
+                className="text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
