@@ -1,151 +1,128 @@
 import Link from "next/link";
-import { 
-  ArrowRight, ExternalLink, Code2, Cpu, Shield, Sparkles, Terminal, 
-  Award, Briefcase, GraduationCap, FileText, ChevronRight, Layers, Lock, ShieldCheck 
-} from "lucide-react";
+import { ArrowRight, ExternalLink, ChevronRight, ShieldCheck } from "lucide-react";
+import { GithubIcon } from "@/components/BrandIcons";
 import { PROJECTS } from "@/data/projects";
 import { SKILL_CATEGORIES } from "@/data/skills";
 import { WRITING_ARTICLES } from "@/data/writing";
 import { CERTIFICATIONS } from "@/data/certifications";
 import { EXPERIENCE_ENTRIES } from "@/data/experience";
 import { EDUCATION_ENTRIES } from "@/data/education";
-import { PATENT_RECORDS } from "@/data/patents";
 
 export default function HomePage() {
-  // Filter content according to strict planning rules
   const featuredProjects = PROJECTS.filter((p) => p.featured);
   const previewProjects = PROJECTS.filter((p) => p.homepagePreview);
   const featuredCertificates = CERTIFICATIONS.filter((c) => c.featured).sort(
     (a, b) => (a.homeOrder || 99) - (b.homeOrder || 99)
   );
-  // ONLY 2-3 regular writing articles (never My Experience With...)
   const writingPreviews = WRITING_ARTICLES.slice(0, 3);
 
   return (
-    <div className="space-y-20 pb-16">
-      {/* 1. Hero Section */}
-      <section className="relative pt-12 sm:pt-20 pb-12 border-b border-slate-800/60 bg-grid-pattern">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono mb-6">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>SOFTWARE ENGINEER & BUILDER</span>
-          </div>
+    <div className="space-y-16 py-10">
+      {/* 1. Hero Section — Typographic & Confident */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-4">
+        <div className="text-xs font-mono tracking-widest text-slate-500 uppercase">
+          VAIBHAV GUPTA — SOFTWARE ENGINEER
+        </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-100 leading-tight max-w-4xl">
-            Building distributed systems, AI agent platforms &amp; cloud architecture with engineering precision.
-          </h1>
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-100 leading-[1.15] max-w-4xl">
+          Building distributed systems, AI agent platforms &amp; cloud architecture with engineering discipline.
+        </h1>
 
-          <p className="mt-6 text-lg sm:text-xl text-slate-300 font-serif-editorial leading-relaxed max-w-3xl border-l-2 border-amber-500/50 pl-4 py-1 italic">
-            &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
-          </p>
+        <p className="text-base sm:text-lg text-slate-300 font-serif-editorial italic border-l-2 border-amber-400/80 pl-4 py-1 leading-relaxed max-w-3xl">
+          &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
+        </p>
 
-          <p className="mt-4 text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
-            Specializing in distributed cache systems (Java/Python), autonomous AI agent orchestration (LangGraph, Spring AI), hybrid RAG retrieval pipelines (pgvector), and full-stack cloud deployments on AWS.
-          </p>
+        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
+          Specializing in distributed cache systems (Java/Python), autonomous AI agent orchestration (LangGraph, Spring AI), hybrid RAG retrieval pipelines (pgvector), and full-stack cloud deployments on AWS.
+        </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-all shadow-lg shadow-amber-500/10"
-            >
-              <span>Explore Projects Catalog</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/writing"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/80 font-medium text-sm transition-colors"
-            >
-              <FileText className="w-4 h-4 text-amber-400" />
-              <span>Read Technical Writing</span>
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 text-sm transition-colors"
-            >
-              <span>About Narrative</span>
-              <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
+        <div className="pt-4 flex flex-wrap items-center gap-6 text-xs font-mono">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-1.5 font-bold text-amber-300 hover:underline"
+          >
+            <span>Projects Catalog</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href="/writing"
+            className="text-slate-300 hover:text-white transition-colors"
+          >
+            Technical Writing →
+          </Link>
+          <Link
+            href="/about"
+            className="text-slate-400 hover:text-slate-200 transition-colors"
+          >
+            About Narrative →
+          </Link>
         </div>
       </section>
 
-      {/* 2. About Preview */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 sm:p-8 rounded-xl bg-[#131b2e] border border-slate-800/80 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -z-0 pointer-events-none" />
-          <div className="relative z-10 space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono uppercase tracking-wider text-amber-400/90 font-semibold">
-                ABOUT PREVIEW
-              </span>
-              <span className="text-xs text-slate-500 font-mono">Philosophy &amp; Discipline</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-100">
+      {/* 2. Editorial About Excerpt */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+          <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+            PHILOSOPHY &amp; APPROACH
+          </div>
+          <div className="md:col-span-3 space-y-3">
+            <h2 className="text-lg font-bold text-slate-100">
               Engineering × Expression × Discipline
             </h2>
-            <p className="text-slate-300 text-sm leading-relaxed max-w-3xl">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl">
               Software engineering is the primary communication layer of my work. Personality and approach are quietly shaped by artistic craft (composition and original texture), fitness (repetition, strength, and controlled intensity), and philosophical grounding in continuous practice.
             </p>
-            <div>
+            <div className="pt-1">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-300 hover:text-amber-200 transition-colors"
+                className="inline-flex items-center gap-1 text-xs font-mono text-amber-300 hover:underline"
               >
-                <span>Read Complete Editorial Narrative &amp; GitHub Activity</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span>Read Editorial Narrative &amp; GitHub Activity →</span>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Featured Projects (Live Deployed Projects) */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-800/80 pb-4">
+      {/* 3. Featured Projects (Deployed Experiences) */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-6 border-t border-slate-800/80">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
           <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
-              FEATURED WORK
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              01 / FEATURED WORK
             </div>
             <h2 className="text-2xl font-bold text-slate-100 mt-1">Live Deployed Experiences</h2>
           </div>
           <p className="text-xs text-slate-400 max-w-md">
-            Projects specifically featuring live interactive demonstrations or production cloud deployments.
+            Projects featuring live interactive demonstrations or production cloud deployments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredProjects.map((project) => (
+        <div className="space-y-6">
+          {featuredProjects.map((project, idx) => (
             <div
               key={project.id}
-              className="flex flex-col justify-between p-6 rounded-xl bg-[#131b2e]/90 border border-slate-800 hover:border-amber-500/40 transition-all duration-200 group"
+              className="group border-b border-slate-800/60 pb-6 space-y-3"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase tracking-wider bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded border border-amber-500/20">
-                    LIVE DEMO
-                  </span>
-                  <span className="text-xs text-slate-500 font-mono">{project.category}</span>
-                </div>
-                <h3 className="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="mt-6 space-y-4 pt-4 border-t border-slate-800/60">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.techStack.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[10px] bg-slate-800/90 text-slate-300 px-2 py-0.5 rounded border border-slate-700/60"
-                    >
-                      {tech}
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-3">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-semibold text-amber-400/80">
+                      0{idx + 1}
                     </span>
-                  ))}
+                    <h3 className="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
+                      {project.title}
+                    </h3>
+                    <span className="text-[9px] font-mono uppercase text-amber-300 bg-amber-400/10 px-1.5 py-0.5 border border-amber-400/20">
+                      LIVE DEMO
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed max-w-3xl">
+                    {project.description}
+                  </p>
                 </div>
-                <div className="flex items-center gap-3 text-xs pt-1">
+
+                <div className="flex items-center gap-4 text-xs font-mono shrink-0 pt-1 md:pt-0">
                   {project.demoUrl && (
                     <a
                       href={project.demoUrl}
@@ -164,11 +141,16 @@ export default function HomePage() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-200"
                     >
-                      <span>Repository</span>
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>Code</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   )}
                 </div>
+              </div>
+
+              <div className="text-[10px] font-mono text-slate-500 pl-8">
+                Tech: {project.techStack.join(" · ")}
               </div>
             </div>
           ))}
@@ -176,19 +158,19 @@ export default function HomePage() {
       </section>
 
       {/* 4. Projects Preview */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-6 border-t border-slate-800/80">
+        <div className="flex items-center justify-between">
           <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
-              ENGINEERING CATALOG PREVIEW
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              02 / CATALOG PREVIEW
             </div>
             <h2 className="text-2xl font-bold text-slate-100 mt-1">Core Engineering Systems</h2>
           </div>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1 text-xs font-medium text-amber-300 hover:text-amber-200 transition-colors"
+            className="text-xs font-mono text-amber-300 hover:underline"
           >
-            <span>View All Projects →</span>
+            View Full Catalog →
           </Link>
         </div>
 
@@ -196,24 +178,13 @@ export default function HomePage() {
           {previewProjects.map((project) => (
             <div
               key={project.id}
-              className="flex flex-col justify-between p-6 rounded-xl bg-[#131b2e]/60 border border-slate-800/80 hover:border-slate-700 transition-all"
+              className="p-4 border-l-2 border-slate-800 space-y-2"
             >
-              <div className="space-y-3">
-                <div className="text-xs font-mono text-slate-400">{project.category}</div>
-                <h3 className="text-base font-semibold text-slate-100">{project.title}</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">{project.tagline}</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs">
-                <span className="text-[11px] text-slate-400 font-mono">
-                  {project.techStack.slice(0, 3).join(" • ")}
-                </span>
-                <Link
-                  href="/projects"
-                  className="text-amber-300 hover:underline flex items-center gap-1 text-xs font-medium"
-                >
-                  <span>Catalog</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+              <div className="text-[10px] font-mono text-slate-500 uppercase">{project.category}</div>
+              <h3 className="text-base font-bold text-slate-100">{project.title}</h3>
+              <p className="text-xs text-slate-300 leading-relaxed">{project.tagline}</p>
+              <div className="pt-2 text-[10px] font-mono text-slate-500">
+                {project.techStack.slice(0, 3).join(" · ")}
               </div>
             </div>
           ))}
@@ -221,26 +192,23 @@ export default function HomePage() {
       </section>
 
       {/* 5. Experience & Education Preview */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-slate-800/80">
         {/* Experience Preview */}
-        <div className="space-y-4 p-6 rounded-xl bg-[#131b2e]/70 border border-slate-800/80">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <div className="flex items-center gap-2">
-              <Briefcase className="w-4 h-4 text-amber-400" />
-              <h2 className="text-lg font-bold text-slate-100">Experience Preview</h2>
-            </div>
-            <Link href="/experience" className="text-xs text-amber-300 hover:underline">
-              View All Experience →
+        <div className="space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <h2 className="text-base font-bold text-slate-100 font-mono uppercase">Experience</h2>
+            <Link href="/experience" className="text-xs font-mono text-amber-300 hover:underline">
+              View All →
             </Link>
           </div>
           <div className="space-y-4">
             {EXPERIENCE_ENTRIES.map((exp) => (
               <div key={exp.id} className="space-y-1 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-slate-200">{exp.role}</span>
-                  <span className="text-[10px] font-mono text-slate-400">{exp.period}</span>
+                  <span className="font-bold text-slate-200">{exp.role}</span>
+                  <span className="text-[10px] font-mono text-slate-500">{exp.period}</span>
                 </div>
-                <div className="text-amber-400/90 font-medium">{exp.organization}</div>
+                <div className="text-slate-400 font-medium">{exp.organization}</div>
                 <p className="text-slate-400 leading-relaxed pt-1">{exp.summary}</p>
               </div>
             ))}
@@ -248,25 +216,22 @@ export default function HomePage() {
         </div>
 
         {/* Education Preview */}
-        <div className="space-y-4 p-6 rounded-xl bg-[#131b2e]/70 border border-slate-800/80">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <div className="flex items-center gap-2">
-              <GraduationCap className="w-4 h-4 text-amber-400" />
-              <h2 className="text-lg font-bold text-slate-100">Education Preview</h2>
-            </div>
-            <Link href="/education" className="text-xs text-amber-300 hover:underline">
-              View All Education →
+        <div className="space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <h2 className="text-base font-bold text-slate-100 font-mono uppercase">Education</h2>
+            <Link href="/education" className="text-xs font-mono text-amber-300 hover:underline">
+              View All →
             </Link>
           </div>
           <div className="space-y-4">
             {EDUCATION_ENTRIES.map((edu) => (
               <div key={edu.id} className="space-y-1 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-slate-200">{edu.degree}</span>
-                  <span className="text-[10px] font-mono text-slate-400">{edu.period}</span>
+                  <span className="font-bold text-slate-200">{edu.degree}</span>
+                  <span className="text-[10px] font-mono text-slate-500">{edu.period}</span>
                 </div>
-                <div className="text-amber-400/90 font-medium">{edu.institution}</div>
-                <div className="text-slate-300 font-mono text-[11px] pt-1">
+                <div className="text-slate-400 font-medium">{edu.institution}</div>
+                <div className="text-slate-400 font-mono text-[11px] pt-1">
                   Specialization: {edu.specialization}
                 </div>
               </div>
@@ -276,124 +241,100 @@ export default function HomePage() {
       </section>
 
       {/* 6. Skills Preview */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-6 border-t border-slate-800/80">
+        <div className="flex items-center justify-between">
           <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
-              TECHNICAL TERRITORY
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              03 / TECHNICAL TERRITORY
             </div>
-            <h2 className="text-2xl font-bold text-slate-100 mt-1">Skills &amp; Technologies</h2>
+            <h2 className="text-2xl font-bold text-slate-100 mt-1">Primary Capabilities</h2>
           </div>
           <Link
             href="/skills"
-            className="inline-flex items-center gap-1 text-xs font-medium text-amber-300 hover:text-amber-200 transition-colors"
+            className="text-xs font-mono text-amber-300 hover:underline"
           >
-            <span>View All Skills →</span>
+            View Skills Taxonomy →
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-          {[
-            { name: "Java", category: "Languages", link: "/my-experience-with/java" },
-            { name: "Python", category: "Languages", link: "/my-experience-with/python" },
-            { name: "TypeScript", category: "Languages", link: "/my-experience-with/typescript" },
-            { name: "Spring Boot", category: "Backend", link: "/my-experience-with/spring-boot" },
-            { name: "FastAPI", category: "Backend", link: "/my-experience-with/fastapi" },
-            { name: "React", category: "Frontend", link: "/my-experience-with/react" },
-            { name: "Next.js", category: "Frontend", link: "/my-experience-with/nextjs" },
-            { name: "LangGraph", category: "AI Systems", link: "/my-experience-with/langgraph" },
-            { name: "pgvector", category: "Data", link: "/my-experience-with/postgresql" },
-            { name: "Consistent Hashing", category: "Systems", link: "/my-experience-with/consistent-hashing" },
-            { name: "Virtual Threads", category: "Systems", link: "/my-experience-with/virtual-threads" },
-            { name: "Docker", category: "DevOps", link: "/my-experience-with/docker" },
-          ].map((item) => (
-            <Link
-              key={item.name}
-              href={item.link}
-              className="p-3 rounded-lg bg-[#131b2e]/90 border border-slate-800 hover:border-amber-500/40 text-center transition-all group"
-            >
-              <div className="text-xs font-semibold text-slate-200 group-hover:text-amber-300 transition-colors">
-                {item.name}
-              </div>
-              <div className="text-[9px] font-mono text-slate-400 mt-1">
-                {item.category}
-              </div>
-            </Link>
-          ))}
+        <div className="pt-2 text-xs sm:text-sm text-slate-300 leading-relaxed max-w-4xl space-y-2">
+          <div>
+            <strong className="text-slate-100 font-semibold font-mono text-xs uppercase text-amber-400/90 mr-2">Backend &amp; Distributed:</strong>
+            <span>Java · Spring Boot · Python · FastAPI · Consistent Hashing · Virtual Threads</span>
+          </div>
+          <div>
+            <strong className="text-slate-100 font-semibold font-mono text-xs uppercase text-amber-400/90 mr-2">AI Systems &amp; RAG:</strong>
+            <span>LangGraph · Hybrid RAG · pgvector · Multi-Agent Orchestration · Agent Evaluation</span>
+          </div>
+          <div>
+            <strong className="text-slate-100 font-semibold font-mono text-xs uppercase text-amber-400/90 mr-2">Frontend &amp; Infrastructure:</strong>
+            <span>TypeScript · React · Next.js · Docker · AWS (EC2/RDS/S3) · WebAssembly</span>
+          </div>
         </div>
       </section>
 
       {/* 7. Certifications Preview */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-6 border-t border-slate-800/80">
+        <div className="flex items-center justify-between">
           <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
-              CREDENTIALS PREVIEW
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              04 / CREDENTIALS
             </div>
             <h2 className="text-2xl font-bold text-slate-100 mt-1">Featured Certifications</h2>
           </div>
           <Link
             href="/certifications"
-            className="inline-flex items-center gap-1 text-xs font-medium text-amber-300 hover:text-amber-200 transition-colors"
+            className="text-xs font-mono text-amber-300 hover:underline"
           >
-            <span>View All Certifications →</span>
+            View All Certifications →
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="divide-y divide-slate-800/60 pt-2">
           {featuredCertificates.map((cert) => (
-            <a
-              key={cert.id}
-              href={cert.pdfPath}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-5 rounded-xl bg-[#131b2e]/70 border border-slate-800/80 hover:border-amber-500/50 transition-all group flex flex-col justify-between"
-            >
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded border border-amber-500/20">
-                    {cert.recognition || "Verified"}
-                  </span>
-                  <span className="text-xs font-mono text-slate-400">{cert.year}</span>
-                </div>
-                <h3 className="text-sm font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
-                  {cert.title}
-                </h3>
-                <div className="text-xs text-slate-400">{cert.issuer}</div>
+            <div key={cert.id} className="py-3 flex items-center justify-between text-xs">
+              <div className="space-y-0.5">
+                <a
+                  href={cert.pdfPath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-slate-100 hover:text-amber-300 transition-colors flex items-center gap-1.5"
+                >
+                  <span>{cert.title}</span>
+                  <ExternalLink className="w-3 h-3 text-amber-400" />
+                </a>
+                <div className="text-[11px] text-slate-400">{cert.issuer}</div>
               </div>
-              <div className="mt-4 pt-3 border-t border-slate-800/60 text-[11px] text-amber-300 font-medium flex items-center gap-1">
-                <span>Open Original PDF</span>
-                <ExternalLink className="w-3 h-3" />
-              </div>
-            </a>
+              <span className="text-[10px] font-mono text-slate-500">{cert.year}</span>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* 8. Regular Writing Preview (Strict rule: NO My Experience With...) */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+      {/* 8. Regular Writing Preview */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-6 border-t border-slate-800/80">
+        <div className="flex items-center justify-between">
           <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
-              TECHNICAL WRITING
+            <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+              05 / TECHNICAL WRITING
             </div>
             <h2 className="text-2xl font-bold text-slate-100 mt-1">Articles &amp; Retrospectives</h2>
           </div>
           <Link
             href="/writing"
-            className="inline-flex items-center gap-1 text-xs font-medium text-amber-300 hover:text-amber-200 transition-colors"
+            className="text-xs font-mono text-amber-300 hover:underline"
           >
-            <span>View All Writing →</span>
+            View All Writing →
           </Link>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {writingPreviews.map((article) => (
             <div
               key={article.slug}
-              className="p-6 rounded-xl bg-[#131b2e]/60 border border-slate-800/80 hover:border-slate-700 transition-all space-y-3"
+              className="border-b border-slate-800/60 pb-6 space-y-2"
             >
-              <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
+              <div className="flex items-center justify-between text-[11px] font-mono text-slate-500">
                 <span>{article.date}</span>
                 <span>{article.readingTime}</span>
               </div>
@@ -403,12 +344,12 @@ export default function HomePage() {
               <p className="text-xs text-slate-300 leading-relaxed max-w-3xl">
                 {article.excerpt}
               </p>
-              <div>
+              <div className="pt-1">
                 <Link
                   href={`/writing/${article.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-medium text-amber-300 hover:text-amber-200 transition-colors"
+                  className="text-xs font-mono text-amber-300 hover:underline"
                 >
-                  <span>Continue Reading →</span>
+                  Continue Reading →
                 </Link>
               </div>
             </div>
@@ -417,25 +358,22 @@ export default function HomePage() {
       </section>
 
       {/* 9. Intellectual Property / Patent Presence */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 rounded-xl bg-gradient-to-r from-amber-500/5 via-[#131b2e] to-blue-600/5 border border-amber-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-800/80">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 px-6 border border-slate-800">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-amber-400" />
-              <span className="text-xs font-mono uppercase text-amber-400 font-semibold">
-                INTELLECTUAL PROPERTY
-              </span>
+            <div className="text-[10px] font-mono uppercase text-amber-400">
+              INTELLECTUAL PROPERTY
             </div>
-            <h3 className="text-base font-bold text-slate-100">
+            <h3 className="text-sm font-bold text-slate-100">
               Patent Application 452200-001 6853
             </h3>
             <p className="text-xs text-slate-400">
-              Registered design patent record covering technical software systems and architectural specifications.
+              Registered design patent document covering technical software systems and architectural specifications.
             </p>
           </div>
           <Link
             href="/intellectual-property"
-            className="px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 text-xs font-medium transition-colors whitespace-nowrap"
+            className="text-xs font-mono text-amber-300 hover:underline shrink-0"
           >
             View Patent Record →
           </Link>

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Award, ExternalLink, FileText, CheckCircle2 } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { CERTIFICATIONS } from "@/data/certifications";
 
 export const metadata: Metadata = {
@@ -13,15 +13,14 @@ export default function CertificationsPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Page Header */}
-      <div className="space-y-4 border-b border-slate-800 pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono">
-          <Award className="w-3.5 h-3.5" />
-          <span>VERIFIED CREDENTIAL ARCHIVE</span>
+      <div className="space-y-3 border-b border-slate-800 pb-6">
+        <div className="text-xs font-mono uppercase tracking-widest text-slate-500">
+          VERIFIED CREDENTIAL ARCHIVE
         </div>
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100">
           Certifications &amp; Credentials
         </h1>
-        <p className="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
           Archival record of formal course completions, NPTEL certifications, and IBM credentials. Clicking any certificate title opens the original PDF document directly.
         </p>
       </div>
@@ -33,28 +32,28 @@ export default function CertificationsPage() {
           if (certsInYear.length === 0) return null;
 
           return (
-            <div key={year} className="space-y-4">
-              <div className="text-lg font-mono font-bold text-amber-400 border-b border-slate-800/80 pb-2">
+            <div key={year} className="space-y-3">
+              <div className="text-sm font-mono font-bold text-amber-400 border-b border-slate-800 pb-1">
                 {year}
               </div>
 
-              <div className="divide-y divide-slate-800/60 rounded-xl bg-[#131b2e]/60 border border-slate-800/80 overflow-hidden">
+              <div className="divide-y divide-slate-800/60">
                 {certsInYear.map((cert) => (
                   <div
                     key={cert.id}
-                    className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#18233a] transition-colors group"
+                    className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs group"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5">
                       <a
                         href={cert.pdfPath}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-base font-bold text-slate-100 group-hover:text-amber-300 transition-colors"
+                        className="font-bold text-slate-100 group-hover:text-amber-300 transition-colors inline-flex items-center gap-1.5"
                       >
                         <span>{cert.title}</span>
-                        <ExternalLink className="w-3.5 h-3.5 text-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <ExternalLink className="w-3 h-3 text-amber-400" />
                       </a>
-                      <div className="text-xs text-slate-400 flex items-center gap-2">
+                      <div className="text-slate-400 text-[11px] flex items-center gap-2">
                         <span>{cert.issuer}</span>
                         {cert.issueDate && (
                           <>
@@ -65,9 +64,9 @@ export default function CertificationsPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 self-start sm:self-auto">
+                    <div className="flex items-center gap-2 self-start sm:self-auto font-mono text-[10px]">
                       {cert.recognition && (
-                        <span className="text-[10px] font-mono bg-amber-500/10 text-amber-300 px-2.5 py-1 rounded border border-amber-500/20">
+                        <span className="text-amber-300 bg-amber-400/10 px-2 py-0.5 border border-amber-400/20">
                           {cert.recognition}
                         </span>
                       )}
@@ -75,10 +74,9 @@ export default function CertificationsPage() {
                         href={cert.pdfPath}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1 rounded bg-slate-800/80 hover:bg-slate-700 text-xs font-mono text-slate-300 flex items-center gap-1 transition-colors"
+                        className="text-slate-400 hover:text-slate-200 underline"
                       >
-                        <FileText className="w-3.5 h-3.5 text-amber-400" />
-                        <span>PDF</span>
+                        PDF Document ↗
                       </a>
                     </div>
                   </div>

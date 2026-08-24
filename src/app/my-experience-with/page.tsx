@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Cpu, ArrowRight, BookOpen, Layers } from "lucide-react";
 import { EXPERIENCE_WITH_ARTICLES } from "@/data/experienceWith";
 
 export const metadata: Metadata = {
@@ -10,50 +9,49 @@ export const metadata: Metadata = {
 
 export default function ExperienceWithIndexPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Page Header */}
-      <div className="space-y-4 border-b border-slate-800 pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono">
-          <Cpu className="w-3.5 h-3.5" />
-          <span>SEPARATE EXPERIENCE SYSTEM</span>
+      <div className="space-y-3 border-b border-slate-800 pb-6">
+        <div className="text-xs font-mono uppercase tracking-widest text-slate-500">
+          EXPERIENCE SYSTEM INDEX
         </div>
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100">
-          My Experience With… Index
+          My Experience With…
         </h1>
-        <p className="text-sm sm:text-base text-slate-400 max-w-3xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
           A dedicated repository documenting practical lessons, trade-offs, challenges, and engineering decisions gained while working with specific technologies, frameworks, and core engineering concepts.
         </p>
       </div>
 
-      {/* Grid of Articles */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {EXPERIENCE_WITH_ARTICLES.map((article) => (
-          <Link
-            key={article.slug}
-            href={`/my-experience-with/${article.slug}`}
-            className="flex flex-col justify-between p-6 rounded-xl bg-[#131b2e]/80 border border-slate-800 hover:border-amber-500/40 transition-all group"
-          >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded border border-amber-500/20">
-                  {article.category}
-                </span>
-                <span className="text-xs text-slate-500 font-mono">Article</span>
+      {/* Editorial Index List */}
+      <div className="divide-y divide-slate-800/60">
+        {EXPERIENCE_WITH_ARTICLES.map((article, idx) => {
+          const indexStr = (idx + 1).toString().padStart(2, "0");
+          return (
+            <div key={article.slug} className="py-5 space-y-2 group">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-xs text-amber-400/80 font-bold">{indexStr}</span>
+                  <h2 className="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
+                    <Link href={`/my-experience-with/${article.slug}`}>{article.title}</Link>
+                  </h2>
+                </div>
+                <span className="text-[10px] font-mono uppercase text-slate-500">{article.category}</span>
               </div>
-              <h2 className="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
-                {article.title}
-              </h2>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-slate-300 leading-relaxed max-w-3xl pl-7">
                 {article.summary}
               </p>
+              <div className="pl-7 pt-1">
+                <Link
+                  href={`/my-experience-with/${article.slug}`}
+                  className="text-xs font-mono text-amber-300 hover:underline"
+                >
+                  Read Experience Breakdown →
+                </Link>
+              </div>
             </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs text-amber-300 font-medium">
-              <span>Read Experience Breakdown</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

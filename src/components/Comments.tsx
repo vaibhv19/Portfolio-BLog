@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageSquare, Send, User, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 
 interface CommentItem {
   id: string;
@@ -42,66 +42,58 @@ export function Comments({ articleSlug }: { articleSlug: string }) {
   };
 
   return (
-    <div className="space-y-8 pt-8 border-t border-slate-800">
+    <div className="space-y-6 pt-10 border-t border-slate-800">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <MessageSquare className="w-4 h-4 text-amber-400" />
-          <h2 className="text-xl font-bold text-slate-100">Visitor Comments</h2>
-        </div>
-        <span className="text-xs font-mono text-slate-400">{comments.length} Discussion {comments.length === 1 ? "entry" : "entries"}</span>
+        <h2 className="text-lg font-bold text-slate-100">Discussion ({comments.length})</h2>
+        <span className="text-[11px] font-mono text-slate-500">Public Comments</span>
       </div>
 
       {/* New Comment Form */}
-      <form onSubmit={handleSubmit} className="space-y-4 p-5 rounded-xl bg-[#131b2e]/80 border border-slate-800">
-        <div className="text-xs font-semibold text-slate-200">Join the discussion</div>
-        
+      <form onSubmit={handleSubmit} className="space-y-3 pt-2">
         {submitted && (
-          <div className="flex items-center gap-2 p-3 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs">
-            <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
-            <span>Thank you! Your comment has been posted to this session.</span>
+          <div className="flex items-center gap-2 text-xs text-emerald-400 font-mono py-1">
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            <span>Comment submitted successfully.</span>
           </div>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <input
             type="text"
-            placeholder="Your Name / Handle (optional)"
+            placeholder="Name or Handle (optional)"
             value={authorName}
             onChange={(e) => setAuthorName(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-[#0d1322] border border-slate-700/80 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-400"
+            className="w-full px-3 py-1.5 bg-[#0e131f] border border-slate-800 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-slate-600"
           />
         </div>
 
         <textarea
           rows={3}
-          placeholder="Share your thoughts, engineering observations, or questions..."
+          placeholder="Share your thoughts or engineering observations..."
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
           required
-          className="w-full px-3 py-2 rounded-lg bg-[#0d1322] border border-slate-700/80 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-400"
+          className="w-full px-3 py-2 bg-[#0e131f] border border-slate-800 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-slate-600"
         />
 
         <button
           type="submit"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-xs transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium text-xs border border-slate-700 transition-colors"
         >
           <span>Post Comment</span>
-          <Send className="w-3 h-3" />
+          <Send className="w-3 h-3 text-amber-400" />
         </button>
       </form>
 
       {/* Comment List */}
-      <div className="space-y-4">
+      <div className="space-y-4 pt-4 border-t border-slate-800/60">
         {comments.map((comment) => (
-          <div key={comment.id} className="p-4 rounded-xl bg-[#131b2e]/50 border border-slate-800/80 space-y-2">
-            <div className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2 font-semibold text-amber-300">
-                <User className="w-3.5 h-3.5 text-slate-400" />
-                <span>{comment.author}</span>
-              </div>
+          <div key={comment.id} className="space-y-1 text-xs border-b border-slate-800/40 pb-4">
+            <div className="flex items-center justify-between">
+              <span className="font-semibold text-slate-200">{comment.author}</span>
               <span className="text-[10px] font-mono text-slate-500">{comment.date}</span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed pl-5 border-l border-slate-700/60">
+            <p className="text-slate-300 leading-relaxed pt-0.5">
               {comment.text}
             </p>
           </div>

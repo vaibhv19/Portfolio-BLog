@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock, Calendar, ExternalLink, Tag } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { WRITING_ARTICLES } from "@/data/writing";
 import { PROJECTS } from "@/data/projects";
 import { Comments } from "@/components/Comments";
@@ -34,41 +34,33 @@ export default async function WritingArticlePage({ params }: PageProps) {
     notFound();
   }
 
-  // Get related projects if specified
   const relatedProjects = PROJECTS.filter((p) => article.relatedProjects?.includes(p.id));
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
-      {/* Back to Writing archive */}
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+      {/* Back link */}
       <div>
         <Link
           href="/writing"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-amber-300 transition-colors"
+          className="text-xs font-mono text-slate-400 hover:text-slate-100 transition-colors inline-flex items-center gap-1"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
+          <ArrowLeft className="w-3 h-3" />
           <span>Back to Writing Archive</span>
         </Link>
       </div>
 
       {/* Article Header */}
-      <header className="space-y-4 border-b border-slate-800 pb-8">
-        <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
-          <span className="flex items-center gap-1">
-            <Calendar className="w-3.5 h-3.5 text-amber-400" />
-            <time dateTime={article.date}>{article.date}</time>
-          </span>
-          <span>•</span>
-          <span className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-slate-400" />
-            <span>{article.readingTime}</span>
-          </span>
+      <header className="space-y-4 border-b border-slate-800 pb-6">
+        <div className="flex items-center justify-between text-xs font-mono text-slate-500">
+          <time dateTime={article.date}>{article.date}</time>
+          <span>{article.readingTime}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-100 leading-tight">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100 leading-tight">
           {article.title}
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-300 font-serif-editorial italic border-l-2 border-amber-500/50 pl-4 py-1 leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-300 font-serif-editorial italic border-l-2 border-amber-400/80 pl-4 py-1 leading-relaxed">
           {article.excerpt}
         </p>
       </header>
@@ -80,30 +72,30 @@ export default async function WritingArticlePage({ params }: PageProps) {
         ))}
       </div>
 
-      {/* Related Projects Section if applicable */}
+      {/* Related Projects Section */}
       {relatedProjects.length > 0 && (
-        <section className="p-6 rounded-xl bg-[#131b2e]/60 border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider font-mono">
-              RELATED PROJECTS &amp; EVIDENCE
-            </h3>
+        <section className="pt-6 border-t border-slate-800 space-y-3">
+          <div className="text-xs font-mono uppercase text-slate-500 tracking-wider">
+            RELATED PROJECTS &amp; EVIDENCE
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-3">
             {relatedProjects.map((proj) => (
-              <div key={proj.id} className="p-4 rounded-lg bg-[#0d1322] border border-slate-800 space-y-1 text-xs">
-                <div className="font-bold text-slate-100">{proj.title}</div>
+              <div key={proj.id} className="py-2 border-b border-slate-800/40 text-xs space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-slate-100">{proj.title}</span>
+                  {proj.githubUrl && (
+                    <a
+                      href={proj.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-300 hover:underline text-[11px] font-mono inline-flex items-center gap-1"
+                    >
+                      <span>Repository</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
                 <p className="text-slate-400">{proj.tagline}</p>
-                {proj.githubUrl && (
-                  <a
-                    href={proj.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-amber-300 hover:underline pt-2 text-[11px]"
-                  >
-                    <span>Repository</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
               </div>
             ))}
           </div>

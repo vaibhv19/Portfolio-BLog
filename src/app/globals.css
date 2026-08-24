@@ -1,14 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0f17;
+  --background: #0a0d14;
   --foreground: #f8fafc;
-  --surface: #131b2e;
-  --surface-hover: #1b2640;
+  --surface: #111622;
   --surface-border: rgba(255, 255, 255, 0.08);
   --gold-accent: #d4af37;
-  --gold-hover: #e5c07b;
-  --blue-accent: #3b82f6;
   --muted-text: #94a3b8;
 }
 
@@ -17,6 +14,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 .font-serif-editorial {
@@ -27,49 +25,33 @@ body {
   font-family: var(--font-geist-mono), monospace;
 }
 
-/* Subtle engineering grid background */
-.bg-grid-pattern {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
-/* Gold glow and accent border */
-.border-gold-subtle {
-  border-color: rgba(212, 175, 55, 0.25);
-}
-
-.hover-border-gold:hover {
-  border-color: rgba(212, 175, 55, 0.6);
-}
-
+/* Restrained text gold highlight */
 .text-gold {
   color: #e5c07b;
 }
 
-.bg-gold-badge {
-  background-color: rgba(212, 175, 55, 0.12);
-  color: #e5c07b;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+/* Subtle border rule */
+.border-rule {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Custom scrollbar */
+/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0f17;
+  background: #0a0d14;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }
+
 

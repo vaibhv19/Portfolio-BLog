@@ -3,13 +3,11 @@
 import { useMemo } from "react";
 
 export function GithubContributionGraph() {
-  // Generate sample structured contribution data matching the Van Gogh midnight theme palette
   const weeks = useMemo(() => {
     const totalWeeks = 48;
     const daysPerWeek = 7;
     const result = [];
 
-    // Seed pseudo-random reproducible pattern representing consistent building
     let seed = 42;
     const pseudoRandom = () => {
       seed = (seed * 9301 + 49297) % 233280;
@@ -21,10 +19,10 @@ export function GithubContributionGraph() {
       for (let d = 0; d < daysPerWeek; d++) {
         const val = pseudoRandom();
         let level = 0;
-        if (val > 0.3 && val <= 0.6) level = 1; // Deep blue / low
-        else if (val > 0.6 && val <= 0.82) level = 2; // Cobalt / medium
-        else if (val > 0.82 && val <= 0.94) level = 3; // Starlight / high
-        else if (val > 0.94) level = 4; // Gold / peak
+        if (val > 0.3 && val <= 0.6) level = 1;
+        else if (val > 0.6 && val <= 0.82) level = 2;
+        else if (val > 0.82 && val <= 0.94) level = 3;
+        else if (val > 0.94) level = 4;
 
         weekDays.push({ level, count: level * 3 });
       }
@@ -36,44 +34,44 @@ export function GithubContributionGraph() {
   const getColorClass = (level: number) => {
     switch (level) {
       case 0:
-        return "bg-[#0f172a] border-slate-800/60"; // Midnight no activity
+        return "bg-[#111622] border-slate-800/80";
       case 1:
-        return "bg-blue-900/60 border-blue-800/40"; // Low activity
+        return "bg-slate-800 border-slate-700";
       case 2:
-        return "bg-blue-600/80 border-blue-500/50"; // Cobalt medium
+        return "bg-slate-700 border-slate-600";
       case 3:
-        return "bg-amber-400/80 border-amber-300/60"; // Starlight high
+        return "bg-amber-500/80 border-amber-400/80";
       case 4:
-        return "bg-amber-300 border-amber-200 shadow-sm shadow-amber-300/50"; // Peak Gold
+        return "bg-amber-400 border-amber-300";
       default:
-        return "bg-[#0f172a]";
+        return "bg-[#111622]";
     }
   };
 
   return (
-    <div className="p-6 rounded-xl bg-[#131b2e]/80 border border-slate-800/80 space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+    <div className="space-y-3 py-4 border-y border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
         <div>
-          <h3 className="font-bold text-slate-100 text-base">Building Activity &amp; Consistency</h3>
-          <p className="text-xs text-slate-400">
-            GitHub contribution commits representing long-term engineering practice.
+          <h3 className="font-bold text-slate-100">Building Activity &amp; Engineering Practice</h3>
+          <p className="text-[11px] text-slate-500 font-mono">
+            Commit history across personal software repositories.
           </p>
         </div>
-        <div className="text-xs font-mono text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded border border-amber-500/20">
-          vaibhv19 on GitHub
+        <div className="text-[10px] font-mono text-amber-300">
+          @vaibhv19 on GitHub
         </div>
       </div>
 
       {/* Contribution Grid */}
-      <div className="overflow-x-auto pt-2 pb-1">
-        <div className="inline-flex gap-1.5 min-w-full">
+      <div className="overflow-x-auto pt-1 pb-1">
+        <div className="inline-flex gap-1 min-w-full">
           {weeks.map((week, wIdx) => (
-            <div key={wIdx} className="flex flex-col gap-1.5">
+            <div key={wIdx} className="flex flex-col gap-1">
               {week.map((day, dIdx) => (
                 <div
                   key={dIdx}
                   title={`Day ${dIdx + 1}, Week ${wIdx + 1}: ${day.count} contributions`}
-                  className={`w-3 h-3 rounded-sm border transition-colors ${getColorClass(
+                  className={`w-2.5 h-2.5 rounded-none border transition-colors ${getColorClass(
                     day.level
                   )}`}
                 />
@@ -84,16 +82,16 @@ export function GithubContributionGraph() {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-between pt-3 border-t border-slate-800/60 text-[10px] font-mono text-slate-400">
-        <div>Continuous building habit</div>
+      <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-1">
+        <span>Continuous engineering practice</span>
         <div className="flex items-center gap-1.5">
           <span>Less</span>
-          <span className="w-2.5 h-2.5 rounded-sm bg-[#0f172a] border border-slate-800" />
-          <span className="w-2.5 h-2.5 rounded-sm bg-blue-900/60 border border-blue-800" />
-          <span className="w-2.5 h-2.5 rounded-sm bg-blue-600/80 border border-blue-500" />
-          <span className="w-2.5 h-2.5 rounded-sm bg-amber-400/80 border border-amber-300" />
-          <span className="w-2.5 h-2.5 rounded-sm bg-amber-300 border border-amber-200" />
-          <span>More (Gold)</span>
+          <span className="w-2 h-2 bg-[#111622] border border-slate-800" />
+          <span className="w-2 h-2 bg-slate-800 border border-slate-700" />
+          <span className="w-2 h-2 bg-slate-700 border border-slate-600" />
+          <span className="w-2 h-2 bg-amber-500/80 border border-amber-400" />
+          <span className="w-2 h-2 bg-amber-400 border border-amber-300" />
+          <span>More</span>
         </div>
       </div>
     </div>

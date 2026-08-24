@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { FolderGit2, Sparkles, Filter } from "lucide-react";
 import { PROJECTS, Project } from "@/data/projects";
 import { CategoryFolder } from "@/components/CategoryFolder";
 
@@ -9,7 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  // Group projects by category
   const categories: Project['category'][] = [
     "For Resume",
     "Academic",
@@ -20,23 +18,22 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Page Header */}
-      <div className="space-y-4 border-b border-slate-800 pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono">
-          <FolderGit2 className="w-3.5 h-3.5" />
-          <span>ENGINEERING BODY OF WORK</span>
+      <div className="space-y-3 border-b border-slate-800 pb-6">
+        <div className="text-xs font-mono uppercase tracking-widest text-slate-500">
+          ENGINEERING CATALOG
         </div>
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100">
-          Complete Projects Catalog
+          Complete Projects Index
         </h1>
-        <p className="text-sm sm:text-base text-slate-400 max-w-3xl leading-relaxed">
-          Comprehensive project repository organized in a subfolder-style hierarchy across engineering domain categories. Includes full-stack production platforms, distributed caching systems, WebAssembly engine runtimes, and AI agent evaluation frameworks.
+        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
+          Comprehensive engineering project inventory organized in an editorial index hierarchy across domain categories. Includes full-stack production platforms, distributed caching systems, WebAssembly engine runtimes, and AI agent evaluation frameworks.
         </p>
       </div>
 
       {/* Subfolder Categories */}
-      <div className="space-y-6">
+      <div className="space-y-10">
         {categories.map((cat) => {
           const categoryProjects = PROJECTS.filter((p) => p.category === cat);
           if (categoryProjects.length === 0) return null;
