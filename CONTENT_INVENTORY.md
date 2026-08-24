@@ -136,8 +136,8 @@ The Skills inventory is under active compilation. The categories below represent
 
 To support future content tracking without creating a large manual table for every skill, Level 2 inventory entries can indicate their article status when relevant using three lightweight statuses:
 
-- **Article Published** — A dedicated learning article exists and is published in the blog system.
-- **Article Planned** — A dedicated article is planned for future writing.
+- **Article Published** — A dedicated experience article exists and is published in the My Experience With… system.
+- **Article Planned** — A dedicated experience article is planned for future writing.
 - **No Dedicated Article Yet** — The default status for inventory items that do not currently have or require a dedicated article.
 
 Existing technologies are not artificially marked as planned or published unless that decision has explicitly been made.
@@ -299,13 +299,13 @@ Existing technologies are not artificially marked as planned or published unless
 
 Technology entries may connect to:
 
-- projects where the technology was used
-- blog articles about learning or using the technology
+- projects where the technology was used (`Where I Used It`)
+- *My Experience With…* articles about practical experience using the technology
 - related technologies and engineering concepts
 
 The intended content relationship is:
 
-Projects ↔ Skills ↔ Blogs
+Projects ↔ Skills ↔ My Experience With…
 
 ### Projects
 
@@ -315,32 +315,36 @@ What was built.
 
 What was used.
 
-### Blogs
+### My Experience With…
 
-What was learned while building.
+Practical experience and learning gained while building with a technology or concept.
 
 ---
 
-# 8. Skill Articles
+# 8. My Experience With… Articles
 
-Level 2 technologies and engineering concepts with meaningful experience may receive dedicated Level 3 articles.
+Level 2 technologies and engineering concepts with meaningful experience may receive dedicated Level 3 experience articles.
 
 The general direction is:
 
-> What I Learned by Building With [Technology / Engineering Concept]
+> My Experience With [Technology / Engineering Concept]
 
 Examples:
 
-- *What I Learned by Building With Spring Boot*
-- *What I Learned by Building With Java*
-- *What I Learned by Building With LangGraph*
-- *How I Used Consistent Hashing While Building Shard*
+- *My Experience With Spring Boot*
+- *My Experience With Java*
+- *My Experience With LangGraph*
+- *My Experience With Consistent Hashing*
 
-These are examples of the article format only.
+These are examples of the article title format only.
 
-Dedicated articles belong to the broader Blogs content system while linking back to relevant projects where the technology or concept was used (`Projects ↔ Skills ↔ Blogs`).
+Dedicated experience articles belong to the separate **My Experience With…** content system (not regular Writing) while linking back to relevant projects where the technology or concept was used (`Projects ↔ Skills ↔ My Experience With…`).
 
-No initial skill-article titles have been formally locked yet. Inventory entries track status as *Article Published*, *Article Planned*, or *No Dedicated Article Yet* as decisions are made.
+Discovery is supported via:
+1. Skills page (clicking technology/concept)
+2. Writing page (`Read My Experience With…` navigation button near top)
+
+No initial experience-article titles have been formally locked yet. Inventory entries track status as *Article Published*, *Article Planned*, or *No Dedicated Article Yet* as decisions are made.
 
 ---
 
@@ -348,21 +352,27 @@ No initial skill-article titles have been formally locked yet. Inventory entries
 
 ## Status
 
-Pending.
-
-No certification inventory has been finalized for this document yet.
+Pending detailed inventory compilation. Architectural decision is locked:
+- Home shows 2–3 featured certificates (initial entries: NPTEL + E&ICT Academy).
+- View All Certifications leads to full Certifications page.
+- Clicking certificate name opens original PDF directly (no detail pages).
 
 ---
 
-# 10. Blogs
+# 10. Writing & My Experience With…
 
-## Status
+The portfolio contains **two separate content systems**:
 
-Pending.
+### 10.1 Writing
+Contains regular long-form articles about projects, retrospectives, decisions, experiments, comparisons, and reflections.
+- Key Example: *What I Learned From Building the Same Distributed Cache in Java and Python* (Shard vs Cairn comparison).
+- Home preview: Displays 2–3 regular Writing articles only.
+- Writing Archive: Chronological list sorted by date, with titles, excerpts, `Continue Reading →`, and a `Read My Experience With…` navigation button near top. Supports comments on individual article pages.
 
-Blog categories and initial article titles have not yet been finalized.
-
-Technology-learning articles are expected to form one source of blog content.
+### 10.2 My Experience With…
+Contains practical experience articles about specific technologies or engineering concepts (*My Experience With Java*, *My Experience With Docker*).
+- Does **not** appear in Home Writing previews or regular Writing archives.
+- Discoverable via Skills or `Read My Experience With…` button on the Writing page.
 
 ---
 
@@ -408,7 +418,7 @@ The homepage currently includes the following content categories:
 6. Education Preview
 7. Skills Preview
 8. Certifications Preview
-9. Latest Blogs
+9. Writing Preview (2–3 regular Writing articles only)
 10. Footer
 
 ## Currently Selected Project Content
@@ -442,8 +452,8 @@ The following still needs to be finalized:
 - Final Skills taxonomy
 - Exact Education details
 - Certifications inventory
-- Blog categories
-- Initial blog titles
+- Blog / Writing categories
+- Initial article titles
 - Homepage introduction copy
 - Homepage About preview copy
 - Experience descriptions
@@ -475,11 +485,12 @@ When adding content to this document:
 | Complete Projects | Categories finalized, full inventory pending |
 | Experience | Current entries identified |
 | Education | Category established, details pending |
-| Skills | Initial inventory compiled, final extraction pending |
-| Certifications | Pending |
-| Blogs | Pending |
+| Skills | Extraction complete across 9 projects |
+| Certifications | Architecture locked (NPTEL + E&ICT Academy featured, direct PDF opening) |
+| Writing | System defined; 10 initial cross-project topics identified |
+| My Experience With… | System defined; technology/concept candidates identified |
 | About | Core themes established, writing pending |
-| Building Activity | Decided |
+| Building Activity | Decided (GitHub contribution graph) |
 
 ---
 
