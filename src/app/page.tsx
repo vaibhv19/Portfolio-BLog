@@ -29,7 +29,7 @@ export default function HomePage() {
             >
               <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-slate-800 bg-[#0f1420] overflow-hidden shadow-lg">
                 <img
-                  src="/profile-avatar.jpeg"
+                  src="/WhatsApp Image 2026-08-25 at 1.08.51 AM.jpeg"
                   alt="Vaibhav Gupta - Profile Portrait"
                   className="w-full h-full object-cover"
                 />

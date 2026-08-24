@@ -424,7 +424,7 @@ export default function AboutPage() {
       </section>
 
       {/* 7. ACHIEVEMENTS & RECOGNITION */}
-      <section className="space-y-3.5 pt-4">
+      <section id="achievements" className="space-y-3.5 pt-4">
         <div className="border-b border-slate-800 pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Achievements &amp; Recognition

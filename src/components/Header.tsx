@@ -7,29 +7,45 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 
 export function Header() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [drawerMounted, setDrawerMounted] = useState(false);
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const handleOpen = () => {
+    setDrawerMounted(true);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setDrawerVisible(true);
+      });
+    });
+  };
+
+  const handleClose = () => {
+    setDrawerVisible(false);
+    setTimeout(() => {
+      setDrawerMounted(false);
+    }, 280);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setMenuOpen(false);
+      if (e.key === "Escape" && drawerMounted) {
+        handleClose();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [drawerMounted]);
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Projects Catalog", href: "/projects" },
-    { name: "Skills Taxonomy", href: "/skills" },
-    { name: "Technical Writing", href: "/writing" },
-    { name: "My Experience With...", href: "/my-experience-with" },
-    { name: "About Narrative", href: "/about" },
-    { name: "Experience Record", href: "/experience" },
-    { name: "Education Record", href: "/education" },
-    { name: "Certifications Archive", href: "/certifications" },
-    { name: "Patents & IP", href: "/intellectual-property" },
+    { name: "Writing", href: "/writing" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Technologies", href: "/skills" },
+    { name: "Experience", href: "/experience" },
+    { name: "Education", href: "/education" },
+    { name: "Certifications", href: "/certifications" },
+    { name: "Patent", href: "/intellectual-property" },
   ];
 
   return (
@@ -51,7 +67,7 @@ export function Header() {
                 <Link
                   href="/writing"
                   className={`transition-colors focus:outline-none ${
-                    pathname === "/writing"
+                    pathname === "/writing" || pathname.startsWith("/writing/")
                       ? "text-sky-400 font-bold"
                       : "text-slate-400 hover:text-sky-400"
                   }`}
@@ -71,7 +87,7 @@ export function Header() {
               </nav>
 
               <button
-                onClick={() => setMenuOpen(true)}
+                onClick={handleOpen}
                 aria-label="Open navigation menu"
                 title="Menu"
                 className="p-1 text-slate-400 hover:text-copper transition-colors focus:outline-none"
@@ -84,41 +100,55 @@ export function Header() {
       </header>
 
       {/* Slide-over Drawer for Mobile / Compact Navigation */}
-      {menuOpen && (
+      {drawerMounted && (
         <div className="fixed inset-0 z-50 flex justify-end">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
-            onClick={() => setMenuOpen(false)}
+            className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ease-out ${
+              drawerVisible ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={handleClose}
           />
 
           {/* Drawer Panel */}
-          <div className="relative w-full max-w-xs bg-[#0b0f19] border-l border-slate-800 p-6 flex flex-col justify-between h-full shadow-2xl z-10">
+          <div
+            className={`relative w-full max-w-xs bg-[#0b0f19] border-l border-slate-800 p-5 sm:p-6 flex flex-col justify-between h-full shadow-2xl z-10 transform-gpu transition-all duration-300 ease-out motion-reduce:transform-none ${
+              drawerVisible
+                ? "translate-x-0 opacity-100"
+                : "translate-x-6 opacity-0"
+            }`}
+          >
             <div>
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-6 border-b border-slate-800">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
                 <span className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase">
                   Navigation
                 </span>
                 <button
-                  onClick={() => setMenuOpen(false)}
+                  onClick={handleClose}
                   aria-label="Close menu"
-                  className="p-1 text-slate-400 hover:text-slate-200"
+                  className="p-1 text-slate-400 hover:text-slate-200 focus:outline-none"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
               {/* Navigation Links */}
-              <nav className="space-y-2 pt-6">
+              <nav className="space-y-1 pt-4">
                 {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
+                  const targetRoute = link.href.split("#")[0];
+                  const isActive =
+                    link.href === "/"
+                      ? pathname === "/"
+                      : pathname === targetRoute ||
+                        (targetRoute !== "/" && pathname.startsWith(`${targetRoute}/`));
+
                   return (
                     <Link
-                      key={link.href}
+                      key={link.name}
                       href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className={`block py-1.5 text-xs font-mono transition-colors ${
+                      onClick={handleClose}
+                      className={`block py-1 text-xs font-mono transition-colors ${
                         isActive
                           ? "text-copper font-bold"
                           : "text-slate-300 hover:text-white"
@@ -132,9 +162,9 @@ export function Header() {
             </div>
 
             {/* Drawer Footer */}
-            <div className="pt-6 border-t border-slate-800 text-[11px] font-mono text-slate-500 space-y-1">
+            <div className="pt-4 border-t border-slate-800 text-[11px] font-mono text-slate-500 space-y-1">
               <div>Vaibhav Gupta — Software Engineer</div>
-              <div className="flex items-center gap-3 pt-2 text-slate-400">
+              <div className="flex items-center gap-3 pt-1.5 text-slate-400">
                 <a
                   href="https://github.com/vaibhv19"
                   target="_blank"
