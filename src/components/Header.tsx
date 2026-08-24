@@ -55,40 +55,42 @@ export function Header() {
   return (
     <>
       <header className="w-full pt-6">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 border-b border-slate-800/80 flex items-center justify-between">
-          {/* Left Side: Brand Identity */}
-          <Link
-            href="/"
-            className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100 hover:text-amber-300 transition-colors focus:outline-none"
-          >
-            Vaibhav Gupta
-          </Link>
-
-          {/* Right Side: Exact Order -> Theme Toggle, then Hamburger Menu */}
-          <div className="flex items-center gap-3">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle light/dark theme"
-              title="Toggle theme"
-              className="p-1 text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="pb-4 border-b border-slate-800/80 flex items-center justify-between">
+            {/* Left Side: Brand Identity */}
+            <Link
+              href="/"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100 hover:text-amber-300 transition-colors focus:outline-none"
             >
-              {isDark ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
-            </button>
+              Vaibhav Gupta
+            </Link>
 
-            {/* Hamburger Menu Button */}
-            <button
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open navigation menu"
-              title="Menu"
-              className="p-1 text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
-            >
-              <Menu className="w-4 h-4" />
-            </button>
+            {/* Right Side: Exact Order -> Theme Toggle, then Hamburger Menu */}
+            <div className="flex items-center gap-3">
+              {/* Theme Toggle Button */}
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle light/dark theme"
+                title="Toggle theme"
+                className="p-1 text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
+              >
+                {isDark ? (
+                  <Sun className="w-4 h-4" />
+                ) : (
+                  <Moon className="w-4 h-4" />
+                )}
+              </button>
+
+              {/* Hamburger Menu Button */}
+              <button
+                onClick={() => setMenuOpen(true)}
+                aria-label="Open navigation menu"
+                title="Menu"
+                className="p-1 text-slate-400 hover:text-amber-300 transition-colors focus:outline-none"
+              >
+                <Menu className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
