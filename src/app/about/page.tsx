@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { User, Github, Linkedin, Mail, ArrowRight, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
+import { User, Mail, ArrowRight, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
 import { GithubContributionGraph } from "@/components/GithubContributionGraph";
+import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 
 export const metadata: Metadata = {
   title: "About & Editorial Narrative | Vaibhav Gupta",
@@ -134,7 +135,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#131b2e] hover:bg-slate-800 border border-slate-700 text-xs text-slate-200 font-medium transition-colors"
             >
-              <Github className="w-4 h-4 text-amber-400" />
+              <GithubIcon className="w-4 h-4 text-amber-400" />
               <span>GitHub Profile</span>
             </a>
             <a
@@ -143,7 +144,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#131b2e] hover:bg-slate-800 border border-slate-700 text-xs text-slate-200 font-medium transition-colors"
             >
-              <Linkedin className="w-4 h-4 text-amber-400" />
+              <LinkedinIcon className="w-4 h-4 text-amber-400" />
               <span>LinkedIn</span>
             </a>
           </div>

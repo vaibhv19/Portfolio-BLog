@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Folder, FolderOpen, ChevronRight, ExternalLink, Github, Code2, Sparkles } from "lucide-react";
+import { Folder, FolderOpen, ChevronRight, ExternalLink, Code2, Sparkles } from "lucide-react";
+import { GithubIcon } from "@/components/BrandIcons";
 import { Project } from "@/data/projects";
 
 interface CategoryFolderProps {
@@ -118,7 +119,7 @@ export function CategoryFolder({ categoryName, projects, defaultOpen = true }: C
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-200"
                       >
-                        <Github className="w-3.5 h-3.5" />
+                        <GithubIcon className="w-3.5 h-3.5" />
                         <span>Repository</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>

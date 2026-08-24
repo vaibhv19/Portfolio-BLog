@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Mail, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { Mail, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 
 export function Footer() {
   return (
@@ -15,10 +16,10 @@ export function Footer() {
               </span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed max-w-md">
-              A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice. Built with Next.js, TypeScript & Tailwind CSS.
+              A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice. Built with Next.js, TypeScript &amp; Tailwind CSS.
             </p>
             <div className="text-[11px] text-slate-400 pt-1">
-              Quiet philosophical grounding & continuous learning.
+              Quiet philosophical grounding &amp; continuous learning.
             </div>
           </div>
 
@@ -28,10 +29,10 @@ export function Footer() {
             <ul className="space-y-1.5 text-xs">
               <li><Link href="/" className="hover:text-amber-300 transition-colors">Home</Link></li>
               <li><Link href="/projects" className="hover:text-amber-300 transition-colors">Projects Catalog</Link></li>
-              <li><Link href="/skills" className="hover:text-amber-300 transition-colors">Skills & Taxonomy</Link></li>
+              <li><Link href="/skills" className="hover:text-amber-300 transition-colors">Skills &amp; Taxonomy</Link></li>
               <li><Link href="/writing" className="hover:text-amber-300 transition-colors">Regular Writing</Link></li>
               <li><Link href="/my-experience-with" className="hover:text-amber-300 transition-colors">My Experience With...</Link></li>
-              <li><Link href="/about" className="hover:text-amber-300 transition-colors">About & Narrative</Link></li>
+              <li><Link href="/about" className="hover:text-amber-300 transition-colors">About &amp; Narrative</Link></li>
             </ul>
           </div>
 
@@ -41,8 +42,8 @@ export function Footer() {
             <ul className="space-y-1.5 text-xs">
               <li><Link href="/experience" className="hover:text-amber-300 transition-colors">Experience</Link></li>
               <li><Link href="/education" className="hover:text-amber-300 transition-colors">Education</Link></li>
-              <li><Link href="/certifications" className="hover:text-amber-300 transition-colors">Certifications & Credentials</Link></li>
-              <li><Link href="/intellectual-property" className="hover:text-amber-300 transition-colors">Patents & IP</Link></li>
+              <li><Link href="/certifications" className="hover:text-amber-300 transition-colors">Certifications &amp; Credentials</Link></li>
+              <li><Link href="/intellectual-property" className="hover:text-amber-300 transition-colors">Patents &amp; IP</Link></li>
             </ul>
           </div>
         </div>
@@ -59,7 +60,7 @@ export function Footer() {
               rel="noopener noreferrer" 
               className="flex items-center gap-1 hover:text-amber-300 transition-colors"
             >
-              <Github className="w-3.5 h-3.5" />
+              <GithubIcon className="w-3.5 h-3.5" />
               <span>GitHub</span>
               <ArrowUpRight className="w-3 h-3 text-slate-400" />
             </a>
@@ -69,7 +70,7 @@ export function Footer() {
               rel="noopener noreferrer" 
               className="flex items-center gap-1 hover:text-amber-300 transition-colors"
             >
-              <Linkedin className="w-3.5 h-3.5" />
+              <LinkedinIcon className="w-3.5 h-3.5" />
               <span>LinkedIn</span>
               <ArrowUpRight className="w-3 h-3 text-slate-400" />
             </a>

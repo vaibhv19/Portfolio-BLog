@@ -236,6 +236,7 @@ export const EXPERIENCE_WITH_ARTICLES: ExperienceWithArticle[] = [
   },
   {
     slug: "agent-evaluation",
+    technologyName: "AI Agent Evaluation",
     title: "AI Agent Evaluation & Test Harnesses",
     category: "Testing, QA & Evaluation",
     summary: "Designing objective evaluation harnesses, Pytest assertion frameworks, and boundary guardrail verification for AI agents.",
