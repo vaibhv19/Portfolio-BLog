@@ -38,7 +38,7 @@ Level 2
 Technology / Engineering Concept
     ↓
 Level 3
-Learning / Experience Article
+My Experience With… Article
     ↓
 Relevant Projects
 ```
@@ -46,7 +46,7 @@ Relevant Projects
 The broader relationship is:
 
 ```text
-Projects ↔ Skills ↔ Blogs
+Projects ↔ Skills ↔ My Experience With…
 ```
 
 ## Projects
@@ -57,15 +57,15 @@ What was built.
 
 What was used and applied.
 
-## Articles
+## My Experience With… Articles
 
-What was learned while building.
+Practical experience and learning gained while building with a technology or concept.
 
 Not every skill requires a dedicated article.
 
 A technology or concept can appear in the Skills inventory without having an article.
 
-When there is meaningful experience to discuss, the technology or engineering concept may link to a dedicated article within the broader Blogs content system.
+When there is meaningful experience to discuss, clicking a technology or engineering concept links to a dedicated article within the separate **My Experience With…** content system.
 
 ---
 
@@ -692,7 +692,7 @@ The Skills page should:
 - avoid self-assigned ratings
 - allow the evidence behind a skill to speak through projects
 - connect technologies to real projects
-- connect meaningful technologies and concepts to learning articles
+- connect meaningful technologies and concepts to My Experience With… articles
 - remain broader than the resume
 
 The intended interaction is:
@@ -702,7 +702,7 @@ Skill
   ↓
 Technology / Engineering Concept
   ↓
-Article
+My Experience With… Article
   ↓
 Where I Used It
   ↓
