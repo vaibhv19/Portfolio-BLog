@@ -27,7 +27,7 @@ export default function HomePage() {
             >
               <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-slate-800 bg-[#0f1420] overflow-hidden shadow-lg">
                 <img
-                  src="/WhatsApp Image 2026-08-25 at 1.08.51 AM.jpeg"
+                  src="/profile-avatar.jpeg"
                   alt="Vaibhav Gupta - Profile Portrait"
                   className="w-full h-full object-cover"
                 />
@@ -120,12 +120,9 @@ export default function HomePage() {
 
         <div className="space-y-4">
           {recentWriting.map((article) => (
-            <div key={article.slug} className="space-y-1">
-              <h3 className="text-base sm:text-lg font-bold text-sky-400">
-                <Link
-                  href={`/writing/${article.slug}`}
-                  className="hover:text-sky-300 hover:underline transition-colors"
-                >
+            <div key={article.slug} className="space-y-1 group">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-copper-hover transition-colors">
+                <Link href={`/writing/${article.slug}`}>
                   {article.title}
                 </Link>
               </h3>
@@ -135,7 +132,7 @@ export default function HomePage() {
                 </div>
               )}
               {"excerpt" in article && article.excerpt && (
-                <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   {article.excerpt}
                 </p>
               )}
@@ -161,25 +158,23 @@ export default function HomePage() {
 
         <ul className="space-y-4">
           {featuredProjects.map((project) => (
-            <li key={project.id} className="space-y-1 border-b border-slate-800/40 pb-3.5 last:border-b-0 last:pb-0">
-              <div>
-                <span className="text-base sm:text-lg font-bold text-sky-400">
-                  {project.demoUrl ? (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-sky-300 hover:underline inline-flex items-center gap-1.5"
-                    >
-                      <span>{project.title}</span>
-                      <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper" />
-                    </a>
-                  ) : (
+            <li key={project.id} className="space-y-1 group border-b border-slate-800/40 pb-3.5 last:border-b-0 last:pb-0">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-copper-hover transition-colors">
+                {project.demoUrl ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5"
+                  >
                     <span>{project.title}</span>
-                  )}
-                </span>
-              </div>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">{project.tagline}</p>
+                    <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper" />
+                  </a>
+                ) : (
+                  <span>{project.title}</span>
+                )}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{project.tagline}</p>
             </li>
           ))}
         </ul>

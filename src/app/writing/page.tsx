@@ -1,11 +1,27 @@
+import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { WRITING_ARTICLES } from "@/data/writing";
 
 export const metadata: Metadata = {
-  title: "Technical Writing & Retrospectives | Vaibhav Gupta",
+  title: "All Blogs | Vaibhav Gupta",
   description: "Chronological engineering archive exploring project retrospectives, system comparisons, architectural decisions, and learning reflections.",
 };
+
+function getMonthYearLabel(dateStr: string) {
+  const [year, month] = dateStr.split("-");
+  const monthNames = [
+    "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
+    "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
+  ];
+  const mIndex = parseInt(month, 10) - 1;
+  return `${monthNames[mIndex]} ${year}`;
+}
+
+function formatDateDDMMYYYY(dateStr: string) {
+  const [year, month, day] = dateStr.split("-");
+  return `${day}/${month}/${year}`;
+}
 
 export default function WritingArchivePage() {
   const articles = [...WRITING_ARTICLES].sort(
@@ -13,63 +29,61 @@ export default function WritingArchivePage() {
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-6 text-slate-300">
       {/* Page Header */}
-      <div className="space-y-3 border-b border-slate-800 pb-6">
-        <div className="text-xs font-mono uppercase tracking-widest text-slate-500">
-          PUBLICATION ARCHIVE
-        </div>
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100">
-          Technical Writing &amp; Retrospectives
+      <div className="space-y-2.5 border-b border-slate-800/80 pb-5">
+        <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
+          All Blogs
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
           Thoughts on software systems, architectural decisions, experiments, cross-project comparisons, and reflections on the engineering process.
         </p>
 
-        <div className="pt-2">
+        <div className="pt-1">
           <Link
             href="/my-experience-with"
-            className="text-xs font-mono text-amber-300 hover:underline"
+            className="text-xs font-mono text-copper hover:text-copper-hover hover:underline transition-colors"
           >
-            Read My Experience With… Index →
+            Explore Technology I’ve Worked With &rarr;
           </Link>
         </div>
       </div>
 
-      {/* Chronological Clean Archive List */}
-      <div className="space-y-8">
+      {/* Chronological Clean Archive List grouped by Month */}
+      <div className="space-y-6">
         {articles.map((article, idx) => {
-          const indexStr = (idx + 1).toString().padStart(2, "0");
+          const indexStr = (articles.length - idx).toString().padStart(2, "0");
+          const currentMonth = article.date.substring(0, 7);
+          const prevMonth = idx > 0 ? articles[idx - 1].date.substring(0, 7) : null;
+          const isNewMonthGroup = idx === 0 || currentMonth !== prevMonth;
+
           return (
-            <article
-              key={article.slug}
-              className="border-b border-slate-800/60 pb-8 space-y-3 group"
-            >
-              <div className="flex items-center justify-between text-[11px] font-mono text-slate-500">
-                <div className="flex items-center gap-2">
-                  <span className="text-amber-400/80 font-bold">{indexStr}</span>
-                  <time dateTime={article.date}>{article.date}</time>
+            <React.Fragment key={article.slug}>
+              {isNewMonthGroup && (
+                <div className={`space-y-2 ${idx > 0 ? "pt-6" : "pt-2"}`}>
+                  <div className="text-xs font-mono font-bold tracking-widest text-slate-400">
+                    {getMonthYearLabel(article.date)}
+                  </div>
+                  <div className="border-b border-slate-800/80" />
                 </div>
-                <span>{article.readingTime}</span>
-              </div>
+              )}
 
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
-                <Link href={`/writing/${article.slug}`}>{article.title}</Link>
-              </h2>
+              <article className="space-y-1.5 group">
+                <h2 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-copper-hover transition-colors">
+                  <Link href={`/writing/${article.slug}`}>
+                    {indexStr} / {article.title}
+                  </Link>
+                </h2>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl">
-                {article.excerpt}
-              </p>
+                <div className="text-xs font-mono text-slate-400">
+                  <time dateTime={article.date}>{formatDateDDMMYYYY(article.date)}</time>
+                </div>
 
-              <div className="pt-1">
-                <Link
-                  href={`/writing/${article.slug}`}
-                  className="text-xs font-mono text-amber-300 hover:underline"
-                >
-                  Continue Reading →
-                </Link>
-              </div>
-            </article>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  {article.excerpt}
+                </p>
+              </article>
+            </React.Fragment>
           );
         })}
       </div>

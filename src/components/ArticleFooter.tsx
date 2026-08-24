@@ -88,8 +88,41 @@ export function ArticleFooter({
 
   return (
     <footer className="space-y-8 pt-8 border-t border-slate-800/80">
-      {/* 1. Share Section & Back to Top */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* 1. Next / Previous Navigation */}
+      {(nextArticle || prevArticle) && (
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Next Post (LEFT) */}
+            <div>
+              {nextArticle ? (
+                <Link
+                  href={`/writing/${nextArticle.slug}`}
+                  className="text-sm font-bold text-copper hover:text-copper-hover hover:underline transition-colors block"
+                >
+                  &lt;&lt; {nextArticle.title}
+                </Link>
+              ) : null}
+            </div>
+
+            {/* Previous Post (RIGHT) */}
+            <div className="sm:text-right">
+              {prevArticle ? (
+                <Link
+                  href={`/writing/${prevArticle.slug}`}
+                  className="text-sm font-bold text-copper hover:text-copper-hover hover:underline transition-colors block"
+                >
+                  {prevArticle.title} &gt;&gt;
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 2. Share Section & Back to Top */}
+      <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+        (nextArticle || prevArticle) ? "border-t border-dashed border-slate-800/80 pt-6" : ""
+      }`}>
         {/* Share this post on */}
         <div className="flex flex-wrap items-center gap-3">
           <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
@@ -125,52 +158,6 @@ export function ArticleFooter({
           </button>
         </div>
       </div>
-
-      {/* 2. Dotted Divider & Previous / Next Navigation */}
-      {(prevArticle || nextArticle) && (
-        <div className="border-t border-dashed border-slate-800/80 pt-6 space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Previous Post */}
-            <div>
-              {prevArticle ? (
-                <div className="space-y-1">
-                  <div className="text-xs font-mono uppercase text-slate-500">
-                    &lsaquo; Previous Post
-                  </div>
-                  <Link
-                    href={`/writing/${prevArticle.slug}`}
-                    className="text-sm font-bold text-copper hover:text-copper-hover hover:underline transition-colors block"
-                  >
-                    {prevArticle.title}
-                  </Link>
-                </div>
-              ) : (
-                <div />
-              )}
-            </div>
-
-            {/* Next Post */}
-            <div className="sm:text-right">
-              {nextArticle ? (
-                <div className="space-y-1">
-                  <div className="text-xs font-mono uppercase text-slate-500">
-                    Next Post &rsaquo;
-                  </div>
-                  <Link
-                    href={`/writing/${nextArticle.slug}`}
-                    className="text-sm font-bold text-copper hover:text-copper-hover hover:underline transition-colors block"
-                  >
-                    {nextArticle.title}
-                  </Link>
-                </div>
-              ) : (
-                <div />
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
     </footer>
   );
 }
