@@ -29,45 +29,61 @@ export default function HomePage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-12 space-y-10 text-slate-300">
-      {/* 1. PERSONAL INTRODUCTION */}
-      <section className="space-y-4 border-b border-slate-800/80 pb-6">
-        <div className="space-y-1">
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
-            Vaibhav Gupta
-          </h1>
-          <p className="text-xs font-mono text-slate-400">
-            &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
-          </p>
-        </div>
+      {/* 1. TWO-COLUMN PERSONAL PROFILE HERO */}
+      <section className="border-b border-slate-800/80 pb-8">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
+          {/* Left Column: Large Circular Neutral Portrait Placeholder */}
+          <div className="flex-shrink-0">
+            <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-slate-800 bg-[#0f1420] overflow-hidden shadow-lg relative group">
+              <img
+                src="/avatar-placeholder.svg"
+                alt="Vaibhav Gupta - Profile Portrait Placeholder"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
 
-        <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
-          I build software systems with a focus on distributed architectures, multi-agent AI orchestration, and cloud infrastructure. My work spans high-concurrency Java 21 backends, Python/LangGraph agent frameworks, hybrid RAG retrieval engines (pgvector), WebAssembly browser compute, and production deployments on AWS.
-        </p>
+          {/* Right Column: Name, Philosophy Subtitle, Technical Intro, & Links */}
+          <div className="space-y-3 text-center md:text-left flex-1">
+            <div className="space-y-1">
+              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
+                Vaibhav Gupta
+              </h1>
+              <p className="text-xs font-mono text-slate-400 leading-relaxed">
+                &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
+              </p>
+            </div>
 
-        {/* Compact Profile Links */}
-        <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-mono">
-          <a
-            href="https://github.com/vaibhv19"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors"
-          >
-            <GithubIcon className="w-3.5 h-3.5" />
-            <span>github/vaibhv19</span>
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors"
-          >
-            <LinkedinIcon className="w-3.5 h-3.5" />
-            <span>linkedin</span>
-          </a>
-          <span className="text-slate-600">•</span>
-          <Link href="/about" className="text-amber-300 hover:underline">
-            About Narrative &rarr;
-          </Link>
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
+              I build software systems with a focus on distributed architectures, multi-agent AI orchestration, and cloud infrastructure. My work spans high-concurrency Java 21 backends, Python/LangGraph agent frameworks, hybrid RAG retrieval engines (pgvector), WebAssembly browser compute, and production deployments on AWS.
+            </p>
+
+            {/* Compact Profile Links */}
+            <div className="pt-1 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-mono">
+              <a
+                href="https://github.com/vaibhv19"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors"
+              >
+                <GithubIcon className="w-3.5 h-3.5" />
+                <span>github/vaibhv19</span>
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors"
+              >
+                <LinkedinIcon className="w-3.5 h-3.5" />
+                <span>linkedin</span>
+              </a>
+              <span className="text-slate-600">•</span>
+              <Link href="/about" className="text-amber-300 hover:underline">
+                About Narrative &rarr;
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

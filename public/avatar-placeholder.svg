@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#0f1420" rx="100"/>
+  <circle cx="100" cy="100" r="98" fill="none" stroke="#1e293b" stroke-width="3"/>
+  <!-- Subtle gold accent inner ring -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#d4af37" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <!-- Neutral User Avatar Silhouette -->
+  <path d="M 100 52 A 28 28 0 1 0 100 108 A 28 28 0 1 0 100 52 Z M 54 162 C 54 132 74 120 100 120 C 126 120 146 132 146 162 Z" fill="#334155" opacity="0.8"/>
+  <path d="M 100 56 A 24 24 0 1 0 100 104 A 24 24 0 1 0 100 56 Z" fill="#475569"/>
+</svg>
