@@ -47,7 +47,7 @@ export default function HomePage() {
           <div className="space-y-3.5 text-center md:text-left flex-1 md:pt-2.5">
             <div className="space-y-1.5">
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
-                Vaibhav Gupta
+                Hi, I&apos;m Vaibhav
               </h1>
               <p className="text-xs font-mono text-slate-400 leading-relaxed">
                 &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
