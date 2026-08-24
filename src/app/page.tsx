@@ -9,10 +9,8 @@ export default function HomePage() {
   // 1. Featured Work — Curated selection of featured projects
   const featuredProjects = PROJECTS.filter((p) => p.featured);
 
-  // 2. Recent Writing — Homepage selection (excluding "Two Ways of Making AI Systems Less Black-Box")
-  const recentWriting = WRITING_ARTICLES.filter(
-    (a) => a.title !== "Two Ways of Making AI Systems Less Black-Box"
-  );
+  // 2. Recent Writing — Homepage selection (latest 5 articles preview)
+  const recentWriting = WRITING_ARTICLES.slice(0, 5);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-7 text-slate-300">

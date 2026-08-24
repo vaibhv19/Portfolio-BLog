@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
 
 export function Header() {
   const pathname = usePathname();
@@ -162,26 +163,55 @@ export function Header() {
             </div>
 
             {/* Drawer Footer */}
-            <div className="pt-4 border-t border-slate-800 text-[11px] font-mono text-slate-500 space-y-1">
-              <div>Vaibhav Gupta — Software Engineer</div>
-              <div className="flex items-center gap-3 pt-1.5 text-slate-400">
+            <div className="pt-4 border-t border-slate-800">
+              <div className="flex items-center gap-4">
                 <a
                   href="https://github.com/vaibhv19"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-copper inline-flex items-center gap-0.5"
+                  aria-label="GitHub"
+                  title="GitHub"
+                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
                 >
-                  <span>GitHub</span>
-                  <ArrowUpRight className="w-3 h-3 text-slate-600" />
+                  <GithubIcon className="w-[18px] h-[18px]" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/vaibhv19"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-copper inline-flex items-center gap-0.5"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
+                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
                 >
-                  <span>LinkedIn</span>
-                  <ArrowUpRight className="w-3 h-3 text-slate-600" />
+                  <LinkedinIcon className="w-[18px] h-[18px]" />
+                </a>
+                <a
+                  href="https://x.com/vaibhv_19"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                  title="X (Twitter)"
+                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                >
+                  <XIcon className="w-[18px] h-[18px]" />
+                </a>
+                <a
+                  href="https://leetcode.com/u/vaibhv_19/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LeetCode"
+                  title="LeetCode"
+                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                >
+                  <LeetCodeIcon className="w-[18px] h-[18px]" />
+                </a>
+                <a
+                  href="mailto:gvaibhav.business@gmail.com"
+                  aria-label="Email"
+                  title="Email"
+                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                >
+                  <Mail className="w-[18px] h-[18px]" />
                 </a>
               </div>
             </div>
