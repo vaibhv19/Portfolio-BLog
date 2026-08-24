@@ -54,8 +54,12 @@ The overall structure is:
 - Education
 - Skills
 - Certifications
-- Blogs
-  - Individual Blog Pages
+- Writing
+  - Chronological Writing Archive
+  - Individual Writing Pages
+- My Experience With…
+  - Technology & Engineering Concept Index
+  - Individual Experience Articles
 
 The exact URL structure will be decided during technical architecture.
 
@@ -81,7 +85,7 @@ The high-level homepage flow is:
 6. Education Preview
 7. Skills Preview
 8. Certifications Preview
-9. Latest Blogs
+9. Writing Preview (2–3 regular Writing articles only; excludes My Experience With… articles)
 10. Footer
 
 The exact order may be refined during detailed page design.
@@ -113,7 +117,7 @@ This principle applies to:
 - Education
 - Skills
 - Certifications
-- Blogs
+- Writing
 
 The homepage acts as a **professional snapshot**, while dedicated pages provide depth.
 
@@ -188,25 +192,42 @@ The exact project-page structure will be defined later.
 
 ---
 
-## 8. Blogs
+## 8. Writing and "My Experience With…" Systems
 
-Blogs replace the role of LinkedIn Posts within the portfolio architecture.
+The portfolio contains **two separate content systems** for long-form writing:
 
-The homepage should show the latest or selected blog entries.
+### 8.1 Writing
 
-The Blogs page should contain the complete writing collection.
+Writing replaces the role of LinkedIn Posts within the portfolio architecture.
 
-Each blog receives its own dedicated reading page.
+The homepage shows a preview containing 2–3 regular Writing articles (title, excerpt, `Continue Reading →`, `View All Writing →`).
 
-Potential blog content may include:
+The Writing page (`/writing`) contains:
+- Page introduction
+- `Read My Experience With…` navigation button near the top (leading to the separate experience system)
+- Chronological archive of regular articles (sorted by date, with titles, excerpts, and `Continue Reading →`)
+- Dedicated individual reading pages supporting comments
 
-- engineering
-- project retrospectives
-- technical ideas
-- professional growth
-- other long-form writing
+Regular Writing focuses on:
+- project stories and retrospectives
+- engineering and architectural decisions
+- experiments and research
+- technical comparisons (e.g., Shard vs Cairn distributed cache comparison)
+- lessons learned and engineering process reflections
 
-The exact categories and initial blog titles will be defined during content architecture.
+*My Experience With…* articles **must not** appear in the Home Writing preview, the regular Writing archive, or the chronological blog list.
+
+### 8.2 My Experience With…
+
+This is a completely separate content system documenting personal practical experience and lessons from working with individual technologies, frameworks, tools, or engineering concepts (*My Experience With Java*, *My Experience With Docker*, *My Experience With LangGraph*).
+
+It is discovered through two navigation entry points:
+1. **Skills Page**: Clicking a technology or engineering concept leads directly to its experience article.
+2. **Writing Page**: Clicking the `Read My Experience With…` navigation button leads to the *My Experience With…* index page.
+
+Both entry points lead to the same experience article.
+
+Experience articles are grounded in actual project work and connect back to relevant projects where the technology or concept was implemented (`Where I Used It`).
 
 ---
 
@@ -435,7 +456,7 @@ SKILLS (Level 1)
   ↓
 TECHNOLOGY / ENGINEERING CONCEPT (Level 2)
   ↓
-ARTICLE / BLOG (Level 3)
+MY EXPERIENCE WITH… ARTICLE (Level 3)
   ↓
 RELATED PROJECTS
 ```
@@ -448,30 +469,30 @@ The primary discovery/index page (`/skills`).
 Examples: **Spring Boot**, **Java**, **LangGraph**, **Consistent Hashing**
 The primary interactive item representing specific tools, frameworks, languages, or core engineering concepts.
 
-#### Level 3 — Deep-Dive Article
+#### Level 3 — My Experience With… Article
 Examples:
-- *What I Learned by Building With Spring Boot*
-- *What I Learned by Building With Java*
-- *How I Used Consistent Hashing While Building Shard*
+- *My Experience With Spring Boot*
+- *My Experience With Java*
+- *My Experience With Consistent Hashing*
 
-A dedicated writing piece explaining what was learned through actual hands-on engineering work.
+A dedicated practical experience piece explaining what was learned through actual hands-on engineering work.
 
 ### 14.2 Interconnected Content System & Discovery
 
 - **Primary Interactive Item**: The technology or engineering concept itself (Level 2) is the primary interactive element on the Skills page.
-- **Article Integration**: Clicking a technology or concept may open a dedicated deep-dive article.
-- **Blog System Unity**: Deep-dive skill articles belong to the broader Blogs/writing content system rather than existing as an isolated second article system.
-- **Project Connections**: Articles connect back to the relevant projects where the technology or concept was actually used.
+- **Article Integration**: Clicking a technology or concept opens its dedicated *My Experience With…* article.
+- **Separate Content System**: *My Experience With…* articles belong to a separate practical experience system and do **not** appear in the regular Writing archive or Home Writing previews.
+- **Project Connections**: Experience articles connect back to the relevant projects where the technology or concept was actually used (`Where I Used It`).
 - **Interconnected Content Model**:
   ```text
-  Projects ↔ Skills ↔ Blogs
+  Projects ↔ Skills ↔ My Experience With…
   ```
 
 ### 14.3 Conceptual vs. URL Hierarchy
 
 Clarify that this is a **conceptual three-level hierarchy** and does **NOT** require a three-level nested URL structure (e.g., `/skills/category/technology/article`).
 
-The final URL structure may remain flat (e.g., `/skills`, `/blog/spring-boot`) or use another semantic structure. Exact URL paths will be decided during technical implementation.
+The final URL structure may remain flat (e.g., `/skills`, `/experience-with/spring-boot`) or use another semantic structure. Exact URL paths will be decided during technical implementation.
 
 ---
 
@@ -568,16 +589,22 @@ Complete educational record.
 ### Skills
 
 - Technology and engineering concept discovery index page (`/skills`)
-- Conceptual hierarchy: Skills (L1) → Technology/Concept (L2) → Deep-Dive Article (L3) → Related Projects
+- Conceptual hierarchy: Skills (L1) → Technology/Concept (L2) → My Experience With… Article (L3) → Related Projects
 
 ### Certifications
 
 Complete credentials record.
 
-### Blogs
+### Writing
 
-- Complete writing collection
-- Individual blog pages
+- Chronological archive of regular articles
+- Individual writing pages with comments
+- `Read My Experience With…` navigation link
+
+### My Experience With…
+
+- Technology & engineering concept experience index
+- Individual practical experience articles (`Where I Used It` project links)
 
 ---
 
@@ -592,13 +619,15 @@ The portfolio architecture follows these principles:
 5. **Dedicated pages provide depth without making the primary navigation crowded.**
 6. **Featured is curated; Projects is comprehensive.**
 7. **A project may appear in both Featured and Projects.**
-8. **Blogs replace the role of LinkedIn Posts.**
+8. **Writing replaces the role of LinkedIn Posts.**
 9. **Individual projects receive dedicated engineering case-study pages.**
-10. **Individual blogs receive dedicated reading pages.**
+10. **Individual regular writing articles receive dedicated reading pages.**
 11. **The About page is narrative and editorial rather than database-like.**
 12. **The About page includes real GitHub contribution activity.**
 13. **The primary navigation remains concise even when the overall site architecture is broad.**
-14. **Skills follows a 3-level conceptual hierarchy (Skills → Technology/Concept → Article → Related Projects) connecting Projects ↔ Skills ↔ Blogs without requiring a 3-level nested URL path.**
+14. **Writing and My Experience With… are two separate content systems.**
+15. **My Experience With… articles never appear in the Home Writing preview or regular Writing archive.**
+16. **Skills links directly to My Experience With… articles (`Projects ↔ Skills ↔ My Experience With…`).**
 
 ---
 
@@ -608,12 +637,13 @@ The portfolio architecture follows these principles:
 
 - Multi-page direction
 - LinkedIn-inspired content architecture
-- Blogs replacing Posts
-- Homepage Preview → See All principle
+- Writing system replacing Posts
+- Two separate content systems: Writing & My Experience With…
+- Homepage Preview → See All principle (Home preview contains 2–3 regular Writing articles only)
 - Featured vs Projects principle
 - Dedicated project pages
-- Dedicated blog pages
-- Conceptual 3-level Skills hierarchy (Skills → Technology/Concept → Article → Related Projects)
+- Dedicated writing pages
+- Conceptual 3-level Skills hierarchy (Skills → Technology/Concept → My Experience With… Article → Related Projects)
 - About page narrative direction
 - GitHub contribution graph
 
