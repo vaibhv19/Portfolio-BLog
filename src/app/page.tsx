@@ -33,12 +33,12 @@ export default function HomePage() {
       {/* 1. TWO-COLUMN PERSONAL PROFILE HERO */}
       <section className="border-b border-slate-800/80 pb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
-          {/* Left Column: Large Circular Neutral Portrait Placeholder */}
+          {/* Left Column: Large Circular Neutral Portrait */}
           <div className="flex-shrink-0 relative">
             <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-slate-800 bg-[#0f1420] overflow-hidden shadow-lg">
               <img
-                src="/avatar-placeholder.svg"
-                alt="Vaibhav Gupta - Profile Portrait Placeholder"
+                src="/profile-avatar.jpeg"
+                alt="Vaibhav Gupta - Profile Portrait"
                 className="w-full h-full object-cover"
               />
             </div>
