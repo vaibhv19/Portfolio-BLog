@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* 1. Introduction Header */}
-      <header className="space-y-4 border-b border-slate-800 pb-6">
+      <header className="space-y-4 pb-2">
         <div className="text-xs font-mono uppercase tracking-widest text-slate-500">
           EDITORIAL NARRATIVE
         </div>
@@ -47,7 +47,7 @@ export default function AboutPage() {
         </section>
 
         {/* How I Work */}
-        <section className="space-y-3 pt-6 border-t border-slate-800/80">
+        <section className="space-y-3">
           <div className="text-xs font-mono uppercase text-sky-400 tracking-wider font-bold">
             02 / HOW I WORK
           </div>
@@ -78,7 +78,7 @@ export default function AboutPage() {
         </section>
 
         {/* Identity & Influences */}
-        <section className="space-y-3 pt-6 border-t border-slate-800/80">
+        <section className="space-y-3">
           <div className="text-xs font-mono uppercase text-sky-400 tracking-wider font-bold">
             03 / IDENTITY &amp; INFLUENCES
           </div>
@@ -111,15 +111,15 @@ export default function AboutPage() {
         </section>
 
         {/* Building Activity */}
-        <section className="space-y-3 pt-6 border-t border-slate-800/80">
-          <div className="text-xs font-mono uppercase text-sky-400 tracking-wider font-bold">
-            04 / BUILDING ACTIVITY
-          </div>
+        <section className="space-y-3">
+          <h2 className="text-xl font-bold text-slate-100 uppercase">
+            BUILDING ACTIVITY
+          </h2>
           <GithubContributionGraph />
         </section>
 
         {/* Connect Section */}
-        <section className="space-y-3 pt-6 border-t border-slate-800">
+        <section className="space-y-3">
           <h2 className="text-base font-bold text-slate-100 font-mono uppercase">Connect &amp; Collaborate</h2>
           <p className="text-xs text-slate-400">
             Open to engineering discussions, distributed system architecture inquiries, and software development collaborations.
@@ -155,8 +155,8 @@ export default function AboutPage() {
       </article>
 
       {/* 2. INTERNSHIPS & TRAINING */}
-      <section className="space-y-3.5 pt-4">
-        <div className="border-b border-slate-800 pb-1.5">
+      <section className="space-y-3.5">
+        <div className="pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Internships &amp; Training
           </h2>
@@ -199,8 +199,8 @@ export default function AboutPage() {
       </section>
 
       {/* 3. EDUCATION */}
-      <section className="space-y-3.5 pt-4">
-        <div className="border-b border-slate-800 pb-1.5">
+      <section className="space-y-3.5">
+        <div className="pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Education
           </h2>
@@ -229,8 +229,8 @@ export default function AboutPage() {
       </section>
 
       {/* 4. TECHNOLOGIES */}
-      <section className="space-y-3 pt-4">
-        <div className="border-b border-slate-800 pb-1.5">
+      <section className="space-y-3">
+        <div className="pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Technologies
           </h2>
@@ -265,8 +265,8 @@ export default function AboutPage() {
       </section>
 
       {/* 5. PROJECTS */}
-      <section className="space-y-3.5 pt-4">
-        <div className="border-b border-slate-800 pb-1.5">
+      <section className="space-y-3.5">
+        <div className="pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Projects
           </h2>
@@ -339,9 +339,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. CREDENTIALS */}
-      <section className="space-y-3.5 pt-4">
-        <div className="border-b border-slate-800 pb-1.5">
+      {/* 6. CREDENTIALS */}
+      <section className="space-y-3.5">
+        <div className="pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Credentials
           </h2>
@@ -393,9 +393,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. PATENT */}
-      <section className="space-y-3.5 pt-4">
-        <div className="border-b border-slate-800 pb-1.5">
+      {/* 7. PATENT */}
+      <section className="space-y-3.5">
+        <div className="pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Patent
           </h2>
@@ -423,9 +423,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. ACHIEVEMENTS & RECOGNITION */}
-      <section id="achievements" className="space-y-3.5 pt-4">
-        <div className="border-b border-slate-800 pb-1.5">
+      {/* 8. ACHIEVEMENTS & RECOGNITION */}
+      <section id="achievements" className="space-y-3.5">
+        <div className="pb-1.5">
           <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
             Achievements &amp; Recognition
           </h2>
