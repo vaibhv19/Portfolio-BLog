@@ -60,7 +60,7 @@ export function Header() {
             {/* Left Side: Brand Identity */}
             <Link
               href="/"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100 hover:text-amber-300 transition-colors focus:outline-none"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100 hover:text-amber-300 transition-colors focus:outline-none font-sans"
             >
               Vaibhav Gupta
             </Link>

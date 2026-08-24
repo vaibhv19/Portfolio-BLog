@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ExternalLink, ArrowRight, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
+import { StatusBadge } from "@/components/StatusBadge";
 import { PROJECTS } from "@/data/projects";
 import { WRITING_ARTICLES } from "@/data/writing";
 import { EXPERIENCE_WITH_ARTICLES } from "@/data/experienceWith";
@@ -33,20 +34,21 @@ export default function HomePage() {
       <section className="border-b border-slate-800/80 pb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
           {/* Left Column: Large Circular Neutral Portrait Placeholder */}
-          <div className="flex-shrink-0">
-            <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-slate-800 bg-[#0f1420] overflow-hidden shadow-lg relative group">
+          <div className="flex-shrink-0 relative">
+            <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-slate-800 bg-[#0f1420] overflow-hidden shadow-lg">
               <img
                 src="/avatar-placeholder.svg"
                 alt="Vaibhav Gupta - Profile Portrait Placeholder"
                 className="w-full h-full object-cover"
               />
             </div>
+            <StatusBadge />
           </div>
 
           {/* Right Column: Name, Philosophy Subtitle, & Contact Endpoints */}
           <div className="space-y-3.5 text-center md:text-left flex-1 md:pt-2.5">
             <div className="space-y-1.5">
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
+              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100 font-sans">
                 Hi, I&apos;m Vaibhav
               </h1>
               <p className="text-xs font-mono text-slate-400 leading-relaxed">
