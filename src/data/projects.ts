@@ -11,19 +11,20 @@ export interface Project {
   githubUrl?: string;
   caseStudyUrl?: string;
   highlights?: string[];
+  personalNotes?: string[];
 }
 
 export const PROJECTS: Project[] = [
   {
     id: "trajectory",
     title: "Trajectory",
-    tagline: "Full-stack application platform deployed to production on AWS & Vercel",
-    description: "Production full-stack application featuring multi-tenant isolation, OAuth2 authentication, automated CI/CD pipelines, and cloud deployment. Architected with Spring Boot backend and React/Next.js frontend.",
+    tagline: "A career management platform for tracking job applications, resumes, outreach, and analytics—built because a spreadsheet needed its own AWS bill.",
+    description: "A career management platform for tracking job applications, resumes, outreach, and analytics—built because a spreadsheet needed its own AWS bill.",
     category: "For Resume",
     techStack: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "AWS EC2", "AWS S3", "Docker", "Nginx", "GitHub Actions"],
     featured: true,
     homepagePreview: true,
-    demoUrl: "https://trajectory-demo.vercel.app",
+    demoUrl: "https://trajectory-mu-six.vercel.app",
     githubUrl: "https://github.com/vaibhv19/trajectory",
     highlights: [
       "Deploys containerized services to AWS EC2 using Docker Compose behind an Nginx reverse proxy.",
@@ -33,14 +34,14 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "checkmate-analyze",
-    title: "CheckMate Analyze",
-    tagline: "Client-side chess analysis engine powered by Stockfish WebAssembly & Web Workers",
-    description: "Browser-side chess analysis application leveraging Stockfish compiled to WebAssembly. Executes heavy CPU chess engine evaluations in isolated background Web Workers without blocking the main UI thread.",
+    title: "Check-Mate-Analyse",
+    tagline: "A local-first chess analysis workbench for debugging tactical mistakes with Stockfish—because your mistakes deserve more than a post-game “huh?”.",
+    description: "A local-first chess analysis workbench for debugging tactical mistakes with Stockfish—because your mistakes deserve more than a post-game “huh?”.",
     category: "For Resume",
     techStack: ["TypeScript", "React", "WebAssembly", "Web Workers", "SharedArrayBuffer", "chess.js", "react-chessboard", "Tailwind CSS"],
     featured: true,
     homepagePreview: false,
-    demoUrl: "https://checkmate-analyze.vercel.app",
+    demoUrl: "https://check-mate-analyse.vercel.app/",
     githubUrl: "https://github.com/vaibhv19/check-mate-analyse",
     highlights: [
       "Offloads Stockfish UCI engine calculations to Web Workers using WebAssembly multithreading.",
@@ -49,13 +50,36 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
+    id: "the-tiffin-dispatch",
+    title: "The Tiffin Dispatch",
+    tagline: "A vintage cafe ordering experience for browsing dishes, managing favorites, and building your guest check—because dinner shouldn’t feel like debugging an API.",
+    description: "A vintage cafe ordering experience for browsing dishes, managing favorites, and building your guest check—because dinner shouldn’t feel like debugging an API.",
+    category: "For Resume",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    featured: true,
+    homepagePreview: true,
+    demoUrl: "https://food-ordering-system-ruddy-sigma.vercel.app/",
+    githubUrl: "https://github.com/vaibhv19/food-ordering-system"
+  },
+  {
+    id: "birthday-wish",
+    title: "Birthday Wish",
+    tagline: "A personalized interactive birthday experience built for a special occasion.",
+    description: "A personalized interactive birthday experience built for a special occasion.",
+    category: "Miscellaneous",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    featured: true,
+    homepagePreview: false,
+    demoUrl: "https://happy-birthday-zoya-teal.vercel.app/"
+  },
+  {
     id: "ibm-pbel",
     title: "IBM Collaborative PBEL",
     tagline: "Project-Based Experiential Learning enterprise cloud & AI solution",
     description: "Enterprise experiential project built under IBM Collaborative PBEL program, focusing on cloud architecture, automated data workflows, and scalable service integration.",
     category: "Training Program",
     techStack: ["Python", "Cloud Architecture", "Docker", "REST APIs", "IBM Cloud Services"],
-    featured: true,
+    featured: false,
     homepagePreview: false,
     demoUrl: "https://ibm-pbel-demo.vercel.app",
     githubUrl: "https://github.com/vaibhv19/ibm-pbel",
@@ -67,13 +91,13 @@ export const PROJECTS: Project[] = [
   {
     id: "phoenix",
     title: "Phoenix",
-    tagline: "Hybrid RAG retrieval platform with reranking and observable query traces",
-    description: "Advanced Retrieval-Augmented Generation (RAG) platform combining sparse BM25 keyword matching with dense vector embeddings via pgvector. Features Cross-Encoder reranking and detailed retrieval decision traces.",
+    tagline: "A transparent, self-healing hybrid RAG workspace for technical documentation, with observable retrieval, scoring, reranking, and fallback orchestration.",
+    description: "A transparent, self-healing hybrid RAG workspace for technical documentation, with observable retrieval, scoring, reranking, and fallback orchestration.",
     category: "For Resume",
     techStack: ["Python", "FastAPI", "PostgreSQL", "pgvector", "SentenceTransformers", "BM25", "Redis", "Docker"],
     featured: false,
     homepagePreview: true,
-    githubUrl: "https://github.com/vaibhv19/phoenix",
+    githubUrl: "https://github.com/vaibhv19/Phoenix",
     highlights: [
       "Hybrid retrieval pipeline fusing BM25 sparse scores with cosine similarity vector search.",
       "Cross-Encoder reranking stage ensuring high-precision top-k context delivery to LLMs.",
@@ -83,13 +107,13 @@ export const PROJECTS: Project[] = [
   {
     id: "vigil",
     title: "Vigil",
-    tagline: "Deterministic AI agent evaluation harness with container sandboxing",
-    description: "Evaluation and verification system for autonomous AI agents. Runs agent benchmarks within isolated ephemeral Docker containers to objectively measure task completion, guardrail compliance, and security safety.",
+    tagline: "An autonomous AI agent evaluation harness that runs agents in safe, resource-constrained sandboxes and measures what they actually do.",
+    description: "An autonomous AI agent evaluation harness that runs agents in safe, resource-constrained sandboxes and measures what they actually do.",
     category: "Testing",
     techStack: ["Python", "FastAPI", "LangGraph", "Docker SDK", "Pytest", "Container Isolation"],
     featured: false,
     homepagePreview: true,
-    githubUrl: "https://github.com/vaibhv19/vigil",
+    githubUrl: "https://github.com/vaibhv19/Vigil",
     highlights: [
       "Container sandboxing using docker-py for safe, isolated agent code execution.",
       "Custom Pytest plugin harness for state-based assertion verification.",
@@ -99,13 +123,13 @@ export const PROJECTS: Project[] = [
   {
     id: "cairn",
     title: "Cairn",
-    tagline: "Distributed in-memory cache system engineered in Java with Virtual Threads",
-    description: "High-concurrency distributed cache built in Java featuring Consistent Hashing with virtual nodes, Murmur3 deterministic routing, LRU/TTL eviction policies, and Prometheus/Grafana observability.",
+    tagline: "A distributed, high-performance in-memory cache service built around deterministic sharding, thread-safe concurrency, and real-time observability.",
+    description: "A distributed, high-performance in-memory cache service built around deterministic sharding, thread-safe concurrency, and real-time observability.",
     category: "Academic",
     techStack: ["Java", "Spring Boot", "Virtual Threads", "Consistent Hashing", "Prometheus", "Grafana", "Docker"],
     featured: false,
-    homepagePreview: false,
-    githubUrl: "https://github.com/vaibhv19/cairn",
+    homepagePreview: true,
+    githubUrl: "https://github.com/vaibhv19/Cairn",
     highlights: [
       "Implements Murmur3 consistent hashing with virtual node distribution for minimal cache churn.",
       "Leverages Java 21 Virtual Threads and ConcurrentHashMap for high concurrency.",

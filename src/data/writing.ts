@@ -11,8 +11,23 @@ export interface WritingArticle {
 
 export const WRITING_ARTICLES: WritingArticle[] = [
   {
+    slug: "why-i-chose-to-become-an-engineer",
+    title: "Why I Chose to Become an Engineer",
+    date: "2026-08-24",
+    excerpt: "A personal reflection on curiosity, problem-solving, building things from first principles, and why engineering felt like the right way to turn ideas into things that actually exist.",
+    readingTime: "5 min read",
+    content: [
+      "Before writing software or studying distributed systems, engineering began for me as simple curiosity—a persistent impulse to take things apart and understand why they functioned the way they did.",
+      "Growing up, I was drawn to systems where cause and effect were deterministic. There was a unique satisfaction in taking a complex, mysterious mechanism, breaking it down to its underlying components, and understanding the precise rules governing its behavior.",
+      "When I discovered programming, that curiosity found its natural medium. Software engineering offered an unprecedented canvas: you could design a system from first principles, codify its rules in logic, and immediately watch an abstract idea transform into something functional.",
+      "Engineering, to me, sits at the intersection of rigorous logic and creative expression. Building software isn't just about making syntax work; it is about architectural composition, choosing the right abstractions, and building systems that can endure failure and scale gracefully.",
+      "Along the way, the most important lesson has been embracing failure as a core feedback mechanism. A broken test, a race condition under concurrency, or an unexpected edge case isn't a failure—it's an invitation to understand the system at a deeper level.",
+      "Ultimately, I chose engineering because it is not merely a profession; it is a continuous practice. It is the discipline of showing up, thinking deeply about problems, and constantly refining one's craft."
+    ]
+  },
+  {
     slug: "distributed-cache-java-python",
-    title: "What I Learned From Building the Same Distributed Cache in Java and Python",
+    title: "One Cache, Two Languages",
     date: "2026-08-15",
     excerpt: "A comparative architectural breakdown of Cairn (Java 21) and Shard (Python), exploring how language ecosystems, virtual threads vs event loops, and data structures shape distributed cache engineering.",
     readingTime: "8 min read",
@@ -28,7 +43,7 @@ export const WRITING_ARTICLES: WritingArticle[] = [
   },
   {
     slug: "multi-agent-systems-unification-evaluation",
-    title: "Building Multi-Agent Systems Twice: From Context Unification to Agent Evaluation",
+    title: "When Agents Stop Cooperating",
     date: "2026-07-28",
     excerpt: "What changes when you transition from orchestrating cooperative AI agents in Conclave to adversarial safety and evaluation in Vigil.",
     readingTime: "7 min read",

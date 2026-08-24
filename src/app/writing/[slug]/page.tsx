@@ -6,6 +6,8 @@ import { WRITING_ARTICLES } from "@/data/writing";
 import { PROJECTS } from "@/data/projects";
 import { Comments } from "@/components/Comments";
 
+import { ArticleFooter } from "@/components/ArticleFooter";
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -28,13 +30,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function WritingArticlePage({ params }: PageProps) {
   const { slug } = await params;
-  const article = WRITING_ARTICLES.find((a) => a.slug === slug);
+  const currentIndex = WRITING_ARTICLES.findIndex((a) => a.slug === slug);
 
-  if (!article) {
+  if (currentIndex === -1) {
     notFound();
   }
 
+  const article = WRITING_ARTICLES[currentIndex];
   const relatedProjects = PROJECTS.filter((p) => article.relatedProjects?.includes(p.id));
+
+  const prevArticle =
+    currentIndex < WRITING_ARTICLES.length - 1
+      ? WRITING_ARTICLES[currentIndex + 1]
+      : null;
+
+  const nextArticle = currentIndex > 0 ? WRITING_ARTICLES[currentIndex - 1] : null;
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -104,6 +114,14 @@ export default async function WritingArticlePage({ params }: PageProps) {
 
       {/* Comments Area */}
       <Comments articleSlug={article.slug} />
+
+      {/* Blog Detail Footer */}
+      <ArticleFooter
+        articleTitle={article.title}
+        articleSlug={article.slug}
+        prevArticle={prevArticle}
+        nextArticle={nextArticle}
+      />
     </div>
   );
 }

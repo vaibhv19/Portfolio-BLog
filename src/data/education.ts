@@ -11,8 +11,8 @@ export interface EducationEntry {
 export const EDUCATION_ENTRIES: EducationEntry[] = [
   {
     id: "gniot",
-    institution: "Greater Noida Institute of Technology",
-    degree: "Bachelor of Technology (B.Tech)",
+    institution: "Greater Noida Institute of Technology (GNIOT)",
+    degree: "Bachelor of Technology, Computer Science",
     specialization: "Computer Science & Engineering",
     period: "2023 – 2027",
     status: "In Progress",

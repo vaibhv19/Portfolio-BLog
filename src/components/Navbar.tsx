@@ -7,10 +7,10 @@ import { Menu, X, ChevronDown, Award, Briefcase, GraduationCap, ShieldCheck, Cpu
 
 export function Navbar() {
   const pathname = usePathname();
-  if (pathname === "/") return null;
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  if (pathname === "/") return null;
 
   const mainNavItems = [
     { name: "Home", href: "/" },
@@ -36,11 +36,11 @@ export function Navbar() {
           href="/" 
           className="flex items-center gap-2.5 group focus:outline-none"
         >
-          <div className="w-7 h-7 rounded-sm bg-slate-900 border border-slate-700/80 flex items-center justify-center font-mono font-bold text-xs text-amber-400 group-hover:border-amber-400/60 transition-colors">
+          <div className="w-7 h-7 rounded-sm bg-slate-900 border border-slate-700/80 flex items-center justify-center font-mono font-bold text-xs text-sky-400 group-hover:border-sky-400/60 transition-colors">
             VG
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-slate-100 group-hover:text-amber-300 transition-colors tracking-tight text-sm">
+            <span className="font-bold text-slate-100 group-hover:text-sky-300 transition-colors tracking-tight text-sm">
               VAIBHAV GUPTA
             </span>
             <span className="text-[9px] text-slate-500 font-mono tracking-widest uppercase -mt-0.5">
@@ -59,7 +59,7 @@ export function Navbar() {
                 href={item.href}
                 className={`font-medium transition-colors py-1 ${
                   isActive
-                    ? "text-amber-300 border-b border-amber-400"
+                    ? "text-sky-300 border-b border-sky-400"
                     : "text-slate-400 hover:text-slate-100"
                 }`}
               >
@@ -77,7 +77,7 @@ export function Navbar() {
               aria-expanded={dropdownOpen}
             >
               <span>Explore</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${dropdownOpen ? "rotate-180 text-amber-300" : ""}`} />
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${dropdownOpen ? "rotate-180 text-sky-300" : ""}`} />
             </button>
 
             {dropdownOpen && (
@@ -93,10 +93,10 @@ export function Navbar() {
                       key={item.href}
                       href={item.href}
                       className={`flex items-center gap-2.5 px-3 py-2 text-xs hover:bg-slate-900 transition-colors ${
-                        isActive ? "text-amber-300 bg-slate-900/60" : "text-slate-300"
+                        isActive ? "text-sky-300 bg-slate-900/60" : "text-slate-300"
                       }`}
                     >
-                      <Icon className="w-3.5 h-3.5 text-amber-400/80 flex-shrink-0" />
+                      <Icon className="w-3.5 h-3.5 text-sky-400/80 flex-shrink-0" />
                       <div>
                         <div className="font-medium text-slate-200">{item.name}</div>
                         <div className="text-[9px] text-slate-500">{item.desc}</div>
@@ -132,7 +132,7 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block py-1.5 text-sm font-medium ${
                   pathname === item.href
-                    ? "text-amber-300 font-bold"
+                    ? "text-sky-300 font-bold"
                     : "text-slate-300 hover:text-white"
                 }`}
               >
@@ -151,9 +151,9 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 py-1 text-xs text-slate-300 hover:text-amber-300"
+                  className="flex items-center gap-2 py-1 text-xs text-slate-300 hover:text-sky-300"
                 >
-                  <item.icon className="w-3.5 h-3.5 text-amber-400/80" />
+                  <item.icon className="w-3.5 h-3.5 text-sky-400/80" />
                   <span>{item.name}</span>
                 </Link>
               ))}

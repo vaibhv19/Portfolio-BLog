@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-syne: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-voltage: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-copper: #E8913A;
+  --color-copper-hover: #F0A04B;
 }
 
 :root {
@@ -15,30 +19,24 @@
   --muted-text: #94a3b8;
 }
 
-html:not(.dark) {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --surface: #ffffff;
-  --surface-border: rgba(0, 0, 0, 0.08);
-  --gold-accent: #b45309;
-  --muted-text: #64748b;
-}
-
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-syne), system-ui, sans-serif;
   overflow-x: hidden;
   line-height: 1.6;
-  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .font-serif-editorial {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-syne), sans-serif;
 }
 
 .font-mono-code {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-syne), sans-serif;
+}
+
+.font-voltage {
+  font-family: var(--font-syne), sans-serif;
 }
 
 /* Restrained text gold highlight */

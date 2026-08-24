@@ -11,31 +11,31 @@ export interface ExperienceEntry {
 
 export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   {
-    id: "ibm-edunet-internship",
+    id: "edunet-aicte-internship",
     role: "Emerging Technologies Intern",
-    organization: "IBM SkillsBuild × Edunet Foundation",
-    period: "2025 – Present",
+    organization: "Edunet Foundation × AICTE",
+    period: "2025",
     type: "Internship",
-    summary: "Emerging Technologies internship focusing on AI systems, cloud architecture, and modern full-stack development practices under IBM SkillsBuild and Edunet Foundation.",
+    summary: "Completed a four-week internship spanning Agentic AI, Cyber Security, Quantum Computing, and IBM Cloud.",
     highlights: [
-      "Worked on emerging technologies including AI model integration, backend engineering, and cloud deployment.",
-      "Completed hands-on practical tracks and earned verified IBM credentials in AI and cloud tools.",
-      "Applied industry best practices for project structure, containerization, and clean code documentation."
+      "Completed intensive tracks across Agentic AI, Cyber Security, Quantum Computing, and IBM Cloud infrastructure.",
+      "Applied modern cloud architecture and containerization practices in hands-on practical evaluations.",
+      "Earned verified industry credentials through AICTE and Edunet Foundation collaboration."
     ],
-    technologies: ["Python", "Artificial Intelligence", "Cloud Architecture", "Docker", "REST APIs"]
+    technologies: ["Agentic AI", "Cyber Security", "Quantum Computing", "IBM Cloud", "Docker"]
   },
   {
-    id: "ibm-pbel",
-    role: "Project-Based Experiential Learning Contributor",
-    organization: "IBM Collaborative PBEL",
+    id: "ibm-pbel-internship",
+    role: "Full Stack Web Development Intern",
+    organization: "IBM Collaborative Project-Based Experiential Learning (PBEL)",
     period: "2025",
-    type: "Experiential Learning",
-    summary: "Project-Based Experiential Learning program developing cloud-connected software solutions and architectural prototypes.",
+    type: "Internship",
+    summary: "Built multiple full-stack web applications through IBM’s project-based experiential learning program.",
     highlights: [
+      "Developed end-to-end full-stack web applications using modular service components.",
       "Collaborated on designing and building cloud-integrated software solutions under IBM mentorship.",
-      "Implemented modular service components and verified system behavior through structured testing.",
-      "Demonstrated practical capability in cloud integration, API design, and containerized deployment."
+      "Demonstrated practical capability in REST API design, frontend state management, and cloud deployment."
     ],
-    technologies: ["Cloud Computing", "Python", "Docker", "REST APIs", "IBM Cloud Services"]
+    technologies: ["Full Stack Web Development", "React", "Node.js", "Cloud Architecture", "REST APIs"]
   }
 ];

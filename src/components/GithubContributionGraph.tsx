@@ -8,16 +8,11 @@ export function GithubContributionGraph() {
     const daysPerWeek = 7;
     const result = [];
 
-    let seed = 42;
-    const pseudoRandom = () => {
-      seed = (seed * 9301 + 49297) % 233280;
-      return seed / 233280;
-    };
-
     for (let w = 0; w < totalWeeks; w++) {
       const weekDays = [];
       for (let d = 0; d < daysPerWeek; d++) {
-        const val = pseudoRandom();
+        const idx = w * daysPerWeek + d;
+        const val = ((idx * 9301 + 49297) % 233280) / 233280;
         let level = 0;
         if (val > 0.3 && val <= 0.6) level = 1;
         else if (val > 0.6 && val <= 0.82) level = 2;
