@@ -12,7 +12,7 @@ It answers:
 - How should Projects be categorized?
 - What current Experience content exists?
 - What is the direction for Skills?
-- How should Projects, Skills, and Blogs connect?
+- How should Projects, Skills, Writing, and My Experience With… connect?
 
 This document does not define the visual theme or high-level site architecture.
 
@@ -68,7 +68,7 @@ The current high-level content flow is:
 6. Education Preview
 7. Skills Preview
 8. Certifications Preview
-9. Latest Blogs
+9. Writing Preview (2–3 regular Writing articles only; excludes My Experience With… articles)
 10. Footer
 
 The exact visual order may be refined later.
@@ -301,7 +301,7 @@ SKILLS
   ↓
 Technology / Engineering Concept
   ↓
-Learning / Experience Article
+My Experience With… Article
   ↓
 Relevant Projects
 ```
@@ -318,15 +318,15 @@ Examples:
 - Docker
 - Consistent Hashing
 
-### Layer 3 — Article
-A deeper writing piece explaining what was learned through actual hands-on project work.
+### Layer 3 — My Experience With… Article
+A practical experience writing piece explaining what was learned through actual hands-on project work.
 Examples:
-- *What I Learned by Building With Spring Boot*
-- *What I Learned by Building With Java*
-- *How I Used Consistent Hashing While Building Shard*
+- *My Experience With Spring Boot*
+- *My Experience With Java*
+- *My Experience With Consistent Hashing*
 
 ### Relevant Projects
-The specific project(s) linked directly from the article where the technology or engineering concept was actually implemented.
+The specific project(s) linked directly from the experience article (`Where I Used It`) where the technology or engineering concept was actually implemented.
 
 ---
 
@@ -349,36 +349,38 @@ The specific project(s) linked directly from the article where the technology or
 
 ---
 
-## 8.4 Skill Articles
+## 8.4 My Experience With… Articles
 
-Clicking an interactive technology or concept leads to a deep-dive writing piece based on actual experience.
+Clicking an interactive technology or concept leads to a practical experience writing piece grounded in real project work.
 
 - **Not a Generic Tutorial**: The article must focus strictly on personal engineering experience and learning through real work, not generic code walkthroughs.
 - **Potential Article Content**:
-  - What the technology or concept is
+  - How I first encountered this technology/concept
   - Why it was used for a particular problem
   - How it was used in practice
   - Where it was used (linking to specific projects)
   - What was learned through the implementation
   - Important engineering observations or trade-offs
   - Future use or engineering perspective
-- **Linked Projects**: Relevant projects must be linked directly from the article.
+- **Linked Projects**: Relevant projects are linked directly under `Where I Used It`.
 
 ---
 
-## 8.5 Skills and Blogs Connection
+## 8.5 Skills and "My Experience With…" Connection
 
-Skill articles belong to the broader writing/blog system rather than becoming an isolated second article system.
+Skill experience articles belong to the separate **My Experience With…** content system (not the regular Writing archive).
 
-A technology article can therefore be discovered through either **Skills** or **Blogs**.
+An experience article can be discovered through two navigation routes:
+1. **Skills**: Clicking a technology or concept directly opens its experience article.
+2. **Writing**: Clicking the `Read My Experience With…` navigation button opens the experience index.
 
-This creates an interconnected relationship:
+This creates the interconnected relationship:
 
 ```text
-Projects ↔ Skills ↔ Blogs
+Projects ↔ Skills ↔ My Experience With…
 ```
 
-The conceptual relationship is preserved as:
+The conceptual distinction is preserved as:
 
 ### Projects
 What was built.
@@ -386,16 +388,19 @@ What was built.
 ### Skills
 What was used.
 
-### Blogs / Articles
-What was learned while building.
+### My Experience With…
+Practical experience with specific tools and concepts.
+
+### Writing
+Regular long-form articles about projects, retrospectives, decisions, experiments, comparisons (e.g., Shard vs Cairn), and reflections.
 
 ---
 
 ## 8.6 Article Coverage
 
 - Every genuinely used technology or concept can appear in the Skills inventory.
-- Not every technology must immediately receive a dedicated article.
-- Dedicated articles should be created when there is meaningful experience or learning to discuss.
+- Not every technology must immediately receive a dedicated experience article.
+- Dedicated articles should be created when there is meaningful practical experience to discuss.
 - The system grows naturally over time.
 
 ---
@@ -499,30 +504,24 @@ The goal is to avoid silently missing technologies used in real projects.
 
 ---
 
-# 12. Content Relationship Map
+# 12. Content Relationship Map & System Distinctions
 
-The portfolio should eventually behave as an interconnected content system.
+The portfolio comprises distinct content systems operating together:
 
-A technology may connect to:
+1. **Projects**: What was built (catalog, case studies, live demos).
+2. **Skills**: What was used and applied (evidence-based technical territory map).
+3. **Writing**: Regular long-form articles about projects, retrospectives, decisions, experiments, comparisons (e.g., Shard vs Cairn), and reflections.
+4. **My Experience With…**: Separate practical experience articles on specific technologies, frameworks, tools, or concepts.
+5. **Experience**: Professional roles and internships.
+6. **Education**: Academic records.
+7. **Certifications**: Credentials and certifications (linking directly to PDFs).
+8. **Intellectual Property / Patents**: Patents or IP records.
 
-- projects where it was used
-- articles describing what was learned
-- other related technologies
+The primary content relationship is:
 
-A project may connect to:
-
-- technologies used
-- related engineering concepts
-- project-specific writing
-
-A blog may connect to:
-
-- the technology being discussed
-- projects where the technology was used
-
-The portfolio should therefore gradually become an interconnected record of:
-
-> What was built, what was used, and what was learned.
+```text
+Projects ↔ Skills ↔ My Experience With…
+```
 
 ---
 
@@ -559,17 +558,21 @@ The portfolio should therefore gradually become an interconnected record of:
 
 - Dedicated `/education` page
 
-### Skills
+### Certifications
 
-- Conceptual 3-layer hierarchy: Skills (L1) → Technology/Concept (L2) → Article (L3) → Relevant Projects
-- Broad, evidence-based inventory representing actual work
-- No artificial resume-length restriction
-- No proficiency bars, percentages, or self-rating systems
-- Technology and concept names are interactive
-- Subtle hover/focus affordance ("Click to read my experience with it"), no permanent button required
-- Deep-dive skill articles explain personal engineering learning through real work and link relevant projects
-- Skill articles belong to the unified Blogs content system (`Projects ↔ Skills ↔ Blogs`)
-- Not every technology requires an immediate article
+- Home shows 2–3 featured certificates (NPTEL and E&ICT Academy initial entries)
+- View All Certifications leads to dedicated page with full list
+- Clicking certificate name opens original PDF directly (no detail pages)
+
+### Writing & My Experience With…
+
+- **Two Separate Content Systems**: Regular Writing and My Experience With… are distinct.
+- **Home Writing Preview**: Shows 2–3 regular Writing articles only; excludes My Experience With… articles.
+- **Writing Page**: Contains regular chronological archive sorted by date + `Read My Experience With…` navigation button near top leading to the experience index.
+- **Skills Integration**: Clicking a technology/concept opens its dedicated *My Experience With…* article (`Projects ↔ Skills ↔ My Experience With…`).
+- **Comparisons**: Cross-project comparisons (e.g. Shard vs Cairn) belong to regular Writing.
+- **Comments**: Individual regular Writing articles support comments.
+- **Skills Hierarchy**: Skills (L1) → Technology/Concept (L2) → My Experience With… Article (L3) → Relevant Projects. Not every technology requires an immediate article.
 
 ---
 
