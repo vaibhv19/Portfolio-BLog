@@ -44,7 +44,7 @@ export default function HomePage() {
           </div>
 
           {/* Right Column: Name, Philosophy Subtitle, & Contact Endpoints */}
-          <div className="space-y-3.5 text-center md:text-left flex-1">
+          <div className="space-y-3.5 text-center md:text-left flex-1 md:pt-2.5">
             <div className="space-y-1.5">
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
                 Vaibhav Gupta
