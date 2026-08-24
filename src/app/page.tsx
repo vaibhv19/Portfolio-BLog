@@ -43,9 +43,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Column: Name, Philosophy Subtitle, Technical Intro, & Links */}
-          <div className="space-y-3 text-center md:text-left flex-1">
-            <div className="space-y-1">
+          {/* Right Column: Name, Philosophy Subtitle, & Links */}
+          <div className="space-y-3.5 text-center md:text-left flex-1">
+            <div className="space-y-1.5">
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
                 Vaibhav Gupta
               </h1>
@@ -53,10 +53,6 @@ export default function HomePage() {
                 &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
               </p>
             </div>
-
-            <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
-              I build software systems with a focus on distributed architectures, multi-agent AI orchestration, and cloud infrastructure. My work spans high-concurrency Java 21 backends, Python/LangGraph agent frameworks, hybrid RAG retrieval engines (pgvector), WebAssembly browser compute, and production deployments on AWS.
-            </p>
 
             {/* Compact Profile Links */}
             <div className="pt-1 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-mono">
