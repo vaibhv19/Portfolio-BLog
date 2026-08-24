@@ -10,10 +10,10 @@ import { EDUCATION_ENTRIES } from "@/data/education";
 import { PATENT_RECORDS } from "@/data/patents";
 
 export default function HomePage() {
-  // 1. Featured Work — Curated selection of EXACTLY 3 top deployed projects
+  // 1. Featured Work — Curated selection of 3 top deployed projects
   const featuredProjects = PROJECTS.filter((p) => p.featured).slice(0, 3);
 
-  // 2. Projects Preview — EXACTLY 3 representative portfolio samples (separate from Featured)
+  // 2. Projects Preview — 3 representative portfolio samples (separate from Featured)
   const previewProjects = PROJECTS.filter(
     (p) => !p.featured && (p.category === "Testing" || p.category === "Academic")
   ).slice(0, 3);
@@ -112,17 +112,21 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
+
+        {/* Relocated Bottom CTA */}
+        <div className="pt-1">
+          <Link href="/projects" className="text-xs font-mono text-amber-300 hover:underline inline-block">
+            View All Featured Work &rarr;
+          </Link>
+        </div>
       </section>
 
       {/* 3. PROFESSIONAL EXPERIENCE */}
       <section className="space-y-3 pt-2">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+        <div className="border-b border-slate-800 pb-1.5">
           <h2 className="text-xs font-bold text-slate-100 font-mono uppercase tracking-wider">
             Professional Experience
           </h2>
-          <Link href="/experience" className="text-xs font-mono text-slate-400 hover:text-slate-200">
-            View Experience Details &rarr;
-          </Link>
         </div>
 
         <div className="space-y-2">
@@ -136,17 +140,21 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+
+        {/* Relocated Bottom CTA */}
+        <div className="pt-1">
+          <Link href="/experience" className="text-xs font-mono text-amber-300 hover:underline inline-block">
+            View Experience Details &rarr;
+          </Link>
+        </div>
       </section>
 
-      {/* 4. PROJECTS PREVIEW (3 Portfolio Samples — Separate from Featured) */}
+      {/* 4. PROJECTS PORTFOLIO (3 Portfolio Samples — Separate from Featured) */}
       <section className="space-y-3 pt-2">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+        <div className="border-b border-slate-800 pb-1.5">
           <h2 className="text-xs font-bold text-slate-100 font-mono uppercase tracking-wider">
             Projects Portfolio
           </h2>
-          <Link href="/projects" className="text-xs font-mono text-amber-300 hover:underline">
-            View All Projects ({PROJECTS.length}) &rarr;
-          </Link>
         </div>
 
         <ul className="space-y-2 text-xs">
@@ -159,34 +167,42 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
+
+        {/* Relocated Bottom CTA */}
+        <div className="pt-1">
+          <Link href="/projects" className="text-xs font-mono text-amber-300 hover:underline inline-block">
+            View All Projects ({PROJECTS.length}) &rarr;
+          </Link>
+        </div>
       </section>
 
       {/* 5. SKILLS & TECHNICAL FOCUS */}
       <section className="space-y-2 pt-2">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+        <div className="border-b border-slate-800 pb-1.5">
           <h2 className="text-xs font-bold text-slate-100 font-mono uppercase tracking-wider">
             Technical Focus
           </h2>
-          <Link href="/skills" className="text-xs font-mono text-amber-300 hover:underline">
-            View Skills Taxonomy &rarr;
-          </Link>
         </div>
 
         <p className="text-xs text-slate-300 leading-relaxed">
           <strong className="text-slate-100 font-mono text-[11px] uppercase text-amber-400 mr-2">Core Stack:</strong>
           Java 21, Python, TypeScript, Spring Boot, FastAPI, LangGraph, Hybrid RAG (pgvector), Docker, AWS (EC2/RDS/S3), Consistent Hashing, Virtual Threads.
         </p>
+
+        {/* Relocated Bottom CTA */}
+        <div className="pt-1">
+          <Link href="/skills" className="text-xs font-mono text-amber-300 hover:underline inline-block">
+            View Skills Taxonomy &rarr;
+          </Link>
+        </div>
       </section>
 
       {/* 6. EDUCATION */}
       <section className="space-y-2 pt-2">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+        <div className="border-b border-slate-800 pb-1.5">
           <h2 className="text-xs font-bold text-slate-100 font-mono uppercase tracking-wider">
             Education
           </h2>
-          <Link href="/education" className="text-xs font-mono text-slate-400 hover:text-slate-200">
-            View Education &rarr;
-          </Link>
         </div>
 
         {EDUCATION_ENTRIES.map((edu) => (
@@ -195,6 +211,13 @@ export default function HomePage() {
             <span className="text-[10px] font-mono text-slate-500">{edu.period}</span>
           </div>
         ))}
+
+        {/* Relocated Bottom CTA */}
+        <div className="pt-1">
+          <Link href="/education" className="text-xs font-mono text-slate-300 hover:text-amber-300 transition-colors underline inline-block">
+            View Education &rarr;
+          </Link>
+        </div>
       </section>
 
       {/* 7. CERTIFICATIONS & INTELLECTUAL PROPERTY */}
@@ -215,18 +238,10 @@ export default function HomePage() {
 
       {/* 8. WRITING & EXPERIENCE NOTES */}
       <section className="space-y-3 pt-2 border-t border-slate-800/80">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+        <div className="border-b border-slate-800 pb-1.5">
           <h2 className="text-xs font-bold text-slate-100 font-mono uppercase tracking-wider">
             Recent Writing &amp; Experience Notes
           </h2>
-          <div className="flex items-center gap-3 text-xs font-mono">
-            <Link href="/writing" className="text-amber-300 hover:underline">
-              Writing Archive &rarr;
-            </Link>
-            <Link href="/my-experience-with" className="text-slate-400 hover:text-slate-200">
-              Experience Index &rarr;
-            </Link>
-          </div>
         </div>
 
         <div className="space-y-3 text-xs">
@@ -242,6 +257,16 @@ export default function HomePage() {
               <p className="text-slate-400 text-xs">{article.excerpt}</p>
             </div>
           ))}
+        </div>
+
+        {/* Relocated Bottom CTAs */}
+        <div className="flex items-center gap-4 text-xs font-mono pt-2 border-t border-slate-800/40">
+          <Link href="/writing" className="text-amber-300 hover:underline">
+            Writing Archive &rarr;
+          </Link>
+          <Link href="/my-experience-with" className="text-slate-400 hover:text-slate-200">
+            Experience Index &rarr;
+          </Link>
         </div>
       </section>
     </div>
