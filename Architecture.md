@@ -422,9 +422,56 @@ The Skills section should not become a collection of random technology badges.
 
 The homepage should show selected capabilities.
 
-The Skills page should contain the complete skills record.
+The Skills page acts as the technology and engineering concept discovery and index page (`/skills`).
 
-The exact taxonomy and presentation will be defined during content architecture.
+### 14.1 Conceptual Hierarchy
+
+The Skills architecture formally supports a conceptual three-level content hierarchy:
+
+```text
+HOME
+  ↓
+SKILLS (Level 1)
+  ↓
+TECHNOLOGY / ENGINEERING CONCEPT (Level 2)
+  ↓
+ARTICLE / BLOG (Level 3)
+  ↓
+RELATED PROJECTS
+```
+
+#### Level 1 — Portfolio Section
+Example: **Skills**
+The primary discovery/index page (`/skills`).
+
+#### Level 2 — Technology or Engineering Concept
+Examples: **Spring Boot**, **Java**, **LangGraph**, **Consistent Hashing**
+The primary interactive item representing specific tools, frameworks, languages, or core engineering concepts.
+
+#### Level 3 — Deep-Dive Article
+Examples:
+- *What I Learned by Building With Spring Boot*
+- *What I Learned by Building With Java*
+- *How I Used Consistent Hashing While Building Shard*
+
+A dedicated writing piece explaining what was learned through actual hands-on engineering work.
+
+### 14.2 Interconnected Content System & Discovery
+
+- **Primary Interactive Item**: The technology or engineering concept itself (Level 2) is the primary interactive element on the Skills page.
+- **Article Integration**: Clicking a technology or concept may open a dedicated deep-dive article.
+- **Blog System Unity**: Deep-dive skill articles belong to the broader Blogs/writing content system rather than existing as an isolated second article system.
+- **Project Connections**: Articles connect back to the relevant projects where the technology or concept was actually used.
+- **Interconnected Content Model**:
+  ```text
+  Projects ↔ Skills ↔ Blogs
+  ```
+
+### 14.3 Conceptual vs. URL Hierarchy
+
+Clarify that this is a **conceptual three-level hierarchy** and does **NOT** require a three-level nested URL structure (e.g., `/skills/category/technology/article`).
+
+The final URL structure may remain flat (e.g., `/skills`, `/blog/spring-boot`) or use another semantic structure. Exact URL paths will be decided during technical implementation.
 
 ---
 
@@ -520,7 +567,8 @@ Complete educational record.
 
 ### Skills
 
-Complete skills record.
+- Technology and engineering concept discovery index page (`/skills`)
+- Conceptual hierarchy: Skills (L1) → Technology/Concept (L2) → Deep-Dive Article (L3) → Related Projects
 
 ### Certifications
 
@@ -550,6 +598,7 @@ The portfolio architecture follows these principles:
 11. **The About page is narrative and editorial rather than database-like.**
 12. **The About page includes real GitHub contribution activity.**
 13. **The primary navigation remains concise even when the overall site architecture is broad.**
+14. **Skills follows a 3-level conceptual hierarchy (Skills → Technology/Concept → Article → Related Projects) connecting Projects ↔ Skills ↔ Blogs without requiring a 3-level nested URL path.**
 
 ---
 
@@ -564,6 +613,7 @@ The portfolio architecture follows these principles:
 - Featured vs Projects principle
 - Dedicated project pages
 - Dedicated blog pages
+- Conceptual 3-level Skills hierarchy (Skills → Technology/Concept → Article → Related Projects)
 - About page narrative direction
 - GitHub contribution graph
 
