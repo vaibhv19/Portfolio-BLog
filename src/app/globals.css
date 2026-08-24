@@ -9,12 +9,22 @@
   --muted-text: #94a3b8;
 }
 
+html:not(.dark) {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-border: rgba(0, 0, 0, 0.08);
+  --gold-accent: #b45309;
+  --muted-text: #64748b;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   line-height: 1.6;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .font-serif-editorial {
@@ -42,7 +52,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0d14;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -53,5 +63,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }
-
-

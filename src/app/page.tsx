@@ -28,7 +28,7 @@ export default function HomePage() {
   const featuredCerts = CERTIFICATIONS.filter((c) => c.featured).slice(0, 3);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-12 space-y-10 text-slate-300">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-12 space-y-10 text-slate-300">
       {/* 1. TWO-COLUMN PERSONAL PROFILE HERO */}
       <section className="border-b border-slate-800/80 pb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
