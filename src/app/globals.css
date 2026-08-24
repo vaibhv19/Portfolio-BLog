@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0b0f17;
+  --foreground: #f8fafc;
+  --surface: #131b2e;
+  --surface-hover: #1b2640;
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --gold-accent: #d4af37;
+  --gold-hover: #e5c07b;
+  --blue-accent: #3b82f6;
+  --muted-text: #94a3b8;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
 }
+
+.font-serif-editorial {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-mono-code {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+/* Subtle engineering grid background */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Gold glow and accent border */
+.border-gold-subtle {
+  border-color: rgba(212, 175, 55, 0.25);
+}
+
+.hover-border-gold:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
+.text-gold {
+  color: #e5c07b;
+}
+
+.bg-gold-badge {
+  background-color: rgba(212, 175, 55, 0.12);
+  color: #e5c07b;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0f17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
