@@ -20,10 +20,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Vaibhav Gupta | Portfolio & Engineering Writing",
+  title: "Vaibhav Gupta",
   description: "Personal portfolio and technical writing of Vaibhav Gupta — Software Engineer building distributed systems, AI agent platforms, and full-stack applications.",
   keywords: ["Software Engineer", "Vaibhav Gupta", "Distributed Systems", "Java", "Python", "React", "Next.js", "AI Agents", "RAG"],
   authors: [{ name: "Vaibhav Gupta" }],
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
