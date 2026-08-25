@@ -6,7 +6,7 @@ import { GithubContributionGraph } from "@/components/GithubContributionGraph";
 import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
 
 export const metadata: Metadata = {
-  title: "About & Professional Narrative | Vaibhav Gupta",
+  title: "About | Vaibhav Gupta",
   description: "Comprehensive professional narrative covering engineering journey, internships, education, credentials, patent, and achievements.",
 };
 
