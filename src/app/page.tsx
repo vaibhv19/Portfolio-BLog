@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ExternalLink, Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
+import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
 import { StatusBadge } from "@/components/StatusBadge";
 import { PROJECTS } from "@/data/projects";
 import { WRITING_ARTICLES } from "@/data/writing";
@@ -76,6 +76,16 @@ export default function HomePage() {
                 className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
               >
                 <LinkedinIcon className="w-[18px] h-[18px]" />
+              </a>
+              <a
+                href="https://bsky.app/profile/vaibhv19.bsky.social?utm_source=chatgpt.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Bluesky"
+                title="Bluesky"
+                className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              >
+                <BlueskyIcon className="w-[18px] h-[18px]" />
               </a>
               <a
                 href="https://x.com/vaibhv_19"

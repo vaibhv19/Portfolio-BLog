@@ -52,6 +52,8 @@ function renderFormattedText(text: string) {
   return parts.length > 0 ? parts : text;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return WRITING_ARTICLES.map((art) => ({
     slug: art.slug,

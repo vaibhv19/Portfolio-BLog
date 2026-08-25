@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
+import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
 
 export function Footer() {
   return (
@@ -37,6 +37,16 @@ export function Footer() {
               className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
             >
               <LinkedinIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://bsky.app/profile/vaibhv19.bsky.social?utm_source=chatgpt.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Bluesky"
+              title="Bluesky"
+              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+            >
+              <BlueskyIcon className="w-[18px] h-[18px]" />
             </a>
             <a
               href="https://x.com/vaibhv_19"

@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Mail } from "lucide-react";
 import { GithubContributionGraph } from "@/components/GithubContributionGraph";
+import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
 
 export const metadata: Metadata = {
   title: "About & Professional Narrative | Vaibhav Gupta",
@@ -73,6 +74,68 @@ export default function AboutPage() {
           <p className="text-xs sm:text-sm text-slate-400 font-mono pt-1">
             Currently somewhere between Greater Noida and GKP.
           </p>
+
+          {/* Social / Contact Endpoints */}
+          <div className="pt-2 flex items-center justify-start gap-5">
+            <a
+              href="https://github.com/vaibhv19"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+            >
+              <GithubIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/vaibhv19"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+            >
+              <LinkedinIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://bsky.app/profile/vaibhv19.bsky.social?utm_source=chatgpt.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Bluesky"
+              title="Bluesky"
+              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+            >
+              <BlueskyIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://x.com/vaibhv_19"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              title="X (Twitter)"
+              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+            >
+              <XIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://leetcode.com/u/vaibhv_19/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LeetCode"
+              title="LeetCode"
+              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+            >
+              <LeetCodeIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="mailto:gvaibhav.business@gmail.com"
+              aria-label="Email"
+              title="Email"
+              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+            >
+              <Mail className="w-[18px] h-[18px]" />
+            </a>
+          </div>
         </div>
       </section>
 

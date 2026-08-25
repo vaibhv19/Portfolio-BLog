@@ -89,8 +89,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: "fastapi",
         name: "FastAPI",
         category: "Backend & API Engineering",
-        experienceSlug: "fastapi",
-        articleStatus: "Article Published",
+        articleStatus: "Article Planned",
         projectsUsedIn: ["phoenix", "vigil"],
         isHeadline: true
       },
@@ -98,8 +97,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: "django",
         name: "Django & REST Framework",
         category: "Backend & API Engineering",
-        experienceSlug: "django",
-        articleStatus: "Article Published",
+        articleStatus: "Article Planned",
         projectsUsedIn: ["foundry", "shard", "studylink"]
       },
       {
@@ -198,8 +196,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: "multi-agent-orchestration",
         name: "Multi-Agent Systems & Orchestration",
         category: "AI, LLM & Agent Systems",
-        experienceSlug: "multi-agent-orchestration",
-        articleStatus: "Article Published",
+        articleStatus: "Article Planned",
         projectsUsedIn: ["conclave", "vigil"],
         isHeadline: true
       },
@@ -329,8 +326,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: "container-isolation",
         name: "Container Sandboxing & Isolation",
         category: "Security Engineering",
-        experienceSlug: "container-isolation",
-        articleStatus: "Article Published",
+        articleStatus: "Article Planned",
         projectsUsedIn: ["vigil"],
         isHeadline: true
       },
