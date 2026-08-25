@@ -31,7 +31,7 @@ export default function ProjectsPage() {
 
         <div className="pt-1">
           <Link
-            href="/my-experience-with"
+            href="/technology"
             className="text-xs font-mono text-copper hover:text-copper-hover hover:underline transition-colors"
           >
             Explore Technology I’ve Worked With &rarr;

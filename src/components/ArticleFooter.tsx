@@ -20,6 +20,9 @@ interface ArticleFooterProps {
   articleSlug: string;
   prevArticle?: { slug: string; title: string } | null;
   nextArticle?: { slug: string; title: string } | null;
+  /** Tier 2 sub-blog back-link (overrides prev/next when present) */
+  backLink?: { slug: string; title: string } | null;
+  basePath?: string;
 }
 
 export function ArticleFooter({
@@ -27,6 +30,8 @@ export function ArticleFooter({
   articleSlug,
   prevArticle,
   nextArticle,
+  backLink,
+  basePath = "/writing",
 }: ArticleFooterProps) {
   const [currentUrl, setCurrentUrl] = useState("");
 
@@ -88,15 +93,22 @@ export function ArticleFooter({
 
   return (
     <footer className="space-y-8 pt-8 border-t border-slate-800/80">
-      {/* 1. Next / Previous Navigation */}
-      {(nextArticle || prevArticle) && (
+      {/* 1. Article Navigation */}
+      {(nextArticle || prevArticle || backLink) && (
         <div className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Next Post (LEFT) */}
+            {/* Back Link (Tier 2) or Next Article (LEFT) */}
             <div>
-              {nextArticle ? (
+              {backLink ? (
                 <Link
-                  href={`/writing/${nextArticle.slug}`}
+                  href={`${basePath}/${backLink.slug}`}
+                  className="text-sm font-bold text-copper hover:underline transition-all block"
+                >
+                  &lt;&lt; {backLink.title}
+                </Link>
+              ) : nextArticle ? (
+                <Link
+                  href={`${basePath}/${nextArticle.slug}`}
                   className="text-sm font-bold text-copper hover:underline transition-all block"
                 >
                   &lt;&lt; {nextArticle.title}
@@ -104,11 +116,11 @@ export function ArticleFooter({
               ) : null}
             </div>
 
-            {/* Previous Post (RIGHT) */}
+            {/* Previous Article (RIGHT) — only for Tier 1 */}
             <div className="sm:text-right">
-              {prevArticle ? (
+              {!backLink && prevArticle ? (
                 <Link
-                  href={`/writing/${prevArticle.slug}`}
+                  href={`${basePath}/${prevArticle.slug}`}
                   className="text-sm font-bold text-copper hover:underline transition-all block"
                 >
                   {prevArticle.title} &gt;&gt;
@@ -121,7 +133,7 @@ export function ArticleFooter({
 
       {/* 2. Share Section & Back to Top */}
       <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
-        (nextArticle || prevArticle) ? "border-t border-dashed border-slate-800/80 pt-6" : ""
+        (nextArticle || prevArticle || backLink) ? "border-t border-dashed border-slate-800/80 pt-6" : ""
       }`}>
         {/* Share this post on */}
         <div className="flex flex-wrap items-center gap-3">

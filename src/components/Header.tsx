@@ -42,7 +42,7 @@ export function Header() {
     { name: "Writing", href: "/writing" },
     { name: "About", href: "/about" },
     { name: "My Work", href: "/projects" },
-    { name: "Technologies", href: "/skills" },
+    { name: "Technology", href: "/technology" },
     { name: "Experience", href: "/experience" },
     { name: "Education", href: "/education" },
     { name: "Certifications", href: "/certifications" },

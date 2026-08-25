@@ -41,7 +41,7 @@ export default function WritingArchivePage() {
 
         <div className="pt-1">
           <Link
-            href="/my-experience-with"
+            href="/technology"
             className="text-xs font-mono text-copper hover:underline transition-all"
           >
             Explore Technology I’ve Worked With &rarr;

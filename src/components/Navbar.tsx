@@ -15,7 +15,7 @@ export function Navbar() {
   const mainNavItems = [
     { name: "Home", href: "/" },
     { name: "My Work", href: "/projects" },
-    { name: "Skills", href: "/skills" },
+    { name: "Technology", href: "/technology" },
     { name: "Writing", href: "/writing" },
     { name: "About", href: "/about" },
   ];
@@ -24,7 +24,6 @@ export function Navbar() {
     { name: "Experience", href: "/experience", icon: Briefcase, desc: "Roles & internships" },
     { name: "Education", href: "/education", icon: GraduationCap, desc: "Academic record" },
     { name: "Certifications", href: "/certifications", icon: Award, desc: "Verified credentials" },
-    { name: "My Experience With...", href: "/my-experience-with", icon: Cpu, desc: "Technology & tool index" },
     { name: "Patents & IP", href: "/intellectual-property", icon: ShieldCheck, desc: "Patent application 452200" },
   ];
 
