@@ -42,6 +42,12 @@ export default function IntellectualPropertyPage() {
                     <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper flex-shrink-0" />
                   </a>
                 </h2>
+
+                {patent.subtitle && (
+                  <div className="text-xs font-mono text-slate-400">
+                    {patent.subtitle}
+                  </div>
+                )}
               </div>
 
               {/* Technical Field & Description */}
