@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import {
@@ -33,6 +34,7 @@ export function ArticleFooter({
   backLink,
   basePath = "/writing",
 }: ArticleFooterProps) {
+  const router = useRouter();
   const [currentUrl, setCurrentUrl] = useState("");
 
   useEffect(() => {
@@ -40,6 +42,50 @@ export function ArticleFooter({
       setCurrentUrl(window.location.href);
     }
   }, [articleSlug]);
+
+  // Keyboard arrow navigation matching visible controls exactly
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Do not interfere with browser shortcuts or modifier keys (e.g. Alt+Left for back)
+      if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+        return;
+      }
+
+      // Do not trigger when typing in input, textarea, select, or contenteditable elements
+      const target = event.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        const leftTarget = backLink
+          ? `${basePath}/${backLink.slug}`
+          : nextArticle
+          ? `${basePath}/${nextArticle.slug}`
+          : null;
+        if (leftTarget) {
+          event.preventDefault();
+          router.push(leftTarget);
+        }
+      } else if (event.key === "ArrowRight") {
+        const rightTarget =
+          !backLink && prevArticle ? `${basePath}/${prevArticle.slug}` : null;
+        if (rightTarget) {
+          event.preventDefault();
+          router.push(rightTarget);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [router, basePath, backLink, nextArticle, prevArticle]);
 
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(articleTitle);

@@ -7,6 +7,7 @@ import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, LeetCodeIcon } from "@/co
 
 export const metadata: Metadata = {
   title: "About | Vaibhav Gupta",
+
   description: "Comprehensive professional narrative covering engineering journey, internships, education, credentials, patent, and achievements.",
 };
 
@@ -24,12 +25,12 @@ export default function AboutPage() {
       <section className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
         {/* Left Column: Personal Photograph */}
         <div className="md:col-span-5 w-full">
-          <div className="relative aspect-[3/4] w-full max-w-[320px] sm:max-w-[380px] md:max-w-none mx-auto overflow-hidden rounded-md bg-slate-900/40">
+          <div className="relative aspect-[3/4] w-full max-w-[320px] sm:max-w-[380px] md:max-w-none mx-auto overflow-hidden rounded-md bg-slate-900/40 border border-slate-800/80 transition-transform duration-300 ease-out hover:scale-[1.02]">
             <Image
               src="/images/WhatsApp Image 2026-08-25 at 4.50.20 AM.jpeg"
               alt="Vaibhav Gupta"
               fill
-              className="object-cover object-top transition-transform duration-300 hover:scale-105"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 42vw"
               priority
             />

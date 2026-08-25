@@ -3,58 +3,53 @@ import { EDUCATION_ENTRIES } from "@/data/education";
 
 export const metadata: Metadata = {
   title: "Education | Vaibhav Gupta",
-  description: "Academic history and Computer Science engineering degree credentials.",
+  description: "Academic qualifications, degree credentials, and foundational education history.",
 };
 
 export default function EducationPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-6 text-slate-300">
       {/* Page Header */}
-      <div className="space-y-3 border-b border-slate-800 pb-6">
-        <div className="text-xs font-mono uppercase tracking-widest text-slate-500">
-          ACADEMIC RECORD
-        </div>
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100">
-          Education History
+      <div className="space-y-2.5 border-b border-slate-800/80 pb-5">
+        <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
+          Education
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
-          Higher education degree credentials and core Computer Science &amp; Engineering coursework.
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+          Academic qualifications, degree credentials, and foundational education history.
         </p>
       </div>
 
-      {/* Education Entries */}
-      <div className="space-y-8">
+      {/* Vertical Chronological Timeline */}
+      <div className="relative border-l border-slate-800 space-y-10 my-4 ml-1.5 sm:ml-2">
         {EDUCATION_ENTRIES.map((edu) => (
-          <div
-            key={edu.id}
-            className="border-b border-slate-800/80 pb-8 space-y-3"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-              <div>
-                <span className="text-[10px] font-mono uppercase text-amber-400">
-                  {edu.status}
-                </span>
-                <h2 className="text-xl font-bold text-slate-100">{edu.degree}</h2>
-                <div className="text-xs font-semibold text-slate-300">{edu.institution}</div>
+          <div key={edu.id} className="relative pl-6 sm:pl-8 group space-y-3">
+            {/* Timeline Marker Dot */}
+            <div className="absolute -left-[5.5px] top-1.5 w-2.5 h-2.5 rounded-full bg-copper ring-4 ring-[#0a0d14] transition-transform duration-200 group-hover:scale-125" />
+
+            {/* Date Header */}
+            <div className="text-xs font-mono">
+              <time className="font-bold text-copper tracking-wider uppercase">
+                {edu.period}
+              </time>
+            </div>
+
+            {/* Institution Header & Degree/Class */}
+            <div className="space-y-0.5">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-100">
+                {edu.institution}
+              </h2>
+              <div className="text-xs font-semibold text-slate-300 font-mono">
+                {edu.degree}
               </div>
-              <span className="text-xs font-mono text-slate-500">{edu.period}</span>
             </div>
 
-            <div className="text-xs text-slate-400 font-mono">
-              Specialization: <span className="text-slate-200">{edu.specialization}</span>
-            </div>
-
-            <div className="space-y-1.5 pt-2">
-              <div className="text-[11px] font-mono uppercase text-slate-500 tracking-wider">Academic Focus &amp; Highlights</div>
-              <ul className="space-y-1">
-                {edu.highlights.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-slate-300">
-                    <span className="text-slate-500 font-mono text-[10px]">—</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Skills */}
+            {edu.skills && edu.skills.length > 0 && (
+              <div className="pt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-mono text-slate-500">
+                <span className="text-slate-400 font-semibold">Skills:</span>
+                <span>{edu.skills.join(" · ")}</span>
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ExternalLink, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
 import { StatusBadge } from "@/components/StatusBadge";
-import { PROJECTS } from "@/data/projects";
 import { WRITING_ARTICLES } from "@/data/writing";
 
 function formatDateDDMMYYYY(dateStr: string) {
@@ -11,10 +10,7 @@ function formatDateDDMMYYYY(dateStr: string) {
 }
 
 export default function HomePage() {
-  // 1. Featured Work — Curated selection of featured projects
-  const featuredProjects = PROJECTS.filter((p) => p.featured);
-
-  // 2. Recent Writing — Homepage selection (latest 5 articles preview)
+  // Recent Writing — Homepage selection (latest 5 articles preview)
   const recentWriting = WRITING_ARTICLES.slice(0, 5);
 
   return (
@@ -166,45 +162,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
-      {/* 3. FEATURED */}
-      <section className="space-y-3.5 pt-1">
-        <div className="border-b border-slate-800 pb-1.5">
-          <h2 className="text-sm font-bold text-copper font-mono uppercase tracking-wider">
-            Featured
-          </h2>
-        </div>
-
-        <ul className="space-y-4">
-          {featuredProjects.map((project) => (
-            <li key={project.id} className="space-y-1 group border-b border-slate-800/40 pb-3.5 last:border-b-0 last:pb-0">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:underline transition-all">
-                {project.githubUrl || project.demoUrl ? (
-                  <a
-                    href={project.githubUrl || project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5"
-                  >
-                    <span>{project.title}</span>
-                    <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper" />
-                  </a>
-                ) : (
-                  <span>{project.title}</span>
-                )}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{project.tagline}</p>
-            </li>
-          ))}
-        </ul>
-
-        {/* Bottom CTA */}
-        <div className="pt-1">
-          <Link href="/projects" className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all">
-            View More &rarr;
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }
+

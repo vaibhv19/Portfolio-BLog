@@ -2,10 +2,8 @@ export interface EducationEntry {
   id: string;
   institution: string;
   degree: string;
-  specialization: string;
   period: string;
-  status: string;
-  highlights: string[];
+  skills: string[];
 }
 
 export const EDUCATION_ENTRIES: EducationEntry[] = [
@@ -13,13 +11,21 @@ export const EDUCATION_ENTRIES: EducationEntry[] = [
     id: "gniot",
     institution: "Greater Noida Institute of Technology (GNIOT)",
     degree: "Bachelor of Technology, Computer Science",
-    specialization: "Computer Science & Engineering",
-    period: "2023 – 2027",
-    status: "In Progress",
-    highlights: [
-      "Core coursework in Data Structures & Algorithms, Object-Oriented Programming, Operating Systems, Database Management Systems, and Computer Networks.",
-      "Hands-on technical project development across distributed caching, multi-agent AI systems, and cloud-deployed applications.",
-      "Active participation in technical learning initiatives, IBM SkillsBuild programs, and independent software research."
-    ]
+    period: "Sep 2023 – May 2027",
+    skills: ["Problem Solving", "Teamwork"]
+  },
+  {
+    id: "rpm-academy",
+    institution: "RPM Academy",
+    degree: "Class 12, PCM",
+    period: "Jun 2020 – May 2022",
+    skills: ["Problem Solving", "Communication"]
+  },
+  {
+    id: "springer-public-school",
+    institution: "Springer Public School, Gorakhpur",
+    degree: "Class 10, Science",
+    period: "May 2018 – Jul 2020",
+    skills: ["Teamwork", "Leadership"]
   }
 ];

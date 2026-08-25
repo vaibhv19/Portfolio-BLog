@@ -21,7 +21,7 @@ export function Navbar() {
   ];
 
   const moreNavItems = [
-    { name: "Experience", href: "/experience", icon: Briefcase, desc: "Roles & internships" },
+    { name: "Internships & Training", href: "/experience", icon: Briefcase, desc: "Roles & internships" },
     { name: "Education", href: "/education", icon: GraduationCap, desc: "Academic record" },
     { name: "Certifications", href: "/certifications", icon: Award, desc: "Verified credentials" },
     { name: "Patents & IP", href: "/intellectual-property", icon: ShieldCheck, desc: "Patent application 452200" },
