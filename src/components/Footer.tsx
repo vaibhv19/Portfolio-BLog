@@ -11,7 +11,7 @@ export function Footer() {
             href="https://github.com/vaibhv19/Portfolio-BLog?utm_source=chatgpt.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-mono text-slate-400 hover:text-slate-200 transition-colors focus:outline-none no-underline"
+            className="text-xs font-mono text-slate-400 hover:underline transition-all focus:outline-none"
           >
             You can make this too &rarr;
           </a>
@@ -24,7 +24,7 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="GitHub"
               title="GitHub"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <GithubIcon className="w-[18px] h-[18px]" />
             </a>
@@ -34,7 +34,7 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               title="LinkedIn"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <LinkedinIcon className="w-[18px] h-[18px]" />
             </a>
@@ -44,7 +44,7 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="Bluesky"
               title="Bluesky"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <BlueskyIcon className="w-[18px] h-[18px]" />
             </a>
@@ -54,7 +54,7 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="X (Twitter)"
               title="X (Twitter)"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <XIcon className="w-[18px] h-[18px]" />
             </a>
@@ -64,7 +64,7 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="LeetCode"
               title="LeetCode"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <LeetCodeIcon className="w-[18px] h-[18px]" />
             </a>
@@ -72,7 +72,7 @@ export function Footer() {
               href="mailto:gvaibhav.business@gmail.com"
               aria-label="Email"
               title="Email"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <Mail className="w-[18px] h-[18px]" />
             </a>

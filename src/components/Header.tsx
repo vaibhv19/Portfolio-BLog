@@ -41,7 +41,7 @@ export function Header() {
     { name: "Home", href: "/" },
     { name: "Writing", href: "/writing" },
     { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
+    { name: "My Work", href: "/projects" },
     { name: "Technologies", href: "/skills" },
     { name: "Experience", href: "/experience" },
     { name: "Education", href: "/education" },
@@ -57,7 +57,7 @@ export function Header() {
             {/* Left Side: Brand Identity */}
             <Link
               href="/"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-copper hover:text-copper-hover transition-colors focus:outline-none font-sans"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-copper hover:underline transition-all focus:outline-none font-sans"
             >
               Vaibhav Gupta
             </Link>
@@ -67,20 +67,20 @@ export function Header() {
               <nav className="flex items-center gap-4 sm:gap-5 font-mono text-xs uppercase tracking-wider">
                 <Link
                   href="/writing"
-                  className={`transition-colors focus:outline-none ${
+                  className={`transition-colors focus:outline-none text-sky-400 ${
                     pathname === "/writing" || pathname.startsWith("/writing/")
-                      ? "text-sky-400 font-bold"
-                      : "text-slate-400 hover:text-sky-400"
+                      ? "font-bold underline decoration-sky-400"
+                      : "hover:underline"
                   }`}
                 >
                   WRITING
                 </Link>
                 <Link
                   href="/about"
-                  className={`transition-colors focus:outline-none ${
+                  className={`transition-colors focus:outline-none text-sky-400 ${
                     pathname === "/about"
-                      ? "text-sky-400 font-bold"
-                      : "text-slate-400 hover:text-sky-400"
+                      ? "font-bold underline decoration-sky-400"
+                      : "hover:underline"
                   }`}
                 >
                   ABOUT
@@ -91,7 +91,7 @@ export function Header() {
                 onClick={handleOpen}
                 aria-label="Open navigation menu"
                 title="Menu"
-                className="p-1 text-slate-400 hover:text-copper transition-colors focus:outline-none"
+                className="p-1 text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
               >
                 <Menu className="w-4 h-4" />
               </button>
@@ -113,16 +113,30 @@ export function Header() {
 
           {/* Drawer Panel */}
           <div
-            className={`relative w-full max-w-xs bg-[#0b0f19] border-l border-slate-800 p-5 sm:p-6 flex flex-col justify-between h-full shadow-2xl z-10 transform-gpu transition-all duration-300 ease-out motion-reduce:transform-none ${
+            className={`relative w-full max-w-xs border-l border-slate-700/60 p-5 sm:p-6 flex flex-col justify-between h-full shadow-2xl z-10 transform-gpu transition-all duration-300 ease-out motion-reduce:transform-none overflow-hidden ${
               drawerVisible
                 ? "translate-x-0 opacity-100"
                 : "translate-x-6 opacity-0"
             }`}
           >
-            <div>
+            {/* Starry Night Drawer Background */}
+            <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
+              <div className="absolute inset-0 bg-[#0a0d14]" />
+              <div className="absolute inset-0 w-full h-full transform-gpu scale-105">
+                <img
+                  src="/images/starry-night-bg.jpg"
+                  alt=""
+                  className="w-full h-full object-cover filter blur-[10px] sm:blur-[14px] opacity-75"
+                />
+              </div>
+              <div className="absolute inset-0 bg-[#0a0d14]/75" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0a0d14]/85 via-[#0a0d14]/50 to-[#0a0d14]/90" />
+            </div>
+
+            <div className="relative z-10">
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                <span className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-800/80">
+                <span className="text-xs font-mono font-bold tracking-wider text-copper uppercase">
                   Navigation
                 </span>
                 <button
@@ -149,10 +163,10 @@ export function Header() {
                       key={link.name}
                       href={link.href}
                       onClick={handleClose}
-                      className={`block py-1 text-xs font-mono transition-colors ${
+                      className={`block py-1 text-xs font-mono transition-colors text-sky-400 ${
                         isActive
-                          ? "text-copper font-bold"
-                          : "text-slate-300 hover:text-white"
+                          ? "font-bold underline decoration-sky-400"
+                          : "hover:underline"
                       }`}
                     >
                       {link.name}
@@ -163,7 +177,7 @@ export function Header() {
             </div>
 
             {/* Drawer Footer */}
-            <div className="pt-4 border-t border-slate-800">
+            <div className="relative z-10 pt-4 border-t border-slate-800/80">
               <div className="flex items-center gap-4">
                 <a
                   href="https://github.com/vaibhv19"
@@ -171,7 +185,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   aria-label="GitHub"
                   title="GitHub"
-                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                  className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
                 >
                   <GithubIcon className="w-[18px] h-[18px]" />
                 </a>
@@ -181,7 +195,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
                   title="LinkedIn"
-                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                  className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
                 >
                   <LinkedinIcon className="w-[18px] h-[18px]" />
                 </a>
@@ -191,7 +205,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   aria-label="Bluesky"
                   title="Bluesky"
-                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                  className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
                 >
                   <BlueskyIcon className="w-[18px] h-[18px]" />
                 </a>
@@ -201,7 +215,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   aria-label="X (Twitter)"
                   title="X (Twitter)"
-                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                  className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
                 >
                   <XIcon className="w-[18px] h-[18px]" />
                 </a>
@@ -211,7 +225,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   aria-label="LeetCode"
                   title="LeetCode"
-                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                  className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
                 >
                   <LeetCodeIcon className="w-[18px] h-[18px]" />
                 </a>
@@ -219,7 +233,7 @@ export function Header() {
                   href="mailto:gvaibhav.business@gmail.com"
                   aria-label="Email"
                   title="Email"
-                  className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                  className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
                 >
                   <Mail className="w-[18px] h-[18px]" />
                 </a>

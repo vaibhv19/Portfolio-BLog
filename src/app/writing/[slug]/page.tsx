@@ -36,7 +36,7 @@ function renderFormattedText(text: string) {
         href={linkUrl}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
-        className="text-copper hover:text-copper-hover hover:underline transition-colors font-semibold"
+        className="text-sky-400 hover:underline transition-colors font-semibold"
       >
         {linkText}
       </a>

@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleBeyondTheBlackBox: WritingArticle = {
   slug: "making-ai-systems-less-blackbox",
   title: "Beyond the Black Box",
-  date: "2026-08-10",
+  date: "2026-07-26",
   excerpt: "Two Ways of Making AI Systems Less Black-Box",
   readingTime: "8 min read",
   content: [
@@ -11,7 +11,7 @@ export const articleBeyondTheBlackBox: WritingArticle = {
 
     "Treating model outputs as black-box magic makes production debugging impossible. Across [Phoenix](https://github.com/vaibhv19/Phoenix) and [Conclave](https://github.com/vaibhv19/conclave), I explored two complementary approaches to making AI application behavior observable, inspectable, and debuggable.",
 
-    "## 01. Phoenix: Observable Retrieval Decision Traces",
+    "## 1 / Phoenix: Observable Retrieval Decision Traces",
 
     "In [Phoenix](https://github.com/vaibhv19/Phoenix) (a self-healing hybrid RAG workspace), the focus was making the retrieval pipeline fully inspectable before context ever reaches the LLM.",
 
@@ -25,7 +25,7 @@ export const articleBeyondTheBlackBox: WritingArticle = {
 
     "When an answer in Phoenix is inaccurate, you don't have to guess what happened. You open the retrieval trace, check the BM25 and vector distance distributions, and immediately see whether the failure was caused by missing documentation, low reranker confidence, or poor query formulation.",
 
-    "## 02. Conclave: Inspectable Context Translation Trees",
+    "## 2 / Conclave: Inspectable Context Translation Trees",
 
     "In [Conclave](https://github.com/vaibhv19/conclave) (a multi-agent coordination system), the observability challenge shifted from document retrieval to prompt state evolution.",
 
@@ -35,7 +35,7 @@ export const articleBeyondTheBlackBox: WritingArticle = {
     "- Model-Specific Adaptation Telemetry: Logging how system prompts and tool definitions were adapted for specific providers (e.g. formatting differences between Ollama Llama-3 and OpenAI GPT-4).",
     "- Token Budget Usage: Tracking exact token consumption per agent hop to prevent context window truncation.",
 
-    "## 03. Software Observability vs Interpretability",
+    "## 3 / Software Observability vs Interpretability",
 
     "It's worth being clear about what this observability actually accomplishes. Neither Phoenix nor Conclave claims to solve 'AI interpretability' as a neural network research topic—we aren't inspecting hidden activation layers inside transformer weights.",
 

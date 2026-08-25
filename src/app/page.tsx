@@ -5,6 +5,11 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { PROJECTS } from "@/data/projects";
 import { WRITING_ARTICLES } from "@/data/writing";
 
+function formatDateDDMMYYYY(dateStr: string) {
+  const [year, month, day] = dateStr.split("-");
+  return `${day}/${month}/${year}`;
+}
+
 export default function HomePage() {
   // 1. Featured Work — Curated selection of featured projects
   const featuredProjects = PROJECTS.filter((p) => p.featured);
@@ -63,7 +68,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 aria-label="GitHub"
                 title="GitHub"
-                className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
               >
                 <GithubIcon className="w-[18px] h-[18px]" />
               </a>
@@ -73,7 +78,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 title="LinkedIn"
-                className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
               >
                 <LinkedinIcon className="w-[18px] h-[18px]" />
               </a>
@@ -83,7 +88,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 aria-label="Bluesky"
                 title="Bluesky"
-                className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
               >
                 <BlueskyIcon className="w-[18px] h-[18px]" />
               </a>
@@ -93,7 +98,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 aria-label="X (Twitter)"
                 title="X (Twitter)"
-                className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
               >
                 <XIcon className="w-[18px] h-[18px]" />
               </a>
@@ -103,7 +108,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 aria-label="LeetCode"
                 title="LeetCode"
-                className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
               >
                 <LeetCodeIcon className="w-[18px] h-[18px]" />
               </a>
@@ -111,7 +116,7 @@ export default function HomePage() {
                 href="mailto:gvaibhav.business@gmail.com"
                 aria-label="Email"
                 title="Email"
-                className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+                className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
               >
                 <Mail className="w-[18px] h-[18px]" />
               </a>
@@ -129,30 +134,34 @@ export default function HomePage() {
         </div>
 
         <div className="space-y-4">
-          {recentWriting.map((article) => (
-            <div key={article.slug} className="space-y-1 group">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-copper-hover transition-colors">
-                <Link href={`/writing/${article.slug}`}>
-                  {article.title}
-                </Link>
-              </h3>
-              {"date" in article && article.date && (
-                <div className="font-mono text-xs text-slate-400">
-                  {article.date}
-                </div>
-              )}
-              {"excerpt" in article && article.excerpt && (
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {article.excerpt}
-                </p>
-              )}
-            </div>
-          ))}
+          {recentWriting.map((article) => {
+            const articleIndex = WRITING_ARTICLES.indexOf(article);
+            const indexStr = `${WRITING_ARTICLES.length - articleIndex} /`;
+            return (
+              <div key={article.slug} className="space-y-1 group">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:underline transition-all">
+                  <Link href={`/writing/${article.slug}`}>
+                    {indexStr} {article.title}
+                  </Link>
+                </h3>
+                {"date" in article && article.date && (
+                  <div className="font-mono text-xs text-slate-400">
+                    <time dateTime={article.date}>{formatDateDDMMYYYY(article.date)}</time>
+                  </div>
+                )}
+                {"excerpt" in article && article.excerpt && (
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    {article.excerpt}
+                  </p>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom CTA */}
         <div className="pt-1">
-          <Link href="/writing" className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors">
+          <Link href="/writing" className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all">
             All Posts &rarr;
           </Link>
         </div>
@@ -169,7 +178,7 @@ export default function HomePage() {
         <ul className="space-y-4">
           {featuredProjects.map((project) => (
             <li key={project.id} className="space-y-1 group border-b border-slate-800/40 pb-3.5 last:border-b-0 last:pb-0">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-copper-hover transition-colors">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:underline transition-all">
                 {project.githubUrl || project.demoUrl ? (
                   <a
                     href={project.githubUrl || project.demoUrl}
@@ -191,7 +200,7 @@ export default function HomePage() {
 
         {/* Bottom CTA */}
         <div className="pt-1">
-          <Link href="/projects" className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors">
+          <Link href="/projects" className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all">
             View More &rarr;
           </Link>
         </div>

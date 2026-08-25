@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleRealTimeEvolved: WritingArticle = {
   slug: "the-evolution-of-my-real-time-architecture",
   title: "Real-Time, Evolved",
-  date: "2026-07-05",
+  date: "2026-06-02",
   excerpt: "The Evolution of My Real-Time Architecture",
   readingTime: "9 min read",
   content: [
@@ -11,7 +11,7 @@ export const articleRealTimeEvolved: WritingArticle = {
 
     "Comparing real-time architectures across [Conclave](https://github.com/vaibhv19/conclave) (a multi-agent streaming platform) and [Foundry](https://github.com/vaibhv19/foundry) (a high-concurrency event system) highlights where real-time engineering complexity actually lives: right at the boundary between low-level network transport framing and background business logic.",
 
-    "## 01. Transport Framing vs Application Business Logic",
+    "## 1 / Transport Framing vs Application Business Logic",
 
     "A common mistake is coupling WebSocket connection handlers directly to database persistence loops or heavy business logic. When an HTTP/WebSocket thread blocks on a slow database write or external API call, connection framing stalls, heartbeats drop, and client latency spikes.",
 

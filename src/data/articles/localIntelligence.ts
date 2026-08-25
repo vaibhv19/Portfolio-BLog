@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleLocalIntelligence: WritingArticle = {
   slug: "local-first-ai-why-i-kept-the-intelligence-close-to-the-application",
   title: "Local Intelligence",
-  date: "2026-08-05",
+  date: "2026-07-14",
   excerpt: "Why I Kept the Intelligence Close to the Application",
   readingTime: "9 min read",
   content: [
@@ -11,7 +11,7 @@ export const articleLocalIntelligence: WritingArticle = {
 
     "Across three different projects—[Conclave](https://github.com/vaibhv19/conclave), [Phoenix](https://github.com/vaibhv19/Phoenix), and [Check-Mate-Analyse](https://github.com/vaibhv19/check-mate-analyse)—I explored keeping compute, vector indexing, and intelligence processing as close to the application boundary as possible. However, 'local intelligence' means very different things depending on your system constraints.",
 
-    "## 01. Local Model Inference in Conclave",
+    "## 1 / Local Model Inference in Conclave",
 
     "In [Conclave](https://github.com/vaibhv19/conclave), local intelligence meant running open-weights LLMs directly on local host hardware using Ollama instances.",
 
@@ -22,28 +22,24 @@ export const articleLocalIntelligence: WritingArticle = {
 
     "The trade-off, of course, was hardware dependency: local throughput depends directly on available GPU and RAM, requiring strict token budget limits and model quantization.",
 
-    "## 02. Local Vector Indexing in Phoenix",
+    "## 2 / Local Vector Indexing in Phoenix",
 
-    "In [Phoenix](https://github.com/vaibhv19/Phoenix), local intelligence meant embedding PostgreSQL with pgvector directly within the application infrastructure.",
-
-    "Instead of relying on cloud-hosted vector databases, Phoenix handles vector similarity indexing, sparse BM25 scoring, and relational document storage within a self-contained local PostgreSQL instance.",
+    "In [Phoenix](https://github.com/vaibhv19/phoenix), relying on third-party SaaS vector databases meant index updates were subject to network latency and remote rate quotas. Moving vector storage to local PostgreSQL instances with `pgvector` enabled transactional vector updates alongside relational document metadata.",
 
     "Benefits of local vector infrastructure:",
     "- Deterministic Testing: Local vector indices can be spun up in Docker containers during automated CI integration tests.",
     "- Reduced Network Latency: Cosine similarity queries execute in sub-millisecond local database memory space rather than over WAN connections.",
     "- No Cloud Lock-In: Vector schema and index configurations remain fully portable.",
 
-    "## 03. Browser-Side Compute in Check-Mate-Analyse",
+    "## 3 / Browser-Side Compute in Check-Mate-Analyse",
 
-    "In [Check-Mate-Analyse](https://github.com/vaibhv19/check-mate-analyse), local intelligence meant shifting engine evaluation entirely to the user's web browser.",
-
-    "Rather than maintaining server infrastructure to compute chess tactical evaluations, the application compiles the Stockfish chess engine to WebAssembly (Wasm) and runs it inside client-side Web Workers.",
+    "In [CheckMate](https://github.com/vaibhv19/Check-Mate-Analyse), running chess engine evaluations on a backend server would have meant severe server costs under high concurrent user load. Compiling Stockfish 16 into WebAssembly allowed the engine to run entirely within the user's browser thread.",
 
     "Benefits of browser-side compute:",
     "- Zero Backend Compute Costs: Tens of thousands of position evaluations execute directly on client CPU threads.",
     "- Instant Feedback: Board evaluation updates instantly as user pieces move, bypassing server round-trip latency.",
 
-    "## 04. Evaluating Trade-offs: Local vs Remote Compute",
+    "## 4 / Evaluating Trade-offs: Local vs Remote Compute",
 
     "Local intelligence isn't a silver bullet. It introduces clear engineering trade-offs:",
 

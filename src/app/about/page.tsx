@@ -46,7 +46,7 @@ export default function AboutPage() {
             My focus gradually shifted from standalone scripts to distributed services, containerized sandboxes, and multi-agent AI pipelines. That evolution is something I explore in{" "}
             <Link
               href="/writing/engineering-journey"
-              className="text-copper hover:text-copper-hover hover:underline font-medium transition-colors"
+              className="text-copper hover:underline font-medium transition-all"
             >
               Engineering Journey
             </Link>
@@ -57,14 +57,14 @@ export default function AboutPage() {
             I prefer defining schemas and system boundaries before writing implementation logic—mostly because planning upfront saves me from pretending every design flaw was an unexpected surprise. Automated tests and meaningful Git history are part of that workflow too, covered in{" "}
             <Link
               href="/writing/how-i-work"
-              className="text-copper hover:text-copper-hover hover:underline font-medium transition-colors"
+              className="text-copper hover:underline font-medium transition-all"
             >
               How I Work
             </Link>
             , while the more personal influences behind how I approach things are explored in{" "}
             <Link
               href="/writing/identity-and-influences"
-              className="text-copper hover:text-copper-hover hover:underline font-medium transition-colors"
+              className="text-copper hover:underline font-medium transition-all"
             >
               Identity &amp; Influences
             </Link>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               aria-label="GitHub"
               title="GitHub"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <GithubIcon className="w-[18px] h-[18px]" />
             </a>
@@ -93,7 +93,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               title="LinkedIn"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <LinkedinIcon className="w-[18px] h-[18px]" />
             </a>
@@ -103,7 +103,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               aria-label="Bluesky"
               title="Bluesky"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <BlueskyIcon className="w-[18px] h-[18px]" />
             </a>
@@ -113,7 +113,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               aria-label="X (Twitter)"
               title="X (Twitter)"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <XIcon className="w-[18px] h-[18px]" />
             </a>
@@ -123,7 +123,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               aria-label="LeetCode"
               title="LeetCode"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <LeetCodeIcon className="w-[18px] h-[18px]" />
             </a>
@@ -131,7 +131,7 @@ export default function AboutPage() {
               href="mailto:gvaibhav.business@gmail.com"
               aria-label="Email"
               title="Email"
-              className="text-slate-400 hover:text-copper-hover transition-colors focus:outline-none"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
               <Mail className="w-[18px] h-[18px]" />
             </a>
@@ -147,22 +147,22 @@ export default function AboutPage() {
         <GithubContributionGraph />
       </section>
 
-      {/* Projects */}
+      {/* My Work */}
       <section className="space-y-3.5">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
-          PROJECTS
+          MY WORK
         </h2>
 
         <ul className="space-y-4">
           <li className="space-y-1">
             <div>
               <span className="text-base sm:text-lg font-bold text-slate-100 inline-flex items-baseline gap-2">
-                <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">01.</span>
+                <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">1 /</span>
                 <a
                   href="https://github.com/vaibhv19/Phoenix"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white hover:underline inline-flex items-center gap-1.5"
+                  className="text-slate-100 hover:underline transition-all inline-flex items-center gap-1.5"
                 >
                   <span>Phoenix</span>
                   <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper" />
@@ -176,12 +176,12 @@ export default function AboutPage() {
           <li className="space-y-1">
             <div>
               <span className="text-base sm:text-lg font-bold text-slate-100 inline-flex items-baseline gap-2">
-                <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">02.</span>
+                <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">2 /</span>
                 <a
                   href="https://github.com/vaibhv19/Vigil"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white hover:underline inline-flex items-center gap-1.5"
+                  className="text-slate-100 hover:underline transition-all inline-flex items-center gap-1.5"
                 >
                   <span>Vigil</span>
                   <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper" />
@@ -195,12 +195,12 @@ export default function AboutPage() {
           <li className="space-y-1">
             <div>
               <span className="text-base sm:text-lg font-bold text-slate-100 inline-flex items-baseline gap-2">
-                <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">03.</span>
+                <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">3 /</span>
                 <a
                   href="https://github.com/vaibhv19/Cairn"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white hover:underline inline-flex items-center gap-1.5"
+                  className="text-slate-100 hover:underline transition-all inline-flex items-center gap-1.5"
                 >
                   <span>Cairn</span>
                   <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper" />
@@ -216,7 +216,7 @@ export default function AboutPage() {
         <div className="pt-1">
           <Link
             href="/projects"
-            className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors"
+            className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all"
           >
             View More &rarr;
           </Link>
@@ -232,7 +232,7 @@ export default function AboutPage() {
         <div className="space-y-4">
           <div className="space-y-1">
             <h3 className="text-base sm:text-lg font-bold text-slate-100 flex items-baseline gap-2">
-              <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">01.</span>
+              <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">1 /</span>
               <span>Edunet Foundation &times; AICTE</span>
             </h3>
             <div className="text-xs sm:text-sm font-mono text-slate-400">
@@ -245,7 +245,7 @@ export default function AboutPage() {
 
           <div className="space-y-1">
             <h3 className="text-base sm:text-lg font-bold text-slate-100 flex items-baseline gap-2">
-              <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">02.</span>
+              <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">2 /</span>
               <span>IBM Collaborative Project-Based Experiential Learning (PBEL)</span>
             </h3>
             <div className="text-xs sm:text-sm font-mono text-slate-400">
@@ -260,7 +260,7 @@ export default function AboutPage() {
         <div className="pt-1">
           <Link
             href="/experience"
-            className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors"
+            className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all"
           >
             View More &rarr;
           </Link>
@@ -288,7 +288,7 @@ export default function AboutPage() {
         <div className="pt-1">
           <Link
             href="/education"
-            className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors"
+            className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all"
           >
             View More &rarr;
           </Link>
@@ -303,36 +303,36 @@ export default function AboutPage() {
 
         <ul className="space-y-2">
           <li className="flex items-baseline gap-2">
-            <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">01.</span>
+            <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">1 /</span>
             <a
               href="/certificates/IFACET%20IITK.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-100 hover:text-white hover:underline transition-colors inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
+              className="text-slate-100 hover:underline transition-all inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
             >
               <span>IIT Kanpur &mdash; Object-Oriented Programming &amp; C++</span>
               <ExternalLink className="w-3.5 h-3.5 text-copper flex-shrink-0" />
             </a>
           </li>
           <li className="flex items-baseline gap-2">
-            <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">02.</span>
+            <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">2 /</span>
             <a
               href="/certificates/The%20Joy%20of%20Computing%20using%20Python.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-100 hover:text-white hover:underline transition-colors inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
+              className="text-slate-100 hover:underline transition-all inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
             >
               <span>NPTEL &mdash; The Joy of Computing Using Python</span>
               <ExternalLink className="w-3.5 h-3.5 text-copper flex-shrink-0" />
             </a>
           </li>
           <li className="flex items-baseline gap-2">
-            <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">03.</span>
+            <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">3 /</span>
             <a
               href="/certificates/Certificate%20-%20E%26ICT%20Academy%2C%20IIT%20Kanpur.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-100 hover:text-white hover:underline transition-colors inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
+              className="text-slate-100 hover:underline transition-all inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
             >
               <span>E&amp;ICT Academy, IIT Kanpur &mdash; Certification</span>
               <ExternalLink className="w-3.5 h-3.5 text-copper flex-shrink-0" />
@@ -343,7 +343,7 @@ export default function AboutPage() {
         <div className="pt-1">
           <Link
             href="/certifications"
-            className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors"
+            className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all"
           >
             View More &rarr;
           </Link>
@@ -357,12 +357,12 @@ export default function AboutPage() {
         </h2>
 
         <div className="flex items-baseline gap-2">
-          <span className="font-mono text-xs sm:text-sm text-slate-500 font-bold">01.</span>
+          <span className="font-mono text-xs sm:text-sm text-slate-100 font-bold">1 /</span>
           <a
             href="/patent/452200-001%206853%20.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-100 hover:text-white hover:underline transition-colors inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
+            className="text-slate-100 hover:underline transition-all inline-flex items-center gap-1.5 text-sm sm:text-base font-medium"
           >
             <span>REAL-TIME ANALYTICS DEVICE FOR E-COMMERCE</span>
             <ExternalLink className="w-3.5 h-3.5 text-copper flex-shrink-0" />
@@ -372,7 +372,7 @@ export default function AboutPage() {
         <div className="pt-1">
           <Link
             href="/intellectual-property"
-            className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors"
+            className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all"
           >
             View More &rarr;
           </Link>
@@ -387,31 +387,31 @@ export default function AboutPage() {
 
         <ol className="space-y-2 font-mono text-xs sm:text-sm text-slate-400">
           <li className="flex items-start gap-2.5">
-            <span className="text-slate-500 font-bold">01.</span>
+            <span className="text-slate-200 font-bold">1 /</span>
             <span className="text-slate-200 font-sans text-sm sm:text-base">
               Built 11+ Software Projects Across AI, Distributed Systems &amp; Full-Stack Development
             </span>
           </li>
           <li className="flex items-start gap-2.5">
-            <span className="text-slate-500 font-bold">02.</span>
+            <span className="text-slate-200 font-bold">2 /</span>
             <span className="text-slate-200 font-sans text-sm sm:text-base">
               Completed 150+ Data Structures &amp; Algorithms Problems
             </span>
           </li>
           <li className="flex items-start gap-2.5">
-            <span className="text-slate-500 font-bold">03.</span>
+            <span className="text-slate-200 font-bold">3 /</span>
             <span className="text-slate-200 font-sans text-sm sm:text-base">
               Semi-Finalist &mdash; Yukti NIR Startup Challenge Hackathon 2025
             </span>
           </li>
           <li className="flex items-start gap-2.5">
-            <span className="text-slate-500 font-bold">04.</span>
+            <span className="text-slate-200 font-bold">4 /</span>
             <span className="text-slate-200 font-sans text-sm sm:text-base">
               NPTEL Elite Certification
             </span>
           </li>
           <li className="flex items-start gap-2.5">
-            <span className="text-slate-500 font-bold">05.</span>
+            <span className="text-slate-200 font-bold">5 /</span>
             <span className="text-slate-200 font-sans text-sm sm:text-base">
               IBM PBEL &mdash; Gold Category Assessment
             </span>

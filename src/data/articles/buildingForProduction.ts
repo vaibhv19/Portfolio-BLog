@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleBuildingForProduction: WritingArticle = {
   slug: "production-changed-how-i-build",
   title: "Building for Production",
-  date: "2026-05-15",
+  date: "2026-04-12",
   excerpt: "What Building for Production Changed About How I Build",
   readingTime: "11 min read",
   content: [
@@ -11,17 +11,17 @@ export const articleBuildingForProduction: WritingArticle = {
 
     "Building and deploying [Trajectory](https://github.com/vaibhv19/trajectory)—a full-stack application deployed on AWS EC2, AWS RDS (PostgreSQL), and Amazon S3 using Docker Compose, Nginx reverse proxying, and GitHub Actions CI/CD pipelines—fundamentally altered how I approach software development.",
 
-    "## 01. Codified Environments over Manual Setup",
+    "## 1 / Codified Environments over Manual Setup",
 
-    "Before experiencing production deployment, environment setup was often informal. Deploying [Trajectory](https://github.com/vaibhv19/trajectory) forced me to codify environment requirements completely:",
+    "On `localhost`, setting up database schemas, environment variables, and dependencies is done manually. In production, manual steps lead to deployment failures and environment drift.",
 
     "- Dockerfiles & Compose Manifests: Replacing manual server setup with containerized manifests that define exact runtime images, environment variables, dependencies, and network ports.",
     "- Nginx Reverse Proxying: Configuring SSL termination, CORS headers, gzip compression, and static asset caching explicitly.",
     "- S3 Asset Offloading: Decoupling file uploads from local container file systems to stateless S3 object storage.",
 
-    "## 02. CI/CD as an Engineering Guardrail",
+    "## 2 / CI/CD as an Engineering Guardrail",
 
-    "Setting up GitHub Actions CI/CD pipelines shifted testing from an optional manual step to an automated deployment gatekeeper.",
+    "Manual deployments are error-prone. Integrating GitHub Actions CI/CD pipelines enforced automated testing, container builds, and deployment verification before code merged into production.",
 
     "Every commit pushed to main branches triggers automated pipeline workflows:",
 
@@ -30,7 +30,7 @@ export const articleBuildingForProduction: WritingArticle = {
     "3. Container Build & Push: Building container images and pushing them to registry repositories.",
     "4. Zero-Downtime Deployment: Triggering remote SSH deployment scripts on production servers.",
 
-    "## 03. How Production Changed Local Habits",
+    "## 3 / How Production Changed Local Habits",
 
     "Experiencing production operations changed how I write code locally from day one:",
 

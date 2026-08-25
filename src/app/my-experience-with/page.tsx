@@ -26,14 +26,15 @@ export default function ExperienceWithIndexPage() {
       {/* Editorial Index List */}
       <div className="divide-y divide-slate-800/60">
         {EXPERIENCE_WITH_ARTICLES.map((article, idx) => {
-          const indexStr = (idx + 1).toString().padStart(2, "0");
+          const indexStr = `${idx + 1} /`;
           return (
             <div key={article.slug} className="py-5 space-y-2 group">
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-xs text-amber-400/80 font-bold">{indexStr}</span>
-                  <h2 className="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
-                    <Link href={`/my-experience-with/${article.slug}`}>{article.title}</Link>
+                  <h2 className="text-lg font-bold text-slate-100 group-hover:underline transition-all">
+                    <Link href={`/my-experience-with/${article.slug}`}>
+                      {indexStr} {article.title}
+                    </Link>
                   </h2>
                 </div>
                 <span className="text-[10px] font-mono uppercase text-slate-500">{article.category}</span>

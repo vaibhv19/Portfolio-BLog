@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleWhyIChoseToBeAnEngineer: WritingArticle = {
   slug: "why-i-chose-to-become-an-engineer",
   title: "Why I Chose to Become an Engineer",
-  date: "2026-08-24",
+  date: "2026-08-17",
   excerpt: "A reflection on curiosity, problem-solving, building things from first principles, and why turning abstract ideas into working software felt like the right path.",
   readingTime: "6 min read",
   content: [
@@ -11,19 +11,13 @@ export const articleWhyIChoseToBeAnEngineer: WritingArticle = {
 
     "Growing up, I was naturally drawn to systems where cause and effect were deterministic. There was a unique satisfaction in taking a complex mechanism, breaking it down into basic components, and figuring out the rules governing its behavior.",
 
-    "## 01. Software as a First-Principles Canvas",
+    "## 1 / Software as a First-Principles Canvas",
+    "Computer science appealed to me because software is one of the few fields where complete systems can be designed, tested, and iterated entirely from first principles. Unlike physical infrastructure with high material costs, software allows instant experimentation: an idea can be transformed into executable code, benchmarked, debugged, and refined within hours.",
 
-    "When I discovered programming, that curiosity found its natural medium. Software engineering offered a unique canvas: you could design a system from first principles, codify its rules in logic, and immediately watch an abstract idea transform into something functional.",
+    "## 2 / The Intersection of Logic & Composition",
+    "What makes systems engineering compelling is that technical correctness alone is insufficient. Clean code requires structured layout, intuitive interfaces, observable metrics, and maintainable abstractions. Designing distributed services or interactive tools requires balancing computational efficiency with human clarity.",
 
-    "Unlike physical engineering, where raw materials and hardware constraints limit rapid experimentation, software lets you build, test, break, and rebuild complex structures in real time. It bridges the gap between pure abstract logic and tangible utility.",
-
-    "## 02. The Intersection of Logic & Composition",
-
-    "To me, engineering sits at the intersection of rigorous logic and creative composition. Building software isn't just about getting syntax to compile; it's about architectural balance, choosing the right abstractions, and designing systems that don't fall apart when production reality sets in.",
-
-    "Designing a clean API boundary or structuring a multi-threaded queue requires the same eye for structure as composing a layout or writing prose. When a system is well engineered, its internal mechanics feel clear and intuitive.",
-
-    "## 03. Embracing Failure as a Core Feedback Mechanism",
+    "## 3 / Embracing Failure as a Core Feedback Mechanism",
 
     "Along the way, the most valuable lesson has been learning to treat failure as feedback. A failing test, a concurrency race condition, or an unexpected edge-case exception isn't a disaster—it's an invitation to understand the system at a deeper level.",
 

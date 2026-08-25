@@ -14,7 +14,7 @@ export function Navbar() {
 
   const mainNavItems = [
     { name: "Home", href: "/" },
-    { name: "Projects", href: "/projects" },
+    { name: "My Work", href: "/projects" },
     { name: "Skills", href: "/skills" },
     { name: "Writing", href: "/writing" },
     { name: "About", href: "/about" },
@@ -57,10 +57,10 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-medium transition-colors py-1 ${
+                className={`font-medium transition-colors py-1 text-sky-400 ${
                   isActive
-                    ? "text-sky-300 border-b border-sky-400"
-                    : "text-slate-400 hover:text-slate-100"
+                    ? "font-bold underline decoration-sky-400"
+                    : "hover:underline"
                 }`}
               >
                 {item.name}
@@ -113,7 +113,7 @@ export function Navbar() {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-slate-400 hover:text-white focus:outline-none"
+            className="p-1.5 text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

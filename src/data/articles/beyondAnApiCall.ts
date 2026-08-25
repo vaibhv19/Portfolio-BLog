@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleBeyondAnApiCall: WritingArticle = {
   slug: "what-changes-when-the-ai-stops-being-a-single-api-call",
   title: "Beyond an API Call",
-  date: "2026-07-28",
+  date: "2026-07-01",
   excerpt: "What Changes When the AI Stops Being a Single API Call",
   readingTime: "10 min read",
   content: [
@@ -11,24 +11,26 @@ export const articleBeyondAnApiCall: WritingArticle = {
 
     "Moving from AI-assisted features to true AI software systems changes every architectural layer. As requirements evolve from simple text completion to multi-provider orchestration ([Conclave](https://github.com/vaibhv19/conclave)) and transparent hybrid retrieval ([Phoenix](https://github.com/vaibhv19/Phoenix)), the model stops being the whole application—it becomes a single probabilistic component inside a larger deterministic architecture.",
 
-    "## 01. State Management & Context Budget Constraints",
+    "## 1 / State Management & Context Budget Constraints",
 
     "In a single API call, state is ephemeral: you send a prompt, get a response, and discard the context. When building AI systems, state management becomes an explicit engineering constraint.",
 
     "- Context Window Budgets: Prompts can't grow indefinitely. Systems must implement sliding window context retention, summary compaction, or explicit context pruning.",
-    "- Canonical State Data Models: When coordinating work across multiple model providers, context state must be stored in a provider-neutral schema and dynamically translated for specific API formats.",
+    "## 1 / State Management & Context Budget Constraints",
 
-    "## 02. Beyond Raw Vector Search: Hybrid Retrieval & Reranking",
+    "In [Conclave](https://github.com/vaibhv19/conclave) (a multi-model agent debate platform), moving beyond a single API call required building explicit state management for prompt context.",
 
-    "Early RAG implementations relied exclusively on raw dense vector embeddings. But in production documentation systems like [Phoenix](https://github.com/vaibhv19/Phoenix), raw vector search frequently fails on exact keyword queries—like specific error codes, exact class names, or function identifiers.",
+    "Instead of sending stateless request strings, Conclave maintains a canonical state machine that tracks conversation history, agent roles, and turn-by-turn debate transcripts.",
 
-    "Building a real retrieval system requires combining multiple search paradigms:",
+    "## 2 / Beyond Raw Vector Search: Hybrid Retrieval & Reranking",
 
-    "1. Sparse BM25 Keyword Search: Ensuring exact string matches and technical identifiers are indexed reliably.",
-    "2. Dense Embedding Search: Capturing semantic similarity across conceptual document sections.",
-    "3. Cross-Encoder Reranking: Running candidate results through a specialized reranker model to evaluate true relevance before constructing the final prompt context.",
+    "In [Phoenix](https://github.com/vaibhv19/Phoenix) (a hybrid RAG documentation workspace), moving beyond a single API call meant building a multi-stage retrieval pipeline.",
 
-    "## 03. Explicit Failure Handling & Fallback Routing",
+    "## 3 / Explicit Failure Handling & Fallback Routing",
+
+    "In production, LLM APIs fail—endpoints time out, rate limits get exceeded, model outputs hallucinate, and structured JSON parsing fails.",
+
+    "## 4 / Architectural Shifts Summary",
 
     "When an API call is treated as a simple feature, error handling consists of wrapping the network request in a basic try/catch block. In AI systems engineering, model failure is expected and must be handled gracefully within system control flow:",
 
@@ -36,7 +38,7 @@ export const articleBeyondAnApiCall: WritingArticle = {
     "- Provider Fallback Routing: If a primary local Ollama model fails or times out, the system routes the context payload to a secondary fallback provider.",
     "- Clarification Prompts: When document retrieval uncertainty remains high, the system prompts the user for clarification rather than passing low-confidence context to the LLM.",
 
-    "## 04. Observability & Telemetry Harnesses",
+    "## Observability & Telemetry Harnesses",
 
     "When AI stops being a single API call, observability becomes non-negotiable. Every retrieval score, vector distance, prompt mutation, and tool invocation must emit inspectable telemetry logs.",
 

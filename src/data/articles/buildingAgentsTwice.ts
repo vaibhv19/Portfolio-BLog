@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleBuildingAgentsTwice: WritingArticle = {
   slug: "building-multi-agent-systems-twice-from-context-unification-to-agent-evaluation",
   title: "Building Agents Twice",
-  date: "2026-08-15",
+  date: "2026-08-04",
   excerpt: "From Context Unification to Agent Evaluation",
   readingTime: "9 min read",
   content: [
@@ -11,9 +11,13 @@ export const articleBuildingAgentsTwice: WritingArticle = {
 
     "I built AI agent systems twice—first in [Conclave](https://github.com/vaibhv19/conclave) to tackle cooperative orchestration, and later in [Vigil](https://github.com/vaibhv19/Vigil) to tackle safe evaluation and containment. Comparing these two projects highlights how the core problem inverts when you move from orchestration to evaluation.",
 
-    "## 01. Conclave: The Cooperative Orchestration Problem",
-
-    "In [Conclave](https://github.com/vaibhv19/conclave), the main challenge was orchestration: getting diverse local Ollama models and cloud LLMs to cooperate on a task without losing context, dropping messages, or hallucinating into a loop.",
+    "## 1 / Conclave: The Cooperative Orchestration Problem",
+    "In [Conclave](https://github.com/vaibhv19/conclave)—a multi-model agent debate workspace—the primary challenge was context unification and turn orchestration.",
+    "## 2 / Vigil: The Evaluation & Verification Problem",
+    "In [Vigil](https://github.com/vaibhv19/vigil)—an AI agent safety harness—the challenge shifted from context orchestration to runtime verification.",
+    "## 3 / Orchestration vs Evaluation: Key Contrasts",
+    "Comparing Conclave and Vigil reveals two distinct sides of AI agent engineering:",
+    "## 4 / Honest Safety Framing",
 
     "The core architectural question in Conclave was: *How do we enable multiple agents to share state and coordinate work smoothly?*",
 

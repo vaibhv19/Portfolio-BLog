@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleWhyOneBackendIsntEnough: WritingArticle = {
   slug: "why-some-of-my-projects-need-more-than-one-backend",
   title: "Why One Backend Isn't Enough",
-  date: "2026-06-10",
+  date: "2026-04-28",
   excerpt: "Why Some of My Projects Need More Than One Backend",
   readingTime: "9 min read",
   content: [
@@ -11,7 +11,7 @@ export const articleWhyOneBackendIsntEnough: WritingArticle = {
 
     "However, as system requirements evolved across [Phoenix](https://github.com/vaibhv19/Phoenix) and [Conclave](https://github.com/vaibhv19/conclave), separating platform operations from specialized AI retrieval and model inference across polyglot microservices became necessary.",
 
-    "## 01. The Case for Polyglot Architecture",
+    "## 1 / The Case for Polyglot Architecture",
 
     "In [Phoenix](https://github.com/vaibhv19/Phoenix) and [Conclave](https://github.com/vaibhv19/conclave), different backend services had fundamentally different runtime requirements:",
 
@@ -22,7 +22,7 @@ export const articleWhyOneBackendIsntEnough: WritingArticle = {
 
     "By splitting specialized AI processing into a dedicated FastAPI microservice, each backend service could leverage its runtime ecosystem's core strengths.",
 
-    "## 02. Operational Costs & Complexity",
+    "## 2 / Operational Costs & Complexity",
 
     "It is crucial to recognize that multi-backend architecture is not free. Splitting services introduces explicit operational overhead:",
 

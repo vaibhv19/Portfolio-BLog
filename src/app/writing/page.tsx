@@ -42,7 +42,7 @@ export default function WritingArchivePage() {
         <div className="pt-1">
           <Link
             href="/my-experience-with"
-            className="text-xs font-mono text-copper hover:text-copper-hover hover:underline transition-colors"
+            className="text-xs font-mono text-copper hover:underline transition-all"
           >
             Explore Technology I’ve Worked With &rarr;
           </Link>
@@ -52,7 +52,7 @@ export default function WritingArchivePage() {
       {/* Chronological Clean Archive List grouped by Month */}
       <div className="space-y-6">
         {articles.map((article, idx) => {
-          const indexStr = (articles.length - idx).toString().padStart(2, "0");
+          const indexStr = `${articles.length - idx} /`;
           const currentMonth = article.date.substring(0, 7);
           const prevMonth = idx > 0 ? articles[idx - 1].date.substring(0, 7) : null;
           const isNewMonthGroup = idx === 0 || currentMonth !== prevMonth;
@@ -69,9 +69,9 @@ export default function WritingArchivePage() {
               )}
 
               <article className="space-y-1.5 group">
-                <h2 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-copper-hover transition-colors">
+                <h2 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:underline transition-all">
                   <Link href={`/writing/${article.slug}`}>
-                    {indexStr} / {article.title}
+                    {indexStr} {article.title}
                   </Link>
                 </h2>
 

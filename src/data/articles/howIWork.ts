@@ -13,7 +13,7 @@ export const articleHowIWork: WritingArticle = {
 
     "Over time, building increasingly complex projects forced me to abandon reactive coding in favor of a structured, deliberate workflow centered on upfront planning, incremental execution, thorough verification, and clean documentation.",
 
-    "## 01. The Phase-Driven Engineering Workflow",
+    "## 1 / The Phase-Driven Engineering Workflow",
 
     "My current engineering process follows a disciplined progression across seven explicit phases:",
 
@@ -23,13 +23,13 @@ export const articleHowIWork: WritingArticle = {
 
     "During implementation, I respect module dependencies and isolate work within the active phase. Large systems are best approached by breaking execution into milestone-driven tasks. Each milestone is executed with focused commit discipline: small, atomic commits accompanied by technical commit logs that make regression tracking straightforward rather than a forensic nightmare.",
 
-    "## 02. Moving Beyond 'End-of-Day' Commit Habits",
+    "## 2 / Moving Beyond 'End-of-Day' Commit Habits",
 
     "One of the most important shifts in my habits was changing how I interact with version control. Earlier, I treated git as a glorified backup mechanism—somewhere to dump code at the end of the day. Today, I view version control as an active communication and debugging tool.",
 
     "Each commit should represent a single logical unit of work with clear boundary guarantees. If a regression appears three weeks later, a clean git history allows me to bisect issues deterministically instead of sifting through thousands of unorganized lines. Branching strategies are kept structured: feature branches isolate experimentation, while main branches reflect verified, building code.",
 
-    "## 03. Verification as a Non-Negotiable Step",
+    "## 3 / Verification as a Non-Negotiable Step",
 
     "A task is never complete simply because the code compiles or an HTTP endpoint returns a 200 status code on a happy path. Verification is an integral part of implementation, not something you delegate to users in production.",
 

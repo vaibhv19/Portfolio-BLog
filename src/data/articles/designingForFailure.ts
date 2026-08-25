@@ -3,7 +3,7 @@ import { WritingArticle } from "../writing";
 export const articleDesigningForFailure: WritingArticle = {
   slug: "when-model-answered-isnt-enough",
   title: "Designing for Failure",
-  date: "2026-07-18",
+  date: "2026-06-18",
   excerpt: "When “The Model Answered” Isn’t Enough: Designing for Failure",
   readingTime: "8 min read",
   content: [
@@ -18,11 +18,13 @@ export const articleDesigningForFailure: WritingArticle = {
 
     "Across [Phoenix](https://github.com/vaibhv19/Phoenix) and [Vigil](https://github.com/vaibhv19/Vigil), I focused on surrounding probabilistic model outputs with inspectable validation boundaries and deterministic failure handling.",
 
-    "## 01. Phoenix: Handling Retrieval Uncertainty & Weak Search",
+    "## 1 / Phoenix: Handling Retrieval Uncertainty & Weak Search",
 
     "In [Phoenix](https://github.com/vaibhv19/Phoenix), designing for failure meant acknowledging that document retrieval will not always produce high-confidence matches.",
 
     "Instead of blindly passing weak document snippets to the LLM, Phoenix implements multi-stage validation:",
+    "## 1 / Phoenix: Handling Retrieval Uncertainty & Weak Search",
+    "In [Phoenix](https://github.com/vaibhv19/phoenix)—a hybrid RAG documentation workspace—I built explicit handling for retrieval failures.",
 
     "- Low-Confidence Detection: Evaluating BM25 and vector distance scores against strict threshold boundaries.",
     "- Automated Query Rewriting: If initial confidence scores fall below threshold, Phoenix automatically reformulates the search query to improve retrieval precision.",
@@ -31,9 +33,8 @@ export const articleDesigningForFailure: WritingArticle = {
 
     "By catching weak retrieval early, Phoenix prevents the LLM from generating confident hallucinations based on poor context.",
 
-    "## 02. Vigil: Deterministic Verification of Agent Side-Effects",
-
-    "In [Vigil](https://github.com/vaibhv19/Vigil), designing for failure meant evaluating AI agent tool execution inside isolated environments.",
+    "## 2 / Vigil: Deterministic Verification of Agent Side-Effects",
+    "In [Vigil](https://github.com/vaibhv19/vigil)—an AI agent evaluation harness—the primary failure risk was unexpected system side-effects during autonomous execution.",
 
     "When an AI agent requests tool execution—such as modifying a database record, creating a file, or running a shell script—we cannot assume the agent executed the task correctly simply because it claims it did in text output.",
 
@@ -43,7 +44,7 @@ export const articleDesigningForFailure: WritingArticle = {
     "- Programmatic Pre/Post Assertions: Running state checks before and after tool execution (e.g. verifying file creation, inspecting database diffs, checking exit codes).",
     "- Banned Command & Anomaly Detection: Intercepting system calls to catch unauthorized commands, resource loops, or process leaks before side-effects hit production systems.",
 
-    "## 03. Honest System Claims",
+    "## 3 / Honest System Claims",
 
     "Designing for failure requires technical honesty about system capabilities. Neither Phoenix nor Vigil claims to eliminate model hallucinations entirely. What they provide is inspectable validation boundaries, fallback routing, and deterministic runtime containment.",
 

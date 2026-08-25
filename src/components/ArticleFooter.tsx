@@ -97,7 +97,7 @@ export function ArticleFooter({
               {nextArticle ? (
                 <Link
                   href={`/writing/${nextArticle.slug}`}
-                  className="text-sm font-bold text-copper hover:text-copper-hover hover:underline transition-colors block"
+                  className="text-sm font-bold text-copper hover:underline transition-all block"
                 >
                   &lt;&lt; {nextArticle.title}
                 </Link>
@@ -109,7 +109,7 @@ export function ArticleFooter({
               {prevArticle ? (
                 <Link
                   href={`/writing/${prevArticle.slug}`}
-                  className="text-sm font-bold text-copper hover:text-copper-hover hover:underline transition-colors block"
+                  className="text-sm font-bold text-copper hover:underline transition-all block"
                 >
                   {prevArticle.title} &gt;&gt;
                 </Link>
@@ -139,7 +139,7 @@ export function ArticleFooter({
                   rel="noopener noreferrer"
                   aria-label={`Share on ${platform.name}`}
                   title={`Share on ${platform.name}`}
-                  className="text-slate-400 hover:text-copper transition-colors focus:outline-none"
+                  className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
                 >
                   <IconComponent className="w-4 h-4" />
                 </a>
@@ -152,7 +152,7 @@ export function ArticleFooter({
         <div>
           <button
             onClick={scrollToTop}
-            className="text-xs font-mono text-slate-400 hover:text-copper transition-colors cursor-pointer focus:outline-none"
+            className="text-xs font-mono text-slate-400 hover:text-sky-400 transition-colors cursor-pointer focus:outline-none"
           >
             &#x2303; Back to Top
           </button>
