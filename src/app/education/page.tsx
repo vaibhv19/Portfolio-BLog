@@ -43,13 +43,7 @@ export default function EducationPage() {
               </div>
             </div>
 
-            {/* Skills */}
-            {edu.skills && edu.skills.length > 0 && (
-              <div className="pt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-mono text-slate-500">
-                <span className="text-slate-400 font-semibold">Skills:</span>
-                <span>{edu.skills.join(" · ")}</span>
-              </div>
-            )}
+
           </div>
         ))}
       </div>

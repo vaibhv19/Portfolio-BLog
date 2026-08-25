@@ -42,13 +42,6 @@ export default function IntellectualPropertyPage() {
                     <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-copper flex-shrink-0" />
                   </a>
                 </h2>
-
-                <div className="text-xs font-mono text-slate-400">
-                  Application / Registration No:{" "}
-                  <span className="text-slate-200 font-semibold">
-                    {patent.applicationNumber}
-                  </span>
-                </div>
               </div>
 
               {/* Technical Field & Description */}
