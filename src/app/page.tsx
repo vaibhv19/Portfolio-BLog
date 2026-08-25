@@ -142,7 +142,7 @@ export default function HomePage() {
 
         {/* Bottom CTA */}
         <div className="pt-1">
-          <Link href="/writing" className="text-xs font-mono text-stone-400 hover:text-copper-hover hover:underline inline-block transition-colors">
+          <Link href="/writing" className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors">
             All Posts &rarr;
           </Link>
         </div>
@@ -160,9 +160,9 @@ export default function HomePage() {
           {featuredProjects.map((project) => (
             <li key={project.id} className="space-y-1 group border-b border-slate-800/40 pb-3.5 last:border-b-0 last:pb-0">
               <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-copper-hover transition-colors">
-                {project.demoUrl ? (
+                {project.githubUrl || project.demoUrl ? (
                   <a
-                    href={project.demoUrl}
+                    href={project.githubUrl || project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5"
@@ -181,7 +181,7 @@ export default function HomePage() {
 
         {/* Bottom CTA */}
         <div className="pt-1">
-          <Link href="/projects" className="text-xs font-mono text-stone-400 hover:text-copper-hover hover:underline inline-block transition-colors">
+          <Link href="/projects" className="text-xs font-mono text-sky-400 hover:text-copper-hover hover:underline inline-block transition-colors">
             View More &rarr;
           </Link>
         </div>

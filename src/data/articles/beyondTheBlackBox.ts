@@ -7,9 +7,9 @@ export const articleBeyondTheBlackBox: WritingArticle = {
   excerpt: "Two Ways of Making AI Systems Less Black-Box",
   readingTime: "8 min read",
   content: [
-    "The primary issue with integrating Large Language Models into enterprise software applications isn't raw capability—it is opacity. When a traditional software module fails, stack traces, database query logs, and debugger breakpoints point directly to the line of code responsible. When an AI pipeline returns an unexpected or hallucinated answer, traditional logging provides zero insight into why that specific output was generated.",
+    "The biggest headache when integrating Large Language Models into production software isn't raw capability—it's opacity. When a traditional software module crashes, stack traces, query logs, and debugger breakpoints point directly to the line of code responsible. When an AI pipeline returns a bizarre answer, standard logging leaves you staring at a successful HTTP 200 payload with zero clue why that specific output was generated.",
 
-    "Treating model outputs as black-box responses makes production debugging impossible. Across [Phoenix](https://github.com/vaibhv19/Phoenix) and [Conclave](https://github.com/vaibhv19/conclave), I explored two complementary approaches to making AI application behavior observable, inspectable, and debuggable.",
+    "Treating model outputs as black-box magic makes production debugging impossible. Across [Phoenix](https://github.com/vaibhv19/Phoenix) and [Conclave](https://github.com/vaibhv19/conclave), I explored two complementary approaches to making AI application behavior observable, inspectable, and debuggable.",
 
     "## 01. Phoenix: Observable Retrieval Decision Traces",
 
@@ -23,7 +23,7 @@ export const articleBeyondTheBlackBox: WritingArticle = {
     "- Query Rewriting Traces: When initial retrieval confidence falls below a configured threshold, Phoenix attempts automated query rewriting and logs the before/after query mutations.",
     "- Fallback Orchestration Telemetry: Exposing exact decision branches when switching between primary and secondary retrieval sources.",
 
-    "When an answer in Phoenix is inaccurate, the developer doesn't guess what happened. They open the retrieval trace, check the BM25 and vector distance distributions, and immediately see whether the failure was caused by missing documentation, low reranker confidence, or poor query formulation.",
+    "When an answer in Phoenix is inaccurate, you don't have to guess what happened. You open the retrieval trace, check the BM25 and vector distance distributions, and immediately see whether the failure was caused by missing documentation, low reranker confidence, or poor query formulation.",
 
     "## 02. Conclave: Inspectable Context Translation Trees",
 
@@ -37,10 +37,10 @@ export const articleBeyondTheBlackBox: WritingArticle = {
 
     "## 03. Software Observability vs Interpretability",
 
-    "It is important to clarify what this observability accomplishes. Neither Phoenix nor Conclave claims to solve 'AI interpretability' as a neural network research topic—we are not inspecting hidden activation layers inside transformer weights.",
+    "It's worth being clear about what this observability actually accomplishes. Neither Phoenix nor Conclave claims to solve 'AI interpretability' as a neural network research topic—we aren't inspecting hidden activation layers inside transformer weights.",
 
     "Instead, these systems solve **software observability around model behavior**. By treating prompt context, retrieval distributions, reranking scores, and tool invocations as observable software events, we turn probabilistic AI pipelines into inspectable engineering systems.",
 
-    "Making AI less black-box is non-negotiable for production software. Observability must be treated as a core feature from day one."
+    "Making AI less black-box is non-negotiable for production software. Observability must be built into the system architecture from day one rather than tacked on after a mystery failure in production."
   ]
 };

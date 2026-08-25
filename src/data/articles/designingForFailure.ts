@@ -7,9 +7,9 @@ export const articleDesigningForFailure: WritingArticle = {
   excerpt: "When “The Model Answered” Isn’t Enough: Designing for Failure",
   readingTime: "8 min read",
   content: [
-    "A dangerous antipattern in modern software development is assuming that receiving an HTTP 200 OK response from a language model API equals task success.",
+    "A common antipattern in AI software development is assuming that receiving an HTTP 200 OK response from a language model API equals task success.",
 
-    "Unlike traditional deterministic functions—where valid inputs produce predictable outputs according to strict algorithm rules—LLMs are probabilistic components. A model can return a syntactically valid HTTP 200 response while hallucinating facts, missing retrieval constraints, violating safety policies, or generating broken code.",
+    "Unlike traditional deterministic functions—where valid inputs produce predictable outputs according to strict algorithm rules—LLMs are probabilistic components. A model can happily return a syntactically valid HTTP 200 response while hallucinating facts, missing retrieval constraints, violating safety policies, or generating broken code with complete confidence.",
 
     "System reliability demands that we distinguish clearly between two concepts:",
 
@@ -27,7 +27,7 @@ export const articleDesigningForFailure: WritingArticle = {
     "- Low-Confidence Detection: Evaluating BM25 and vector distance scores against strict threshold boundaries.",
     "- Automated Query Rewriting: If initial confidence scores fall below threshold, Phoenix automatically reformulates the search query to improve retrieval precision.",
     "- Cross-Encoder Reranking: Re-evaluating candidate document relevance before context assembly.",
-    "- Fallback Model Routing: If document confidence remains insufficient after query rewriting, the system gracefully falls back to explicit clarification prompts or fallback knowledge sources.",
+    "- Fallback Model Routing: If document confidence remains insufficient after query rewriting, the system gracefully falls back to explicit clarification prompts or secondary knowledge sources.",
 
     "By catching weak retrieval early, Phoenix prevents the LLM from generating confident hallucinations based on poor context.",
 

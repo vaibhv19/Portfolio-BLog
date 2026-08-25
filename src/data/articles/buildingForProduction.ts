@@ -7,7 +7,7 @@ export const articleBuildingForProduction: WritingArticle = {
   excerpt: "What Building for Production Changed About How I Build",
   readingTime: "11 min read",
   content: [
-    "Developing applications exclusively on `localhost` hides operational reality. On a local development machine, network latency is non-existent, database connections never time out, environment variables are pre-configured in local shell profiles, and server memory is unconstrained.",
+    "Developing applications exclusively on `localhost` hides operational reality. On a local development machine, network latency is non-existent, database connections never time out, environment variables are pre-configured in local shell profiles, and server memory feels unconstrained.",
 
     "Building and deploying [Trajectory](https://github.com/vaibhv19/trajectory)—a full-stack application deployed on AWS EC2, AWS RDS (PostgreSQL), and Amazon S3 using Docker Compose, Nginx reverse proxying, and GitHub Actions CI/CD pipelines—fundamentally altered how I approach software development.",
 

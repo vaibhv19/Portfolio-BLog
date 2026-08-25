@@ -7,17 +7,17 @@ export const articleRealTimeEvolved: WritingArticle = {
   excerpt: "The Evolution of My Real-Time Architecture",
   readingTime: "9 min read",
   content: [
-    "Real-time web applications often appear straightforward in tutorials: establish a WebSocket connection, push JSON frames back and forth, and update a reactive UI state. But as application scale, concurrency stress, and streaming data payloads enter the picture, real-time architecture quickly exposes hidden complexity.",
+    "Real-time web applications look delightfully easy in tutorials: open a WebSocket connection, push a few JSON frames back and forth, and update a reactive UI component. But as soon as concurrent clients, connection drops, and streaming payloads enter production, real-time architecture exposes its hidden traps.",
 
-    "Comparing real-time architectures across [Conclave](https://github.com/vaibhv19/conclave) (a multi-agent streaming platform) and [Foundry](https://github.com/vaibhv19/foundry) (a high-concurrency event system) highlights where real-time engineering complexity actually lives: at the boundary between low-level network transport framing and background application business logic.",
+    "Comparing real-time architectures across [Conclave](https://github.com/vaibhv19/conclave) (a multi-agent streaming platform) and [Foundry](https://github.com/vaibhv19/foundry) (a high-concurrency event system) highlights where real-time engineering complexity actually lives: right at the boundary between low-level network transport framing and background business logic.",
 
     "## 01. Transport Framing vs Application Business Logic",
 
-    "A common architectural mistake is coupling WebSocket connection handlers directly to database persistence loops or heavy business logic. When an HTTP/WebSocket thread blocks on a slow database write or external API call, connection framing stalls and client latency spikes.",
+    "A common mistake is coupling WebSocket connection handlers directly to database persistence loops or heavy business logic. When an HTTP/WebSocket thread blocks on a slow database write or external API call, connection framing stalls, heartbeats drop, and client latency spikes.",
 
     "The solution across both Conclave and Foundry was strict separation of concerns:",
 
-    "- Decoupled Transport Handlers: WebSocket connection listeners focus exclusively on frame ingestion, heartbeat ping/pong management, and client socket lifecycle events.",
+    "- Decoupled Transport Handlers: WebSocket connection listeners focus exclusively on frame ingestion, heartbeat ping/pong management, and socket lifecycle events.",
     "- Asynchronous Message Queues: Incoming event payloads are immediately enqueued into background worker queues (such as `LinkedBlockingQueue` or `asyncio.Queue`) for processing.",
     "- Background Execution Workers: Database persistence, multi-agent state translation, and heavy compute run asynchronously on background worker threads without blocking WebSocket event loops.",
 
@@ -27,8 +27,8 @@ export const articleRealTimeEvolved: WritingArticle = {
 
     "Streaming AI outputs over WebSockets introduced unique state challenges:",
 
-    "- Token Buffer Chunking: Pushing single-character tokens over individual WebSocket frames creates massive network overhead. Conclave buffers tokens into small time-windowed or byte-sized chunks before flushing frames.",
-    "- Out-of-Order Frame Guardrails: Managing sequence sequence IDs across concurrent multi-agent streams to ensure client frontends assemble tokens in deterministic order.",
+    "- Token Buffer Chunking: Pushing single-character tokens over individual WebSocket frames creates massive network packet overhead. Conclave buffers tokens into small time-windowed or byte-sized chunks before flushing frames.",
+    "- Out-of-Order Frame Guardrails: Managing sequence IDs across concurrent multi-agent streams to ensure client frontends assemble tokens in deterministic order.",
     "- Graceful Reconnection Backoff: Handling client network disconnections during active token generation without corrupting server-side context state.",
 
     "## 03. Reactive Frontend Synchronization",

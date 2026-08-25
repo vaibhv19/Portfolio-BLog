@@ -7,7 +7,7 @@ export const articleFromCourseworkToSystems: WritingArticle = {
   excerpt: "How My Projects Became More Serious",
   readingTime: "11 min read",
   content: [
-    "Engineering growth can be traced through the evolving complexity of the systems one builds. Early in computer science coursework, projects are typically focused on syntax execution and standalone feature delivery—writing a script that runs correctly under ideal conditions.",
+    "Engineering growth can be traced through the evolving complexity of the systems one builds. Early in computer science coursework, projects are typically focused on syntax execution and standalone feature delivery—writing a script that runs correctly under ideal conditions on `localhost`.",
 
     "Over time, my personal project arc shifted from standalone features toward systems engineering: designing applications that handle failure gracefully, enforce boundary isolation, remain observable under load, and can be reliably reproduced across production environments.",
 

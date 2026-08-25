@@ -56,8 +56,8 @@ export const PROJECTS: Project[] = [
     description: "A vintage cafe ordering experience for browsing dishes, managing favorites, and building your guest check—because dinner shouldn’t feel like debugging an API.",
     category: "For Resume",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
-    featured: true,
-    homepagePreview: true,
+    featured: false,
+    homepagePreview: false,
     demoUrl: "https://food-ordering-system-ruddy-sigma.vercel.app/",
     githubUrl: "https://github.com/vaibhv19/food-ordering-system"
   },
@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
     description: "A personalized interactive birthday experience built for a special occasion.",
     category: "Miscellaneous",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
-    featured: true,
+    featured: false,
     homepagePreview: false,
     demoUrl: "https://happy-birthday-zoya-teal.vercel.app/"
   },
@@ -95,7 +95,7 @@ export const PROJECTS: Project[] = [
     description: "A transparent, self-healing hybrid RAG workspace for technical documentation, with observable retrieval, scoring, reranking, and fallback orchestration.",
     category: "For Resume",
     techStack: ["Python", "FastAPI", "PostgreSQL", "pgvector", "SentenceTransformers", "BM25", "Redis", "Docker"],
-    featured: false,
+    featured: true,
     homepagePreview: true,
     githubUrl: "https://github.com/vaibhv19/Phoenix",
     highlights: [
@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
     description: "An autonomous AI agent evaluation harness that runs agents in safe, resource-constrained sandboxes and measures what they actually do.",
     category: "Testing",
     techStack: ["Python", "FastAPI", "LangGraph", "Docker SDK", "Pytest", "Container Isolation"],
-    featured: false,
+    featured: true,
     homepagePreview: true,
     githubUrl: "https://github.com/vaibhv19/Vigil",
     highlights: [

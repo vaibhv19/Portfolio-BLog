@@ -7,19 +7,19 @@ export const articleBuildingAgentsTwice: WritingArticle = {
   excerpt: "From Context Unification to Agent Evaluation",
   readingTime: "9 min read",
   content: [
-    "Building AI agent systems initially feels like an exercise in prompt engineering: you write a prompt, define a tool schema, and connect an LLM to an API. But as soon as you move beyond single-turn demos, you realize that agent engineering splits into two fundamentally different disciplines.",
+    "Building AI agent systems initially feels like an exercise in prompt engineering: you write a prompt, define a tool schema, and connect an LLM to an API. But as soon as you move past single-turn demos, you realize agent engineering splits into two fundamentally different disciplines.",
 
-    "I built AI agent systems twice—first in [Conclave](https://github.com/vaibhv19/conclave) to tackle cooperative orchestration, and later in [Vigil](https://github.com/vaibhv19/Vigil) to tackle safe evaluation and verification. Comparing these two projects highlights how the underlying engineering problem inverts when you shift from orchestration to evaluation.",
+    "I built AI agent systems twice—first in [Conclave](https://github.com/vaibhv19/conclave) to tackle cooperative orchestration, and later in [Vigil](https://github.com/vaibhv19/Vigil) to tackle safe evaluation and containment. Comparing these two projects highlights how the core problem inverts when you move from orchestration to evaluation.",
 
     "## 01. Conclave: The Cooperative Orchestration Problem",
 
-    "In [Conclave](https://github.com/vaibhv19/conclave), the primary challenge was orchestration: getting diverse local Ollama models and cloud LLMs to cooperate around a shared task without losing context or drifting into hallucinations.",
+    "In [Conclave](https://github.com/vaibhv19/conclave), the main challenge was orchestration: getting diverse local Ollama models and cloud LLMs to cooperate on a task without losing context, dropping messages, or hallucinating into a loop.",
 
     "The core architectural question in Conclave was: *How do we enable multiple agents to share state and coordinate work smoothly?*",
 
     "Key engineering challenges in Conclave:",
     "- Context Translation: Translating prompt state into canonical data formats across different model providers (Ollama local instances vs OpenAI/Anthropic cloud APIs).",
-    "- Shared State Synchronization: Maintaining a unified context window across agent hops so Agent B understands what Agent A accomplished.",
+    "- Shared State Synchronization: Maintaining a unified context window across agent hops so Agent B actually understands what Agent A accomplished.",
     "- Real-Time Streaming: Delivery of multi-agent thought processes incrementally over WebSocket frames to client interfaces.",
 
     "Conclave was designed for cooperation. Success meant smooth state handoffs, efficient token budget management, and collaborative task completion.",
@@ -28,12 +28,12 @@ export const articleBuildingAgentsTwice: WritingArticle = {
 
     "In [Vigil](https://github.com/vaibhv19/Vigil), the engineering problem completely inverted. Instead of helping agents cooperate, the objective was to evaluate their failure modes, measure side-effects, and enforce execution guardrails deterministically.",
 
-    "The core architectural question in Vigil was: *How do we objectively measure, record, and constrain what an agent actually does when given access to system tools?*",
+    "The core architectural question in Vigil was: *How do we objectively measure, record, and constrain what an agent actually does when given access to real system tools?*",
 
     "Key engineering challenges in Vigil:",
     "- Ephemeral Docker Sandboxes: Executing agents inside isolated containers with explicit CPU, memory, process ID (PID), and network boundaries.",
     "- Deterministic Assertion Harness: Running automated pre-state and post-state assertions on file systems, environment variables, and database tables to verify if an agent achieved its goal.",
-    "- System Call & Tool Telemetry: Intercepting tool executions, detecting loops, validating file paths, and scanning for banned shell commands.",
+    "- System Call & Tool Telemetry: Intercepting tool executions, detecting infinite loops, validating file paths, and scanning for banned shell commands.",
 
     "Vigil was designed for verification. Success meant objective evaluation, zero leakages past sandbox boundaries, and reproducible safety metrics.",
 
@@ -45,7 +45,7 @@ export const articleBuildingAgentsTwice: WritingArticle = {
 
     "## 04. Honest Safety Framing",
 
-    "An important lesson from building Vigil is that safety claims must be stated with technical honesty. Vigil does not make arbitrary AI agents 'completely safe' or magically remove model hallucinations. What Vigil provides is resource-constrained runtime isolation and objective verification.",
+    "An important lesson from building Vigil is that safety claims must be stated with technical honesty. Vigil doesn't make arbitrary AI agents 'completely safe' or magically eliminate model hallucinations. What Vigil provides is resource-constrained runtime isolation and objective verification.",
 
     "True agent engineering lives at the boundary between these two paradigms: prompt tuning alone cannot guarantee safety—real safety requires isolated execution boundaries, deterministic assertions, and runtime telemetry."
   ]
