@@ -56,7 +56,9 @@ The site is built with **Next.js 16 (App Router)** and **React 19**, compiled to
   - **Tier 1 (Catalog Articles)**: Publicly indexed technology notes with sequential prev/next footer navigation matching catalog hierarchy.
   - **Tier 2 (Sub-Blogs / Concept Deep-Dives)**: Hidden specialized articles (e.g., *Hybrid RAG*, *BM25*, *Cross-Encoder Reranking*, *Web Workers & WebAssembly*) discovered exclusively via inline contextual links, featuring dynamic `?from=` referrer back-navigation.
 - **Work Showcase with Parent Frameworks (`/projects`)**: 6 curated project categories supporting hierarchical grouping (e.g., IBM PBEL, Lenovo LEAP) with bulleted technical summaries and GitHub repository links.
-- **Live GitHub Contribution Graph (`/about`)**: Custom-rendered activity grid backed by an automated 3-tier cascade: server-side GitHub GraphQL API &rarr; tokenless public REST endpoint &rarr; deterministic offline fallback generator.
+- **Live Activity & Problem-Solving Trackers (`/about`)**:
+  - **GitHub Contribution Heatmap**: Custom-rendered activity grid backed by an automated 3-tier cascade: server-side GitHub GraphQL API &rarr; tokenless public REST endpoint &rarr; deterministic offline fallback generator.
+  - **Dynamic LeetCode Statistics**: Live algorithmic metrics (Total Solved, Easy, Medium, Hard) and global rank powered by server-side Next.js ISR revalidation querying official LeetCode GraphQL and proxy endpoints.
 - **Direct PDF Credential & Patent Integration**: In-browser viewing links for official university certifications (IIT Kanpur, NPTEL) and registered Indian Patent Office design documentation (`/patent/452200-001`).
 - **Keyboard-Driven Article Traversal**: Global `ArrowLeft` and `ArrowRight` hotkeys on all writing and technology reading pages with automatic form-field input suppression.
 - **Accessible Slide-Over Navigation**: Full-screen slide-over drawer with backdrop blur, Starry Night texture, and keyboard `Escape` dismissal.
@@ -96,6 +98,7 @@ flowchart TD
         TechSlugRoute["Technology & Sub-Blog View (/technology/:slug)"]
         TimelineRoutes["Timeline Routes (/experience, /education, /certifications, /intellectual-property)"]
         APIContributions["API Route (/api/github-contributions)"]
+        APILeetCode["API Route (/api/leetcode-stats)"]
     end
 
     subgraph ComponentLayer["Component Layer (src/components)"]
@@ -103,6 +106,7 @@ flowchart TD
         ArticleFooterComp["ArticleFooter (Nav, Share, Keys)"]
         CategoryFolderComp["CategoryFolder & TechFolder"]
         GithubGraphComp["GithubContributionGraph"]
+        LeetCodeStatsComp["LeetCodeStatsCard"]
         BrandIconsComp["BrandIcons (SVGs)"]
     end
 
@@ -116,12 +120,14 @@ flowchart TD
         LibTech["lib/technologyArticles.ts"]
         LibNav["lib/blogNavigation.ts"]
         LibGitHub["lib/github.ts"]
+        LibLeetCode["lib/leetcode.ts"]
     end
 
     subgraph StaticAssets["Static Assets (public/)"]
         CertPDFs["PDF Certifications (/certificates/*)"]
         PatentPDFs["PDF Patent Specs (/patent/*)"]
         ProfileImages["Images & Avatars (/images/*)"]
+        FaviconAssets["Favicons & Monogram (/favicon.png, /favicon.ico)"]
     end
 
     NextServer --> RootLayout
@@ -134,12 +140,14 @@ flowchart TD
     RootLayout --> TechSlugRoute
     RootLayout --> TimelineRoutes
     RootLayout --> APIContributions
+    RootLayout --> APILeetCode
 
     WritingSlugRoute --> ArticleFooterComp
     TechSlugRoute --> ArticleFooterComp
     ProjectsRoute --> CategoryFolderComp
     TechIndexRoute --> CategoryFolderComp
     AboutRoute --> GithubGraphComp
+    AboutRoute --> LeetCodeStatsComp
 
     WritingSlugRoute --> LibNav
     LibNav --> WritingData
@@ -148,10 +156,12 @@ flowchart TD
     LibTech --> TechInventory
     ProjectsRoute --> ProjectsData
     AboutRoute --> LibGitHub
+    AboutRoute --> LibLeetCode
     TimelineRoutes --> ExperienceData
     TimelineRoutes --> CertData
     TimelineRoutes -.-> CertPDFs
     TimelineRoutes -.-> PatentPDFs
+    RootLayout -.-> FaviconAssets
 ```
 
 ---
@@ -302,7 +312,9 @@ The repository implements a content relationship model that deliberately decoupl
 │   ├── patent/                            # Official registered patent PDF specification
 │   ├── images/                            # Starry night background, personal narrative photography
 │   ├── profile-avatar.jpeg                # Circular profile portrait
-│   └── icon.svg                           # Site favicon
+│   ├── favicon.ico / favicon.png          # Active site favicon assets (geometric VG monogram)
+│   ├── apple-touch-icon.png               # Apple touch icon asset
+│   └── icon.svg                           # Preserved legacy SVG icon
 ├── next.config.ts                         # Redirect rules and Next.js compiler configuration
 ├── tsconfig.json                          # Strict TypeScript compiler options
 ├── package.json                           # Dependencies, scripts, and engine specifications
@@ -341,7 +353,7 @@ The repository implements a content relationship model that deliberately decoupl
 2. **Curated Tier 1 vs. Contextual Tier 2 Hierarchy**: Deep architectural concepts (like *BM25*, *Cross-Encoder Reranking*, or *WebAssembly Workers*) are not listed as top-level skills; they are discovered contextually inside broader technology articles.
 3. **Path-Aware Sub-Blog Back-Navigation**: Sub-blogs inspect the `?from=` search parameter to provide a contextual `<< Back` link to whichever parent article led the reader there.
 4. **Data-as-Code Content Architecture**: Content is maintained as structured TypeScript arrays (`src/data/`) rather than external headless CMSs or raw MDX files, enabling zero network latency, zero build dependencies, and strict type checking across all cross-references.
-5. **Multi-Tier GitHub Activity Fallback**: To prevent rate limits or API outages from breaking the About page, the GitHub contribution graph attempts GraphQL first, falls back to a tokenless REST proxy, and terminates on a deterministic mock generator.
+5. **Multi-Tier Live Activity Pipelines**: Both GitHub contribution data and LeetCode algorithmic practice statistics are served via server-cached API routes (`/api/github-contributions`, `/api/leetcode-stats`) using Next.js Incremental Static Regeneration (ISR, 24-hour cache). Each pipeline features an automated multi-tier cascade (official GraphQL API &rarr; public proxy fallback &rarr; deterministic offline snapshot), guaranteeing zero UI breakage and zero maintenance overhead.
 6. **Direct PDF Asset Hosting**: Credentials and patents link directly to static PDF assets in `/public/` rather than external third-party credential websites, ensuring permanent availability and authentic verification.
 
 ---
@@ -380,10 +392,11 @@ The repository implements a content relationship model that deliberately decoupl
    ```
 
 3. **Configure Environment Variables (Optional)**:
-   Create a `.env.local` file in the root directory if you wish to query private GitHub contributions via GraphQL:
+   Create a `.env.local` file in the root directory if you wish to query private GitHub contributions or customize profile handles:
    ```env
    GITHUB_USERNAME=vaibhv19
    GITHUB_TOKEN=your_personal_access_token_here
+   LEETCODE_USERNAME=vaibhv_19
    ```
    *(If omitted, the application automatically uses public REST endpoints and fallback data).*
 
