@@ -268,7 +268,8 @@ The repository implements a content relationship model that deliberately decoupl
 │   │   ├── intellectual-property/         # Registered patent records with PDF viewer links
 │   │   ├── skills/                        # Permanent redirect route -> /technology
 │   │   └── api/
-│   │       └── github-contributions/      # API route handler proxying GitHub contributions
+│   │       ├── github-contributions/      # API route handler proxying GitHub contributions
+│   │       └── leetcode-stats/            # API route handler proxying live LeetCode statistics
 │   ├── components/                        # Reusable modular UI components
 │   │   ├── Header.tsx                     # Top brand bar & slide-over drawer navigation
 │   │   ├── Footer.tsx                     # Minimal site footer with copyright & timestamp
@@ -276,6 +277,7 @@ The repository implements a content relationship model that deliberately decoupl
 │   │   ├── CategoryFolder.tsx             # Interactive accordion folder for project categories
 │   │   ├── TechnologyCategoryFolder.tsx   # Interactive accordion folder for technology categories
 │   │   ├── GithubContributionGraph.tsx    # Responsive canvas-like SVG contribution heatmap
+│   │   ├── LeetCodeStatsCard.tsx          # Dynamic LeetCode / DSA problem-solving statistics card
 │   │   ├── StarryNightBackground.tsx      # Ambient blurred Van Gogh backdrop canvas
 │   │   ├── StatusBadge.tsx                # Available for Work / Engineer status indicator
 │   │   ├── BrandIcons.tsx                 # Clean inline SVG icons (GitHub, LinkedIn, Bluesky, X, Threads, LeetCode)
@@ -293,7 +295,8 @@ The repository implements a content relationship model that deliberately decoupl
 │   └── lib/                               # Utility functions and content helper libraries
 │       ├── technologyArticles.ts          # Unified resolver for Tier 1 & Tier 2 articles and navigation
 │       ├── blogNavigation.ts              # Chronological sorting and prev/next resolver for blogs
-│       └── github.ts                      # GitHub GraphQL + REST + offline fallback fetcher
+│       ├── github.ts                      # GitHub GraphQL + REST + offline fallback fetcher
+│       └── leetcode.ts                    # LeetCode GraphQL + REST + offline fallback fetcher
 ├── public/                                # Static assets served directly
 │   ├── certificates/                      # 10+ Original verified certification PDFs
 │   ├── patent/                            # Official registered patent PDF specification
