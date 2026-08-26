@@ -47,6 +47,17 @@ export function LeetCodeStatsCard() {
 
   return (
     <div className="space-y-3 py-2">
+      {/* Dynamic Rank Subtitle */}
+      <div>
+        <p className="text-[11px] sm:text-xs text-slate-400 font-mono">
+          {isLoading
+            ? "Fetching LeetCode rank..."
+            : stats.ranking
+            ? `Rank: ${stats.ranking.toLocaleString()}`
+            : null}
+        </p>
+      </div>
+
       {/* Metrics Row */}
       {isLoading ? (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-1 animate-pulse">
