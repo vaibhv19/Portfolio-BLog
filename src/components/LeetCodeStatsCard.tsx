@@ -53,7 +53,7 @@ export function LeetCodeStatsCard() {
           {isLoading
             ? "Fetching LeetCode rank..."
             : stats.ranking
-            ? `Rank: ${stats.ranking.toLocaleString()}`
+            ? `Rank: ${stats.ranking.toLocaleString()} on LeetCode`
             : null}
         </p>
       </div>
