@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, LeetCodeIcon } from "@/components/BrandIcons";
+import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, ThreadsIcon } from "@/components/BrandIcons";
 
 export function Footer() {
   return (
@@ -59,14 +59,14 @@ export function Footer() {
               <XIcon className="w-[18px] h-[18px]" />
             </a>
             <a
-              href="https://leetcode.com/u/vaibhv_19/"
+              href="https://www.threads.com/@vaibhv_19"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LeetCode"
-              title="LeetCode"
+              aria-label="Threads"
+              title="Threads"
               className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
             >
-              <LeetCodeIcon className="w-[18px] h-[18px]" />
+              <ThreadsIcon className="w-[18px] h-[18px]" />
             </a>
             <a
               href="mailto:gvaibhav.business@gmail.com"

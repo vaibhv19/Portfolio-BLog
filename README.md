@@ -278,7 +278,7 @@ The repository implements a content relationship model that deliberately decoupl
 │   │   ├── GithubContributionGraph.tsx    # Responsive canvas-like SVG contribution heatmap
 │   │   ├── StarryNightBackground.tsx      # Ambient blurred Van Gogh backdrop canvas
 │   │   ├── StatusBadge.tsx                # Available for Work / Engineer status indicator
-│   │   ├── BrandIcons.tsx                 # Clean inline SVG icons (GitHub, LinkedIn, Bluesky, X, LeetCode)
+│   │   ├── BrandIcons.tsx                 # Clean inline SVG icons (GitHub, LinkedIn, Bluesky, X, Threads, LeetCode)
 │   │   └── PageTransition.tsx             # Route transition wrapper
 │   ├── data/                              # Source-of-truth TypeScript content data stores
 │   │   ├── articles/                      # 14 modular TS files containing full writing essays

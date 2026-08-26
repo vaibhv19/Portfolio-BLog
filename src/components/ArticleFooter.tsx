@@ -12,8 +12,6 @@ import {
   FacebookIcon,
   TelegramIcon,
   PinterestIcon,
-  GithubIcon,
-  LeetCodeIcon,
 } from "@/components/BrandIcons";
 
 interface ArticleFooterProps {
