@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { PATENT_RECORDS } from "@/data/patents";
 
 export const metadata: Metadata = {
-  title: "Intellectual Property & Patents | Vaibhav Gupta",
+  title: "Patents | Vaibhav Gupta",
   description: "Official design patent records and technical system specifications.",
 };
 
@@ -13,7 +13,7 @@ export default function IntellectualPropertyPage() {
       {/* Page Header */}
       <div className="space-y-2.5 border-b border-slate-800/80 pb-5">
         <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
-          Intellectual Property &amp; Patents
+          Patents
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
           Registered design patents and formal intellectual property records covering novel software system architectures and technical designs.

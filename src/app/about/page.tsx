@@ -360,10 +360,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Patent */}
+      {/* Patents */}
       <section className="space-y-3.5">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
-          PATENT
+          PATENTS
         </h2>
 
         <div className="flex items-baseline gap-2">

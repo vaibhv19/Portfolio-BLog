@@ -46,7 +46,7 @@ export function Header() {
     { name: "Internships & Training", href: "/experience" },
     { name: "Education", href: "/education" },
     { name: "Credentials", href: "/certifications" },
-    { name: "Patent", href: "/intellectual-property" },
+    { name: "Patents", href: "/intellectual-property" },
   ];
 
   return (
