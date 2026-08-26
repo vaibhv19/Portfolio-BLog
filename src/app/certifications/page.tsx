@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { CERTIFICATIONS } from "@/data/certifications";
 
 export const metadata: Metadata = {
-  title: "Certifications & Verified Credentials | Vaibhav Gupta",
+  title: "Credentials | Vaibhav Gupta",
   description: "Archival list of formal certifications, credentials, IIT Kanpur certificates, and IBM SkillsBuild badges.",
 };
 
@@ -15,7 +15,7 @@ export default function CertificationsPage() {
       {/* Page Header */}
       <div className="space-y-2.5 border-b border-slate-800/80 pb-5">
         <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
-          Certifications &amp; Credentials
+          Credentials
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
           Archival record of formal course completions, credentials, and technical certifications. Clicking any certificate title opens the original PDF document directly.
