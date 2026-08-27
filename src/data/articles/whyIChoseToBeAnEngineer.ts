@@ -23,6 +23,12 @@ export const articleWhyIChoseToBeAnEngineer: WritingArticle = {
 
     "Debugging forces you to abandon assumptions and inspect empirical log evidence. It teaches humility, patience, and analytical discipline.",
 
+    "## 4 / Observable & Understandable Systems",
+
+    "Above all, I believe engineering work should be transparent, inspectable, and reproducible. Code should be clean, setup prerequisites should be explicitly documented, and system behavior should be observable rather than opaque.",
+
+    "Whether designing a hybrid RAG retrieval pipeline or a distributed in-memory cache, I prioritize building mechanisms whose internal state can be inspected and understood. True engineering maturity lies in taking difficult technical problems and building software that is both technically sound and aesthetically compelling.",
+
     "Ultimately, I chose engineering because it isn't just a profession; it's a continuous practice of showing up, thinking deeply about complex problems, and constantly refining one's craft through real work."
   ]
 };
