@@ -1,3 +1,4 @@
+import { articleNorthStar } from "./articles/northStar";
 import { articleHowIWork } from "./articles/howIWork";
 import { articleEngineeringJourney } from "./articles/engineeringJourney";
 import { articleIdentityAndInfluences } from "./articles/identityAndInfluences";
@@ -25,6 +26,7 @@ export interface WritingArticle {
 }
 
 export const WRITING_ARTICLES: WritingArticle[] = [
+  articleNorthStar,
   articleHowIWork,
   articleEngineeringJourney,
   articleIdentityAndInfluences,

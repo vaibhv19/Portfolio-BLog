@@ -10,8 +10,12 @@ function formatDateDDMMYYYY(dateStr: string) {
 }
 
 export default function HomePage() {
+  // Sort articles by date descending
+  const sortedArticles = [...WRITING_ARTICLES].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
   // Recent Writing — Homepage selection (latest 5 articles preview)
-  const recentWriting = WRITING_ARTICLES.slice(0, 5);
+  const recentWriting = sortedArticles.slice(0, 5);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-7 text-slate-300">
@@ -131,8 +135,8 @@ export default function HomePage() {
 
         <div className="space-y-4">
           {recentWriting.map((article) => {
-            const articleIndex = WRITING_ARTICLES.indexOf(article);
-            const indexStr = `${WRITING_ARTICLES.length - articleIndex} /`;
+            const articleIndex = sortedArticles.indexOf(article);
+            const indexStr = `${sortedArticles.length - articleIndex} /`;
             return (
               <div key={article.slug} className="space-y-1 group">
                 <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:underline transition-all">

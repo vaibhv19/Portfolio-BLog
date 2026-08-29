@@ -23,8 +23,6 @@ export const articleDesigningForFailure: WritingArticle = {
     "In [Phoenix](https://github.com/vaibhv19/Phoenix), designing for failure meant acknowledging that document retrieval will not always produce high-confidence matches.",
 
     "Instead of blindly passing weak document snippets to the LLM, Phoenix implements multi-stage validation:",
-    "## 1 / Phoenix: Handling Retrieval Uncertainty & Weak Search",
-    "In [Phoenix](https://github.com/vaibhv19/phoenix)—a hybrid RAG documentation workspace—I built explicit handling for retrieval failures.",
 
     "- Low-Confidence Detection: Evaluating BM25 and vector distance scores against strict threshold boundaries.",
     "- Automated Query Rewriting: If initial confidence scores fall below threshold, Phoenix automatically reformulates the search query to improve retrieval precision.",

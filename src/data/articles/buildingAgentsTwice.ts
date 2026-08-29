@@ -12,12 +12,6 @@ export const articleBuildingAgentsTwice: WritingArticle = {
     "I built AI agent systems twice—first in [Conclave](https://github.com/vaibhv19/conclave) to tackle cooperative orchestration, and later in [Vigil](https://github.com/vaibhv19/Vigil) to tackle safe evaluation and containment. Comparing these two projects highlights how the core problem inverts when you move from orchestration to evaluation.",
 
     "## 1 / Conclave: The Cooperative Orchestration Problem",
-    "In [Conclave](https://github.com/vaibhv19/conclave)—a multi-model agent debate workspace—the primary challenge was context unification and turn orchestration.",
-    "## 2 / Vigil: The Evaluation & Verification Problem",
-    "In [Vigil](https://github.com/vaibhv19/vigil)—an AI agent safety harness—the challenge shifted from context orchestration to runtime verification.",
-    "## 3 / Orchestration vs Evaluation: Key Contrasts",
-    "Comparing Conclave and Vigil reveals two distinct sides of AI agent engineering:",
-    "## 4 / Honest Safety Framing",
 
     "The core architectural question in Conclave was: *How do we enable multiple agents to share state and coordinate work smoothly?*",
 
@@ -28,7 +22,7 @@ export const articleBuildingAgentsTwice: WritingArticle = {
 
     "Conclave was designed for cooperation. Success meant smooth state handoffs, efficient token budget management, and collaborative task completion.",
 
-    "## 02. Vigil: The Evaluation & Verification Problem",
+    "## 2 / Vigil: The Evaluation & Verification Problem",
 
     "In [Vigil](https://github.com/vaibhv19/Vigil), the engineering problem completely inverted. Instead of helping agents cooperate, the objective was to evaluate their failure modes, measure side-effects, and enforce execution guardrails deterministically.",
 
@@ -41,13 +35,13 @@ export const articleBuildingAgentsTwice: WritingArticle = {
 
     "Vigil was designed for verification. Success meant objective evaluation, zero leakages past sandbox boundaries, and reproducible safety metrics.",
 
-    "## 03. Orchestration vs Evaluation: Key Contrasts",
+    "## 3 / Orchestration vs Evaluation: Key Contrasts",
 
     "- Shared Context vs Isolated Sandboxes: Orchestration requires rich shared state handoffs. Evaluation requires strict, isolated execution sandboxes to prevent test contamination.",
     "- Prompt Tuning vs State Assertions: Orchestration relies heavily on prompt alignment. Evaluation relies on deterministic, programmatic state assertions (e.g., checking actual file system diffs after an agent runs).",
     "- Trust vs Containment: Orchestration assumes cooperative intent. Evaluation treats agent behavior as unverified, probabilistic software that must be strictly contained.",
 
-    "## 04. Honest Safety Framing",
+    "## 4 / Honest Safety Framing",
 
     "An important lesson from building Vigil is that safety claims must be stated with technical honesty. Vigil doesn't make arbitrary AI agents 'completely safe' or magically eliminate model hallucinations. What Vigil provides is resource-constrained runtime isolation and objective verification.",
 
