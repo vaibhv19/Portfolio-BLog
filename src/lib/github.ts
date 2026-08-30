@@ -61,11 +61,12 @@ export async function fetchGitHubContributions(
       const res = await fetch("https://api.github.com/graphql", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token.trim()}`,
           "Content-Type": "application/json",
           "User-Agent": "portfolio-website",
         },
-        next: { revalidate: 86400 },
+        body: JSON.stringify(graphqlQuery),
+        next: { revalidate: 3600 },
       });
 
       if (res.ok) {

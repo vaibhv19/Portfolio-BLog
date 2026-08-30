@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { fetchGitHubContributions } from "@/lib/github";
 
-export const revalidate = 86400; // Cache and revalidate daily (24 hours)
+export const revalidate = 3600; // Cache and revalidate hourly
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
@@ -9,7 +10,7 @@ export async function GET() {
     return NextResponse.json(data, {
       status: 200,
       headers: {
-        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
       },
     });
   } catch (error) {

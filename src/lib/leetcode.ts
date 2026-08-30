@@ -62,7 +62,8 @@ export async function fetchLeetCodeStats(
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)",
       },
-      next: { revalidate: 86400 },
+      body: JSON.stringify(graphqlQuery),
+      next: { revalidate: 3600 },
     });
 
     if (res.ok) {
@@ -164,17 +165,17 @@ export function getFallbackLeetCodeStats(
 ): LeetCodeStatsData {
   return {
     username,
-    totalSolved: 92,
+    totalSolved: 103,
     totalQuestions: 3400,
     easySolved: 39,
     totalEasy: 850,
-    mediumSolved: 43,
+    mediumSolved: 54,
     totalMedium: 1750,
     hardSolved: 10,
     totalHard: 800,
-    ranking: 1753451,
+    ranking: 1648575,
     acceptanceRate: 64.5,
-    totalSubmissions: 169,
+    totalSubmissions: 220,
     updatedAt: new Date().toISOString(),
   };
 }
