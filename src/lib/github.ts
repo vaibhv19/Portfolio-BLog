@@ -14,10 +14,11 @@ export interface GitHubContributionsData {
   updatedAt: string;
 }
 
-export const DEFAULT_GITHUB_USERNAME =
+export const DEFAULT_GITHUB_USERNAME = (
   process.env.NEXT_PUBLIC_GITHUB_USERNAME ||
   process.env.GITHUB_USERNAME ||
-  "vaibhv19";
+  "vaibhv19"
+).trim();
 
 function calculateLevel(count: number): number {
   if (count <= 0) return 0;

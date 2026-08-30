@@ -14,10 +14,11 @@ export interface LeetCodeStatsData {
   updatedAt: string;
 }
 
-export const DEFAULT_LEETCODE_USERNAME =
+export const DEFAULT_LEETCODE_USERNAME = (
   process.env.NEXT_PUBLIC_LEETCODE_USERNAME ||
   process.env.LEETCODE_USERNAME ||
-  "vaibhv_19";
+  "vaibhv_19"
+).trim();
 
 export async function fetchLeetCodeStats(
   username: string = DEFAULT_LEETCODE_USERNAME
