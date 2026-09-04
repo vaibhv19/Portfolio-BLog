@@ -405,7 +405,7 @@ export default function AboutPage() {
           <li className="flex items-start gap-2.5">
             <span className="text-slate-200 font-bold">2 /</span>
             <span className="text-slate-200 font-sans text-sm sm:text-base">
-              Completed 150+ Data Structures &amp; Algorithms Problems
+              Solved 150+ Algorithmic Problems across Multiple Platforms
             </span>
           </li>
           <li className="flex items-start gap-2.5">
