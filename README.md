@@ -9,7 +9,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT_%2F_Proprietary-orange?style=flat-square)](#license)
 
-**Live Production Site**: [https://vaibhav19.vercel.app/](https://vaibhav19.vercel.app/)
+**Live Production Site**: [https://vaibhv19.dev](https://vaibhv19.dev)
 
 ---
 
