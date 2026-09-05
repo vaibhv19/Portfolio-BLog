@@ -83,7 +83,7 @@ export default function HomePage() {
                 <LinkedinIcon className="w-[18px] h-[18px]" />
               </a>
               <a
-                href="https://bsky.app/profile/vaibhv19.bsky.social?utm_source=chatgpt.com"
+                href="https://bsky.app/profile/vaibhv19.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Bluesky"
