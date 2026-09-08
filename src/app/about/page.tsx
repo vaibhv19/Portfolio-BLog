@@ -150,15 +150,9 @@ export default function AboutPage() {
 
       {/* Get In Touch */}
       <section className="space-y-3.5">
-        <div className="border-b border-slate-800 pb-1.5">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
-            GET IN TOUCH
-          </h2>
-        </div>
-
-        <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-          If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below or send a message directly.
-        </p>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
+          GET IN TOUCH
+        </h2>
 
         <ContactForm />
       </section>
