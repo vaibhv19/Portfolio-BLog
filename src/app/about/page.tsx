@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Mail } from "lucide-react";
 import { GithubContributionGraph } from "@/components/GithubContributionGraph";
 import { LeetCodeStatsCard } from "@/components/LeetCodeStatsCard";
+import { ContactForm } from "@/components/ContactForm";
 import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, ThreadsIcon } from "@/components/BrandIcons";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-6 sm:pb-8 space-y-8 sm:space-y-10">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-8 sm:space-y-10">
       {/* Page Header */}
       <header>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
@@ -156,10 +157,20 @@ export default function AboutPage() {
         <LeetCodeStatsCard />
       </section>
 
-      {/* Connect Note */}
-      <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-        If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below.
-      </p>
+      {/* Get In Touch */}
+      <section className="space-y-3.5">
+        <div className="border-b border-slate-800 pb-1.5">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
+            GET IN TOUCH
+          </h2>
+        </div>
+
+        <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below or send a message directly.
+        </p>
+
+        <ContactForm />
+      </section>
     </div>
   );
 }
