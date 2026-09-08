@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-8 sm:space-y-10">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-6 sm:pb-8 space-y-8 sm:space-y-10">
       {/* Page Header */}
       <header>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
@@ -155,6 +155,11 @@ export default function AboutPage() {
         </h2>
         <LeetCodeStatsCard />
       </section>
+
+      {/* Connect Note */}
+      <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+        If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below.
+      </p>
     </div>
   );
 }
