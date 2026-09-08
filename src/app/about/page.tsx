@@ -155,6 +155,10 @@ export default function AboutPage() {
         </h2>
 
         <ContactForm />
+
+        <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-1">
+          If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below or send a message directly.
+        </p>
       </section>
     </div>
   );

@@ -107,13 +107,8 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="space-y-3.5 bg-[#0d111a]/80 p-3.5 sm:p-4 rounded-sm border border-copper/35 shadow-sm"
+      className="space-y-3.5 bg-transparent p-3.5 sm:p-4 rounded-sm border-2 border-copper/35 shadow-sm"
     >
-      {/* Descriptive Lead-in Inside Box */}
-      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-        If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below or send a message directly.
-      </p>
-
       {/* Honeypot field (hidden from real users) */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
@@ -152,25 +147,47 @@ export function ContactForm() {
         </div>
       )}
 
-      {/* Name and Email Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      {/* Top Introductory Note Inside Box */}
+      <p className="text-[11px] sm:text-xs text-slate-400 font-sans">
+        Reach out, straight to my inbox.
+      </p>
+
+      {/* Message Field (First / Top) */}
+      <div className="space-y-1">
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={3}
+          aria-label="Message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Let's hear it..."
+          disabled={status === "loading"}
+          className={`w-full px-3 py-2 text-sm text-slate-100 bg-transparent border-2 rounded-sm placeholder:text-slate-500/40 focus:placeholder:text-slate-400/80 transition-colors resize-y min-h-[90px] focus:outline-none focus:ring-1 focus:ring-copper/60 focus:border-copper ${
+            fieldErrors.message
+              ? "border-rose-500/80 focus:border-rose-500 focus:ring-rose-500/40"
+              : "border-copper/35 focus:border-copper"
+          }`}
+        />
+        {fieldErrors.message && (
+          <p className="text-xs text-rose-400 font-sans">{fieldErrors.message}</p>
+        )}
+      </div>
+
+      {/* Three-Column Row: Name / Email / Send Button */}
+      <div className="flex flex-col sm:flex-row gap-3.5 sm:items-start">
         {/* Name Field */}
-        <div className="space-y-1">
-          <label
-            htmlFor="contact-name"
-            className="block text-xs font-mono font-bold tracking-wider text-slate-300 uppercase"
-          >
-            Name <span className="text-copper">*</span>
-          </label>
+        <div className="flex-1 space-y-1">
           <input
             type="text"
             id="contact-name"
             name="name"
+            aria-label="Your Name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Your name"
             disabled={status === "loading"}
-            className={`w-full px-3 py-1.5 text-sm text-slate-100 bg-transparent border rounded-sm placeholder:text-slate-500 transition-colors focus:outline-none focus:ring-1 focus:ring-copper/60 focus:border-copper ${
+            className={`w-full px-3 py-1.5 text-sm text-slate-100 bg-transparent border-2 rounded-sm placeholder:text-slate-500/40 focus:placeholder:text-slate-400/80 transition-colors focus:outline-none focus:ring-1 focus:ring-copper/60 focus:border-copper ${
               fieldErrors.name
                 ? "border-rose-500/80 focus:border-rose-500 focus:ring-rose-500/40"
                 : "border-copper/35 focus:border-copper"
@@ -182,22 +199,17 @@ export function ContactForm() {
         </div>
 
         {/* Email Field */}
-        <div className="space-y-1">
-          <label
-            htmlFor="contact-email"
-            className="block text-xs font-mono font-bold tracking-wider text-slate-300 uppercase"
-          >
-            Email <span className="text-copper">*</span>
-          </label>
+        <div className="flex-1 space-y-1">
           <input
             type="email"
             id="contact-email"
             name="email"
+            aria-label="Your Email"
             value={formData.email}
             onChange={handleChange}
             placeholder="your.email@example.com"
             disabled={status === "loading"}
-            className={`w-full px-3 py-1.5 text-sm text-slate-100 bg-transparent border rounded-sm placeholder:text-slate-500 transition-colors focus:outline-none focus:ring-1 focus:ring-copper/60 focus:border-copper ${
+            className={`w-full px-3 py-1.5 text-sm text-slate-100 bg-transparent border-2 rounded-sm placeholder:text-slate-500/40 focus:placeholder:text-slate-400/80 transition-colors focus:outline-none focus:ring-1 focus:ring-copper/60 focus:border-copper ${
               fieldErrors.email
                 ? "border-rose-500/80 focus:border-rose-500 focus:ring-rose-500/40"
                 : "border-copper/35 focus:border-copper"
@@ -207,54 +219,31 @@ export function ContactForm() {
             <p className="text-xs text-rose-400 font-sans">{fieldErrors.email}</p>
           )}
         </div>
+
+        {/* Send Button */}
+        <div>
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="w-full sm:w-auto h-[34px] inline-flex items-center justify-center gap-1.5 px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-wide text-slate-950 bg-copper hover:bg-copper-hover disabled:opacity-60 disabled:cursor-not-allowed rounded-sm shadow-sm transition-all duration-150 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/50 shrink-0"
+          >
+            {status === "loading" ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-slate-950" />
+                <span>Sending...</span>
+              </>
+            ) : (
+              <>
+                <span>Send</span>
+                <Send className="w-3.5 h-3.5 text-slate-950" />
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Message Field */}
-      <div className="space-y-1">
-        <label
-          htmlFor="contact-message"
-          className="block text-xs font-mono font-bold tracking-wider text-slate-300 uppercase"
-        >
-          Message <span className="text-copper">*</span>
-        </label>
-        <textarea
-          id="contact-message"
-          name="message"
-          rows={3}
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Tell me about your project, opportunity, or thoughts..."
-          disabled={status === "loading"}
-          className={`w-full px-3 py-2 text-sm text-slate-100 bg-transparent border rounded-sm placeholder:text-slate-500 transition-colors resize-y min-h-[90px] focus:outline-none focus:ring-1 focus:ring-copper/60 focus:border-copper ${
-            fieldErrors.message
-              ? "border-rose-500/80 focus:border-rose-500 focus:ring-rose-500/40"
-              : "border-copper/35 focus:border-copper"
-          }`}
-        />
-        {fieldErrors.message && (
-          <p className="text-xs text-rose-400 font-sans">{fieldErrors.message}</p>
-        )}
-      </div>
-
-      {/* Submit Button & Secondary Response Note */}
-      <div className="pt-1 flex flex-col items-end gap-1.5">
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="inline-flex items-center justify-center gap-2 px-4.5 py-2 text-xs sm:text-sm font-semibold tracking-wide text-slate-950 bg-copper hover:bg-copper-hover disabled:opacity-60 disabled:cursor-not-allowed rounded-sm shadow-sm transition-all duration-150 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/50"
-        >
-          {status === "loading" ? (
-            <>
-              <Loader2 className="w-3.5 h-3.5 animate-spin text-slate-950" />
-              <span>Sending...</span>
-            </>
-          ) : (
-            <>
-              <span>Send Message</span>
-              <Send className="w-3.5 h-3.5 text-slate-950" />
-            </>
-          )}
-        </button>
+      {/* Secondary Response Note Inside Box */}
+      <div className="flex justify-start pt-0.5">
         <p className="text-[11px] sm:text-xs text-slate-400 font-sans">
           I typically respond within a couple of days.
         </p>
