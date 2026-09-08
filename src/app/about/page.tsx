@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
 import { GithubContributionGraph } from "@/components/GithubContributionGraph";
-import { LeetCodeStatsCard } from "@/components/LeetCodeStatsCard";
 import { ContactForm } from "@/components/ContactForm";
 import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, ThreadsIcon } from "@/components/BrandIcons";
 
@@ -147,14 +146,6 @@ export default function AboutPage() {
           BUILDING ACTIVITY
         </h2>
         <GithubContributionGraph />
-      </section>
-
-      {/* Algorithmic Practice */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
-          ALGORITHMIC PRACTICE
-        </h2>
-        <LeetCodeStatsCard />
       </section>
 
       {/* Get In Touch */}

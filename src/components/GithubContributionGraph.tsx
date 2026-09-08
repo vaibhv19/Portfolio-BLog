@@ -83,7 +83,7 @@ export function GithubContributionGraph() {
   const weeks = data?.weeks || [];
 
   return (
-    <div className="space-y-3 py-2">
+    <div className="space-y-2.5">
       {/* Section Subtitle */}
       <div>
         <p className="text-[11px] sm:text-xs text-slate-400 font-mono">
@@ -130,7 +130,7 @@ export function GithubContributionGraph() {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-end text-[10px] font-mono text-slate-500 pt-1">
+      <div className="flex items-center justify-end text-[10px] font-mono text-slate-500 pt-0.5">
         <div className="flex items-center gap-1.5">
           <span>Less</span>
           <span className="w-2 h-2 bg-[#111622] border border-slate-800/80" title="No contributions" />
@@ -144,7 +144,7 @@ export function GithubContributionGraph() {
       </div>
 
       {/* Natural Closing Sentence */}
-      <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-3">
+      <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1.5">
         You can read{" "}
         <Link
           href="/writing/why-i-chose-to-become-an-engineer"
@@ -152,7 +152,7 @@ export function GithubContributionGraph() {
         >
           why I chose to become an engineer
         </Link>
-        , then follow what I’m building on{" "}
+        , follow what I’m building on{" "}
         <a
           href={`https://github.com/${username}`}
           target="_blank"
@@ -160,6 +160,15 @@ export function GithubContributionGraph() {
           className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
         >
           GitHub
+        </a>
+        , and check my algorithmic practice on{" "}
+        <a
+          href="https://leetcode.com/u/vaibhv_19/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
+        >
+          LeetCode
         </a>
         .
       </p>
