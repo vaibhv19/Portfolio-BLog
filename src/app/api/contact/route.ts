@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     const sanitizedMessage = message.trim();
 
     const { error } = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
+      from: "Portfolio Contact <contact@vaibhv19.dev>",
       to: [recipientEmail],
       replyTo: sanitizedEmail,
       subject: `New message from ${sanitizedName} via portfolio`,
