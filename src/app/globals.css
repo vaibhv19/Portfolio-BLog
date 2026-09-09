@@ -26,6 +26,10 @@ body {
   line-height: 1.6;
 }
 
+input, textarea, button, select {
+  font-family: inherit;
+}
+
 .font-serif-editorial {
   font-family: var(--font-syne), sans-serif;
 }

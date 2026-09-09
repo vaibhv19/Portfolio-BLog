@@ -8,6 +8,7 @@ import {
   getTier2Navigation,
 } from "@/lib/technologyArticles";
 import { ArticleFooter } from "@/components/ArticleFooter";
+import { slugify } from "@/lib/searchIndex";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -140,20 +141,29 @@ export default async function TechnologyArticlePage({ params, searchParams }: Pa
         {article.content.map((paragraph, index) => {
           // Section heading: ## N / Title
           if (paragraph.startsWith("## ")) {
+            const rawTitle = paragraph.replace("## ", "").trim();
+            const headingId = slugify(rawTitle.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"));
             return (
               <h2
                 key={index}
-                className="text-sm font-bold text-slate-100 font-mono uppercase tracking-wider border-b border-slate-800/80 pb-2 pt-4"
+                id={headingId}
+                className="text-sm font-bold text-slate-100 font-mono uppercase tracking-wider border-b border-slate-800/80 pb-2 pt-4 scroll-mt-20"
               >
-                {renderFormattedText(paragraph.replace("## ", ""))}
+                {renderFormattedText(rawTitle)}
               </h2>
             );
           }
           // Subheading: ### Title
           if (paragraph.startsWith("### ")) {
+            const rawTitle = paragraph.replace("### ", "").trim();
+            const headingId = slugify(rawTitle.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"));
             return (
-              <h3 key={index} className="text-lg font-bold text-sky-400 pt-4">
-                {renderFormattedText(paragraph.replace("### ", ""))}
+              <h3
+                key={index}
+                id={headingId}
+                className="text-lg font-bold text-sky-400 pt-4 scroll-mt-20"
+              >
+                {renderFormattedText(rawTitle)}
               </h3>
             );
           }

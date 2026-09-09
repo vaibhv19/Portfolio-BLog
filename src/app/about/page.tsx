@@ -74,7 +74,7 @@ export default function AboutPage() {
 
       {/* Building Activity */}
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
+        <h2 id="building-activity" className="text-xl sm:text-2xl font-bold text-slate-100 uppercase scroll-mt-20">
           BUILDING ACTIVITY
         </h2>
         <GithubContributionGraph />
@@ -82,7 +82,7 @@ export default function AboutPage() {
 
       {/* Get In Touch */}
       <section className="min-h-[75vh] flex flex-col justify-start pt-2 sm:pt-4 pb-16 sm:pb-20 space-y-3.5">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
+        <h2 id="get-in-touch" className="text-xl sm:text-2xl font-bold text-slate-100 uppercase scroll-mt-20">
           GET IN TOUCH
         </h2>
 

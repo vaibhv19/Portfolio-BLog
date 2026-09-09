@@ -1,7 +1,7 @@
 # Portfolio & Blog (portfolio-website)
 
 ## 1. Project Overview
-A production-ready personal engineering portfolio, technical blog, and systems showcase built with **Next.js 16.3.2 (App Router)**, **React 19.2.8**, **TypeScript 5**, and **Tailwind CSS v4**. The application serves as an interactive platform documenting long-form engineering essays, software system architectures, credential records, patent details, and live developer telemetry (GitHub contributions and LeetCode problem-solving stats). The codebase is designed around zero-bloat static pre-rendering, strongly typed data models, and multi-tier resilient API fallback architecture.
+A production-ready personal engineering portfolio, technical blog, and systems showcase built with **Next.js 16.3.2 (App Router)**, **React 19.2.8**, **TypeScript 5**, and **Tailwind CSS v4**. The application serves as an interactive platform documenting long-form engineering essays, software system architectures, credential records, and live developer telemetry (GitHub contributions and LeetCode problem-solving stats). The codebase is designed around zero-bloat static pre-rendering, strongly typed data models, and multi-tier resilient API fallback architecture.
 
 ---
 
@@ -26,8 +26,7 @@ Standard developer portfolios often rely on generic templates, third-party link 
 * **Live Developer Activity Telemetry**:
   * **GitHub Contribution Graph (`/api/github-contributions`, `GithubContributionGraph.tsx`)**: Ingests live commit activity via a 3-tier fallback architecture (Authenticated GraphQL $\rightarrow$ Public REST proxy $\rightarrow$ Deterministic local snapshot) with a 24-hour cache header.
   * **LeetCode Statistics Card (`/api/leetcode-stats`, `LeetCodeStatsCard.tsx`)**: Displays problem-solving statistics (Total Solved, Easy/Medium/Hard breakdown, global ranking, acceptance rate) via a 3-tier fallback architecture.
-* **Credentials & Intellectual Property Showcase (`/certifications`, `/intellectual-property`, `/education`, `/experience`)**: Dedicated views presenting certified credentials (IIT Kanpur, NPTEL Elite, IBM), educational background (GNIOT B.Tech CS 2023–2027), internship history (Edunet Foundation, IBM PBEL Gold Category), and a registered Indian Patent (*"Real-Time Analytics Device for E-Commerce"*).
-* **Accessible Navigation Drawer (`Header.tsx`)**: Custom mobile slide-over drawer with Escape-key listeners, double-requestAnimationFrame backdrop transitions, active route indicators, and direct social endpoints.
+* **Dedicated Search Page (`/search`, `src/app/search/page.tsx`)**: Lightweight client-side fuzzy search engine powered by Fuse.js and a static index with multi-tier weighted ranking (titles > headings > body text), live debouncing, and direct section anchor scroll navigation.
 
 ---
 
@@ -41,7 +40,6 @@ Standard developer portfolios often rely on generic templates, third-party link 
 │  │   - Layout & SEO        │  │   - /writing/[slug]                      │  │
 │  │   - /projects           │  │   - /technology/[slug]                   │  │
 │  │   - /about              │  │   - /writing (Archive)                   │  │
-│  │   - /experience         │  │   - /certifications                      │  │
 │  └─────────────────────────┘  └──────────────────────────────────────────┘  │
 │                                                                             │
 │  ┌───────────────────────────────────────────────────────────────────────┐  │
@@ -66,7 +64,6 @@ Standard developer portfolios often rely on generic templates, third-party link 
 │  - writing.ts & articles/*.ts (Article Registry & Content Modules)          │
 │  - projects.ts (System Records & Framework Definitions)                     │
 │  - technologyInventory.ts & technologyContent.ts (Technology Index)         │
-│  - experience.ts, education.ts, certifications.ts, patents.ts               │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 

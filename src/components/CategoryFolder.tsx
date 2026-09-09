@@ -62,7 +62,8 @@ export function CategoryFolder({
     return (
       <div
         key={project.id}
-        className="group border-b border-slate-800/60 pb-6 space-y-3 last:border-b-0 last:pb-0"
+        id={project.id}
+        className="group border-b border-slate-800/60 pb-6 space-y-3 last:border-b-0 last:pb-0 scroll-mt-20"
       >
         {/* Project Header Row: Repository Title Link with Sequence Number */}
         <div className="space-y-1 min-w-0 flex-1">
@@ -84,9 +85,9 @@ export function CategoryFolder({
           )}
         </div>
 
-        {/* Technical Bullet Points & Tech Stack */}
-        <div className="pl-8 space-y-2.5">
-          {project.bullets && project.bullets.length > 0 && (
+        {/* Technical Bullet Points */}
+        {project.bullets && project.bullets.length > 0 && (
+          <div className="pl-8">
             <ul className="space-y-1.5">
               {project.bullets.map((bullet, bIdx) => (
                 <li key={bIdx} className="text-xs sm:text-sm text-slate-300 leading-relaxed flex items-start gap-2.5">
@@ -95,16 +96,8 @@ export function CategoryFolder({
                 </li>
               ))}
             </ul>
-          )}
-
-          {/* Tech Stack */}
-          {project.techStack && project.techStack.length > 0 && (
-            <div className="pt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-mono text-slate-500">
-              <span className="text-slate-400 font-semibold">Tech:</span>
-              <span>{project.techStack.join(" · ")}</span>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   };

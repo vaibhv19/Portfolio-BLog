@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { WRITING_ARTICLES } from "@/data/writing";
 import { ArticleFooter } from "@/components/ArticleFooter";
 import { getBlogNavigation } from "@/lib/blogNavigation";
+import { slugify } from "@/lib/searchIndex";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -101,16 +102,28 @@ export default async function WritingArticlePage({ params }: PageProps) {
       <div className="prose prose-invert max-w-none space-y-5 text-slate-300 text-sm sm:text-base leading-relaxed">
         {article.content.map((paragraph, index) => {
           if (paragraph.startsWith("## ")) {
+            const rawTitle = paragraph.replace("## ", "").trim();
+            const headingId = slugify(rawTitle.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"));
             return (
-              <h2 key={index} className="text-xl sm:text-2xl font-bold text-slate-100 pt-6 border-b border-slate-800/80 pb-2">
-                {renderFormattedText(paragraph.replace("## ", ""))}
+              <h2
+                key={index}
+                id={headingId}
+                className="text-xl sm:text-2xl font-bold text-slate-100 pt-6 border-b border-slate-800/80 pb-2 scroll-mt-20"
+              >
+                {renderFormattedText(rawTitle)}
               </h2>
             );
           }
           if (paragraph.startsWith("### ")) {
+            const rawTitle = paragraph.replace("### ", "").trim();
+            const headingId = slugify(rawTitle.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"));
             return (
-              <h3 key={index} className="text-lg font-bold text-sky-400 pt-4">
-                {renderFormattedText(paragraph.replace("### ", ""))}
+              <h3
+                key={index}
+                id={headingId}
+                className="text-lg font-bold text-sky-400 pt-4 scroll-mt-20"
+              >
+                {renderFormattedText(rawTitle)}
               </h3>
             );
           }

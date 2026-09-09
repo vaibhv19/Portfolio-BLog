@@ -153,6 +153,25 @@ export function getTechnologyArticleBySlug(slug: string): UnifiedTechnologyArtic
 }
 
 /**
+ * Returns all articles (Tier 1 + Tier 2) for unified operations like search indexing.
+ */
+export function getAllUnifiedArticles(): UnifiedTechnologyArticle[] {
+  const tier1 = getAllTechnologyArticles();
+  const tier2: UnifiedTechnologyArticle[] = TIER2_ARTICLES.map((a) => ({
+    id: a.slug,
+    slug: a.slug,
+    title: a.title,
+    category: a.category,
+    date: a.date,
+    excerpt: a.excerpt,
+    tier: 2 as const,
+    content: a.content,
+    defaultParent: a.defaultParent,
+  }));
+  return [...tier1, ...tier2];
+}
+
+/**
  * Returns all slugs (Tier 1 + Tier 2) for static route generation.
  */
 export function getAllArticleSlugs(): string[] {

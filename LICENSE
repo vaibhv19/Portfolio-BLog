@@ -34,22 +34,21 @@ SOFTWARE.
 
 ---
 
-## 2. Personal Content, Media, Patents, and Credentials
+## 2. Personal Content, Media, and Credentials
 
 **All Rights Reserved.**
 
-All personal narrative, biographical text, technical articles, blog posts, original sketches, personal photographs, profile images, patent documents, academic certifications, and verified credentials contained in this repository—including but not limited to:
+All personal narrative, biographical text, technical articles, blog posts, original sketches, personal photographs, profile images, academic certifications, and verified credentials contained in this repository—including but not limited to:
 
 - Written technical essays in `src/data/articles/`
 - Technology experience articles and sub-blogs in `src/data/technologyContent.ts`
 - Personal and biographical copy in `src/data/` and `src/app/`
 - Photographs and brand graphics in `public/images/`, `public/profile-avatar.jpeg`, and `public/icon.svg`
-- Registered patent filings and specifications in `public/patent/`
 - Academic diplomas and verified credentials in `public/certificates/`
 
 are the exclusive intellectual property of **Vaibhav Gupta**.
 
 ### Restrictions
 
-- You may **not** reproduce, redistribute, republish, mirror, or claim ownership of any personal content, articles, credentials, patent documents, or photographs for any commercial or non-commercial purpose without explicit prior written authorization.
+- You may **not** reproduce, redistribute, republish, mirror, or claim ownership of any personal content, articles, credentials, or photographs for any commercial or non-commercial purpose without explicit prior written authorization.
 - You may use the software source code under the MIT license to build your own personal portfolio, provided you replace all personal assets, credentials, articles, and identity references with your own.

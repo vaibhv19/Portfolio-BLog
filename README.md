@@ -39,7 +39,7 @@ This repository contains the production source code for the personal portfolio, 
 
 Rather than functioning as a superficial developer landing page or static resume, the application is designed around two foundational goals:
 
-1. **Evidence-Grounded Engineering Showcase**: Presenting software engineering capabilities through concrete project implementations, architectural retrospectives, formal credentials, registered patents, and active contributions rather than unsupported skill badges.
+1. **Evidence-Grounded Engineering Showcase**: Presenting software engineering capabilities through concrete project implementations, architectural retrospectives, and active contributions rather than unsupported skill badges.
 2. **Two-Tier Interconnected Knowledge Network**: Operating a dual-system publishing platform that cleanly separates high-level reflective writing from an interconnected, multi-tier technology knowledge base with contextual concept hyperlinks.
 
 The site is built with **Next.js 16 (App Router)** and **React 19**, compiled to static pages with route-level metadata, deterministic ordering, custom keyboard navigation, and responsive typography.
@@ -59,9 +59,8 @@ The site is built with **Next.js 16 (App Router)** and **React 19**, compiled to
 - **Live Activity & Problem-Solving Trackers (`/about`)**:
   - **GitHub Contribution Heatmap**: Custom-rendered activity grid backed by an automated 3-tier cascade: server-side GitHub GraphQL API &rarr; tokenless public REST endpoint &rarr; deterministic offline fallback generator.
   - **Dynamic LeetCode Statistics**: Live algorithmic metrics (Total Solved, Easy, Medium, Hard) and global rank powered by server-side Next.js ISR revalidation querying official LeetCode GraphQL and proxy endpoints.
-- **Direct PDF Credential & Patent Integration**: In-browser viewing links for official university certifications (IIT Kanpur, NPTEL) and registered Indian Patent Office design documentation (`/patent/452200-001`).
 - **Keyboard-Driven Article Traversal**: Global `ArrowLeft` and `ArrowRight` hotkeys on all writing and technology reading pages with automatic form-field input suppression.
-- **Accessible Slide-Over Navigation**: Full-screen slide-over drawer with backdrop blur, Starry Night texture, and keyboard `Escape` dismissal.
+- **Dedicated Fuzzy Search Engine (`/search`)**: Fast, weighted client-side search powered by Fuse.js and a build-time static index across all page titles, sub-headings, technology notes, and projects with live debounced querying and direct anchor scroll navigation.
 
 ---
 
@@ -69,7 +68,7 @@ The site is built with **Next.js 16 (App Router)** and **React 19**, compiled to
 
 ### Framework & Routing Model
 
-- **Next.js 16.3 (App Router)**: Utilizing server components by default with selective client boundary hydration (`"use client"`) for interactive UI components (drawer, category accordions, share footer, contribution graph).
+- **Next.js 16.3 (App Router)**: Utilizing server components by default with selective client boundary hydration (`"use client"`) for interactive UI components (search page, category accordions, share footer, contribution graph).
 - **Static Site Generation (SSG)**: Dynamic routes `/writing/[slug]` and `/technology/[slug]` export `generateStaticParams()` and lock `dynamicParams = false` to pre-render all 60+ static pages at build time.
 - **Strict Redirect Map**: `next.config.ts` enforces 308 permanent redirects mapping legacy routes (`/skills` &rarr; `/technology`, `/my-experience-with/:slug*` &rarr; `/technology/:slug*`).
 
@@ -92,17 +91,17 @@ flowchart TD
         HomeRoute["Home Page (/)"]
         AboutRoute["About Page (/about)"]
         ProjectsRoute["My Work (/projects)"]
+        SearchRoute["Search Page (/search)"]
         WritingIndexRoute["All Blogs Archive (/writing)"]
         WritingSlugRoute["Blog Reading View (/writing/:slug)"]
         TechIndexRoute["Technology Catalog (/technology)"]
         TechSlugRoute["Technology & Sub-Blog View (/technology/:slug)"]
-        TimelineRoutes["Timeline Routes (/experience, /education, /certifications, /intellectual-property)"]
         APIContributions["API Route (/api/github-contributions)"]
         APILeetCode["API Route (/api/leetcode-stats)"]
     end
 
     subgraph ComponentLayer["Component Layer (src/components)"]
-        HeaderComp["Header & Navigation Drawer"]
+        HeaderComp["Header Bar & Navigation Links"]
         ArticleFooterComp["ArticleFooter (Nav, Share, Keys)"]
         CategoryFolderComp["CategoryFolder & TechFolder"]
         GithubGraphComp["GithubContributionGraph"]
@@ -115,8 +114,6 @@ flowchart TD
         TechInventory["technologyInventory.ts (8 Categories)"]
         TechContent["technologyContent.ts (Tier 1 & 2 Markdown)"]
         ProjectsData["projects.ts (25+ Projects)"]
-        ExperienceData["experience.ts & education.ts"]
-        CertData["certifications.ts & patents.ts"]
         LibTech["lib/technologyArticles.ts"]
         LibNav["lib/blogNavigation.ts"]
         LibGitHub["lib/github.ts"]
@@ -124,8 +121,6 @@ flowchart TD
     end
 
     subgraph StaticAssets["Static Assets (public/)"]
-        CertPDFs["PDF Certifications (/certificates/*)"]
-        PatentPDFs["PDF Patent Specs (/patent/*)"]
         ProfileImages["Images & Avatars (/images/*)"]
         FaviconAssets["Favicons & Monogram (/favicon.png, /favicon.ico)"]
     end
@@ -138,7 +133,6 @@ flowchart TD
     RootLayout --> WritingSlugRoute
     RootLayout --> TechIndexRoute
     RootLayout --> TechSlugRoute
-    RootLayout --> TimelineRoutes
     RootLayout --> APIContributions
     RootLayout --> APILeetCode
 
@@ -157,10 +151,6 @@ flowchart TD
     ProjectsRoute --> ProjectsData
     AboutRoute --> LibGitHub
     AboutRoute --> LibLeetCode
-    TimelineRoutes --> ExperienceData
-    TimelineRoutes --> CertData
-    TimelineRoutes -.-> CertPDFs
-    TimelineRoutes -.-> PatentPDFs
     RootLayout -.-> FaviconAssets
 ```
 
@@ -176,10 +166,6 @@ flowchart TD
     Home -->|"Writing Preview / All Posts"| WritingArchive["Writing Archive (/writing)"]
     Home -->|"Navigation Bar / Menu"| Projects["My Work (/projects)"]
     Home -->|"Navigation Bar / Menu"| Technology["Technology Index (/technology)"]
-    Home -->|"Slide-over Drawer"| Experience["Internships & Training (/experience)"]
-    Home -->|"Slide-over Drawer"| Education["Education (/education)"]
-    Home -->|"Slide-over Drawer"| Certifications["Certifications (/certifications)"]
-    Home -->|"Slide-over Drawer"| Patent["Patents (/intellectual-property)"]
 
     subgraph WritingFlow["Writing Flow"]
         WritingArchive -->|"Select Article"| WritingPost["Blog Reading View (/writing/:slug)"]
@@ -200,9 +186,6 @@ flowchart TD
 
     subgraph WorkEvidence["Work & Evidence Flow"]
         Projects -->|"External Link"| GitHubRepo["GitHub Repository"]
-        Experience -->|"External Link"| FrameworkRepo["Internship / Project Repo"]
-        Certifications -->|"Direct Link"| CertViewer["View Certificate PDF"]
-        Patent -->|"Direct Link"| PatentViewer["View Patent Document PDF"]
     end
 ```
 
@@ -272,10 +255,6 @@ The repository implements a content relationship model that deliberately decoupl
 │   │   │   └── [slug]/                    # Static dynamic blog reading view with sharing & keys
 │   │   ├── technology/                    # 8 categorized technology accordion folders
 │   │   │   └── [slug]/                    # Unified Tier 1 & Tier 2 technology article engine
-│   │   ├── experience/                    # Vertical chronological timeline for internships
-│   │   ├── education/                     # Academic degree timeline
-│   │   ├── certifications/                # Year-grouped credential list with direct PDF links
-│   │   ├── intellectual-property/         # Registered patent records with PDF viewer links
 │   │   ├── skills/                        # Permanent redirect route -> /technology
 │   │   └── api/
 │   │       ├── github-contributions/      # API route handler proxying GitHub contributions
@@ -297,11 +276,7 @@ The repository implements a content relationship model that deliberately decoupl
 │   │   ├── writing.ts                     # Writing articles registry & type definitions
 │   │   ├── technologyInventory.ts         # 8 primary categories and 45+ technology item definitions
 │   │   ├── technologyContent.ts           # Tier 1 & Tier 2 markdown-formatted article contents
-│   │   ├── projects.ts                    # 25+ projects, parent frameworks, and tech stacks
-│   │   ├── experience.ts                  # Internship roles, contributions, and project evidence
-│   │   ├── education.ts                   # Degree credentials and institutional history
-│   │   ├── certifications.ts              # 11+ verified certifications with issuer metadata & PDF paths
-│   │   └── patents.ts                     # Indian Patent Office design patent metadata
+│   │   └── projects.ts                    # 25+ projects, parent frameworks, and tech stacks
 │   └── lib/                               # Utility functions and content helper libraries
 │       ├── technologyArticles.ts          # Unified resolver for Tier 1 & Tier 2 articles and navigation
 │       ├── blogNavigation.ts              # Chronological sorting and prev/next resolver for blogs
@@ -309,7 +284,6 @@ The repository implements a content relationship model that deliberately decoupl
 │       └── leetcode.ts                    # LeetCode GraphQL + REST + offline fallback fetcher
 ├── public/                                # Static assets served directly
 │   ├── certificates/                      # 10+ Original verified certification PDFs
-│   ├── patent/                            # Official registered patent PDF specification
 │   ├── images/                            # Starry night background, personal narrative photography
 │   ├── profile-avatar.jpeg                # Circular profile portrait
 │   ├── favicon.ico / favicon.png          # Active site favicon assets (geometric VG monogram)
@@ -354,7 +328,6 @@ The repository implements a content relationship model that deliberately decoupl
 3. **Path-Aware Sub-Blog Back-Navigation**: Sub-blogs inspect the `?from=` search parameter to provide a contextual `<< Back` link to whichever parent article led the reader there.
 4. **Data-as-Code Content Architecture**: Content is maintained as structured TypeScript arrays (`src/data/`) rather than external headless CMSs or raw MDX files, enabling zero network latency, zero build dependencies, and strict type checking across all cross-references.
 5. **Multi-Tier Live Activity Pipelines**: Both GitHub contribution data and LeetCode algorithmic practice statistics are served via server-cached API routes (`/api/github-contributions`, `/api/leetcode-stats`) using Next.js Incremental Static Regeneration (ISR, 24-hour cache). Each pipeline features an automated multi-tier cascade (official GraphQL API &rarr; public proxy fallback &rarr; deterministic offline snapshot), guaranteeing zero UI breakage and zero maintenance overhead.
-6. **Direct PDF Asset Hosting**: Credentials and patents link directly to static PDF assets in `/public/` rather than external third-party credential websites, ensuring permanent availability and authentic verification.
 
 ---
 
@@ -513,12 +486,9 @@ Add an entry to `TIER2_ARTICLES` in `src/data/technologyContent.ts`:
 ```
 Link to it from any parent article using `[Sub-Concept Title](/technology/my-sub-concept)`.
 
-### Updating Projects, Experience, or Credentials
+### Updating Projects
 
 - **Projects**: Edit `PROJECTS` in `src/data/projects.ts`.
-- **Internships**: Edit `EXPERIENCE_ENTRIES` in `src/data/experience.ts`.
-- **Certificates**: Add the PDF file to `public/certificates/` and append a record to `CERTIFICATIONS` in `src/data/certifications.ts`.
-- **Patent Records**: Add the PDF file to `public/patent/` and update `PATENT_RECORDS` in `src/data/patents.ts`.
 
 ---
 
@@ -539,6 +509,6 @@ Link to it from any parent article using `[Sub-Concept Title](/technology/my-sub
 This repository uses a **dual-licensing model**:
 
 1. **Source Code**: The application software, components, build configuration, utility scripts, and styling are open-source and licensed under the [MIT License](LICENSE).
-2. **Personal Content, Credentials & Media**: All personal essays, biographical copy, photographs (`public/images/`, `public/profile-avatar.jpeg`), patent specifications (`public/patent/`), and academic certificates (`public/certificates/`) are **Copyright &copy; 2026 Vaibhav Gupta. All Rights Reserved.**
+2. **Personal Content, Credentials & Media**: All personal essays, biographical copy, photographs (`public/images/`, `public/profile-avatar.jpeg`), and academic certificates (`public/certificates/`) are **Copyright &copy; 2026 Vaibhav Gupta. All Rights Reserved.**
 
 See the complete [LICENSE](LICENSE) file for detailed legal terms.
