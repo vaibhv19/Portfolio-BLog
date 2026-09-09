@@ -93,7 +93,7 @@ export default function AboutPage() {
         </p>
 
         {/* Location / Sign-off */}
-        <p className="text-xs sm:text-sm text-slate-400 font-mono pt-2">
+        <p className="text-xs sm:text-sm text-slate-400 font-mono pt-2 italic">
           Currently somewhere between Greater Noida and GKP.
         </p>
       </section>

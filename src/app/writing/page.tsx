@@ -35,7 +35,7 @@ export default function WritingArchivePage() {
         <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
           All Blogs
         </h1>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed italic">
           Thoughts on software systems, architectural decisions, experiments, cross-project comparisons, and reflections on the engineering process.
         </p>
 

@@ -15,7 +15,7 @@ export default function TechnologyIndexPage() {
         <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
           Technology I've Worked With
         </h1>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed italic">
           Click any technology title to explore my experience, practical work, and lessons learned with it.
         </p>
       </div>

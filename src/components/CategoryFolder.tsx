@@ -152,7 +152,7 @@ export function CategoryFolder({
                           )}
                         </h4>
                       </div>
-                      <p className="text-xs text-slate-400 leading-relaxed font-mono">
+                      <p className="text-xs text-slate-400 leading-relaxed font-mono italic">
                         {parent.description}
                       </p>
                     </div>

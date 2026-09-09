@@ -69,7 +69,7 @@ export function Footer() {
               <ThreadsIcon className="w-[18px] h-[18px]" />
             </a>
             <a
-              href="mailto:vaibhv19.business@gmail.com"
+              href="mailto:contact@vaibhv19.dev"
               aria-label="Email"
               title="Email"
               className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"

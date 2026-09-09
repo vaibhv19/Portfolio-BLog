@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_EMAIL || "vaibhv19.business@gmail.com";
+    const recipientEmail = process.env.CONTACT_EMAIL || "contact@vaibhv19.dev";
 
     if (!apiKey) {
       console.error("RESEND_API_KEY is not set in environment variables.");
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: [recipientEmail],
       replyTo: sanitizedEmail,
-      subject: `Portfolio Contact: ${sanitizedName}`,
+      subject: `New message from ${sanitizedName} via portfolio`,
       text: `Name: ${sanitizedName}\nEmail: ${sanitizedEmail}\n\nMessage:\n${sanitizedMessage}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">

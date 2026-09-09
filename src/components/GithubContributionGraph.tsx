@@ -112,7 +112,7 @@ export function GithubContributionGraph() {
     <div className="space-y-2.5">
       {/* Section Subtitle */}
       <div>
-        <p className="text-[11px] sm:text-xs text-slate-400 font-mono">
+        <p className="text-[11px] sm:text-xs text-slate-400 font-mono italic">
           {isLoading
             ? "Fetching GitHub contribution calendar..."
             : `${totalContributions.toLocaleString()} contributions across personal software repositories.`}

@@ -49,7 +49,7 @@ export function LeetCodeStatsCard() {
     <div className="space-y-3 py-2">
       {/* Dynamic Rank Subtitle */}
       <div>
-        <p className="text-[11px] sm:text-xs text-slate-400 font-mono">
+        <p className="text-[11px] sm:text-xs text-slate-400 font-mono italic">
           {isLoading
             ? "Fetching LeetCode rank..."
             : stats.ranking

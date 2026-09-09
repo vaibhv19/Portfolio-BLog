@@ -114,7 +114,7 @@ export default function SearchPage() {
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
           Search
         </h1>
-        <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-400 leading-relaxed italic">
           Search writings, my work and technology I've worked with...
         </p>
       </header>
@@ -181,7 +181,7 @@ export default function SearchPage() {
                           </h2>
 
                           {doc.tagline && (
-                            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-2">
+                            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-2 italic">
                               {doc.tagline}
                             </p>
                           )}

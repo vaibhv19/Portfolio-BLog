@@ -25,7 +25,7 @@ export default function ProjectsPage() {
         <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
           My Work
         </h1>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed italic">
           A collection of things I built—some to solve real problems, some to learn how systems actually work, and some because apparently I needed another project.
         </p>
 

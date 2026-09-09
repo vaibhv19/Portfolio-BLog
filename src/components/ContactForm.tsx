@@ -82,7 +82,7 @@ export function ContactForm() {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to send message. Please try again.");
+        throw new Error(data.error || "Something went wrong. Try again or email me directly.");
       }
 
       setStatus("success");
@@ -98,7 +98,7 @@ export function ContactForm() {
       if (err instanceof Error) {
         setErrorMessage(err.message);
       } else {
-        setErrorMessage("An unexpected error occurred. Please try again.");
+        setErrorMessage("Something went wrong. Try again or email me directly.");
       }
     }
   };
@@ -148,7 +148,7 @@ export function ContactForm() {
       )}
 
       {/* Top Introductory Note Inside Box */}
-      <p className="text-[11px] sm:text-xs text-slate-400 font-sans">
+      <p className="text-[11px] sm:text-xs text-slate-400 font-sans italic">
         Reach out, straight to my inbox.
       </p>
 
@@ -244,7 +244,7 @@ export function ContactForm() {
 
       {/* Secondary Response Note Inside Box */}
       <div className="flex justify-start pt-0.5">
-        <p className="text-[11px] sm:text-xs text-slate-400 font-sans">
+        <p className="text-[11px] sm:text-xs text-slate-400 font-sans italic">
           I typically respond within a couple of days.
         </p>
       </div>
