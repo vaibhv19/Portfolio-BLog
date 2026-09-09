@@ -115,7 +115,7 @@ export default function SearchPage() {
           Search
         </h1>
         <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-          Search articles, projects, technology, and pages...
+          Search writings, my work and technology I've worked with...
         </p>
       </header>
 
