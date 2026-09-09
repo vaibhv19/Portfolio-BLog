@@ -43,7 +43,7 @@ export function Header() {
     { name: "About", href: "/about" },
     { name: "My Work", href: "/projects" },
     { name: "Technology", href: "/technology" },
-    { name: "Internships & Training", href: "/experience" },
+    { name: "Internship", href: "/experience" },
     { name: "Education", href: "/education" },
     { name: "Credentials", href: "/certifications" },
     { name: "Patents", href: "/intellectual-property" },

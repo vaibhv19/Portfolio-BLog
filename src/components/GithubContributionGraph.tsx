@@ -82,6 +82,32 @@ export function GithubContributionGraph() {
   const totalContributions = data?.totalContributions || 0;
   const weeks = data?.weeks || [];
 
+  // Calculate month label positions across week columns
+  const monthLabels: { month: string; weekIndex: number }[] = [];
+  let lastMonth = -1;
+
+  weeks.forEach((week, wIdx) => {
+    const firstDayWithDate = week.find((d) => d && d.date);
+    if (firstDayWithDate) {
+      const date = new Date(firstDayWithDate.date);
+      if (!isNaN(date.getTime())) {
+        const month = date.getMonth();
+        if (month !== lastMonth) {
+          if (
+            (monthLabels.length === 0 || wIdx - monthLabels[monthLabels.length - 1].weekIndex >= 2) &&
+            wIdx <= weeks.length - 2
+          ) {
+            monthLabels.push({
+              month: date.toLocaleDateString("en-US", { month: "short" }),
+              weekIndex: wIdx,
+            });
+          }
+          lastMonth = month;
+        }
+      }
+    }
+  });
+
   return (
     <div className="space-y-2.5">
       {/* Section Subtitle */}
@@ -93,40 +119,87 @@ export function GithubContributionGraph() {
         </p>
       </div>
 
-      {/* Contribution Grid */}
+      {/* Contribution Grid with Axis Labels */}
       <div className="overflow-x-auto pt-1 pb-1">
-        {isLoading ? (
-          <div className="flex gap-1 animate-pulse">
-            {Array.from({ length: 48 }).map((_, wIdx) => (
-              <div key={wIdx} className="flex flex-col gap-1">
-                {Array.from({ length: 7 }).map((_, dIdx) => (
-                  <div
-                    key={dIdx}
-                    className="w-2.5 h-2.5 bg-[#111622] border border-slate-800/80"
-                  />
+        <div className="inline-block min-w-full">
+          {/* Month Labels (Top) */}
+          <div className="flex gap-1.5 items-center mb-1 select-none">
+            <div className="w-[22px] shrink-0" aria-hidden="true" />
+            <div className="relative h-3 w-full">
+              {monthLabels.map(({ month, weekIndex }) => (
+                <span
+                  key={`${month}-${weekIndex}`}
+                  className="absolute text-[9px] text-slate-400 font-mono leading-none select-none"
+                  style={{ left: `${weekIndex * 14}px` }}
+                >
+                  {month}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Heatmap Grid Row (Weekday Labels + Day Cells) */}
+          <div className="flex gap-1.5 items-start">
+            {/* Weekday Labels (Left: Mon, Wed, Fri) */}
+            <div className="w-[22px] shrink-0 flex flex-col gap-1 select-none text-right pr-0.5">
+              <div className="h-2.5 text-[9px] text-transparent font-mono leading-none select-none" aria-hidden="true">
+                Sun
+              </div>
+              <div className="h-2.5 flex items-center justify-end text-[9px] text-slate-400 font-mono leading-none">
+                Mon
+              </div>
+              <div className="h-2.5 text-[9px] text-transparent font-mono leading-none select-none" aria-hidden="true">
+                Tue
+              </div>
+              <div className="h-2.5 flex items-center justify-end text-[9px] text-slate-400 font-mono leading-none">
+                Wed
+              </div>
+              <div className="h-2.5 text-[9px] text-transparent font-mono leading-none select-none" aria-hidden="true">
+                Thu
+              </div>
+              <div className="h-2.5 flex items-center justify-end text-[9px] text-slate-400 font-mono leading-none">
+                Fri
+              </div>
+              <div className="h-2.5 text-[9px] text-transparent font-mono leading-none select-none" aria-hidden="true">
+                Sat
+              </div>
+            </div>
+
+            {/* Grid Columns */}
+            {isLoading ? (
+              <div className="flex gap-1 animate-pulse">
+                {Array.from({ length: 48 }).map((_, wIdx) => (
+                  <div key={wIdx} className="flex flex-col gap-1">
+                    {Array.from({ length: 7 }).map((_, dIdx) => (
+                      <div
+                        key={dIdx}
+                        className="w-2.5 h-2.5 bg-[#111622] border border-slate-800/80"
+                      />
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="inline-flex gap-1 min-w-full">
-            {weeks.map((week, wIdx) => (
-              <div key={wIdx} className="flex flex-col gap-1">
-                {week.map((day, dIdx) => (
-                  <div
-                    key={dIdx}
-                    title={`${day.count} contribution${
-                      day.count === 1 ? "" : "s"
-                    } on ${formatDate(day.date)}`}
-                    className={`w-2.5 h-2.5 rounded-none border transition-colors ${getColorClass(
-                      day.level
-                    )}`}
-                  />
+            ) : (
+              <div className="inline-flex gap-1">
+                {weeks.map((week, wIdx) => (
+                  <div key={wIdx} className="flex flex-col gap-1">
+                    {week.map((day, dIdx) => (
+                      <div
+                        key={dIdx}
+                        title={`${day.count} contribution${
+                          day.count === 1 ? "" : "s"
+                        } on ${formatDate(day.date)}`}
+                        className={`w-2.5 h-2.5 rounded-none border transition-colors ${getColorClass(
+                          day.level
+                        )}`}
+                      />
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
+            )}
           </div>
-        )}
+        </div>
       </div>
 
       {/* Legend */}
@@ -143,8 +216,20 @@ export function GithubContributionGraph() {
         </div>
       </div>
 
-      {/* Natural Closing Sentence */}
+      {/* Open Source Note */}
       <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1.5">
+        All of{" "}
+        <Link
+          href="/projects"
+          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
+        >
+          my work
+        </Link>{" "}
+        is released as open source, in case that&apos;s useful to someone else.
+      </p>
+
+      {/* Natural Closing Sentence */}
+      <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1">
         You can read{" "}
         <Link
           href="/writing/why-i-chose-to-become-an-engineer"

@@ -207,7 +207,7 @@ export function ContactForm() {
             aria-label="Your Email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="your.email@example.com"
+            placeholder="Your email"
             disabled={status === "loading"}
             className={`w-full px-3 py-1.5 text-sm text-slate-100 bg-transparent border-2 rounded-sm placeholder:text-slate-500/40 focus:placeholder:text-slate-400/80 transition-colors focus:outline-none focus:ring-1 focus:ring-copper/60 focus:border-copper ${
               fieldErrors.email

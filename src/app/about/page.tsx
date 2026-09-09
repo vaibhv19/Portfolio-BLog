@@ -1,10 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail } from "lucide-react";
 import { GithubContributionGraph } from "@/components/GithubContributionGraph";
 import { ContactForm } from "@/components/ContactForm";
-import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, ThreadsIcon } from "@/components/BrandIcons";
 
 export const metadata: Metadata = {
   title: "About | Vaibhav Gupta",
@@ -71,72 +69,6 @@ export default function AboutPage() {
             </Link>
             .
           </p>
-
-          <p className="text-xs sm:text-sm text-slate-400 font-mono pt-1">
-            Currently somewhere between Greater Noida and GKP.
-          </p>
-
-          {/* Social / Contact Endpoints */}
-          <div className="pt-2 flex items-center justify-start gap-5">
-            <a
-              href="https://github.com/vaibhv19"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              title="GitHub"
-              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
-            >
-              <GithubIcon className="w-[18px] h-[18px]" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/vaibhv19"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
-            >
-              <LinkedinIcon className="w-[18px] h-[18px]" />
-            </a>
-            <a
-              href="https://bsky.app/profile/vaibhv19.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Bluesky"
-              title="Bluesky"
-              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
-            >
-              <BlueskyIcon className="w-[18px] h-[18px]" />
-            </a>
-            <a
-              href="https://x.com/vaibhv_19"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X (Twitter)"
-              title="X (Twitter)"
-              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
-            >
-              <XIcon className="w-[18px] h-[18px]" />
-            </a>
-            <a
-              href="https://www.threads.com/@vaibhv_19"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Threads"
-              title="Threads"
-              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
-            >
-              <ThreadsIcon className="w-[18px] h-[18px]" />
-            </a>
-            <a
-              href="mailto:vaibhv19.business@gmail.com"
-              aria-label="Email"
-              title="Email"
-              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
-            >
-              <Mail className="w-[18px] h-[18px]" />
-            </a>
-          </div>
         </div>
       </section>
 
@@ -149,7 +81,7 @@ export default function AboutPage() {
       </section>
 
       {/* Get In Touch */}
-      <section className="space-y-3.5">
+      <section className="min-h-[75vh] flex flex-col justify-start pt-2 sm:pt-4 pb-16 sm:pb-20 space-y-3.5">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-100 uppercase">
           GET IN TOUCH
         </h2>
@@ -158,6 +90,11 @@ export default function AboutPage() {
 
         <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-1">
           If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below or send a message directly.
+        </p>
+
+        {/* Location / Sign-off */}
+        <p className="text-xs sm:text-sm text-slate-400 font-mono pt-2">
+          Currently somewhere between Greater Noida and GKP.
         </p>
       </section>
     </div>
