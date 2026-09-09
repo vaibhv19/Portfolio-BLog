@@ -20,15 +20,17 @@ export const metadata: Metadata = {
   authors: [{ name: "Vaibhav Gupta" }],
   icons: {
     icon: [
-      { url: "/favicon.png?v=2", type: "image/png" },
-      { url: "/favicon-32x32.png?v=2", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png?v=2", sizes: "16x16", type: "image/png" },
-      { url: "/favicon.ico?v=2" },
+      { url: "/icon.svg?v=3", type: "image/svg+xml" },
+      { url: "/favicon.svg?v=3", type: "image/svg+xml" },
+      { url: "/favicon.png?v=3", type: "image/png" },
+      { url: "/favicon-32x32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png?v=3", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico?v=3" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/favicon.ico?v=2",
+    shortcut: "/icon.svg?v=3",
   },
 };
 
