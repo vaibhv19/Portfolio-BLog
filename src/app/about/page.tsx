@@ -99,7 +99,7 @@ export default function AboutPage() {
 
         {/* Hint */}
         <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-2">
-          TRY THIS: Replace <span className="font-bold italic">/about</span>{"  "}with{" "}<span className="font-bold italic">/info</span> in the URL to go somewhere new.
+          TRY THIS: Replace <span className="font-bold italic">/about</span>{"  "}with{" "}<span className="font-bold italic">/life</span> in the URL to go somewhere new.
         </p>
       </section>
     </div>
