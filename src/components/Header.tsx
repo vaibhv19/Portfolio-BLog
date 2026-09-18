@@ -6,6 +6,9 @@ import { Search } from "lucide-react";
 
 export function Header() {
   const pathname = usePathname();
+  if (pathname === "/life" || pathname?.startsWith("/life/")) {
+    return null;
+  }
   const isSearchActive = pathname === "/search";
 
   return (
