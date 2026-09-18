@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LifeApp from "@/life";
 
 export const metadata: Metadata = {
-  title: "Just Me | Vaibhav Gupta",
-  description: "A personal digital scrapbook, visual catalog, and quiet thoughts.",
+  title: "Vaibhav Gupta | Life",
+  description: "A scrapbook, coded instead — visual catalog, highlights, and quiet thoughts.",
 };
 
 export default function LifePage() {
