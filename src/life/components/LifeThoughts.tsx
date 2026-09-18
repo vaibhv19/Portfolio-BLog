@@ -18,26 +18,31 @@ export function LifeThoughts({ thoughts, onEnlargeMedia }: LifeThoughtsProps) {
   };
 
   return (
-    <section className="mb-14">
+    <section className="mb-12 sm:mb-14">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-6 pb-2 border-b border-white/[0.06]">
-        <div className="flex items-center gap-2">
-          <MessageSquareText className="w-4 h-4 text-copper" />
-          <h2 className="text-xl font-bold tracking-tight text-slate-100 font-sans">
-            Thoughts
-          </h2>
-          <span className="text-xs font-mono text-slate-500 uppercase tracking-wider">
-            ({thoughts.length})
-          </span>
+      <div className="flex items-end justify-between mb-4 pb-2 border-b border-white/[0.06]">
+        <div>
+          <div className="flex items-center gap-2">
+            <MessageSquareText className="w-4 h-4 text-copper" />
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100 font-sans">
+              Thoughts
+            </h2>
+            <span className="text-xs font-mono text-slate-500 uppercase tracking-wider">
+              ({thoughts.length})
+            </span>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-400 font-light mt-0.5">
+            Short-form personal statements &amp; reflections.
+          </p>
         </div>
 
-        <span className="text-xs font-mono text-slate-400">
-          Notes & Soundbites
+        <span className="text-xs font-mono text-slate-500 hidden sm:inline-block">
+          Fragments
         </span>
       </div>
 
       {/* Vertical Stack of Thought Cards */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3.5 sm:gap-4">
         {thoughts.map((thought) => (
           <ThoughtCard
             key={thought.id}
