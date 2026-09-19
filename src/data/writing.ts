@@ -14,6 +14,7 @@ import { articleFromCourseworkToSystems } from "./articles/fromCourseworkToSyste
 import { articleWhyOneBackendIsntEnough } from "./articles/whyOneBackendIsntEnough";
 import { articleBuildingForProduction } from "./articles/buildingForProduction";
 import { articleIntrovertWithAi } from "./articles/introvertWithAi";
+import { articleTheNightAnAiAgentAlmostAteMyDrive } from "./articles/theNightAnAiAgentAlmostAteMyDrive";
 
 export interface WritingArticle {
   slug: string;
@@ -43,4 +44,5 @@ export const WRITING_ARTICLES: WritingArticle[] = [
   articleWhyOneBackendIsntEnough,
   articleBuildingForProduction,
   articleIntrovertWithAi,
+  articleTheNightAnAiAgentAlmostAteMyDrive,
 ];
