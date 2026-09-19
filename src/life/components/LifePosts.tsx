@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Camera, ChevronDown, ArrowUpRight } from "lucide-react";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { LifePost, MediaItem } from "../types";
 import { PostCard } from "./PostCard";
 
@@ -11,42 +11,50 @@ interface LifePostsProps {
 }
 
 export function LifePosts({ posts, onEnlargeMedia }: LifePostsProps) {
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(22);
 
   const displayedPosts = posts.slice(0, visibleCount);
   const hasMore = visibleCount < posts.length;
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 4, posts.length));
+    setVisibleCount((prev) => Math.min(prev + 10, posts.length));
   };
 
-  // Structured Editorial Layout (Deterministic Reference Composition)
-  const post1 = displayedPosts[0]; // Large Vertical Left
-  const post2 = displayedPosts[1]; // Column 2 Top
-  const post3 = displayedPosts[2]; // Column 3 Top
-  const post4 = displayedPosts[3]; // Column 2 Bottom
-  const post5 = displayedPosts[4]; // Column 3 Middle
-  const post6 = displayedPosts[5]; // Column 3 Bottom
-  const subsequentPosts = displayedPosts.slice(6);
+  // Row 1 (BIG LEFT): 1 Large Left + up to 5 Stacked Columns on Right
+  const r1Large = displayedPosts[0];
+  const r1Stack1Top = displayedPosts[1];
+  const r1Stack1Btm = displayedPosts[2];
+  const r1Stack2Top = displayedPosts[3];
+  const r1Stack2Btm = displayedPosts[4];
+  const r1Stack3Top = displayedPosts[5];
+  const r1Stack3Btm = displayedPosts[6];
+  const r1Stack4Top = displayedPosts[7];
+  const r1Stack4Btm = displayedPosts[8];
+  const r1Stack5Top = displayedPosts[9];
+  const r1Stack5Btm = displayedPosts[10];
+
+  // Row 2 (BIG RIGHT - MIRROR): up to 5 Stacked Columns on Left + 1 Large Right
+  const r2Stack5Top = displayedPosts[11];
+  const r2Stack5Btm = displayedPosts[12];
+  const r2Stack4Top = displayedPosts[13];
+  const r2Stack4Btm = displayedPosts[14];
+  const r2Stack3Top = displayedPosts[15];
+  const r2Stack3Btm = displayedPosts[16];
+  const r2Stack1Top = displayedPosts[17] || displayedPosts[7];
+  const r2Stack1Btm = displayedPosts[18] || displayedPosts[8];
+  const r2Stack2Top = displayedPosts[19] || displayedPosts[9];
+  const r2Stack2Btm = displayedPosts[20] || displayedPosts[10];
+  const r2Large = displayedPosts[21] || displayedPosts[0];
+
+  const remainingPosts = displayedPosts.slice(22);
 
   return (
-    <section className="mb-12 sm:mb-14">
+    <section className="mb-14 sm:mb-16">
       {/* Section Header */}
-      <div className="flex items-end justify-between mb-4 pb-2 border-b border-white/[0.06]">
-        <div>
-          <div className="flex items-center gap-2">
-            <Camera className="w-4 h-4 text-copper" />
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100 font-sans">
-              Posts
-            </h2>
-            <span className="text-xs font-mono text-slate-500 uppercase tracking-wider">
-              ({posts.length})
-            </span>
-          </div>
-          <p className="text-xs sm:text-sm text-slate-400 font-light mt-0.5">
-            A visual log of things I see, make, explore, and experience.
-          </p>
-        </div>
+      <div className="flex items-center justify-between mb-5 pb-2 border-b border-white/[0.06]">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100 font-sans">
+          Moments I Cherish
+        </h2>
 
         {hasMore && (
           <button
@@ -60,80 +68,276 @@ export function LifePosts({ posts, onEnlargeMedia }: LifePostsProps) {
         )}
       </div>
 
-      {/* Main Editorial Composition */}
-      <div className="flex flex-col gap-3.5 sm:gap-4">
-        {/* The Exact 3-Column Asymmetric Cluster */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-3.5 sm:gap-4 items-stretch">
-          {/* Column 1 (Left): POST 1 - Large Vertical Featured */}
-          {post1 && (
-            <div className="md:col-span-5 flex flex-col">
+      {/* Main Alternating Composition: BIG LEFT → BIG RIGHT with progressive density */}
+      <div className="flex flex-col gap-4 sm:gap-5">
+        {/* ROW 1: BIG LEFT + PROGRESSIVE SMALL RIGHT */}
+        {r1Large && (
+          <div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-3.5 sm:gap-4 items-stretch">
+            {/* Left: Large Featured Image */}
+            <div className="col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex flex-col">
               <PostCard
-                post={post1}
+                post={r1Large}
                 onEnlarge={onEnlargeMedia}
                 variant="hero-vertical"
                 className="h-full"
+                imageAspectClass="aspect-[3/4] sm:aspect-[4/5] min-h-[260px] sm:min-h-[320px]"
               />
             </div>
-          )}
 
-          {/* Column 2 (Middle): POST 2 (top) + POST 4 (bottom) */}
-          <div className="md:col-span-3 sm:col-span-6 flex flex-col gap-3.5 sm:gap-4 justify-between">
-            {post2 && (
-              <PostCard
-                post={post2}
-                onEnlarge={onEnlargeMedia}
-                variant="compact"
-                className="flex-1"
-                imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
-              />
+            {/* Right: Small Stack Column 1 */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex flex-col gap-3.5 sm:gap-4 justify-between">
+              {r1Stack1Top && (
+                <PostCard
+                  post={r1Stack1Top}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+              {r1Stack1Btm && (
+                <PostCard
+                  post={r1Stack1Btm}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+            </div>
+
+            {/* Right: Small Stack Column 2 */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex flex-col gap-3.5 sm:gap-4 justify-between">
+              {r1Stack2Top && (
+                <PostCard
+                  post={r1Stack2Top}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+              {r1Stack2Btm && (
+                <PostCard
+                  post={r1Stack2Btm}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+            </div>
+
+            {/* Right: Small Stack Column 3 (Revealed on lg: 1024px+) */}
+            {(r1Stack3Top || r1Stack3Btm) && (
+              <div className="hidden lg:flex lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex-col gap-3.5 sm:gap-4 justify-between">
+                {r1Stack3Top && (
+                  <PostCard
+                    post={r1Stack3Top}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+                {r1Stack3Btm && (
+                  <PostCard
+                    post={r1Stack3Btm}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+              </div>
             )}
-            {post4 && (
-              <PostCard
-                post={post4}
-                onEnlarge={onEnlargeMedia}
-                variant="compact"
-                className="flex-1"
-                imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
-              />
+
+            {/* Right: Small Stack Column 4 (Revealed on xl: 1280px+) */}
+            {(r1Stack4Top || r1Stack4Btm) && (
+              <div className="hidden xl:flex xl:col-span-2 2xl:col-span-2 flex-col gap-3.5 sm:gap-4 justify-between">
+                {r1Stack4Top && (
+                  <PostCard
+                    post={r1Stack4Top}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+                {r1Stack4Btm && (
+                  <PostCard
+                    post={r1Stack4Btm}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+              </div>
+            )}
+
+            {/* Right: Small Stack Column 5 (Revealed on 2xl: 1536px+) */}
+            {(r1Stack5Top || r1Stack5Btm) && (
+              <div className="hidden 2xl:flex 2xl:col-span-2 flex-col gap-3.5 sm:gap-4 justify-between">
+                {r1Stack5Top && (
+                  <PostCard
+                    post={r1Stack5Top}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+                {r1Stack5Btm && (
+                  <PostCard
+                    post={r1Stack5Btm}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+              </div>
             )}
           </div>
+        )}
 
-          {/* Column 3 (Right): POST 3 (top) + POST 5 (middle) + POST 6 (bottom) */}
-          <div className="md:col-span-4 sm:col-span-6 flex flex-col gap-3.5 sm:gap-4 justify-between">
-            {post3 && (
-              <PostCard
-                post={post3}
-                onEnlarge={onEnlargeMedia}
-                variant="subtle"
-                className="flex-1"
-                imageAspectClass="aspect-[16/9]"
-              />
+        {/* ROW 2: PROGRESSIVE SMALL LEFT + BIG RIGHT (HORIZONTAL MIRROR) */}
+        {r2Large && (
+          <div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-3.5 sm:gap-4 items-stretch pt-2">
+            {/* Left: Small Stack Column 5 (Revealed on 2xl: 1536px+) */}
+            {(r2Stack5Top || r2Stack5Btm) && (
+              <div className="hidden 2xl:flex 2xl:col-span-2 flex-col gap-3.5 sm:gap-4 justify-between">
+                {r2Stack5Top && (
+                  <PostCard
+                    post={r2Stack5Top}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+                {r2Stack5Btm && (
+                  <PostCard
+                    post={r2Stack5Btm}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+              </div>
             )}
-            {post5 && (
-              <PostCard
-                post={post5}
-                onEnlarge={onEnlargeMedia}
-                variant="subtle"
-                className="flex-1"
-                imageAspectClass="aspect-[16/9]"
-              />
+
+            {/* Left: Small Stack Column 4 (Revealed on xl: 1280px+) */}
+            {(r2Stack4Top || r2Stack4Btm) && (
+              <div className="hidden xl:flex xl:col-span-2 2xl:col-span-2 flex-col gap-3.5 sm:gap-4 justify-between">
+                {r2Stack4Top && (
+                  <PostCard
+                    post={r2Stack4Top}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+                {r2Stack4Btm && (
+                  <PostCard
+                    post={r2Stack4Btm}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+              </div>
             )}
-            {post6 && (
-              <PostCard
-                post={post6}
-                onEnlarge={onEnlargeMedia}
-                variant="subtle"
-                className="flex-1"
-                imageAspectClass="aspect-[16/9]"
-              />
+
+            {/* Left: Small Stack Column 3 (Revealed on lg: 1024px+) */}
+            {(r2Stack3Top || r2Stack3Btm) && (
+              <div className="hidden lg:flex lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex-col gap-3.5 sm:gap-4 justify-between">
+                {r2Stack3Top && (
+                  <PostCard
+                    post={r2Stack3Top}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+                {r2Stack3Btm && (
+                  <PostCard
+                    post={r2Stack3Btm}
+                    onEnlarge={onEnlargeMedia}
+                    variant="compact"
+                    className="flex-1"
+                    imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                  />
+                )}
+              </div>
             )}
+
+            {/* Left: Small Stack Column 1 */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex flex-col gap-3.5 sm:gap-4 justify-between">
+              {r2Stack1Top && (
+                <PostCard
+                  post={r2Stack1Top}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+              {r2Stack1Btm && (
+                <PostCard
+                  post={r2Stack1Btm}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+            </div>
+
+            {/* Left: Small Stack Column 2 */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex flex-col gap-3.5 sm:gap-4 justify-between">
+              {r2Stack2Top && (
+                <PostCard
+                  post={r2Stack2Top}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+              {r2Stack2Btm && (
+                <PostCard
+                  post={r2Stack2Btm}
+                  onEnlarge={onEnlargeMedia}
+                  variant="compact"
+                  className="flex-1"
+                  imageAspectClass="aspect-[4/3] sm:aspect-[16/10]"
+                />
+              )}
+            </div>
+
+            {/* Right: Large Featured Image */}
+            <div className="col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 flex flex-col">
+              <PostCard
+                post={r2Large}
+                onEnlarge={onEnlargeMedia}
+                variant="hero-vertical"
+                className="h-full"
+                imageAspectClass="aspect-[3/4] sm:aspect-[4/5] min-h-[260px] sm:min-h-[320px]"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Additional Multi-Row Posts (if expanded) */}
-        {subsequentPosts.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-4 items-stretch pt-2">
-            {subsequentPosts.map((post) => (
+        {/* Subsequent Repeating Grid if extra posts exist beyond the 2 primary rows */}
+        {remainingPosts.length > 0 && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3.5 sm:gap-4 items-stretch pt-2">
+            {remainingPosts.map((post) => (
               <PostCard
                 key={post.id}
                 post={post}

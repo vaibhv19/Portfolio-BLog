@@ -8,11 +8,13 @@ export interface MediaItem {
   aspectRatio?: "square" | "portrait" | "landscape" | "wide";
 }
 
-export interface HighlightCollection {
+export interface LifeCategory {
   id: string;
+  slug: string;
   title: string;
   subtitle?: string;
-  coverImage?: string;
+  description?: string;
+  coverImage: string;
   items: MediaItem[];
 }
 

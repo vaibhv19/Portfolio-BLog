@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { HIGHLIGHTS_DATA, POSTS_DATA, THOUGHTS_DATA } from "./data/lifeData";
+import { POSTS_DATA, LIFE_CATEGORIES } from "./data/lifeData";
 import { LightboxState, MediaItem } from "./types";
+import { LifeLayout } from "./components/LifeLayout";
 import { LifeHeader } from "./components/LifeHeader";
-import { LifeHighlights } from "./components/LifeHighlights";
 import { LifePosts } from "./components/LifePosts";
-import { LifeThoughts } from "./components/LifeThoughts";
+import { CategorySection } from "./components/CategorySection";
 import { LifeFooter } from "./components/LifeFooter";
 import { MediaLightbox } from "./components/MediaLightbox";
 
@@ -40,40 +40,37 @@ export default function LifeApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0d14] text-slate-100 flex flex-col justify-between selection:bg-copper/20 selection:text-copper overflow-x-hidden">
-      {/* Central Viewport Middle-Column */}
-      <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
-        {/* Header / Intro */}
-        <LifeHeader />
+    <LifeLayout>
+      {/* 1. Hero: Opening Question -> Quote -> Attribution */}
+      <LifeHeader />
 
-        {/* 1. Highlights: Single-row horizontal shelf carousel */}
-        <LifeHighlights
-          collections={HIGHLIGHTS_DATA}
-          onEnlargeMedia={handleEnlargeMedia}
-        />
+      {/* 2. Moments I Cherish: Visual media catalog */}
+      <LifePosts
+        posts={POSTS_DATA}
+        onEnlargeMedia={handleEnlargeMedia}
+      />
 
-        {/* 2. Posts: Multi-row visual catalog */}
-        <LifePosts
-          posts={POSTS_DATA}
-          onEnlargeMedia={handleEnlargeMedia}
-        />
-
-        {/* 3. Thoughts: Threads-inspired short statements */}
-        <LifeThoughts
-          thoughts={THOUGHTS_DATA}
-          onEnlargeMedia={handleEnlargeMedia}
-        />
-
-        {/* 4. Footer */}
-        <LifeFooter />
+      {/* 3. Major Life Chapters: FITNESS, ART, READ, WRITE, PHILOSOPHY / IDEAS, TRAVEL, PERSONAL INTERESTS, NOW / CURRENTLY */}
+      <div className="flex flex-col gap-2 sm:gap-4">
+        {LIFE_CATEGORIES.map((category, idx) => (
+          <CategorySection
+            key={category.id}
+            category={category}
+            onEnlargeMedia={handleEnlargeMedia}
+            index={idx}
+          />
+        ))}
       </div>
 
-      {/* SPA Enlarged Media Lightbox Viewer */}
+      {/* 4. Quiet Footer */}
+      <LifeFooter />
+
+      {/* Enlarged Media Lightbox Viewer */}
       <MediaLightbox
         state={lightboxState}
         onClose={handleCloseLightbox}
         onNavigate={handleNavigateLightbox}
       />
-    </div>
+    </LifeLayout>
   );
 }
