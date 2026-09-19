@@ -14,11 +14,14 @@ export function CategorySection({ category, onEnlargeMedia, index }: CategorySec
   const items = category.items;
   const numItems = items.length;
 
-  // Tripled items array for smooth infinite sliding
-  const duplicatedItems = [...items, ...items, ...items];
+  // Ensure sufficient repetitions so 6 visible items never exceed array bounds
+  const repeatCount = Math.max(5, Math.ceil(36 / Math.max(numItems, 1)));
+  const duplicatedItems = Array.from({ length: repeatCount }, () => items).flat();
+  const middleCopy = Math.floor(repeatCount / 2);
+  const baseIndex = middleCopy * numItems;
 
   // Start in the middle copy so we can slide in either direction seamlessly
-  const [currentIndex, setCurrentIndex] = useState(numItems);
+  const [currentIndex, setCurrentIndex] = useState(baseIndex);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -48,10 +51,11 @@ export function CategorySection({ category, onEnlargeMedia, index }: CategorySec
 
   // Seamless infinite loop boundary handler on transition end
   const handleTransitionEnd = () => {
-    if (currentIndex >= numItems * 2) {
+    if (numItems <= 1) return;
+    if (currentIndex >= baseIndex + numItems) {
       setIsTransitioning(false);
       setCurrentIndex((prev) => prev - numItems);
-    } else if (currentIndex < numItems) {
+    } else if (currentIndex < baseIndex) {
       setIsTransitioning(false);
       setCurrentIndex((prev) => prev + numItems);
     }
@@ -160,24 +164,24 @@ export function CategorySection({ category, onEnlargeMedia, index }: CategorySec
         </div>
       </div>
 
-      {/* Horizontal Visual Journal Row: 3 Portrait Previews */}
+      {/* Horizontal Visual Journal Row: 6 Portrait Previews */}
       <div className="relative overflow-hidden rounded-2xl">
         {/* Sliding Track */}
         <div
           onTransitionEnd={handleTransitionEnd}
           style={{
-            transform: `translateX(calc(-1 * ${currentIndex} * (100% + var(--slide-gap, 1rem)) / var(--visible-cols, 3)))`,
+            transform: `translateX(calc(-1 * ${currentIndex} * (100% + var(--slide-gap, 0.75rem)) / var(--visible-cols, 6)))`,
             transition: isTransitioning
               ? "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)"
               : "none",
           }}
-          className="flex gap-3 sm:gap-3.5 lg:gap-4 [--visible-cols:1.2] sm:[--visible-cols:2] md:[--visible-cols:3] [--slide-gap:0.75rem] sm:[--slide-gap:0.875rem] lg:[--slide-gap:1rem] will-change-transform py-1"
+          className="flex gap-2 sm:gap-2.5 md:gap-3 lg:gap-3.5 [--visible-cols:2] sm:[--visible-cols:3] md:[--visible-cols:6] [--slide-gap:0.5rem] sm:[--slide-gap:0.625rem] md:[--slide-gap:0.75rem] lg:[--slide-gap:0.875rem] will-change-transform py-1"
         >
           {duplicatedItems.map((item, idx) => (
             <div
               key={`${item.id}-${idx}`}
               onClick={() => handleOpenItem(idx)}
-              className="w-[calc((100%-0.75rem)/1.2)] sm:w-[calc((100%-0.875rem)/2)] md:w-[calc((100%-2*1rem)/3)] shrink-0 group relative rounded-xl overflow-hidden bg-[#10141f] border border-white/[0.08] hover:border-copper/40 transition-all duration-500 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.8)] cursor-pointer"
+              className="w-[calc((100%-0.5rem)/2)] sm:w-[calc((100%-2*0.625rem)/3)] md:w-[calc((100%-5*0.75rem)/6)] lg:w-[calc((100%-5*0.875rem)/6)] shrink-0 group relative rounded-xl overflow-hidden bg-[#10141f] border border-white/[0.08] hover:border-copper/40 transition-all duration-500 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.8)] cursor-pointer"
             >
               {/* Compact Portrait Physical Frame (3:4 aspect ratio) */}
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-black/50">
