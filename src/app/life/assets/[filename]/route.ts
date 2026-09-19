@@ -11,7 +11,24 @@ export async function GET(
 ) {
   const { filename } = await context.params;
   const safeFilename = path.basename(filename);
-  const filePath = path.join(ASSETS_DIR, safeFilename);
+  let filePath = path.join(ASSETS_DIR, safeFilename);
+
+  if (!fs.existsSync(filePath)) {
+    try {
+      const entries = fs.readdirSync(ASSETS_DIR, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isDirectory()) {
+          const candidate = path.join(ASSETS_DIR, entry.name, safeFilename);
+          if (fs.existsSync(candidate)) {
+            filePath = candidate;
+            break;
+          }
+        }
+      }
+    } catch {
+      // ignore read error
+    }
+  }
 
   if (!fs.existsSync(filePath)) {
     return new NextResponse("Not Found", { status: 404 });
