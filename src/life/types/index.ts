@@ -2,6 +2,10 @@ export interface MediaItem {
   id: string;
   url: string;
   alt: string;
+  type?: "image" | "video";
+  cluster?: string;
+  duplicateGroup?: string | null;
+  secondaryCategory?: string | null;
   caption?: string;
   location?: string;
   date?: string;

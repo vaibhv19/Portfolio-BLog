@@ -50,9 +50,9 @@ export default function LifeApp() {
         onEnlargeMedia={handleEnlargeMedia}
       />
 
-      {/* 3. Major Life Chapters: FITNESS, ART, READ, WRITE, PHILOSOPHY / IDEAS, TRAVEL, PERSONAL INTERESTS, NOW / CURRENTLY */}
+      {/* 3. Major Life Chapters: FITNESS, ART, READ, PHILOSOPHY / IDEAS, TRAVEL, PERSONAL INTERESTS */}
       <div className="flex flex-col gap-2 sm:gap-4">
-        {LIFE_CATEGORIES.map((category, idx) => (
+        {LIFE_CATEGORIES.filter((category) => category.items.length > 0).map((category, idx) => (
           <CategorySection
             key={category.id}
             category={category}

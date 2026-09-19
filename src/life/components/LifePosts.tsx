@@ -51,10 +51,15 @@ export function LifePosts({ posts, onEnlargeMedia }: LifePostsProps) {
   return (
     <section className="mb-14 sm:mb-16">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-5 pb-2 border-b border-white/[0.06]">
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100 font-sans">
-          Moments I Cherish
-        </h2>
+      <div className="flex items-baseline justify-between mb-5 pb-3 border-b border-white/[0.07]">
+        <div className="flex items-baseline gap-3.5 sm:gap-5">
+          <span className="text-[10px] sm:text-xs font-mono text-slate-500/80 tracking-widest uppercase">
+            MEMORIES
+          </span>
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100 font-sans">
+            Moments I Cherish
+          </h2>
+        </div>
 
         {hasMore && (
           <button

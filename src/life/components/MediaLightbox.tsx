@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useCallback, useRef } from "react";
 import { X, ChevronLeft, ChevronRight, MapPin, Calendar } from "lucide-react";
 import { LightboxState } from "../types";
 
@@ -126,15 +126,27 @@ export function MediaLightbox({ state, onClose, onNavigate }: MediaLightboxProps
             </button>
           )}
 
-          {/* Main Image */}
+          {/* Main Media */}
           <div className="w-full max-h-[68vh] sm:max-h-[72vh] flex items-center justify-center overflow-hidden rounded-xl bg-black/40 border border-white/10 shadow-2xl">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              key={currentItem.id}
-              src={currentItem.url}
-              alt={currentItem.alt}
-              className="max-h-[68vh] sm:max-h-[72vh] w-auto max-w-full object-contain rounded-lg transition-opacity duration-300"
-            />
+            {currentItem.type === "video" ? (
+              <video
+                key={currentItem.id}
+                src={currentItem.url}
+                controls
+                autoPlay
+                loop
+                playsInline
+                className="max-h-[68vh] sm:max-h-[72vh] w-auto max-w-full object-contain rounded-lg shadow-2xl"
+              />
+            ) : (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                key={currentItem.id}
+                src={currentItem.url}
+                alt={currentItem.alt}
+                className="max-h-[68vh] sm:max-h-[72vh] w-auto max-w-full object-contain rounded-lg transition-opacity duration-300"
+              />
+            )}
           </div>
 
           {/* Next Button */}

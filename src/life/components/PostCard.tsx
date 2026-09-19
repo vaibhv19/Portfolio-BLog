@@ -67,12 +67,23 @@ export function PostCard({
     >
       {/* Visual Media Frame */}
       <div className={`relative w-full ${getImageAspect()} overflow-hidden bg-black/40`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={primaryMedia.url}
-          alt={primaryMedia.alt || post.title || "Visual post"}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-        />
+        {primaryMedia.type === "video" ? (
+          <video
+            src={primaryMedia.url}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        ) : (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={primaryMedia.url}
+            alt={primaryMedia.alt || post.title || "Visual post"}
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        )}
 
         {/* Minimal Subtle Vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
