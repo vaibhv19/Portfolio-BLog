@@ -59,13 +59,13 @@ export const PROJECTS: Project[] = [
       "Executed Stockfish 16 UCI engine compiled into WebAssembly for zero-latency in-browser evaluation.",
       "Built multi-threaded analysis worker threads leveraging SharedArrayBuffer and Web Workers.",
       "Implemented dynamic move-branch trees, centipawn evaluation charts, and automated blunder detection.",
-      "Test engine evaluation trees directly via the [live WebAssembly application](https://check-mate-analyse.vercel.app/)."
+      "Test engine evaluation trees directly via the [live WebAssembly application](https://checkmate.vaibhv19.dev/)."
     ],
     category: "Applied Projects",
     techStack: ["TypeScript", "React", "WebAssembly", "Web Workers", "SharedArrayBuffer", "chess.js"],
     featured: true,
     homepagePreview: false,
-    demoUrl: "https://check-mate-analyse.vercel.app/",
+    demoUrl: "https://checkmate.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Check-Mate-Analyse"
   },
   {
@@ -76,13 +76,13 @@ export const PROJECTS: Project[] = [
       "Built Spring Boot REST microservices and PostgreSQL relational schemas for tracking application pipelines.",
       "Implemented JWT session authorization, OAuth2 workflows, recruiter sequences, and funnel metrics.",
       "Containerized services via Docker Compose and deployed to AWS EC2 behind an Nginx reverse proxy.",
-      "Explore candidate workflows and recruitment tracking in the [live deployment](https://trajectory-mu-six.vercel.app)."
+      "Explore candidate workflows and recruitment tracking in the [live deployment](https://trajectory.vaibhv19.dev)."
     ],
     category: "Applied Projects",
     techStack: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "AWS EC2", "Docker", "Nginx", "GitHub Actions"],
     featured: true,
     homepagePreview: true,
-    demoUrl: "https://trajectory-mu-six.vercel.app",
+    demoUrl: "https://trajectory.vaibhv19.dev",
     githubUrl: "https://github.com/vaibhv19/Trajectory"
   },
   {
@@ -349,11 +349,11 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Crafted interactive celebration web app with custom HTML5 Canvas particle physics.",
       "Integrated embedded audio controllers and smooth visual state animations.",
-      "View the interactive celebration sequence in the [deployed application](https://happy-birthday-zoya-teal.vercel.app/)."
+      "View the interactive celebration sequence in the [deployed application](https://happybirthdayzoya.vaibhv19.dev/)."
     ],
     category: "Built for No Reason Other Than Wanting To",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Canvas API"],
-    demoUrl: "https://happy-birthday-zoya-teal.vercel.app/",
+    demoUrl: "https://happybirthdayzoya.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Happy-Birthday-Zoya"
   },
   {
