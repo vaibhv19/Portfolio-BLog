@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         destination: "/technology/:slug*",
         permanent: true,
       },
+      {
+        source: "/life",
+        destination: "https://life.vaibhv19.dev",
+        permanent: true,
+      },
+      {
+        source: "/life/:path*",
+        destination: "https://life.vaibhv19.dev/:path*",
+        permanent: true,
+      },
     ];
   },
 };

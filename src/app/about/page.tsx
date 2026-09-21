@@ -96,6 +96,11 @@ export default function AboutPage() {
         <p className="text-xs sm:text-sm text-slate-400 font-mono pt-2 italic">
           Currently somewhere between Greater Noida and GKP.
         </p>
+
+        {/* Discovery Hint */}
+        <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-2">
+          TRY THIS: Replace `/about` with `/life` to go somewhere else.
+        </p>
       </section>
     </div>
   );
