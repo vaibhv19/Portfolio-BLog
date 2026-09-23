@@ -16,32 +16,42 @@ function formatDateDDMMYYYY(dateStr: string) {
 }
 
 function renderFormattedText(text: string) {
-  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
-  const parts = [];
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`/g;
+  const parts: (string | React.JSX.Element)[] = [];
   let lastIndex = 0;
   let match;
 
   while ((match = regex.exec(text)) !== null) {
-    const [fullMatch, linkText, linkUrl] = match;
+    const [fullMatch, linkText, linkUrl, inlineCode] = match;
     const matchIndex = match.index;
 
     if (matchIndex > lastIndex) {
       parts.push(text.substring(lastIndex, matchIndex));
     }
 
-    const isExternal = linkUrl.startsWith("http://") || linkUrl.startsWith("https://");
-
-    parts.push(
-      <a
-        key={matchIndex}
-        href={linkUrl}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
-        className="text-sky-400 hover:underline transition-colors font-semibold"
-      >
-        {linkText}
-      </a>
-    );
+    if (linkText && linkUrl) {
+      const isExternal = linkUrl.startsWith("http://") || linkUrl.startsWith("https://");
+      parts.push(
+        <a
+          key={matchIndex}
+          href={linkUrl}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          className="text-sky-400 hover:underline transition-colors font-semibold"
+        >
+          {linkText}
+        </a>
+      );
+    } else if (inlineCode !== undefined) {
+      parts.push(
+        <code
+          key={matchIndex}
+          className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700/60 text-sky-300 font-mono text-xs sm:text-sm"
+        >
+          {inlineCode}
+        </code>
+      );
+    }
 
     lastIndex = matchIndex + fullMatch.length;
   }

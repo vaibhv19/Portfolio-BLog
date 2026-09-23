@@ -3,34 +3,44 @@ import { WritingArticle } from "../writing";
 export const articleHowIMaintainOpenSource: WritingArticle = {
   slug: "how-i-maintain-open-source",
   title: "How I Maintain Open Source",
-  date: "2026-09-23",
-  excerpt: "Most of my repos don't have contributors yet. So instead of waiting for a real incident to force the question, I built the answer first.",
-  readingTime: "4 min read",
+  date: "2026-09-22",
+  excerpt: "I wrote a maintainer's guide for projects that didn't need one yet. Then I opened GitHub and found two pull requests waiting.",
+  readingTime: "5 min read",
   content: [
-    "Most of my repos don't have contributors yet. No open issues from strangers, no PRs to review, no production incident to recover from at 2am. So when I decided to write down how I maintain open source, the honest answer was: I don't, not really — not yet.",
+    "I sat down to write a maintainer's guide for projects that, as far as I knew, didn't need one yet. Most of what I run is solo work — no strangers filing issues, no PRs waiting on a decision, nothing in production that could actually go down and take users with it. Writing the guide felt like insurance for a future version of me, not something I'd open this month.",
 
-    "But \"I don't have this problem yet\" is exactly the wrong reason to skip writing it down. The first PR from someone I don't know, the first migration that half-applies, the first secret that ends up in a commit — those are bad moments to be improvising a process for the first time. So instead of waiting for a real incident to force the question, I built the answer first.",
+    "I finished the last document, pushed it, and opened GitHub out of habit. Foundry had two open pull requests. Real changes, from someone I'd never worked with, sitting there since before I'd even started writing.",
+
+    "So much for the theoretical framing.",
 
     "## What I actually built",
 
-    "The repo is here: [How-to-Maintain-Opensource](https://github.com/vaibhv19/How-to-maintain-Opensource) — everything below is what's actually in it.",
+    "The repo is here: [How-to-Maintain-Opensource](https://github.com/vaibhv19/How-to-maintain-Opensource). A README and the usual public-facing set — CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CHANGELOG, LICENSE — plus a maintainer/ folder holding five documents that aren't written for contributors, because contributors don't need to read them. They're written for me.",
 
-    "A small reference repo, not a framework, not a tool — just documents. A README and the usual public-facing set (CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CHANGELOG, LICENSE), plus a maintainer/ folder with five documents that don't try to be polite to contributors, because they're not for contributors — they're for me:",
+    "CONTRIBUTION_REVIEW is the one I reached for first: a 14-step sequence for the moment a PR looks fine and isn't. Understand the change before judging it, check the scope before the logic, ask what breaks before asking what's elegant. Tests, dependencies, security implications, and — last, deliberately — what happens if this needs to be undone.",
 
-    "- MAINTAINER_GUIDE — the actual job: triage, when to merge, when to close, how to keep an old project alive without rewriting it out of boredom.\n- CONTRIBUTION_REVIEW — a 14-step checklist for the moment a PR looks fine on the surface and isn't. Scope, tests, dependencies, security implications, rollback plan — in that order, because reading code for correctness before understanding what it's supposed to do is how bugs get approved.\n- INFRASTRUCTURE_SAFETY — the stuff that breaks around the code, not in it. Env vars, migrations, CI/CD, Docker, infra-as-code. Classified into three tiers: normal changes, changes that need a second look, and changes a contributor should never make at all.\n- RELEASE_PROCESS — a repeatable path from merged PR to production, with an explicit rollback plan decided before deploying, not improvised after.\n- INCIDENT_RESPONSE — runbooks for the specific ways things go wrong: a bad deploy, a regression, a partially-applied migration, a leaked secret. Each with the actual commands, not just the intent.",
+    "INFRASTRUCTURE_SAFETY covers what breaks around the code rather than in it: env vars, migrations, CI/CD, Docker, anything infrastructure-as-code. Split into three tiers — normal changes, changes that need a second look, and changes an outside contributor should never be the one making.",
 
-    "## Why the rigor, for projects this small",
+    "MAINTAINER_GUIDE, RELEASE_PROCESS, and INCIDENT_RESPONSE cover the rest of the job: triage, deciding what ships and when, and — the one I hadn't expected to matter this fast — runbooks for specific failure modes, with actual commands instead of vague intentions. What to run when a migration fails halfway. How to pull a leaked secret out of git history. Not \"be careful,\" but the literal sequence.",
 
-    "A fair question, since none of my current projects have a production incident history, a team of contributors, or infrastructure-as-code to misconfigure. The honest reason the docs go further than my current projects need is that I didn't want to write this twice. Whatever I'm running today is smaller than what I'll eventually be maintaining, and rewriting a maintainer process under pressure, mid-incident, is worse than having sections that sit unused for a while. So the guide is deliberately sized for where things are headed, not just where they are — the sections that don't apply yet are there on purpose, waiting.",
+    "## Using it for the first time",
+
+    "The checklist assumes you test a PR somewhere other than main. I knew that in the abstract way you know most good practices — as a sentence, not a habit — and had to actually work out the mechanics with a real PR sitting open in front of me: pull the branch down without merging it anywhere real, `git fetch origin pull/13/head:pr-review`, drop it onto a throwaway branch built off my actual test branch, and run it there. `main` stays untouched the whole time. No guessing, no \"it's probably fine.\"",
+
+    "That gap — between having written the instruction and having the instinct — is the actual point of the exercise. The document told me what to check. It didn't make checking automatic. I still had to sit down, slower than I expected, and go through it step by step on something I'd written myself days earlier.",
+
+    "## Why it's heavier than my current projects need",
+
+    "None of what I run today has a production incident history, a real team, or infrastructure serious enough to misconfigure. The rigor in these docs — dependency license checks, rollback plans for migrations, tiered access to CI config — is built for a scale I'm not at yet. I wrote it that size on purpose. Whatever I'm maintaining now is smaller than what I'll eventually be maintaining, and rewriting a maintainer process mid-incident, under pressure, is a worse position than having sections that sit unused for a while. The parts that don't apply yet are there on purpose. Waiting.",
 
     "## What this isn't",
 
-    "It's not a template I adapted into one specific project as a demo, and it's not something I'm publishing as \"use my starter kit.\" It's closer to a personal operating manual — the thing I open when a PR lands and I'm not sure what to check first, or when something breaks and I don't want to be figuring out the recovery sequence for the first time while it's actively down.",
+    "It's not a starter template I adapted into one project as a demo. It's a personal operating manual — the thing I open when a PR lands and I'm not sure what to check first, or when something's broken and I don't want to be inventing the recovery sequence while it's actively down.",
 
-    "## The part I didn't expect",
+    "## What surprised me",
 
-    "Writing the incident-response runbooks was the most useful part, not the most obviously useful part. I assumed the PR-review checklist would matter most, since that's the thing I'll actually use weekly. But writing out \"what do I do if a migration fails halfway through\" before it happens, with the actual git revert and filter-repo commands already in hand, is a different kind of preparation than knowing the concept exists. It's the difference between having read about CPR and having practiced it.",
+    "I expected the PR-review checklist to be the part I'd actually use. It was — but writing the incident runbooks turned out to matter faster than I thought, because the same instinct runs underneath both: don't act on a guess, isolate before you touch anything real, don't improvise the response while you're in the middle of it. I built that instinct for a crisis that hasn't happened yet. It showed up first for two ordinary pull requests instead. Same reflex, lower stakes — which is probably the best way to actually learn it.",
 
-    "Maintaining software well isn't really about the code review checklist. It's about not having to invent your response to a bad situation while you're already in it."
+    "Maintaining software well isn't really the checklist. It's not needing to invent your response to a bad situation while you're already inside one."
   ]
 };
