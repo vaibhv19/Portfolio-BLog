@@ -19,14 +19,18 @@ export default function SearchPage() {
   // Pre-build static search index
   const searchIndex = useMemo(() => buildSearchIndex(), []);
 
-  // Initialize Fuse.js with a strict threshold for typo fallback only
+  // Initialize Fuse.js with multi-field search for typo fallback
   const fuse = useMemo(() => {
     return new Fuse(searchIndex, {
       includeScore: true,
-      threshold: 0.2,
-      distance: 50,
+      threshold: 0.35,
+      distance: 80,
       minMatchCharLength: 2,
-      keys: ["title"],
+      keys: [
+        { name: "title", weight: 0.6 },
+        { name: "tagline", weight: 0.25 },
+        { name: "searchableContent", weight: 0.15 },
+      ],
     });
   }, [searchIndex]);
 
@@ -50,46 +54,71 @@ export default function SearchPage() {
       return [];
     }
 
-    // 1. First Pass: Substring & Word Prefix Matching (Highest Relevance)
-    const substringMatches: RankedResult[] = [];
+    // 1. First Pass: Substring & Word Prefix Matching across Title, Tagline/Excerpt, and Content
+    const directMatches: RankedResult[] = [];
     const seenIds = new Set<string>();
 
     for (const doc of searchIndex) {
       const titleLower = doc.title.toLowerCase();
-      const words = titleLower.split(/[\s\-_/·:]+/);
+      const taglineLower = (doc.tagline || "").toLowerCase();
+      const contentLower = (doc.searchableContent || "").toLowerCase();
+
+      const titleWords = titleLower.split(/[\s\-_/·:.,'"]+/);
+      const taglineWords = taglineLower.split(/[\s\-_/·:.,'"]+/);
+      const contentWords = contentLower.split(/[\s\-_/·:.,'"]+/);
 
       // Exact title match
       if (titleLower === trimmed) {
-        substringMatches.push({ doc, score: 0 });
+        directMatches.push({ doc, score: 0 });
         seenIds.add(doc.id);
       }
-      // Word prefix match (e.g. "trajec" -> "Trajectory", "djan" -> "Django")
-      else if (words.some((w) => w.startsWith(trimmed))) {
-        substringMatches.push({ doc, score: 0.05 });
+      // Word prefix match in title (e.g. "eng" -> "Engineering Journey")
+      else if (titleWords.some((w) => w.startsWith(trimmed))) {
+        directMatches.push({ doc, score: 0.05 });
         seenIds.add(doc.id);
       }
-      // Contained substring match (e.g. "script" -> "TypeScript")
+      // Contained substring match in title (e.g. "journey" -> "Engineering Journey")
       else if (titleLower.includes(trimmed)) {
-        substringMatches.push({ doc, score: 0.1 });
+        directMatches.push({ doc, score: 0.1 });
+        seenIds.add(doc.id);
+      }
+      // Word prefix match in tagline / excerpt (e.g. "pyt" -> "Python" in excerpt)
+      else if (taglineWords.some((w) => w.startsWith(trimmed))) {
+        directMatches.push({ doc, score: 0.15 });
+        seenIds.add(doc.id);
+      }
+      // Contained substring in tagline / excerpt
+      else if (taglineLower.includes(trimmed)) {
+        directMatches.push({ doc, score: 0.2 });
+        seenIds.add(doc.id);
+      }
+      // Word prefix match in article content (e.g. "dock" -> "Docker" in body)
+      else if (contentWords.some((w) => w.startsWith(trimmed))) {
+        directMatches.push({ doc, score: 0.25 });
+        seenIds.add(doc.id);
+      }
+      // Contained substring match in content
+      else if (contentLower.includes(trimmed)) {
+        directMatches.push({ doc, score: 0.3 });
         seenIds.add(doc.id);
       }
     }
 
-    // If direct substring/prefix matches exist, return them immediately
-    if (substringMatches.length > 0) {
-      substringMatches.sort((a, b) => {
+    // If direct matches exist, sort and return
+    if (directMatches.length > 0) {
+      directMatches.sort((a, b) => {
         if (a.doc.isPage !== b.doc.isPage) {
           return a.doc.isPage ? -1 : 1;
         }
         return a.score - b.score;
       });
-      return substringMatches;
+      return directMatches;
     }
 
-    // 2. Second Pass: Strict Fuzzy Matching (Only if NO substring matches exist anywhere)
+    // 2. Second Pass: Fuzzy Matching (Fallback when no direct prefix/substring matches exist)
     const fuseResults = fuse.search(trimmed);
     const fuzzyMatches: RankedResult[] = fuseResults
-      .filter((res) => (res.score ?? 1) <= 0.2 && !seenIds.has(res.item.id))
+      .filter((res) => (res.score ?? 1) <= 0.35 && !seenIds.has(res.item.id))
       .map((res) => ({
         doc: res.item,
         score: res.score ?? 0.5,
@@ -115,7 +144,7 @@ export default function SearchPage() {
           Search
         </h1>
         <p className="text-sm sm:text-base text-slate-400 leading-relaxed italic">
-          Search writings, my work and technology I've worked with...
+          Search writings and essays...
         </p>
       </header>
 
@@ -127,8 +156,7 @@ export default function SearchPage() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="e.g. distributed systems"
-            className="w-full px-3.5 py-2.5 pr-10 text-sm sm:text-base text-slate-100 bg-transparent border-2 border-copper/35 focus:border-copper rounded-sm placeholder:text-slate-500/40 focus:placeholder:text-slate-400/80 transition-colors focus:outline-none focus:ring-1 focus:ring-copper/60"
+            className="w-full px-3.5 py-2.5 pr-10 text-sm sm:text-base text-slate-100 bg-transparent border-2 border-copper/35 focus:border-copper rounded-sm transition-colors focus:outline-none focus:ring-1 focus:ring-copper/60"
             autoComplete="off"
             spellCheck="false"
           />
@@ -202,10 +230,10 @@ export default function SearchPage() {
                 No results found for &ldquo;<span className="text-copper">{debouncedQuery}</span>&rdquo;
               </p>
               <p className="text-xs text-slate-500">
-                Try searching for broader keywords like <span className="text-slate-400">Python</span>,{" "}
-                <span className="text-slate-400">LangGraph</span>,{" "}
-                <span className="text-slate-400">Docker</span>, or{" "}
-                <span className="text-slate-400">RAG</span>.
+                Try searching for topics like <span className="text-slate-400">Python</span>,{" "}
+                <span className="text-slate-400">AI Agents</span>,{" "}
+                <span className="text-slate-400">Architecture</span>, or{" "}
+                <span className="text-slate-400">Distributed Systems</span>.
               </p>
             </div>
           )}

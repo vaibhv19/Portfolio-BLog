@@ -1,8 +1,6 @@
 import { WRITING_ARTICLES } from "@/data/writing";
-import { getAllUnifiedArticles } from "./technologyArticles";
-import { PROJECTS, TRAINING_PARENTS } from "@/data/projects";
 
-export type SearchResultType = "page" | "post" | "tech" | "project";
+export type SearchResultType = "page" | "post";
 
 export interface SearchDocument {
   id: string;
@@ -11,6 +9,7 @@ export interface SearchDocument {
   url: string;
   category?: string;
   tagline?: string;
+  searchableContent?: string;
   isPage: boolean;
 }
 
@@ -25,10 +24,8 @@ export function slugify(text: string): string {
 
 /**
  * Builds a search index containing strictly:
- * 1. Core Page Titles (Home, Writing, About, My Work, Technology)
- * 2. Article Titles (Writing)
- * 3. Technology & Skill Titles (Technology)
- * 4. Project Titles (My Work)
+ * 1. Core Page Titles (Home, Writing, About)
+ * 2. Article Titles, Excerpts, and Content Keywords (Writing)
  */
 export function buildSearchIndex(): SearchDocument[] {
   const docs: SearchDocument[] = [];
@@ -42,6 +39,7 @@ export function buildSearchIndex(): SearchDocument[] {
       url: "/",
       category: "Page",
       tagline: "Personal portfolio, software architecture & systems writing",
+      searchableContent: "portfolio software architecture systems engineering distributed",
       isPage: true,
     },
     {
@@ -51,6 +49,7 @@ export function buildSearchIndex(): SearchDocument[] {
       url: "/writing",
       category: "Page",
       tagline: "Archive of long-form technical essays and engineering retrospectives",
+      searchableContent: "writing blog essays articles architecture retrospectives",
       isPage: true,
     },
     {
@@ -60,30 +59,18 @@ export function buildSearchIndex(): SearchDocument[] {
       url: "/about",
       category: "Page",
       tagline: "Personal narrative, building activity & contact information",
-      isPage: true,
-    },
-    {
-      id: "page-projects",
-      title: "My Work",
-      type: "page",
-      url: "/projects",
-      category: "Page",
-      tagline: "Categorized software systems, frameworks, and architecture repositories",
-      isPage: true,
-    },
-    {
-      id: "page-technology",
-      title: "Technology",
-      type: "page",
-      url: "/technology",
-      category: "Page",
-      tagline: "Structured technology catalog across 8 engineering domains",
+      searchableContent: "about bio contact background story experience",
       isPage: true,
     }
   );
 
-  // 2. Writing Article Titles
+  // 2. Writing Article Titles, Excerpts & Content
   for (const article of WRITING_ARTICLES) {
+    const rawContent = (article.content || [])
+      .join(" ")
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .slice(0, 4000);
+
     docs.push({
       id: `writing-${article.slug}`,
       title: article.title,
@@ -91,45 +78,7 @@ export function buildSearchIndex(): SearchDocument[] {
       url: `/writing/${article.slug}`,
       category: "Writing",
       tagline: article.excerpt,
-      isPage: false,
-    });
-  }
-
-  // 3. Technology & Skill Titles
-  const allTechArticles = getAllUnifiedArticles();
-  for (const tech of allTechArticles) {
-    docs.push({
-      id: `tech-${tech.slug}`,
-      title: tech.title,
-      type: "tech",
-      url: `/technology/${tech.slug}`,
-      category: tech.tier === 2 ? "Technology Deep-Dive" : tech.category,
-      tagline: tech.excerpt || `Engineering notes and practical implementation details for ${tech.title}`,
-      isPage: false,
-    });
-  }
-
-  // 4. Project & Framework Titles
-  for (const project of PROJECTS) {
-    docs.push({
-      id: `project-${project.id}`,
-      title: project.title,
-      type: "project",
-      url: `/projects#${project.id}`,
-      category: `My Work · ${project.category}`,
-      tagline: project.tagline,
-      isPage: false,
-    });
-  }
-
-  for (const parent of TRAINING_PARENTS) {
-    docs.push({
-      id: `framework-${parent.id}`,
-      title: parent.name,
-      type: "project",
-      url: `/projects#${parent.id}`,
-      category: "Training Framework",
-      tagline: parent.description,
+      searchableContent: `${article.title} ${article.excerpt} ${rawContent}`,
       isPage: false,
     });
   }

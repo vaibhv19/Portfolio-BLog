@@ -218,14 +218,7 @@ export function GithubContributionGraph() {
 
       {/* Open Source Note */}
       <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1.5">
-        All of{" "}
-        <Link
-          href="/projects"
-          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
-        >
-          my work
-        </Link>{" "}
-        is released as open source, in case that&apos;s useful to someone else.
+        All of my work is released as open source, in case that&apos;s useful to someone else.
       </p>
 
       {/* Natural Closing Sentence */}

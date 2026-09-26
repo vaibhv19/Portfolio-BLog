@@ -39,14 +39,6 @@ export default function WritingArchivePage() {
           Thoughts on software systems, architectural decisions, experiments, cross-project comparisons, and reflections on the engineering process.
         </p>
 
-        <div className="pt-1">
-          <Link
-            href="/technology"
-            className="text-xs font-mono text-copper hover:underline transition-all"
-          >
-            Explore Technology I’ve Worked With &rarr;
-          </Link>
-        </div>
       </div>
 
       {/* Chronological Clean Archive List grouped by Month */}
