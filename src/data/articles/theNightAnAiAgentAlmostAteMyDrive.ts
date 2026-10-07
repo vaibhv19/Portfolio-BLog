@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleTheNightAnAiAgentAlmostAteMyDrive: WritingArticle = {
+export const articleTheNightAnAiAgentAlmostAteMyDrive: PostArticle = {
   slug: "the-night-an-ai-agent-almost-ate-my-drive",
   title: "The Night an AI Agent Almost Ate My Drive",
   date: "2026-09-19",

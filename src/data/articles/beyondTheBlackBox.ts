@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleBeyondTheBlackBox: WritingArticle = {
+export const articleBeyondTheBlackBox: PostArticle = {
   slug: "making-ai-systems-less-blackbox",
   title: "Beyond the Black Box",
   date: "2026-07-26",

@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleSameSystemDifferentLanguages: WritingArticle = {
+export const articleSameSystemDifferentLanguages: PostArticle = {
   slug: "what-i-learned-from-building-the-same-distributed-cache-in-java-and-python",
   title: "Same System, Different Languages",
   date: "2026-08-11",

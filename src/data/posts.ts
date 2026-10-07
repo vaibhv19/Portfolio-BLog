@@ -28,9 +28,6 @@ export interface PostArticle {
   readingTime: string;
 }
 
-// Backwards compatibility alias
-export type WritingArticle = PostArticle;
-
 export const POST_ARTICLES: PostArticle[] = [
   articleNorthStar,
   articleHowIWork,
@@ -51,6 +48,3 @@ export const POST_ARTICLES: PostArticle[] = [
   articleTheNightAnAiAgentAlmostAteMyDrive,
   articleHowIMaintainOpenSource,
 ];
-
-// Backwards compatibility alias
-export const WRITING_ARTICLES: PostArticle[] = POST_ARTICLES;

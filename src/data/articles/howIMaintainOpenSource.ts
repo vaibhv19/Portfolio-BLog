@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleHowIMaintainOpenSource: WritingArticle = {
+export const articleHowIMaintainOpenSource: PostArticle = {
   slug: "how-i-maintain-open-source",
   title: "How I Maintain Open Source",
   date: "2026-09-22",

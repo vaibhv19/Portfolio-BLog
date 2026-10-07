@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleIntrovertWithAi: WritingArticle = {
+export const articleIntrovertWithAi: PostArticle = {
   slug: "introvert-with-ai",
   title: "INTROVERT WITH AI",
   date: "2026-09-04",

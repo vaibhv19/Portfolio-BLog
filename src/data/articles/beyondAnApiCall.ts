@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleBeyondAnApiCall: WritingArticle = {
+export const articleBeyondAnApiCall: PostArticle = {
   slug: "what-changes-when-the-ai-stops-being-a-single-api-call",
   title: "Beyond an API Call",
   date: "2026-07-01",

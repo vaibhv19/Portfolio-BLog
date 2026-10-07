@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleLocalIntelligence: WritingArticle = {
+export const articleLocalIntelligence: PostArticle = {
   slug: "local-first-ai-why-i-kept-the-intelligence-close-to-the-application",
   title: "Local Intelligence",
   date: "2026-07-14",

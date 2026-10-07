@@ -3,7 +3,14 @@ import { notFound } from "next/navigation";
 import { POST_ARTICLES } from "@/data/posts";
 import { ArticleFooter } from "@/components/ArticleFooter";
 import { getBlogNavigation } from "@/lib/blogNavigation";
-import { slugify } from "@/lib/searchIndex";
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;

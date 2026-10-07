@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleBuildingAgentsTwice: WritingArticle = {
+export const articleBuildingAgentsTwice: PostArticle = {
   slug: "building-multi-agent-systems-twice-from-context-unification-to-agent-evaluation",
   title: "Building Agents Twice",
   date: "2026-08-04",

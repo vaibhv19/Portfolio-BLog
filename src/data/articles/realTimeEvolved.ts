@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleRealTimeEvolved: WritingArticle = {
+export const articleRealTimeEvolved: PostArticle = {
   slug: "the-evolution-of-my-real-time-architecture",
   title: "Real-Time, Evolved",
   date: "2026-06-02",

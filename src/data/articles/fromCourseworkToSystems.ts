@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleFromCourseworkToSystems: WritingArticle = {
+export const articleFromCourseworkToSystems: PostArticle = {
   slug: "from-coursework-to-systems-engineering-how-my-projects-became-more-serious",
   title: "From Coursework to Systems",
   date: "2026-05-15",

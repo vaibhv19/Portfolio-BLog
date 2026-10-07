@@ -1,6 +1,6 @@
-import { WritingArticle } from "../writing";
+import { PostArticle } from "../posts";
 
-export const articleWhyOneBackendIsntEnough: WritingArticle = {
+export const articleWhyOneBackendIsntEnough: PostArticle = {
   slug: "why-some-of-my-projects-need-more-than-one-backend",
   title: "Why One Backend Isn't Enough",
   date: "2026-04-28",
