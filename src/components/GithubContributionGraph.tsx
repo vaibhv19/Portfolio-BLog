@@ -218,19 +218,19 @@ export function GithubContributionGraph() {
 
       {/* Open Source Note */}
       <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1.5">
-        All of my work is released as open source, in case that&apos;s useful to someone else.
+        All of{" "}
+        <Link
+          href="https://mywork.vaibhv19.dev"
+          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
+        >
+          my work
+        </Link>{" "}
+        is released as open source, in case that&apos;s useful to someone else.
       </p>
 
       {/* Natural Closing Sentence */}
       <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1">
-        You can read{" "}
-        <Link
-          href="/posts/why-i-chose-to-become-an-engineer"
-          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
-        >
-          why I chose to become an engineer
-        </Link>
-        , follow what I’m building on{" "}
+        Follow what I’m building on{" "}
         <a
           href={`https://github.com/${username}`}
           target="_blank"

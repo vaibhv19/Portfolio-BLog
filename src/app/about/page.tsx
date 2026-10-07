@@ -92,14 +92,9 @@ export default function AboutPage() {
           If you&apos;d like to connect or have questions about my work, feel free to reach out through any of the links below or send a message directly.
         </p>
 
-        {/* Location / Sign-off */}
-        <p className="text-xs sm:text-sm text-slate-400 font-mono pt-2 italic">
-          Currently somewhere between Greater Noida and GKP.
-        </p>
-
         {/* Discovery Hint */}
         <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-2">
-          TRY THIS: Replace `/about` with `/life` to go somewhere else.
+          Try This: Replace `/about` with `/life` in the URL to go somewhere else.
         </p>
       </section>
     </div>

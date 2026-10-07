@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search } from "lucide-react";
 
 export function Header() {
   const pathname = usePathname();
-  const isSearchActive = pathname === "/search";
 
   return (
     <header className="w-full pt-6">
@@ -20,44 +18,35 @@ export function Header() {
             Vaibhav Gupta
           </Link>
 
-          {/* Right Side: Navigation Links & Search Icon Link */}
-          <div className="flex items-center gap-4 sm:gap-5">
-            <nav className="flex items-center gap-4 sm:gap-5 font-mono text-xs uppercase tracking-wider">
-              <Link
-                href="/posts"
-                className={`transition-colors focus:outline-none text-sky-400 ${
-                  pathname === "/posts" || pathname.startsWith("/posts/")
-                    ? "font-bold underline decoration-sky-400"
-                    : "hover:underline"
-                }`}
-              >
-                POSTS
-              </Link>
-              <Link
-                href="/about"
-                className={`transition-colors focus:outline-none text-sky-400 ${
-                  pathname === "/about"
-                    ? "font-bold underline decoration-sky-400"
-                    : "hover:underline"
-                }`}
-              >
-                ABOUT
-              </Link>
-            </nav>
-
+          {/* Right Side: Navigation Links */}
+          <nav className="flex items-center gap-4 sm:gap-5 font-mono text-xs uppercase tracking-wider">
             <Link
-              href="/search"
-              aria-label="Search content and pages"
-              title="Search"
-              className={`p-1.5 transition-colors focus:outline-none rounded hover:bg-slate-800/60 ${
-                isSearchActive
-                  ? "text-sky-400"
-                  : "text-slate-400 hover:text-sky-400"
+              href="/about"
+              className={`transition-colors focus:outline-none text-sky-400 ${
+                pathname === "/about"
+                  ? "font-bold underline decoration-sky-400"
+                  : "hover:underline"
               }`}
             >
-              <Search className="w-4 h-4" />
+              ABOUT
             </Link>
-          </div>
+            <Link
+              href="/posts"
+              className={`transition-colors focus:outline-none text-sky-400 ${
+                pathname === "/posts" || pathname.startsWith("/posts/")
+                  ? "font-bold underline decoration-sky-400"
+                  : "hover:underline"
+              }`}
+            >
+              POSTS
+            </Link>
+            <Link
+              href="https://mywork.vaibhv19.dev"
+              className="transition-colors focus:outline-none text-sky-400 hover:underline"
+            >
+              MY WORK
+            </Link>
+          </nav>
         </div>
       </div>
     </header>
