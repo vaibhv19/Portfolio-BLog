@@ -160,7 +160,6 @@ export function getFallbackContributions(
   username: string = DEFAULT_GITHUB_USERNAME
 ): GitHubContributionsData {
   const totalWeeks = 48;
-  const daysPerWeek = 7;
   const weeks: ContributionWeek[] = [];
   const today = new Date();
   let total = 0;

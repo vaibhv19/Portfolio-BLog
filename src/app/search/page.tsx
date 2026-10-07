@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 import { Search as SearchIcon, X, ArrowRight } from "lucide-react";
-import Fuse, { FuseResult } from "fuse.js";
+import Fuse from "fuse.js";
 import { buildSearchIndex, SearchDocument } from "@/lib/searchIndex";
 
 interface RankedResult {
@@ -144,7 +144,7 @@ export default function SearchPage() {
           Search
         </h1>
         <p className="text-sm sm:text-base text-slate-400 leading-relaxed italic">
-          Search writings and essays...
+          Search posts and articles...
         </p>
       </header>
 

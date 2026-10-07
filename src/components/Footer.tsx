@@ -1,10 +1,8 @@
 "use client";
-import { usePathname } from "next/navigation";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, ThreadsIcon } from "@/components/BrandIcons";
 
 export function Footer() {
-  const pathname = usePathname();
   return (
     <footer className="w-full mt-auto py-6">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

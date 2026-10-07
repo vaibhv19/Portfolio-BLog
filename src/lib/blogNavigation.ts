@@ -1,12 +1,12 @@
-import { WRITING_ARTICLES, WritingArticle } from "@/data/writing";
+import { POST_ARTICLES, PostArticle } from "@/data/posts";
 
 export interface BlogNavigationResult {
-  nextArticle: WritingArticle | null;
-  prevArticle: WritingArticle | null;
+  nextArticle: PostArticle | null;
+  prevArticle: PostArticle | null;
 }
 
 export function getBlogNavigation(currentSlug: string): BlogNavigationResult {
-  const sortedArticles = [...WRITING_ARTICLES].sort(
+  const sortedArticles = [...POST_ARTICLES].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 

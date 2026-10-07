@@ -1,5 +1,5 @@
-import { TECHNOLOGY_CATEGORIES, TechnologyItem } from "@/data/technologyInventory";
-import { TIER1_CONTENT, TIER2_ARTICLES, Tier2ArticleMeta } from "@/data/technologyContent";
+import { TECHNOLOGY_CATEGORIES } from "@/data/technologyInventory";
+import { TIER1_CONTENT, TIER2_ARTICLES } from "@/data/technologyContent";
 
 export interface UnifiedTechnologyArticle {
   id: string;

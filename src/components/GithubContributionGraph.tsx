@@ -225,7 +225,7 @@ export function GithubContributionGraph() {
       <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1">
         You can read{" "}
         <Link
-          href="/writing/why-i-chose-to-become-an-engineer"
+          href="/posts/why-i-chose-to-become-an-engineer"
           className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
         >
           why I chose to become an engineer

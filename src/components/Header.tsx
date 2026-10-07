@@ -24,14 +24,14 @@ export function Header() {
           <div className="flex items-center gap-4 sm:gap-5">
             <nav className="flex items-center gap-4 sm:gap-5 font-mono text-xs uppercase tracking-wider">
               <Link
-                href="/writing"
+                href="/posts"
                 className={`transition-colors focus:outline-none text-sky-400 ${
-                  pathname === "/writing" || pathname.startsWith("/writing/")
+                  pathname === "/posts" || pathname.startsWith("/posts/")
                     ? "font-bold underline decoration-sky-400"
                     : "hover:underline"
                 }`}
               >
-                WRITING
+                POSTS
               </Link>
               <Link
                 href="/about"

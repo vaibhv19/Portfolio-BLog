@@ -2,8 +2,15 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { Mail } from "lucide-react";
+
+const subscribeToUrl = (callback: () => void) => {
+  window.addEventListener("popstate", callback);
+  return () => window.removeEventListener("popstate", callback);
+};
+const getUrlSnapshot = () => (typeof window !== "undefined" ? window.location.href : "");
+const getUrlServerSnapshot = () => "";
 import {
   XIcon,
   BlueskyIcon,
@@ -26,20 +33,13 @@ interface ArticleFooterProps {
 
 export function ArticleFooter({
   articleTitle,
-  articleSlug,
   prevArticle,
   nextArticle,
   backLink,
-  basePath = "/writing",
+  basePath = "/posts",
 }: ArticleFooterProps) {
   const router = useRouter();
-  const [currentUrl, setCurrentUrl] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentUrl(window.location.href);
-    }
-  }, [articleSlug]);
+  const currentUrl = useSyncExternalStore(subscribeToUrl, getUrlSnapshot, getUrlServerSnapshot);
 
   // Keyboard arrow navigation matching visible controls exactly
   useEffect(() => {

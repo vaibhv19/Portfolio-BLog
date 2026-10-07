@@ -1,4 +1,4 @@
-import { WRITING_ARTICLES } from "@/data/writing";
+import { POST_ARTICLES } from "@/data/posts";
 
 export type SearchResultType = "page" | "post";
 
@@ -24,8 +24,8 @@ export function slugify(text: string): string {
 
 /**
  * Builds a search index containing strictly:
- * 1. Core Page Titles (Home, Writing, About)
- * 2. Article Titles, Excerpts, and Content Keywords (Writing)
+ * 1. Core Page Titles (Home, Posts, About)
+ * 2. Article Titles, Excerpts, and Content Keywords (Posts)
  */
 export function buildSearchIndex(): SearchDocument[] {
   const docs: SearchDocument[] = [];
@@ -43,13 +43,13 @@ export function buildSearchIndex(): SearchDocument[] {
       isPage: true,
     },
     {
-      id: "page-writing",
-      title: "Writing",
+      id: "page-posts",
+      title: "Posts",
       type: "page",
-      url: "/writing",
+      url: "/posts",
       category: "Page",
-      tagline: "Archive of long-form technical essays and engineering retrospectives",
-      searchableContent: "writing blog essays articles architecture retrospectives",
+      tagline: "Archive of long-form technical posts and engineering retrospectives",
+      searchableContent: "posts blog essays articles architecture retrospectives",
       isPage: true,
     },
     {
@@ -64,19 +64,19 @@ export function buildSearchIndex(): SearchDocument[] {
     }
   );
 
-  // 2. Writing Article Titles, Excerpts & Content
-  for (const article of WRITING_ARTICLES) {
+  // 2. Post Article Titles, Excerpts & Content
+  for (const article of POST_ARTICLES) {
     const rawContent = (article.content || [])
       .join(" ")
       .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
       .slice(0, 4000);
 
     docs.push({
-      id: `writing-${article.slug}`,
+      id: `post-${article.slug}`,
       title: article.title,
       type: "post",
-      url: `/writing/${article.slug}`,
-      category: "Writing",
+      url: `/posts/${article.slug}`,
+      category: "Posts",
       tagline: article.excerpt,
       searchableContent: `${article.title} ${article.excerpt} ${rawContent}`,
       isPage: false,

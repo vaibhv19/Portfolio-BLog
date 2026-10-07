@@ -38,13 +38,13 @@ export default function AboutPage() {
         {/* Right Column: Personal Narrative Flow */}
         <div className="md:col-span-7 space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
           <p>
-            I started out writing basic features until I realized that writing code is usually the easy part. Making sure it doesn't fall apart when network boundaries, concurrency, and real-world edge cases enter the picture is where the actual work lives.
+            I started out writing basic features until I realized that writing code is usually the easy part. Making sure it doesn&apos;t fall apart when network boundaries, concurrency, and real-world edge cases enter the picture is where the actual work lives.
           </p>
 
           <p>
             My focus gradually shifted from standalone scripts to distributed services, containerized sandboxes, and multi-agent AI pipelines. That evolution is something I explore in{" "}
             <Link
-              href="/writing/engineering-journey"
+              href="/posts/engineering-journey"
               className="text-copper hover:underline font-medium transition-all"
             >
               Engineering Journey
@@ -55,14 +55,14 @@ export default function AboutPage() {
           <p>
             I prefer defining schemas and system boundaries before writing implementation logic—mostly because planning upfront saves me from pretending every design flaw was an unexpected surprise. Automated tests and meaningful Git history are part of that workflow too, covered in{" "}
             <Link
-              href="/writing/how-i-work"
+              href="/posts/how-i-work"
               className="text-copper hover:underline font-medium transition-all"
             >
               How I Work
             </Link>
             , while the more personal influences behind how I approach things are explored in{" "}
             <Link
-              href="/writing/identity-and-influences"
+              href="/posts/identity-and-influences"
               className="text-copper hover:underline font-medium transition-all"
             >
               Identity &amp; Influences

@@ -1,7 +1,7 @@
 /**
  * Technology Article Content — Markdown-Paragraph Format
  *
- * Each article is an array of string paragraphs, identical to the Writing article system.
+ * Each article is an array of string paragraphs, identical to the Posts article system.
  * Supports: ## headings, ### subheadings, - list items, [text](url) links.
  *
  * Internal knowledge-web links use: [Concept](/technology/slug)

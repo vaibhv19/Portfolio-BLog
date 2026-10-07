@@ -20,7 +20,7 @@ Standard developer portfolios often rely on generic templates, third-party link 
 ---
 
 ## 4. What It Actually Does
-* **Long-Form Technical Writing Archive (`/writing`, `/writing/[slug]`)**: Houses comprehensive technical articles covering distributed caching, AI agent safety harnesses, hybrid RAG retrieval pipelines, real-time WebSocket framing, and engineering discipline. Pre-renders all routes statically at build time via `generateStaticParams` with bidirectional next/previous chronological navigation (`getBlogNavigation`).
+* **Long-Form Technical Posts Archive (`/posts`, `/posts/[slug]`)**: Houses comprehensive technical articles covering distributed caching, AI agent safety harnesses, hybrid RAG retrieval pipelines, real-time WebSocket framing, and engineering discipline. Pre-renders all routes statically at build time via `generateStaticParams` with bidirectional next/previous chronological navigation (`getBlogNavigation`).
 * **Categorized Project Catalog (`/projects`)**: Organizes software systems into distinct classifications: Applied Projects, System Integrity & DevSecOps Guardrails, Academic Milestones, and Training Frameworks. Each entry contains technical taglines, architecture bullets, tech stack tags, live deployment links, and GitHub repository links.
 * **Technology Knowledge Web (`/technology`, `/technology/[slug]`)**: An interactive technology index mapping languages, frameworks, AI/ML tools, databases, distributed caching primitives, security mechanisms, and DevOps infrastructure directly to project evidence and technical breakdowns.
 * **Live Developer Activity Telemetry**:
@@ -37,9 +37,9 @@ Standard developer portfolios often rely on generic templates, third-party link 
 │                                                                             │
 │  ┌─────────────────────────┐  ┌──────────────────────────────────────────┐  │
 │  │   Server Components     │  │          Static Page Generation          │  │
-│  │   - Layout & SEO        │  │   - /writing/[slug]                      │  │
+│  │   - Layout & SEO        │  │   - /posts/[slug]                        │  │
 │  │   - /projects           │  │   - /technology/[slug]                   │  │
-│  │   - /about              │  │   - /writing (Archive)                   │  │
+│  │   - /about              │  │   - /posts (Archive)                     │  │
 │  └─────────────────────────┘  └──────────────────────────────────────────┘  │
 │                                                                             │
 │  ┌───────────────────────────────────────────────────────────────────────┐  │
@@ -224,8 +224,8 @@ Standard developer portfolios often rely on generic templates, third-party link 
 ## 17. Evidence / Source References
 *(Note: File references and counts below document the codebase inventory as verified at the time of this dossier)*
 * **Next.js & React Setup**: [package.json](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/package.json#L1-L28), [src/app/layout.tsx](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/app/layout.tsx)
-* **Blog Archive & Articles**: [src/data/writing.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/data/writing.ts), [src/data/articles/](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/data/articles/) (15 article files verified in corpus)
-* **Dynamic Article Routing & Navigation**: [src/app/writing/[slug]/page.tsx](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/app/writing/%5Bslug%5D/page.tsx), [src/lib/blogNavigation.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/lib/blogNavigation.ts)
+* **Blog Archive & Articles**: [src/data/posts.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/data/posts.ts), [src/data/articles/](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/data/articles/) (15 article files verified in corpus)
+* **Dynamic Article Routing & Navigation**: [src/app/posts/[slug]/page.tsx](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/app/posts/%5Bslug%5D/page.tsx), [src/lib/blogNavigation.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/lib/blogNavigation.ts)
 * **Project Catalog Data**: [src/data/projects.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/data/projects.ts) (11+ projects & frameworks verified)
 * **Technology Knowledge Web**: [src/data/technologyInventory.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/data/technologyInventory.ts), [src/data/technologyContent.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/data/technologyContent.ts)
 * **GitHub Telemetry Handler & Fallbacks**: [src/app/api/github-contributions/route.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/app/api/github-contributions/route.ts), [src/lib/github.ts](file:///d:/Coding/Projects----Miscellaneous/Portfolio%20&%20BLog/src/lib/github.ts)

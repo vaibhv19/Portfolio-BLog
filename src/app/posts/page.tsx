@@ -1,10 +1,10 @@
 import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
-import { WRITING_ARTICLES } from "@/data/writing";
+import { POST_ARTICLES } from "@/data/posts";
 
 export const metadata: Metadata = {
-  title: "All Blogs | Vaibhav Gupta",
+  title: "All Posts | Vaibhav Gupta",
   description: "Chronological engineering archive exploring project retrospectives, system comparisons, architectural decisions, and learning reflections.",
 };
 
@@ -23,8 +23,8 @@ function formatDateDDMMYYYY(dateStr: string) {
   return `${day}/${month}/${year}`;
 }
 
-export default function WritingArchivePage() {
-  const articles = [...WRITING_ARTICLES].sort(
+export default function PostsArchivePage() {
+  const articles = [...POST_ARTICLES].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
@@ -33,12 +33,11 @@ export default function WritingArchivePage() {
       {/* Page Header */}
       <div className="space-y-2.5 border-b border-slate-800/80 pb-5">
         <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
-          All Blogs
+          All Posts
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed italic">
           Thoughts on software systems, architectural decisions, experiments, cross-project comparisons, and reflections on the engineering process.
         </p>
-
       </div>
 
       {/* Chronological Clean Archive List grouped by Month */}
@@ -62,7 +61,7 @@ export default function WritingArchivePage() {
 
               <article className="space-y-1.5 group">
                 <h2 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:underline transition-all">
-                  <Link href={`/writing/${article.slug}`}>
+                  <Link href={`/posts/${article.slug}`}>
                     {indexStr} {article.title}
                   </Link>
                 </h2>

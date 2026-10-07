@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { WRITING_ARTICLES } from "@/data/writing";
+import { POST_ARTICLES } from "@/data/posts";
 import { ArticleFooter } from "@/components/ArticleFooter";
 import { getBlogNavigation } from "@/lib/blogNavigation";
 import { slugify } from "@/lib/searchIndex";
@@ -66,24 +65,24 @@ function renderFormattedText(text: string) {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return WRITING_ARTICLES.map((art) => ({
+  return POST_ARTICLES.map((art) => ({
     slug: art.slug,
   }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = WRITING_ARTICLES.find((a) => a.slug === slug);
-  if (!article) return { title: "Article Not Found" };
+  const article = POST_ARTICLES.find((a) => a.slug === slug);
+  if (!article) return { title: "Post Not Found" };
   return {
-    title: `${article.title} | Technical Writing`,
+    title: `${article.title} | Posts`,
     description: article.excerpt,
   };
 }
 
-export default async function WritingArticlePage({ params }: PageProps) {
+export default async function PostDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const article = WRITING_ARTICLES.find((a) => a.slug === slug);
+  const article = POST_ARTICLES.find((a) => a.slug === slug);
 
   if (!article) {
     notFound();
@@ -163,6 +162,7 @@ export default async function WritingArticlePage({ params }: PageProps) {
         articleSlug={article.slug}
         prevArticle={prevArticle}
         nextArticle={nextArticle}
+        basePath="/posts"
       />
     </div>
   );

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ExternalLink, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, BlueskyIcon, XIcon, ThreadsIcon } from "@/components/BrandIcons";
 import { StatusBadge } from "@/components/StatusBadge";
-import { WRITING_ARTICLES } from "@/data/writing";
+import { POST_ARTICLES } from "@/data/posts";
 
 function formatDateDDMMYYYY(dateStr: string) {
   const [year, month, day] = dateStr.split("-");
@@ -11,11 +11,11 @@ function formatDateDDMMYYYY(dateStr: string) {
 
 export default function HomePage() {
   // Sort articles by date descending
-  const sortedArticles = [...WRITING_ARTICLES].sort(
+  const sortedArticles = [...POST_ARTICLES].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-  // Recent Writing — Homepage selection (latest 5 articles preview)
-  const recentWriting = sortedArticles.slice(0, 5);
+  // Recent Posts — Homepage selection (latest 5 articles preview)
+  const recentPosts = sortedArticles.slice(0, 5);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-7 text-slate-300">
@@ -56,7 +56,7 @@ export default function HomePage() {
                 </Link>
               </h1>
               <p className="text-sm sm:text-base font-mono text-slate-300 leading-relaxed">
-                &ldquo;A serious engineer whose work is presented with the eye of an artist and the discipline of consistent practice.&rdquo;
+                From simple interfaces to complex AI systems, a spectrum of things built, explored, and shared openly.
               </p>
             </div>
 
@@ -134,13 +134,13 @@ export default function HomePage() {
         </div>
 
         <div className="space-y-4">
-          {recentWriting.map((article) => {
+          {recentPosts.map((article) => {
             const articleIndex = sortedArticles.indexOf(article);
             const indexStr = `${sortedArticles.length - articleIndex} /`;
             return (
               <div key={article.slug} className="space-y-1 group">
                 <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:underline transition-all">
-                  <Link href={`/writing/${article.slug}`}>
+                  <Link href={`/posts/${article.slug}`}>
                     {indexStr} {article.title}
                   </Link>
                 </h3>
@@ -161,7 +161,7 @@ export default function HomePage() {
 
         {/* Bottom CTA */}
         <div className="pt-1">
-          <Link href="/writing" className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all">
+          <Link href="/posts" className="text-xs font-mono text-sky-400 hover:underline inline-block transition-all">
             All Posts &rarr;
           </Link>
         </div>
