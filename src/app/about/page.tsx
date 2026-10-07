@@ -38,36 +38,60 @@ export default function AboutPage() {
         {/* Right Column: Personal Narrative Flow */}
         <div className="md:col-span-7 space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
           <p>
-            I started out writing basic features until I realized that writing code is usually the easy part. Making sure it doesn&apos;t fall apart when network boundaries, concurrency, and real-world edge cases enter the picture is where the actual work lives.
+            I&apos;ve built everything from simple websites like{" "}
+            <a
+              href="https://1nfinity.online"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 underline hover:text-slate-100 font-medium transition-colors"
+            >
+              1nfinity.online
+            </a>{" "}
+            to systems like{" "}
+            <a
+              href="https://github.com/vaibhv19/Phoenix"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 underline hover:text-slate-100 font-medium transition-colors"
+            >
+              Phoenix
+            </a>
+            , where I explored hybrid RAG and retrieval systems, and{" "}
+            <a
+              href="https://github.com/vaibhv19/Conclave"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 underline hover:text-slate-100 font-medium transition-colors"
+            >
+              Conclave
+            </a>
+            , where I experimented with multi-model AI orchestration.
           </p>
 
           <p>
-            My focus gradually shifted from standalone scripts to distributed services, containerized sandboxes, and multi-agent AI pipelines. That evolution is something I explore in{" "}
-            <Link
-              href="/posts/engineering-journey"
-              className="text-copper hover:underline font-medium transition-all"
-            >
-              Engineering Journey
-            </Link>
-            .
+            I&apos;ve been coding since 2019 and studying computer science formally since 2023. Over the years, I&apos;ve watched the industry change with the rise of AI, and I&apos;ve tried to evolve with it, learning new tools, ideas, and ways of building along the way.
           </p>
 
           <p>
-            I prefer defining schemas and system boundaries before writing implementation logic—mostly because planning upfront saves me from pretending every design flaw was an unexpected surprise. Automated tests and meaningful Git history are part of that workflow too, covered in{" "}
-            <Link
-              href="/posts/how-i-work"
-              className="text-copper hover:underline font-medium transition-all"
-            >
-              How I Work
-            </Link>
-            , while the more personal influences behind how I approach things are explored in{" "}
+            I live in Greater Noida, IN.
+          </p>
+          <p>
+            I&apos;m looking for opportunities to collaborate, learn, and build something new.
+          </p>
+
+          <p>
+            Outside engineering, I spend time with art, books, design, and fitness. Some of the things that have shaped how I think are collected in{" "}
             <Link
               href="/posts/identity-and-influences"
-              className="text-copper hover:underline font-medium transition-all"
+              className="text-slate-300 underline hover:text-slate-100 font-medium transition-colors"
             >
               Identity &amp; Influences
             </Link>
             .
+          </p>
+
+          <p>
+            That&apos;s pretty much it. I build, learn, break things, and do it again.
           </p>
         </div>
       </section>
@@ -81,7 +105,7 @@ export default function AboutPage() {
       </section>
 
       {/* Get In Touch */}
-      <section className="min-h-[75vh] flex flex-col justify-start pt-2 sm:pt-4 pb-16 sm:pb-20 space-y-3.5">
+      <section className="min-h-[75vh] flex flex-col justify-start pt-2 sm:pt-4 pb-24 sm:pb-32 space-y-3.5">
         <h2 id="get-in-touch" className="text-xl sm:text-2xl font-bold text-slate-100 uppercase scroll-mt-20">
           GET IN TOUCH
         </h2>

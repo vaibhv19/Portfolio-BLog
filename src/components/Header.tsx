@@ -13,23 +13,13 @@ export function Header() {
           {/* Left Side: Brand Identity */}
           <Link
             href="/"
-            className="text-2xl sm:text-3xl font-bold tracking-tight text-copper hover:underline transition-all focus:outline-none"
+            className="text-2xl sm:text-3xl font-bold tracking-tight text-copper transition-all focus:outline-none"
           >
             Vaibhav Gupta
           </Link>
 
           {/* Right Side: Navigation Links */}
           <nav className="flex items-center gap-4 sm:gap-5 font-mono text-xs uppercase tracking-wider">
-            <Link
-              href="/about"
-              className={`transition-colors focus:outline-none text-sky-400 ${
-                pathname === "/about"
-                  ? "font-bold underline decoration-sky-400"
-                  : "hover:underline"
-              }`}
-            >
-              ABOUT
-            </Link>
             <Link
               href="/posts"
               className={`transition-colors focus:outline-none text-sky-400 ${
@@ -39,6 +29,16 @@ export function Header() {
               }`}
             >
               POSTS
+            </Link>
+            <Link
+              href="/about"
+              className={`transition-colors focus:outline-none text-sky-400 ${
+                pathname === "/about"
+                  ? "font-bold underline decoration-sky-400"
+                  : "hover:underline"
+              }`}
+            >
+              ABOUT
             </Link>
             <Link
               href="https://mywork.vaibhv19.dev"

@@ -217,11 +217,11 @@ export function GithubContributionGraph() {
       </div>
 
       {/* Open Source Note */}
-      <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1.5">
+      <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-1">
         All of{" "}
         <Link
           href="https://mywork.vaibhv19.dev"
-          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
+          className="text-slate-200 underline hover:text-white font-medium transition-colors"
         >
           my work
         </Link>{" "}
@@ -235,7 +235,7 @@ export function GithubContributionGraph() {
           href={`https://github.com/${username}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
+          className="text-slate-200 underline hover:text-white font-medium transition-colors"
         >
           GitHub
         </a>
@@ -244,7 +244,7 @@ export function GithubContributionGraph() {
           href="https://leetcode.com/u/vaibhv_19/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-copper hover:text-copper-hover hover:underline transition-colors font-medium"
+          className="text-slate-200 underline hover:text-white font-medium transition-colors"
         >
           LeetCode
         </a>
