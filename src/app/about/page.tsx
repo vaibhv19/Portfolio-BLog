@@ -5,8 +5,17 @@ import { GithubContributionGraph } from "@/components/GithubContributionGraph";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "About | Vaibhav Gupta",
+  title: "About",
   description: "Comprehensive professional narrative covering engineering journey, background, and building activity.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    type: "profile",
+    title: "About | Vaibhav Gupta",
+    description: "Comprehensive professional narrative covering engineering journey, background, and building activity.",
+    url: "/about",
+  },
 };
 
 export default function AboutPage() {
@@ -25,7 +34,7 @@ export default function AboutPage() {
         <div className="md:col-span-5 w-full">
           <div className="relative aspect-[3/4] w-full max-w-[320px] sm:max-w-[380px] md:max-w-none mx-auto overflow-hidden rounded-md bg-slate-900/40 border border-slate-800/80 transition-transform duration-300 ease-out hover:scale-[1.02]">
             <Image
-              src="/images/WhatsApp Image 2026-08-25 at 4.50.20 AM.jpeg"
+              src="/images/vaibhav-gupta-about.webp"
               alt="Vaibhav Gupta"
               fill
               className="object-cover object-top"
@@ -38,16 +47,7 @@ export default function AboutPage() {
         {/* Right Column: Personal Narrative Flow */}
         <div className="md:col-span-7 space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
           <p>
-            I&apos;ve built everything from simple websites like{" "}
-            <a
-              href="https://1nfinity.online"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-300 underline hover:text-slate-100 font-medium transition-colors"
-            >
-              1nfinity.online
-            </a>{" "}
-            to systems like{" "}
+            I&apos;ve built everything from simple websites to systems like{" "}
             <a
               href="https://github.com/vaibhv19/Phoenix"
               target="_blank"
@@ -69,11 +69,11 @@ export default function AboutPage() {
           </p>
 
           <p>
-            I&apos;ve been coding since 2019 and studying computer science formally since 2023. Over the years, I&apos;ve watched the industry change with the rise of AI, and I&apos;ve tried to evolve with it, learning new tools, ideas, and ways of building along the way.
+            I first started coding at 13 and began studying computer science formally in 2023. Over the years, I&apos;ve watched the industry change with the rise of AI, and I&apos;ve tried to evolve with it, learning new tools, ideas, and ways of building along the way.
           </p>
 
           <p>
-            I live in Greater Noida, IN.
+            I currently live in Greater Noida, IN.
           </p>
           <p>
             I&apos;m looking for opportunities to collaborate, learn, and build something new.

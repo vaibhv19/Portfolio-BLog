@@ -12,7 +12,7 @@ export function StarryNightBackground() {
       {/* Starry Night painting layer with soft blur */}
       <div className="absolute inset-0 w-full h-full transform-gpu scale-105">
         <img
-          src="/images/starry-night-bg.jpg"
+          src="/images/starry-night-bg.webp"
           alt=""
           className="w-full h-full object-cover filter blur-[10px] sm:blur-[14px] opacity-75"
         />

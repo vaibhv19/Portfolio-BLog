@@ -14,10 +14,41 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Vaibhav Gupta",
+  metadataBase: new URL("https://vaibhv19.dev"),
+  title: {
+    default: "Vaibhav Gupta",
+    template: "%s | Vaibhav Gupta",
+  },
   description: "Personal portfolio and technical writing of Vaibhav Gupta — Software Engineer building distributed systems, AI agent platforms, and full-stack applications.",
   keywords: ["Software Engineer", "Vaibhav Gupta", "Distributed Systems", "Java", "Python", "React", "Next.js", "AI Agents", "RAG"],
   authors: [{ name: "Vaibhav Gupta" }],
+  creator: "Vaibhav Gupta",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://vaibhv19.dev",
+    siteName: "Vaibhav Gupta",
+    title: "Vaibhav Gupta",
+    description: "Personal portfolio and technical writing of Vaibhav Gupta — Software Engineer building distributed systems, AI agent platforms, and full-stack applications.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Vaibhav Gupta — Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vaibhav Gupta",
+    description: "Personal portfolio and technical writing of Vaibhav Gupta — Software Engineer building distributed systems, AI agent platforms, and full-stack applications.",
+    creator: "@vaibhv_19",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: [
       { url: "/icon.svg?v=3", type: "image/svg+xml" },

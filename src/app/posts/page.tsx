@@ -4,8 +4,17 @@ import Link from "next/link";
 import { POST_ARTICLES } from "@/data/posts";
 
 export const metadata: Metadata = {
-  title: "All Posts | Vaibhav Gupta",
+  title: "All Posts",
   description: "Chronological engineering archive exploring project retrospectives, system comparisons, architectural decisions, and learning reflections.",
+  alternates: {
+    canonical: "/posts",
+  },
+  openGraph: {
+    type: "website",
+    title: "All Posts | Vaibhav Gupta",
+    description: "Chronological engineering archive exploring project retrospectives, system comparisons, architectural decisions, and learning reflections.",
+    url: "/posts",
+  },
 };
 
 function getMonthYearLabel(dateStr: string) {

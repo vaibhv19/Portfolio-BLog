@@ -1,0 +1,48 @@
+# Vaibhav Gupta — Software Engineer & Systems Builder
+> Personal Website & Technical Writing Archive: https://vaibhv19.dev
+
+## Overview
+Vaibhav Gupta is a Software Engineer specializing in distributed systems, AI agent platforms, hybrid retrieval (RAG), and full-stack architecture. He builds open-source developer tooling, experiments with multi-model AI orchestration, and writes in-depth technical essays on systems design, engineering trade-offs, and software architecture.
+
+## Primary Navigation
+- Home: https://vaibhv19.dev/ (Recent technical essays and profile summary)
+- About: https://vaibhv19.dev/about (Engineering background, philosophy, influences, and live building activity)
+- Posts Archive: https://vaibhv19.dev/posts (Chronological archive of technical essays and system retrospectives)
+- My Work (Systems Portfolio): https://mywork.vaibhv19.dev (Interactive systems catalog, project breakdowns, and architecture deep-dives)
+- Contact: https://vaibhv19.dev/about#get-in-touch (Direct email dispatch endpoint)
+
+## Technical Posts & Long-Form Essays
+- [How I Maintain Open Source](https://vaibhv19.dev/posts/how-i-maintain-open-source): On discipline, documentation, and managing open-source software sustainably. (2026-09-22)
+- [The Night an AI Agent Almost Ate My Drive](https://vaibhv19.dev/posts/the-night-an-ai-agent-almost-ate-my-drive): A post-mortem on autonomy, sandbox escapes, and why agent tooling demands strict isolation. (2026-09-19)
+- [Introvert with AI](https://vaibhv19.dev/posts/introvert-with-ai): Exploring how AI tools alter independent engineering, deep work, and solo system design. (2026-09-04)
+- [North Star](https://vaibhv19.dev/posts/north-star): On long-term ambition, foundational software, and accepting the uncertainty of the path ahead. (2026-08-29)
+- [How I Work](https://vaibhv19.dev/posts/how-i-work): Engineering workflow, tools, mental models, and daily development habits. (2026-08-25)
+- [Engineering Journey](https://vaibhv19.dev/posts/engineering-journey): From early curiosity and first projects to systems engineering and distributed architectures. (2026-08-23)
+- [Identity & Influences](https://vaibhv19.dev/posts/identity-and-influences): Books, thinkers, systems, and engineering philosophies that shaped my thinking. (2026-08-21)
+- [Why I Chose to Become an Engineer](https://vaibhv19.dev/posts/why-i-chose-to-become-an-engineer): The motivation behind building software and solving fundamental technical problems. (2026-08-17)
+- [Same System, Different Languages](https://vaibhv19.dev/posts/what-i-learned-from-building-the-same-distributed-cache-in-java-and-python): What I learned from building the same distributed caching engine in both Java and Python. (2026-08-11)
+- [Building Agents Twice](https://vaibhv19.dev/posts/building-agents-twice): Comparing multi-agent orchestration architectures across LangGraph and custom state machines. (2026-07-28)
+- [Beyond the Black Box](https://vaibhv19.dev/posts/beyond-the-black-box): Why transparency in retrieval scoring math matters more than raw benchmark numbers in RAG systems. (2026-07-22)
+- [Local Intelligence](https://vaibhv19.dev/posts/local-first-ai-why-i-kept-the-intelligence-close-to-the-application): Why I prioritize local-first LLM inference and edge intelligence for responsive developer tools. (2026-07-14)
+- [Beyond an API Call](https://vaibhv19.dev/posts/beyond-an-api-call): Moving past basic LLM wrappers toward robust, deterministic AI systems engineering. (2026-06-29)
+- [Designing for Failure](https://vaibhv19.dev/posts/when-model-answered-isnt-enough): Reliability, fallback strategies, and fault tolerance in non-deterministic LLM pipelines. (2026-06-18)
+- [Real-Time, Evolved](https://vaibhv19.dev/posts/the-evolution-of-my-real-time-architecture): The evolution of WebSocket and STOMP messaging in multi-agent collaboration systems. (2026-06-02)
+- [From Coursework to Systems](https://vaibhv19.dev/posts/from-coursework-to-systems-engineering-how-my-projects-became-more-serious): How my software projects transitioned from academic assignments to production systems. (2026-05-15)
+- [Why One Backend Isn't Enough](https://vaibhv19.dev/posts/why-some-of-my-projects-need-more-than-one-backend): Architectural trade-offs when combining polyglot backend services. (2026-04-28)
+- [Building for Production](https://vaibhv19.dev/posts/production-changed-how-i-build): Lessons learned from deploying distributed microservices, databases, and reverse proxies. (2026-04-12)
+
+## Key Projects & Engineering Focus
+- **Phoenix**: Hybrid RAG retrieval engine combining dense vector search (pgvector) with sparse lexical search (BM25) and reciprocal rank fusion.
+- **Conclave**: Multi-model agent debate workspace orchestrating local Ollama instances and cloud endpoints over real-time STOMP WebSockets.
+- **Vigil**: AI agent safety harness executing agent tool calls inside ephemeral Docker containers with system call interception.
+- **Foundry**: Multi-agent startup architecture evaluation framework using LangGraph and Celery worker clusters.
+- **Cairn**: Distributed in-memory caching engine built from first principles in Java 21 using virtual threads and consistent hashing.
+- **Shard**: Distributed non-blocking caching cluster implemented in Python asyncio.
+- **Trajectory**: Job application tracking platform on Spring Boot REST microservices, PostgreSQL, and React.
+
+## Profiles & External Channels
+- GitHub: https://github.com/vaibhv19
+- LinkedIn: https://www.linkedin.com/in/vaibhv19
+- X (Twitter): https://x.com/vaibhv_19
+- Bluesky: https://bsky.app/profile/vaibhv19.dev
+- Threads: https://www.threads.com/@vaibhv_19

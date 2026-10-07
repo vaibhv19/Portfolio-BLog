@@ -82,8 +82,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = POST_ARTICLES.find((a) => a.slug === slug);
   if (!article) return { title: "Post Not Found" };
   return {
-    title: `${article.title} | Posts`,
+    title: article.title,
     description: article.excerpt,
+    alternates: {
+      canonical: `/posts/${article.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: `${article.title} | Vaibhav Gupta`,
+      description: article.excerpt,
+      url: `/posts/${article.slug}`,
+      publishedTime: article.date,
+      authors: ["Vaibhav Gupta"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${article.title} | Vaibhav Gupta`,
+      description: article.excerpt,
+      creator: "@vaibhv_19",
+    },
   };
 }
 
