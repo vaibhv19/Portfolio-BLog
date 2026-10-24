@@ -16,6 +16,7 @@ import { articleBuildingForProduction } from "./articles/buildingForProduction";
 import { articleIntrovertWithAi } from "./articles/introvertWithAi";
 import { articleTheNightAnAiAgentAlmostAteMyDrive } from "./articles/theNightAnAiAgentAlmostAteMyDrive";
 import { articleHowIMaintainOpenSource } from "./articles/howIMaintainOpenSource";
+import { articleTheBuildingPhaseIsOver } from "./articles/theBuildingPhaseIsOver";
 
 export interface PostArticle {
   slug: string;
@@ -47,4 +48,5 @@ export const POST_ARTICLES: PostArticle[] = [
   articleIntrovertWithAi,
   articleTheNightAnAiAgentAlmostAteMyDrive,
   articleHowIMaintainOpenSource,
+  articleTheBuildingPhaseIsOver,
 ];
